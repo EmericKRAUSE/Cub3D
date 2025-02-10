@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
+/*   By: nonoro <nonoro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/06 14:44:33 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/02/08 17:36:30 by nonoro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/include.h"
-
-#define WALL_WIDTH 80
-#define WALL_HEIGHT 80
 
 int	ft_strlen(const char *str)
 {
@@ -78,44 +75,53 @@ void	move(void *param)
 	game->player->instances->y += move_y;
 }
 
-void draw_square(mlx_t *mlx, mlx_image_t *img, uint32_t color)
+void draw_square(mlx_t *mlx, mlx_image_t *img, uint32_t color, int x_position, int y_position)
 {
 	int	x;
 	int	y;
 
 	y = 0;
-	while (y < WALL_HEIGHT)
+	while (y < PIXELS)
 	{
 		x = 0;
-		while (x < WALL_WIDTH)
+		while (x < PIXELS)
 		{
 			mlx_put_pixel(img, x, y, color);
 			x++;
 		}
 		y++;
 	}
-	mlx_image_to_window(mlx, img, 0, 0);
+	mlx_image_to_window(mlx, img, x_position, y_position);
 }
 
-// int init_map(const char *filename, char **map)
-// {
-// 	char buffer;
-// 	int fd;
-// 	ssize_t byte_read;
+void	display_map(t_game game)
+{
+	int	x;
+	int	y;
+	int	player_x;
+	int	player_y;
 
-// 	fd = open(filename, O_RDONLY);
-// 	if (fd == -1)
-// 		return (-1);
-// 	while ((byte_read = read(fd, &buffer, 1)) > 0)
-// 		write(1, &buffer, 1);
-// 	if (byte_read == -1)
-// 	{
-// 		close(fd);
-// 		return (-1);
-// 	}
-// 	close(fd);
-// 	return (1);
-// }
+	y = 0;
+	while (game.map.map[y])
+	{
+		x = 0;
+		while (game.map.map[y][x])
+		{
+			if (game.map.map[y][x] == 'N')
+			{
+				player_x = x;
+				player_y = y;
+			}
+			if (game.map.map[y][x] == '1')
+				draw_square(game.mlx, game.wall, 0x800080FF, x * PIXELS, y * PIXELS);
+			else
+				draw_square(game.mlx, game.background, 0x000000FF, x * PIXELS, y * PIXELS);
+			x++;
+		}
+		y++;
+	}
+	draw_square(game.mlx, game.player, 0xadd8e6FF, player_x * PIXELS, player_y * PIXELS);
+}
 
 int	main(int argc, char **argv)
 {
@@ -123,15 +129,16 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (ft_error("Error: Argument must be 1", 1));
-	if (read_file(argv[1]) == -1)
-		return (ft_error("Error: error while reading the file", 1));
 
-	mlx_set_setting(MLX_MAXIMIZED, true);
+	if (map_parser(&game.map, argv[1]) == -1)
+		return (ft_error("Error: error while read the file", 1));
+	
 	init_game(&game);
-	//init_map();
-	draw_square(game.mlx, game.player, 0x008000FF);
+	display_map(game);
+
 	mlx_loop_hook(game.mlx, move, &game);
 	mlx_loop(game.mlx);
 	mlx_terminate(game.mlx);
+	free_map(&game.map);
 	return (0);
 }

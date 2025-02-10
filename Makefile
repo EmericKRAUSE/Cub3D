@@ -5,7 +5,8 @@ LIBMLX  =   ./MLX42
 LIBS    =   $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
 SRC     =   src/main.c\
-			src/init/init_game.c
+			src/init/init_game.c\
+			src/parsing/map_parser.c
 OBJ     =   $(SRC:.c=.o)
 
 all: libmlx $(NAME)
