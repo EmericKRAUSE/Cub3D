@@ -8,13 +8,24 @@
 #include <math.h>
 #include <stdlib.h>
 
-#define WIN_WIDTH 1980
-#define WIN_HEIGHT 1080
-
-#define PIXELS 32
+#define WIN_WIDTH 2560
+#define WIN_HEIGHT (WIN_WIDTH * 9 / 16)
+#define PI 3.14159265359
 
 // ####################
 // Structures
+typedef struct player
+{
+	mlx_image_t	*image;
+	int			x;
+	int			y;
+	int			move_dist;
+	float		angle;
+	float		dir_x;
+	float		dir_y;
+	float		rotation_speed;
+}	t_player;
+
 typedef struct map
 {
 	char	**map;
@@ -25,11 +36,12 @@ typedef struct map
 typedef struct game
 {
 	mlx_t		*mlx;
+	int			tile_size;
+	mlx_image_t	*ray;
 	t_map		map;
-	mlx_image_t	*player;
+	t_player	player;
 	mlx_image_t *wall;
 	mlx_image_t	*background;
-	int			movement_distance;
 	float		diagonal_factor;
 }	t_game;
 

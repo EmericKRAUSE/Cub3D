@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nonoro <nonoro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/08 17:36:30 by nonoro           ###   ########.fr       */
+/*   Updated: 2025/02/12 18:00:44 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,47 +59,67 @@ void	move(void *param)
 	move_x = 0;
 	move_y = 0;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_W))
-		move_y -= game->movement_distance;
+		move_y -= game->player.move_dist;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_S))
-		move_y += game->movement_distance;
+		move_y += game->player.move_dist;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_A))
-		move_x -= game->movement_distance;
+		move_x -= game->player.move_dist;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_D))
-		move_x += game->movement_distance;
+		move_x += game->player.move_dist;
 	if (move_x != 0 && move_y != 0)
 	{
 		move_x *= game->diagonal_factor;
 		move_y *= game->diagonal_factor;
 	}
-	game->player->instances->x += move_x;
-	game->player->instances->y += move_y;
+	game->player.image->instances->x += move_x;
+	game->player.image->instances->y += move_y;
 }
 
-void draw_square(mlx_t *mlx, mlx_image_t *img, uint32_t color, int x_position, int y_position)
+void direction(void *param)
+{
+	t_game *game;
+	float new_angle;
+	
+	game = param;
+	new_angle = game->player.angle;
+	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
+		new_angle -= game->player.rotation_speed;
+	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
+		new_angle += game->player.rotation_speed;
+		
+	if (new_angle >= 2 * PI)
+		new_angle -= 2 * PI;
+		
+	if (new_angle < 0)
+		new_angle += 2 * PI;
+	
+	game->player.angle = new_angle;
+	printf("%f\n", game->player.angle);
+}
+
+void draw_square(t_game game, mlx_image_t *img, uint32_t color, int x_position, int y_position)
 {
 	int	x;
 	int	y;
 
 	y = 0;
-	while (y < PIXELS)
+	while (y < game.tile_size)
 	{
 		x = 0;
-		while (x < PIXELS)
+		while (x < game.tile_size)
 		{
 			mlx_put_pixel(img, x, y, color);
 			x++;
 		}
 		y++;
 	}
-	mlx_image_to_window(mlx, img, x_position, y_position);
+	mlx_image_to_window(game.mlx, img, x_position, y_position);
 }
 
 void	display_map(t_game game)
 {
 	int	x;
 	int	y;
-	int	player_x;
-	int	player_y;
 
 	y = 0;
 	while (game.map.map[y])
@@ -107,20 +127,53 @@ void	display_map(t_game game)
 		x = 0;
 		while (game.map.map[y][x])
 		{
-			if (game.map.map[y][x] == 'N')
-			{
-				player_x = x;
-				player_y = y;
-			}
 			if (game.map.map[y][x] == '1')
-				draw_square(game.mlx, game.wall, 0x800080FF, x * PIXELS, y * PIXELS);
+				draw_square(game, game.wall, 0x800080FF, x * game.tile_size, y * game.tile_size);
 			else
-				draw_square(game.mlx, game.background, 0x000000FF, x * PIXELS, y * PIXELS);
+				draw_square(game, game.background, 0x000000FF, x * game.tile_size, y * game.tile_size);
 			x++;
 		}
 		y++;
 	}
-	draw_square(game.mlx, game.player, 0xadd8e6FF, player_x * PIXELS, player_y * PIXELS);
+	draw_square(game, game.player.image, 0xadd8e6FF, game.player.x * game.tile_size, game.player.y * game.tile_size);
+}
+
+void draw_line(t_game game, mlx_image_t *img, uint32_t color, int x_position, int y_position)
+{
+	int y;
+
+	y = 0;
+	while (y < game.tile_size * 2)
+	{
+		mlx_put_pixel(img, 1, y, color);
+		y++;
+	}
+	mlx_image_to_window(game.mlx, img, x_position, y_position);
+}
+
+void display_ray(t_game game)
+{
+	draw_line(game, game.ray, 0Xffff00FF, game.player.x * game.tile_size, game.player.y * game.tile_size);
+}
+
+void update_ray(void *param)
+{
+	t_game *game;
+	float x_final;
+	float y_final;
+
+	game = param;
+
+	// Calcul des nouvelles coordonnées en fonction de l'angle du joueur
+	x_final = game->player.x * game->tile_size + 50 * cos(game->player.angle); // Rayon partant de la position du joueur
+	y_final = game->player.y * game->tile_size + 50 * sin(game->player.angle); // Rayon partant de la position du joueur
+
+	// Mettre à jour la position du rayon
+	game->ray->instances->x = x_final;
+	game->ray->instances->y = y_final;
+
+	// Redessiner le rayon
+	display_ray(*game); // Redessiner le rayon à sa nouvelle position
 }
 
 int	main(int argc, char **argv)
@@ -132,11 +185,19 @@ int	main(int argc, char **argv)
 
 	if (map_parser(&game.map, argv[1]) == -1)
 		return (ft_error("Error: error while read the file", 1));
-	
+
+	printf ("WIDTH: %d\nHEIGHT: %d\n", WIN_WIDTH, WIN_HEIGHT);
+
+	game.player.x = 5;
+	game.player.y = 5;
+
 	init_game(&game);
 	display_map(game);
+	display_ray(game);
 
 	mlx_loop_hook(game.mlx, move, &game);
+	mlx_loop_hook(game.mlx, direction, &game);
+	mlx_loop_hook(game.mlx, update_ray, &game);
 	mlx_loop(game.mlx);
 	mlx_terminate(game.mlx);
 	free_map(&game.map);
