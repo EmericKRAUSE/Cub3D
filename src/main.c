@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
+/*   By: nonoro <nonoro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/12 18:00:44 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/02/13 18:02:43 by nonoro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,10 @@ void	move(void *param)
 	move_x = 0;
 	move_y = 0;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_W))
-		move_y -= game->player.move_dist;
+	{
+		move_x += cos(game->player.angle) * game->player.move_dist;
+		move_y += sin(game->player.angle) * game->player.move_dist;
+	}
 	if (mlx_is_key_down(game->mlx, MLX_KEY_S))
 		move_y += game->player.move_dist;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_A))
@@ -75,7 +78,7 @@ void	move(void *param)
 	game->player.image->instances->y += move_y;
 }
 
-void direction(void *param)
+void rotation(void *param)
 {
 	t_game *game;
 	float new_angle;
@@ -151,31 +154,6 @@ void draw_line(t_game game, mlx_image_t *img, uint32_t color, int x_position, in
 	mlx_image_to_window(game.mlx, img, x_position, y_position);
 }
 
-void display_ray(t_game game)
-{
-	draw_line(game, game.ray, 0Xffff00FF, game.player.x * game.tile_size, game.player.y * game.tile_size);
-}
-
-void update_ray(void *param)
-{
-	t_game *game;
-	float x_final;
-	float y_final;
-
-	game = param;
-
-	// Calcul des nouvelles coordonnées en fonction de l'angle du joueur
-	x_final = game->player.x * game->tile_size + 50 * cos(game->player.angle); // Rayon partant de la position du joueur
-	y_final = game->player.y * game->tile_size + 50 * sin(game->player.angle); // Rayon partant de la position du joueur
-
-	// Mettre à jour la position du rayon
-	game->ray->instances->x = x_final;
-	game->ray->instances->y = y_final;
-
-	// Redessiner le rayon
-	display_ray(*game); // Redessiner le rayon à sa nouvelle position
-}
-
 int	main(int argc, char **argv)
 {
 	t_game	game;
@@ -193,11 +171,10 @@ int	main(int argc, char **argv)
 
 	init_game(&game);
 	display_map(game);
-	display_ray(game);
 
 	mlx_loop_hook(game.mlx, move, &game);
-	mlx_loop_hook(game.mlx, direction, &game);
-	mlx_loop_hook(game.mlx, update_ray, &game);
+	mlx_loop_hook(game.mlx, rotation, &game);
+	
 	mlx_loop(game.mlx);
 	mlx_terminate(game.mlx);
 	free_map(&game.map);
