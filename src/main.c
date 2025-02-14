@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nonoro <nonoro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/13 18:02:43 by nonoro           ###   ########.fr       */
+/*   Updated: 2025/02/14 19:20:16 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,22 +58,17 @@ void	move(void *param)
 	game = param;
 	move_x = 0;
 	move_y = 0;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_W))
+	if (mlx_is_key_down(game->mlx, MLX_KEY_W) && game->map.map[game->player.image->instances->y / game->tile_size][game->player.image->instances->x / game->tile_size] == '0')
 	{
 		move_x += cos(game->player.angle) * game->player.move_dist;
 		move_y += sin(game->player.angle) * game->player.move_dist;
 	}
 	if (mlx_is_key_down(game->mlx, MLX_KEY_S))
-		move_y += game->player.move_dist;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_A))
-		move_x -= game->player.move_dist;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_D))
-		move_x += game->player.move_dist;
-	if (move_x != 0 && move_y != 0)
 	{
-		move_x *= game->diagonal_factor;
-		move_y *= game->diagonal_factor;
+		move_x -= cos(game->player.angle) * game->player.move_dist;
+		move_y -= sin(game->player.angle) * game->player.move_dist;
 	}
+
 	game->player.image->instances->x += move_x;
 	game->player.image->instances->y += move_y;
 }
@@ -85,9 +80,9 @@ void rotation(void *param)
 	
 	game = param;
 	new_angle = game->player.angle;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
+	if (mlx_is_key_down(game->mlx, MLX_KEY_A))
 		new_angle -= game->player.rotation_speed;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
+	if (mlx_is_key_down(game->mlx, MLX_KEY_D))
 		new_angle += game->player.rotation_speed;
 		
 	if (new_angle >= 2 * PI)
@@ -141,17 +136,36 @@ void	display_map(t_game game)
 	draw_square(game, game.player.image, 0xadd8e6FF, game.player.x * game.tile_size, game.player.y * game.tile_size);
 }
 
-void draw_line(t_game game, mlx_image_t *img, uint32_t color, int x_position, int y_position)
+void cast_ray(t_game *game, float ray_x, float ray_y)
 {
-	int y;
+	float dx = cos(game->player.angle);
+	float dy = sin(game->player.angle);
 
-	y = 0;
-	while (y < game.tile_size * 2)
+	while (1)
 	{
-		mlx_put_pixel(img, 1, y, color);
-		y++;
+		ray_x += dx;
+		ray_y += dy;
+		int map_x = (int)(ray_x / game->tile_size);
+		int map_y = (int)(ray_y / game->tile_size);
+
+		if (ray_x < 0 || ray_x >= WIN_WIDTH || ray_y < 0 || ray_y >= WIN_HEIGHT)
+			break;
+		if(game->map.map[map_y][map_x] == '1')
+			break;
+
+		mlx_put_pixel(game->ray, (int)ray_x, (int)ray_y, 0xFFFF00FF);
 	}
-	mlx_image_to_window(game.mlx, img, x_position, y_position);
+	mlx_image_to_window(game->mlx, game->ray, 0, 0);
+}
+
+void update_ray(void *param)
+{
+	t_game *game;
+
+	game = param;
+	mlx_delete_image(game->mlx, game->ray);
+	game->ray = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
+	cast_ray(game, game->player.image->instances->x, game->player.image->instances->y);
 }
 
 int	main(int argc, char **argv)
@@ -171,12 +185,15 @@ int	main(int argc, char **argv)
 
 	init_game(&game);
 	display_map(game);
+	cast_ray(&game, game.player.image->instances->x, game.player.image->instances->y);
 
 	mlx_loop_hook(game.mlx, move, &game);
 	mlx_loop_hook(game.mlx, rotation, &game);
-	
+	mlx_loop_hook(game.mlx, update_ray, &game);
+
 	mlx_loop(game.mlx);
 	mlx_terminate(game.mlx);
 	free_map(&game.map);
+	
 	return (0);
 }

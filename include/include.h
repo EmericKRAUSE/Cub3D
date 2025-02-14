@@ -8,7 +8,7 @@
 #include <math.h>
 #include <stdlib.h>
 
-#define WIN_WIDTH 1920
+#define WIN_WIDTH 2560
 #define WIN_HEIGHT (WIN_WIDTH * 9 / 16)
 #define PI 3.14159265359
 
@@ -21,8 +21,6 @@ typedef struct player
 	int			y;
 	int			move_dist;
 	float		angle;
-	float		dir_x;
-	float		dir_y;
 	float		rotation_speed;
 }	t_player;
 
