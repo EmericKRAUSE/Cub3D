@@ -20,7 +20,7 @@ typedef struct player
 	int			x;
 	int			y;
 	int			move_dist;
-	double		angle;
+	float		angle;
 	float		rotation_speed;
 }	t_player;
 
@@ -47,7 +47,7 @@ typedef struct game
 void	init_game(t_game* game);
 void	move(void *param);
 int		map_parser(t_map *map, char *filename);
-void	cast_ray(t_game *game, float ray_x, float ray_y);
+void	cast_ray(t_game *game);
 void	update_ray(void *param);
 void	free_map(t_map *map);
 

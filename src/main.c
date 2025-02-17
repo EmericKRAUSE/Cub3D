@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/17 15:58:37 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/02/17 20:06:06 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	main(int argc, char **argv)
 
 	init_game(&game);
 	display_map(game);
-	cast_ray(&game, game.player.image->instances->x, game.player.image->instances->y);
+	cast_ray(&game);
 
 	mlx_loop_hook(game.mlx, move, &game);
 	mlx_loop_hook(game.mlx, update_ray, &game);

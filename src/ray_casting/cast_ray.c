@@ -1,21 +1,37 @@
 #include "../../include/include.h"
 
-void cast_ray(t_game *game, float ray_x, float ray_y)
+#define FOV (M_PI / 3)
+
+void cast_ray(t_game *game)
 {
-	float dx = cos(game->player.angle);
-	float dy = sin(game->player.angle);
+	int		i = 0;
+	float	start_angle = game->player.angle - FOV / 2;
+	float	ray_angle;
+	float	step_angle = FOV / WIN_WIDTH;
 
-	while (1)
+	mlx_delete_image(game->mlx, game->ray);
+	game->ray = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
+
+	while(i < WIN_WIDTH)
 	{
-		ray_x += dx;
-		ray_y += dy;
-		int map_x = (int)(ray_x / game->tile_size);
-		int map_y = (int)(ray_y / game->tile_size);
-
-		if (game->map.map[map_y][map_x] == '1')
-			break;
-
-		mlx_put_pixel(game->ray, (int)ray_x, (int)ray_y, 0xFFFF00FF);
+		ray_angle = start_angle + i * step_angle;
+		float dx = cos(ray_angle);
+		float dy = sin(ray_angle);
+		float ray_x = game->player.image->instances->x;
+		float ray_y = game->player.image->instances->y;
+		while (1)
+		{
+			ray_x += dx;
+			ray_y += dy;
+			int map_x = (int)(ray_x / game->tile_size);
+			int map_y = (int)(ray_y / game->tile_size);
+	
+			if (game->map.map[map_y][map_x] == '1')
+				break;
+	
+			mlx_put_pixel(game->ray, (int)ray_x, (int)ray_y, 0xFFFF00FF);
+		}
+		i++;
 	}
 	mlx_image_to_window(game->mlx, game->ray, 0, 0);
 }
