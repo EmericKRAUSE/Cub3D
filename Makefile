@@ -15,7 +15,7 @@ LIBMLX_FLAGS = -L$(LIBMLX_BUILD) -lmlx42 -ldl -lglfw -pthread -lm
 
 # Compilateur et options
 CC      =   gcc
-CFLAGS  =   -Wall -Wextra -Werror -I includes -g3
+CFLAGS  =   -Wall -Wextra -Werror -I include -g3
 LFLAGS  =   $(LIBMLX_FLAGS)
 LDFLAGS = $(addprefix -L$(LIB_DIR)/lib,$(LIBRARIES))
 LDLIBS  = $(addprefix -l,$(LIBRARIES))

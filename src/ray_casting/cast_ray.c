@@ -1,4 +1,4 @@
-#include "../../include/include.h"
+#include <cube3d.h>
 
 void cast_ray(t_game *game)
 {
