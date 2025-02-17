@@ -10,7 +10,7 @@
 
 #define WIN_WIDTH 2560
 #define WIN_HEIGHT (WIN_WIDTH * 9 / 16)
-#define PI 3.14159265359
+//#define PI 3.14159265359
 
 // ####################
 // Structures
@@ -20,7 +20,7 @@ typedef struct player
 	int			x;
 	int			y;
 	int			move_dist;
-	float		angle;
+	double		angle;
 	float		rotation_speed;
 }	t_player;
 
@@ -40,13 +40,15 @@ typedef struct game
 	t_player	player;
 	mlx_image_t *wall;
 	mlx_image_t	*background;
-	float		diagonal_factor;
 }	t_game;
 
 // ####################
 // Prototypes
 void	init_game(t_game* game);
+void	move(void *param);
 int		map_parser(t_map *map, char *filename);
+void	cast_ray(t_game *game, float ray_x, float ray_y);
+void	update_ray(void *param);
 void	free_map(t_map *map);
 
 #endif
