@@ -1,16 +1,17 @@
 #include "../../include/include.h"
 
-#define FOV (M_PI / 3)
-
 void cast_ray(t_game *game)
 {
 	int		i = 0;
-	float	start_angle = game->player.angle - FOV / 2;
+	float start_angle = game->player.angle - FOV_RAD / 2;
 	float	ray_angle;
-	float	step_angle = FOV / WIN_WIDTH;
+	float step_angle = FOV_RAD / WIN_WIDTH;
 
-	mlx_delete_image(game->mlx, game->ray);
+	if (game->ray)
+		mlx_delete_image(game->mlx, game->ray);
 	game->ray = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
+	if (!game->ray)
+		return ;
 
 	while(i < WIN_WIDTH)
 	{

@@ -10,6 +10,8 @@
 
 #define WIN_WIDTH 2560
 #define WIN_HEIGHT (WIN_WIDTH * 9 / 16)
+#define FOV 90
+#define FOV_RAD (FOV * (M_PI / 180))
 //#define PI 3.14159265359
 
 // ####################
