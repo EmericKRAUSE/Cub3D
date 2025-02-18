@@ -1,18 +1,17 @@
 #ifndef INCLUDE_H
 # define INCLUDE_H
 
-#include "../MLX42/include/MLX42/MLX42.h"
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <math.h>
-#include <stdlib.h>
+# include "../MLX42/include/MLX42/MLX42.h"
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <math.h>
+# include <stdlib.h>
 
-#define WIN_WIDTH 2560
-#define WIN_HEIGHT (WIN_WIDTH * 9 / 16)
-#define FOV 90
-#define FOV_RAD (FOV * (M_PI / 180))
-//#define PI 3.14159265359
+# define WIN_WIDTH 2560
+# define WIN_HEIGHT (WIN_WIDTH * 9 / 16)
+# define FOV 90
+# define FOV_RAD (FOV * (M_PI / 180))
 
 // ####################
 // Structures
@@ -28,9 +27,9 @@ typedef struct player
 
 typedef struct map
 {
-	char	**map;
-	int		x;
-	int		y;
+	char	**tab;
+	int		width;
+	int		height;
 }	t_map;
 
 typedef struct game

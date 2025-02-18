@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/17 20:06:06 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/02/18 19:39:03 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,12 @@ void	display_map(t_game game)
 	int	y;
 
 	y = 0;
-	while (game.map.map[y])
+	while (game.map.tab[y])
 	{
 		x = 0;
-		while (game.map.map[y][x])
+		while (game.map.tab[y][x])
 		{
-			if (game.map.map[y][x] == '1')
+			if (game.map.tab[y][x] == '1')
 				draw_square(game, game.wall, 0x800080FF, x * game.tile_size, y * game.tile_size);
 			else
 				draw_square(game, game.background, 0x000000FF, x * game.tile_size, y * game.tile_size);

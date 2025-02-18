@@ -47,7 +47,7 @@ void move(void *param)
 		new_x -= roundf(move_y * game->player.move_dist);
 		new_y += roundf(move_x * game->player.move_dist);
 	}
-	if (game->map.map[(int)new_y / game->tile_size][(int)new_x / game->tile_size] != '1')
+	if (game->map.tab[(int)new_y / game->tile_size][(int)new_x / game->tile_size] != '1')
 	{
 		game->player.image->instances->x = new_x;
 		game->player.image->instances->y = new_y;

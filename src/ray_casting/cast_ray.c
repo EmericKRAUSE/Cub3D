@@ -27,7 +27,7 @@ void cast_ray(t_game *game)
 			int map_x = (int)(ray_x / game->tile_size);
 			int map_y = (int)(ray_y / game->tile_size);
 	
-			if (game->map.map[map_y][map_x] == '1')
+			if (game->map.tab[map_y][map_x] == '1')
 				break;
 	
 			mlx_put_pixel(game->ray, (int)ray_x, (int)ray_y, 0xFFFF00FF);

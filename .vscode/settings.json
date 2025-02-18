@@ -1,6 +1,7 @@
 {
 	"C_Cpp.errorSquiggles": "disabled",
 	"files.associations": {
-		"include.h": "c"
+		"include.h": "c",
+		"math.h": "c"
 	}
 }
