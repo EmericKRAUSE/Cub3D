@@ -48,7 +48,7 @@ typedef struct game
 void	init_game(t_game* game);
 void	move(void *param);
 int		map_parser(t_map *map, char *filename);
-void	cast_ray(t_game *game);
+void	ray_casting(t_game *game);
 void	update_ray(void *param);
 void	free_map(t_map *map);
 

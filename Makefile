@@ -8,7 +8,7 @@ SRC     =   src/main.c\
 			src/init/init_game.c\
 			src/move/move.c\
 			src/parsing/map_parser.c\
-			src/ray_casting/cast_ray.c\
+			src/ray_casting/ray_casting.c\
 			src/ray_casting/update_ray.c
 
 OBJ     =   $(SRC:.c=.o)
