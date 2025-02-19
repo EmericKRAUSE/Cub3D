@@ -1,4 +1,4 @@
-#include "../../include/include.h"
+#include <cube3d.h>
 
 // static double pythagoras(int x, int y)
 // {
