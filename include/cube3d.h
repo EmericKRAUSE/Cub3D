@@ -7,7 +7,8 @@
 # include <stdio.h>
 # include <math.h>
 # include <stdlib.h>
-
+# include <get_next_line.h>
+# include "../lib/libft/include/libft.h"
 # define WIN_WIDTH 2560
 # define WIN_HEIGHT (WIN_WIDTH * 9 / 16)
 # define FOV 90
@@ -69,7 +70,7 @@ void	free_map(t_map *map);
 // ####################
 // utils
 void clean_exit(t_game *game, char *msg, int exit_code);
-
+//char	*get_next_line(int fd);
 int	ft_error(const char *message, int value);
 
 #endif
