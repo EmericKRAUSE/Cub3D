@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/include.h"
+#include <cube3d.h>
 
 // Return true if the position given in px is located in a wall
 static int	is_wall_hit(t_game *game, float ray_x, float ray_y)
