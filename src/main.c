@@ -12,16 +12,6 @@
 
 #include <cube3d.h>
 
-int	ft_strlen(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
 int	ft_error(const char *message, int value)
 {
 	write(2, message, ft_strlen(message));
@@ -90,6 +80,14 @@ void	display_map(t_game game)
 	mlx_image_to_window(game.mlx, game.player.image, game.player.x * game.tile_size, game.player.y * game.tile_size);
 }
 
+int main(int argc, char **argv)
+{
+	t_game game;
+
+	printf("[parse_args] %d\n", parse_args(argc, argv, &game));
+}
+
+/*
 int	main(int argc, char **argv)
 {
 	t_game	game;
@@ -118,3 +116,4 @@ int	main(int argc, char **argv)
 	
 	return (0);
 }
+*/

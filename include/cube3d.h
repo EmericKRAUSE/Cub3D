@@ -19,8 +19,18 @@
 # define EAST 2
 # define WEST 3
 
+# define CMP_FOUND 0
 
 # define ERR_OPENFILE -1
+# define ERR_MULTIPLE_MAPS -2
+# define ERR_LOADING_TEXTURE -3
+# define ERR_MALLOC -4
+# define ERR_COLOR -5
+# define ERR_TEXTURE -6
+
+
+# define MAP_CHARS "01 \t\n"
+# define TEXTURES_BALISE "NO /SO /EA /WE "
 
 // ####################
 // Structures
@@ -72,5 +82,9 @@ void	free_map(t_map *map);
 void clean_exit(t_game *game, char *msg, int exit_code);
 //char	*get_next_line(int fd);
 int	ft_error(const char *message, int value);
+
+// ####################
+// parsing
+int parse_args(int argc, char **argv, t_game *game);
 
 #endif

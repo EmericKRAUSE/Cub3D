@@ -16,5 +16,6 @@ void clean_exit(t_game *game, char *msg, int exit_code)
 {
     free_map(&game->map);
     mlx_terminate(game->mlx);
+    
     exit(ft_error(msg, exit_code));
 }
