@@ -86,6 +86,26 @@ char **get_map(t_game *game, int fd, char **line_addr)
     return (map);
 }
 
+int is_blank(char *line)
+{
+    if (line)
+        while (*line)
+            if (!ft_strchr(BLANK_CHAR, *line++))
+                return (FALSE);
+    return (TRUE);
+}
+
+void load_map(t_game *game, char *line, int fd)
+{
+    if (game->map.tab)
+    {
+        free(line);
+        clean_exit(game, "[map] whould be in one block", ERR_MULTIPLE_MAPS);
+    }
+    else
+        game->map.tab = get_map(game, fd, &line);
+}
+
 int impor_cub_file(t_game *game, int fd)
 {
     char *line;
@@ -96,14 +116,7 @@ int impor_cub_file(t_game *game, int fd)
     {
         if (is_map(line))
         {
-            if (game->map.tab)
-            {
-                free(line);
-                clean_exit(game, "[map] whould be in one block", ERR_MULTIPLE_MAPS);
-            }
-            else
-                game->map.tab = get_map(game, fd, &line);
-            continue ;
+            load_map(game, line, fd);
         }
         //if (is_texture(game, line))
         //    if (get_texture(game, line) == ERR_LOADING_TEXTURE)
@@ -111,9 +124,13 @@ int impor_cub_file(t_game *game, int fd)
         //if (is_color(game, line))
         //    if (get_color(game, line) == ERR_LOADING_TEXTURE)
         //        clean_exit(game, "[get_color] something went wrong", ERR_COLOR);
+        else if (is_blank(line))
+        {
+            free(line);
+            line = get_next_line(fd);
+        }
         else
         {
-            printf("line: %s\n", line);
             if (line)
                 free(line);
             line = NULL;
