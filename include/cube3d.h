@@ -27,6 +27,8 @@
 # define ERR_MALLOC -4
 # define ERR_COLOR -5
 # define ERR_TEXTURE -6
+# define ERR_NBARGS -7
+# define ERR_CUBEXT -8
 
 
 # define MAP_CHARS "01 \n"

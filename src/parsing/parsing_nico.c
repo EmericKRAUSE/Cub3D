@@ -109,13 +109,26 @@ t_textures *impor_cub_file(t_game *game, int fd)
     return (NULL);
 }
 
+int is_cub_file(char *filename)
+{
+    char *ext;
+
+    ext = ft_strrchr(filename, '.');
+    if (ext)
+        if (ft_strncmp(ext, ".cub", 5) == CMP_FOUND)
+            return (TRUE);
+    return (FALSE);
+}
+
 int parse_args(int argc, char **argv, t_game *game)
 {
     int fd;
     t_textures *textures;
 
     if (argc != 2)
-        return (ft_error("Error: Argument must be 1", 1));
+        clean_exit(NULL, "Error: Argument must be 1", ERR_NBARGS);
+    if (!is_cub_file(argv[1]))
+        clean_exit(NULL, "Error: File must be .cub", ERR_CUBEXT);
     fd = open_file(game, argv[1]);
     textures = impor_cub_file(game, fd);   
     (void)fd;
