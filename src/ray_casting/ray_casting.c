@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:48:38 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/21 15:31:03 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/02/21 16:59:36 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	cast_ray(t_game *game, float ray_angle)
 		ray_y += dy;
 		if (is_wall_hit(game, ray_x, ray_y))
 			break ;
-		mlx_put_pixel(game->ray, (int)ray_x, (int)ray_y, 0xFFFF00FF);
+		mlx_put_pixel(game->ray, (int)ray_x, (int)ray_y, COLOR_RAY);
 	}
 }
 

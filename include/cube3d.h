@@ -13,6 +13,15 @@
 # define FOV 90
 # define FOV_RAD (FOV * (M_PI / 180))
 
+# define HEX_BLACK 0x000000FF
+# define HEX_WHITE 0xFFFFFFFF
+# define HEX_YELLOW 0xFFFF00FF
+
+# define COLOR_PLAYER HEX_WHITE
+# define COLOR_RAY HEX_YELLOW
+# define COLOR_WALL HEX_WHITE
+# define COLOR_BACKGROUND HEX_BLACK
+
 # define NORTH 0
 # define SOUTH 1
 # define EAST 2
@@ -23,6 +32,12 @@
 
 // ####################
 // Structures
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
+
 typedef struct s_player
 {
 	mlx_image_t	*image;

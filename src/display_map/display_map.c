@@ -6,16 +6,24 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 15:19:25 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/21 15:19:32 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/02/21 16:59:10 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube3d.h>
 
-void draw_square(t_game game, mlx_image_t *img, uint32_t color, int x_position, int y_position)
+static void	set_point(t_point *point, int x, int y)
 {
-	int x;
-	int y;
+	point->x = x;
+	point->y = y;
+}
+
+// Draw a square of size TILE_SIZE by TILE_SIZE
+static void	draw_square(t_game game, mlx_image_t *img,
+	uint32_t color, t_point *point)
+{
+	int	x;
+	int	y;
 
 	y = 0;
 	while (y < game.tile_size)
@@ -28,13 +36,26 @@ void draw_square(t_game game, mlx_image_t *img, uint32_t color, int x_position, 
 		}
 		y++;
 	}
-	mlx_image_to_window(game.mlx, img, x_position, y_position);
+	mlx_image_to_window(game.mlx, img, point->x, point->y);
 }
 
-void display_map(t_game game)
+// Draw a tile using the draw_square function depending on the character
+void	draw_tile(t_game game, char tile, int x, int y)
 {
-	int x;
-	int y;
+	t_point	point;
+
+	set_point(&point, x * game.tile_size, y * game.tile_size);
+	if (tile == '1')
+		draw_square(game, game.wall, COLOR_WALL, &point);
+	else
+		draw_square(game, game.background, COLOR_BACKGROUND, &point);
+}
+
+// Display the map
+void	display_map(t_game game)
+{
+	int		x;
+	int		y;
 
 	y = 0;
 	while (game.map.tab[y])
@@ -42,13 +63,11 @@ void display_map(t_game game)
 		x = 0;
 		while (game.map.tab[y][x])
 		{
-			if (game.map.tab[y][x] == '1')
-				draw_square(game, game.wall, 0x800080FF, x * game.tile_size, y * game.tile_size);
-			else
-				draw_square(game, game.background, 0x000000FF, x * game.tile_size, y * game.tile_size);
+			draw_tile(game, game.map.tab[y][x], x, y);
 			x++;
 		}
 		y++;
 	}
-	mlx_image_to_window(game.mlx, game.player.image, game.player.x * game.tile_size, game.player.y * game.tile_size);
+	mlx_image_to_window(game.mlx, game.player.image,
+		game.player.x * game.tile_size, game.player.y * game.tile_size);
 }
