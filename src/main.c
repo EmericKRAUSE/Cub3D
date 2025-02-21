@@ -112,7 +112,7 @@ int	main(int argc, char **argv)
 
 	mlx_loop(game.mlx);
 	mlx_terminate(game.mlx);
-	free_map(&game.map);
+	free_tab(&game.map);
 	
 	return (0);
 }

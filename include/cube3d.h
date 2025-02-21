@@ -29,7 +29,7 @@
 # define ERR_TEXTURE -6
 
 
-# define MAP_CHARS "01 \t\n"
+# define MAP_CHARS "01 \n"
 # define TEXTURES_BALISE "NO /SO /EA /WE "
 
 // ####################
@@ -75,6 +75,7 @@ void	move(void *param);
 int		map_parser(t_map *map, char *filename);
 void	ray_casting(t_game *game);
 void	update_ray(void *param);
+void	free_tab(char ***tab);
 void	free_map(t_map *map);
 
 // ####################

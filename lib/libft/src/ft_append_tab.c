@@ -10,21 +10,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cube3d.h>
+#include <libft.h>
 
-void free_map(t_map *map)
+int tab_len(char **tab)
 {
-    if (map)
-    {
-        if (map->tab)
-            free_tab(&map->tab);
-        free(map);
-    }
+    int len;
+
+    len = 0;
+    if (tab)
+        while (tab[len])
+            len++;
+    return (len);
 }
-void clean_exit(t_game *game, char *msg, int exit_code)
+
+char **append_tab(char **tab, char *str)
 {
-    free_map(&game->map);
-    mlx_terminate(game->mlx);
-    
-    exit(ft_error(msg, exit_code));
+    char **ret;
+    int len;
+
+    len = tab_len(tab);
+    ret = malloc((len + 2) * sizeof(char *));
+    if (!ret)
+        return (NULL);
+    ret[len] = str;
+    ret[len + 1] = NULL;
+    if (tab)
+        while (len--)
+            ret[len] = tab[len];
+    free(tab);
+    return (ret);
 }

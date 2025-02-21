@@ -4724,7 +4724,7 @@ framebuffer	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer
 framebuffer_callback	MLX42/src/mlx_init.c	/^static void framebuffer_callback(GLFWwindow *window, int width, int height)$/;"	f	typeref:typename:void	file:
 framebuffers	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:GL
 free_exts	MLX42/lib/glad/glad.c	/^static void free_exts(void) {$/;"	f	typeref:typename:void	file:
-free_map	src/parsing/map_parser.c	/^void    free_map(t_map *map)$/;"	f	typeref:typename:void
+free_tab	src/parsing/map_parser.c	/^void    free_tab(t_map *map)$/;"	f	typeref:typename:void
 freelist	MLX42/lib/png/lodepng.c	/^  BPMNode** freelist;$/;"	m	struct:BPMLists	typeref:typename:BPMNode **	file:
 fs	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 fsync	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	m	class:TTY.default_tty1_ops

@@ -18,9 +18,7 @@ int open_file(t_game *game, char *filename)
 
     fd = open(filename, O_RDONLY);
     if (fd == -1)
-    {
         clean_exit(game, "Error: File not found", ERR_OPENFILE);
-    }
     return (fd);
 }
 
@@ -59,7 +57,30 @@ int is_texture(t_game *game, char *line)
 int is_color(t_game *game, char *line);
 int get_texture(t_game *game, char *line);
 int get_color(t_game *game, char *line);
-char **get_map(int fd, char *line);
+
+char **get_map(t_game *game, int fd, char **line_addr)
+{
+    char **map;
+    char *line;
+
+    map = NULL;
+    line = *line_addr;
+    if (!is_map(line))
+        clean_exit(game, "[get_map] NOT A MAP", ERR_MULTIPLE_MAPS);
+    map = append_tab(map, line);
+    if (map == NULL)
+        clean_exit(game, "Error: malloc failed", ERR_MALLOC);
+    line = get_next_line(fd);
+    while (line && is_map(line))
+    {
+        map = append_tab(map, line);
+        if (map == NULL)
+            clean_exit(game, "Error: malloc failed", ERR_MALLOC);
+        line = get_next_line(fd);
+    }
+    *line_addr = line;
+    return (map);
+}
 
 t_textures *impor_cub_file(t_game *game, int fd)
 {
@@ -75,14 +96,14 @@ t_textures *impor_cub_file(t_game *game, int fd)
             if (map)
                 clean_exit(game, "[map] whould be in one block", ERR_MULTIPLE_MAPS);
             else
-                map = get_map(fd, line);
+                map = get_map(game, fd, &line);
         }
-        if (is_texture(game, line))
-            if (get_texture(game, line) == ERR_LOADING_TEXTURE)
-                clean_exit(game, "[get_texture] something went wrong", ERR_TEXTURE);
-        if (is_color(game, line))
-            if (get_color(game, line) == ERR_LOADING_TEXTURE)
-                clean_exit(game, "[get_color] something went wrong", ERR_COLOR);
+        //if (is_texture(game, line))
+        //    if (get_texture(game, line) == ERR_LOADING_TEXTURE)
+        //        clean_exit(game, "[get_texture] something went wrong", ERR_TEXTURE);
+        //if (is_color(game, line))
+        //    if (get_color(game, line) == ERR_LOADING_TEXTURE)
+        //        clean_exit(game, "[get_color] something went wrong", ERR_COLOR);
     }
     
     return (NULL);
