@@ -79,15 +79,46 @@ void	display_map(t_game game)
 	}
 	mlx_image_to_window(game.mlx, game.player.image, game.player.x * game.tile_size, game.player.y * game.tile_size);
 }
+#include <unistd.h>
+#include <stdio.h>
+#include "get_next_line.h"
 
-int main(int argc, char **argv)
+void    get_next_line_tester(int argc, char **argv)
 {
-	t_game game;
+        int             fd;
+        char    *line;
 
-	game.map.tab = NULL;
-	game.mlx = NULL;
-	printf("[parse_args] %d\n", parse_args(argc, argv, &game));
+        if (argc == 2)
+        {
+                fd = open(argv[1], O_RDONLY);
+                while ((line = get_next_line(fd)))
+                {
+                        printf("%s", line);
+                        free(line);
+                        line = NULL;
+                }
+                close(fd);
+        }
+        else
+                printf("Usage: %s <file>\n", argv[0]);
 }
+
+int     main(int argc, char **argv)
+{
+        get_next_line_tester(argc, argv);
+        return (0);
+}
+
+//int main(int argc, char **argv)
+//{
+//	t_game game;
+//
+//	//game.map.tab = NULL;
+//	//game.mlx = NULL;
+//	//printf("[parse_args] %d\n", parse_args(argc, argv, &game));
+//	//clean_exit(&game, "No pb", 0);
+//	return (HABIBI);
+//}
 
 /*
 int	main(int argc, char **argv)

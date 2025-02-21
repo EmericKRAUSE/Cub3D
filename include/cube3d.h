@@ -29,9 +29,12 @@
 # define ERR_TEXTURE -6
 # define ERR_NBARGS -7
 # define ERR_CUBEXT -8
+# define ERR_INVALID_MAP -9
+# define ERR_INVALID_LINE -10
 
+# define HABIBI 000707
 
-# define MAP_CHARS "01 \n"
+# define MAP_CHARS "01NSEW \n"
 # define TEXTURES_BALISE "NO /SO /EA /WE "
 
 // ####################
@@ -89,5 +92,9 @@ int	ft_error(const char *message, int value);
 // ####################
 // parsing
 int parse_args(int argc, char **argv, t_game *game);
+
+// ####################
+// debug
+void print_tab(char **tab);
 
 #endif

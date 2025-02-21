@@ -27,7 +27,7 @@
 void	format_buff(char *buff, char *next_line);
 void	append_line(char *buff, char **next_line);
 char	*line_from_buff(char *buff);
-char	*load_until_line(int fd, char **buff);
+char	*load_until_line(int fd, char *buff);
 char	*get_next_line(int fd);
 void	get_next_line_tester(int argc, char **argv);
 

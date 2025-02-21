@@ -65,6 +65,7 @@ int	get_map_size(t_map *map, char *filename)
 	
 	return (1);
 }
+
 void free_tab(char **map)
 {
 	char **tmp;

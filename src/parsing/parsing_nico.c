@@ -28,7 +28,7 @@ int is_map(char *line)
         return (FALSE);
     else
         while (*line)
-            if (!ft_strchr(MAP_CHARS, *line))
+            if (!ft_strchr(MAP_CHARS, *line++))
                 return (FALSE);
     return (TRUE);
 }
@@ -66,7 +66,7 @@ char **get_map(t_game *game, int fd, char **line_addr)
     map = NULL;
     line = *line_addr;
     if (!is_map(line))
-        clean_exit(game, "[get_map] NOT A MAP", ERR_MULTIPLE_MAPS);
+        clean_exit(game, "[get_map] map invalid", ERR_INVALID_MAP);
     map = append_tab(map, line);
     if (map == NULL)
         clean_exit(game, "Error: malloc failed", ERR_MALLOC);
@@ -78,25 +78,32 @@ char **get_map(t_game *game, int fd, char **line_addr)
             clean_exit(game, "Error: malloc failed", ERR_MALLOC);
         line = get_next_line(fd);
     }
-    *line_addr = line;
+    if (line && !is_map(line))
+        *line_addr = line;
+    else
+        *line_addr = NULL;
+    print_tab(map);
     return (map);
 }
 
-t_textures *impor_cub_file(t_game *game, int fd)
+int impor_cub_file(t_game *game, int fd)
 {
     char *line;
-    char **map;
 
     line = get_next_line(fd);
-    map = NULL;
+    game->map.tab = NULL;
     while (line)
     {
         if (is_map(line))
         {
-            if (map)
+            if (game->map.tab)
+            {
+                free(line);
                 clean_exit(game, "[map] whould be in one block", ERR_MULTIPLE_MAPS);
+            }
             else
-                map = get_map(game, fd, &line);
+                game->map.tab = get_map(game, fd, &line);
+            continue ;
         }
         //if (is_texture(game, line))
         //    if (get_texture(game, line) == ERR_LOADING_TEXTURE)
@@ -104,9 +111,16 @@ t_textures *impor_cub_file(t_game *game, int fd)
         //if (is_color(game, line))
         //    if (get_color(game, line) == ERR_LOADING_TEXTURE)
         //        clean_exit(game, "[get_color] something went wrong", ERR_COLOR);
+        else
+        {
+            printf("line: %s\n", line);
+            if (line)
+                free(line);
+            line = NULL;
+            clean_exit(game, "Error: Invalid line", ERR_INVALID_LINE);
+        }
     }
-    
-    return (NULL);
+    return (TRUE);
 }
 
 int is_cub_file(char *filename)
@@ -130,8 +144,8 @@ int parse_args(int argc, char **argv, t_game *game)
     if (!is_cub_file(argv[1]))
         clean_exit(NULL, "Error: File must be .cub", ERR_CUBEXT);
     fd = open_file(game, argv[1]);
-    textures = impor_cub_file(game, fd);   
+    impor_cub_file(game, fd);   
     (void)fd;
     (void)textures;
-    return (0);
+    return (TRUE);
 }
