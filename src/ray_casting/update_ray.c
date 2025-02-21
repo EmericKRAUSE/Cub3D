@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   update_ray.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/21 15:18:14 by ekrause           #+#    #+#             */
+/*   Updated: 2025/02/21 15:18:27 by ekrause          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <cube3d.h>
 
-void update_ray(void *param)
+void	update_ray(void *param)
 {
-	t_game *game;
+	t_game	*game;
 
 	game = param;
 	ray_casting(game);

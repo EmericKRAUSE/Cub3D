@@ -59,6 +59,7 @@ typedef struct s_game
 
 // ####################
 // Prototypes
+void	display_map(t_game game);
 void	init_game(t_game* game);
 void	move(void *param);
 int		map_parser(t_map *map, char *filename);
