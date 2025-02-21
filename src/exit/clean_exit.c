@@ -12,19 +12,21 @@
 
 #include <cube3d.h>
 
-void free_map(t_map *map)
-{
-    if (map)
-    {
-        if (map->tab)
-            free_tab(&map->tab);
-        free(map);
-    }
-}
+//void free_map(t_map *map)
+//{
+//    if (map)
+//    {
+//        if (map->tab)
+//            free_tab(&map->tab);
+//        free(map);
+//    }
+//}
+
 void clean_exit(t_game *game, char *msg, int exit_code)
 {
-    free_map(&game->map);
-    mlx_terminate(game->mlx);
-    
+    if (game)
+        free_tab(game->map.tab);
+    if (game->mlx)
+        mlx_terminate(game->mlx);
     exit(ft_error(msg, exit_code));
 }

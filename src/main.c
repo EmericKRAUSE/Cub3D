@@ -84,6 +84,8 @@ int main(int argc, char **argv)
 {
 	t_game game;
 
+	game.map.tab = NULL;
+	game.mlx = NULL;
 	printf("[parse_args] %d\n", parse_args(argc, argv, &game));
 }
 

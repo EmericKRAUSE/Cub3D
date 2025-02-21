@@ -65,22 +65,33 @@ int	get_map_size(t_map *map, char *filename)
 	
 	return (1);
 }
-
-void    free_tab(char ***map_addr)
+void free_tab(char **map)
 {
-	char **map_originale;
-	char **map;
+	char **tmp;
 
-	map_originale = *map_addr;
-	map = *map_addr;
+    tmp = map;
 	if (map)
-	{
-		while (*map)
-			free(*map++);
-		free(map_originale);
-		map_originale = NULL;
-	}
+		while (*tmp)
+			free(*tmp++);
+    free(map);
 }
+
+//void    free_tab(char ***map_addr)
+//{
+//	char **map_originale;
+//	char **map;
+//
+//	map_originale = *map_addr;
+//	map = *map_addr;
+//	if (map)
+//	{
+//		if (*map)
+//			while (*map)
+//				free(*map++);
+//		free(map_originale);
+//		map_originale = NULL;
+//	}
+//}
 
 int alloc_map(t_map *map)
 {
