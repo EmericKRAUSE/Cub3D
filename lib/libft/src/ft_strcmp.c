@@ -1,25 +1,23 @@
-<<<<<<< HEAD
-#include <cube3d.h>
-=======
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_ray.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/21 15:18:14 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/21 15:18:27 by ekrause          ###   ########.fr       */
+/*   Created: 2025/02/01 16:51:31 by nidionis          #+#    #+#             */
+/*   Updated: 2025/02/01 17:18:41 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
->>>>>>> ekrause
 
-#include <cube3d.h>
+#include <libft.h>
 
-void	update_ray(void *param)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	t_game	*game;
-
-	game = param;
-	ray_casting(game);
+	while (*s1 && *s2 && *s1 == *s2)
+	{
+		s1++;
+		s2++;
+	}
+	return ((unsigned char)*s1 - (unsigned char)*s2);
 }

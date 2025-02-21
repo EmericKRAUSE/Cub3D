@@ -1,25 +1,26 @@
-<<<<<<< HEAD
-#include <cube3d.h>
-=======
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_ray.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/21 15:18:14 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/21 15:18:27 by ekrause          ###   ########.fr       */
+/*   Created: 2022/03/04 12:18:26 by supersko          #+#    #+#             */
+/*   Updated: 2025/02/01 05:47:15 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
->>>>>>> ekrause
 
-#include <cube3d.h>
+#include <libft.h>
 
-void	update_ray(void *param)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	t_game	*game;
-
-	game = param;
-	ray_casting(game);
+	if (lst && del)
+	{
+		del(lst->content);
+		lst->next = NULL;
+		free(lst);
+		lst = NULL;
+	}
+	if (!del)
+		ft_errmsg("[ft_lstdelone] missing del function?\n");
 }

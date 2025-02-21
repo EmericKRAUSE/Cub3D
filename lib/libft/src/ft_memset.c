@@ -1,25 +1,28 @@
-<<<<<<< HEAD
-#include <cube3d.h>
-=======
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_ray.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/21 15:18:14 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/21 15:18:27 by ekrause          ###   ########.fr       */
+/*   Created: 2022/02/24 15:51:11 by supersko          #+#    #+#             */
+/*   Updated: 2025/02/01 05:47:15 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
->>>>>>> ekrause
 
-#include <cube3d.h>
+#include <libft.h>
 
-void	update_ray(void *param)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	t_game	*game;
+	char	*b_cpy;
 
-	game = param;
-	ray_casting(game);
+	b_cpy = b;
+	if (b)
+	{
+		while (len--)
+			*b_cpy++ = c;
+	}
+	else
+		ft_errmsg("[ft_memset] buffer to set is a NULL");
+	return (b);
 }

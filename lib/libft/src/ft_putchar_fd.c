@@ -1,25 +1,18 @@
-<<<<<<< HEAD
-#include <cube3d.h>
-=======
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_ray.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/21 15:18:14 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/21 15:18:27 by ekrause          ###   ########.fr       */
+/*   Created: 2022/03/03 11:12:03 by supersko          #+#    #+#             */
+/*   Updated: 2025/02/01 05:47:15 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
->>>>>>> ekrause
 
-#include <cube3d.h>
+#include <libft.h>
 
-void	update_ray(void *param)
+void	ft_putchar_fd(char c, int fd)
 {
-	t_game	*game;
-
-	game = param;
-	ray_casting(game);
+	write(fd, &c, 1);
 }

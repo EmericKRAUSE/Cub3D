@@ -1,25 +1,27 @@
-<<<<<<< HEAD
-#include <cube3d.h>
-=======
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_ray.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/21 15:18:14 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/21 15:18:27 by ekrause          ###   ########.fr       */
+/*   Created: 2022/02/27 14:44:37 by supersko          #+#    #+#             */
+/*   Updated: 2025/02/01 05:47:15 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
->>>>>>> ekrause
 
-#include <cube3d.h>
+#include <libft.h>
 
-void	update_ray(void *param)
+void	*ft_calloc(size_t count, size_t size)
 {
-	t_game	*game;
+	void	*ptr;
 
-	game = param;
-	ray_casting(game);
+	if (size)
+		if (size * count / size != count)
+			return (NULL);
+	ptr = malloc(count * size);
+	if (ptr == NULL)
+		return (NULL);
+	ft_bzero(ptr, count * size);
+	return (ptr);
 }

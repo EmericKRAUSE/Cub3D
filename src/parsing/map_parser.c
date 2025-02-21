@@ -53,14 +53,14 @@ int	get_map_size(t_map *map, char *filename)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (-1);
-	map->x = get_map_width(fd);
+	map->width = get_map_width(fd);
 	close (fd);
 	
 	fd = open(filename, O_RDONLY);
-	map->y = get_map_height(fd);
+	map->height = get_map_height(fd);
 	close (fd);
 	
-	if (map->x == -1 || map->y == -1)
+	if (map->width == -1 || map->height == -1)
 		return (-1);
 	
 	return (1);
@@ -71,9 +71,9 @@ void    free_map(t_map *map)
     int y;
 
     y = 0;
-    while (y < map->y)
-        free(map->map[y++]);
-    free (map->map);
+    while (y < map->height)
+        free(map->tab[y++]);
+    free (map->tab);
 }
 
 int alloc_map(t_map *map)
@@ -81,13 +81,13 @@ int alloc_map(t_map *map)
     int y;
 
     y = 0;
-    map->map = malloc(sizeof(char *) * (map->y + 1));
-    if (!map->map)
+    map->tab = malloc(sizeof(char *) * (map->height + 1));
+    if (!map->tab)
         return (-1);
-    while (y < map->y)
+    while (y < map->height)
     {
-        map->map[y] = malloc(sizeof(char) * (map->x + 1));
-        if (!map->map[y])
+        map->tab[y] = malloc(sizeof(char) * (map->width + 1));
+        if (!map->tab[y])
         {
             free_map(map);
             return (-1);
@@ -113,13 +113,13 @@ int fill_map(t_map *map, char *filename)
 	{
         if (buffer == '\n')
 		{
-			map->map[y][x] = '\0';
+			map->tab[y][x] = '\0';
 			y++;
 			x = 0;
 		}
 		else
 		{
-			map->map[y][x] = buffer;
+			map->tab[y][x] = buffer;
 			x++;
 		}
 	}

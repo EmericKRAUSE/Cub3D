@@ -1,25 +1,24 @@
-<<<<<<< HEAD
-#include <cube3d.h>
-=======
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_ray.c                                       :+:      :+:    :+:   */
+/*   ft_tablen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/21 15:18:14 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/21 15:18:27 by ekrause          ###   ########.fr       */
+/*   Created: 2025/02/01 16:47:02 by nidionis          #+#    #+#             */
+/*   Updated: 2025/02/01 17:18:48 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
->>>>>>> ekrause
 
-#include <cube3d.h>
+#include "libft.h"
 
-void	update_ray(void *param)
+size_t	ft_tablen(char **tab)
 {
-	t_game	*game;
+	size_t	i;
 
-	game = param;
-	ray_casting(game);
+	i = 0;
+	if (tab)
+		while (tab[i])
+			i++;
+	return (i);
 }

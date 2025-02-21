@@ -1,25 +1,24 @@
-<<<<<<< HEAD
-#include <cube3d.h>
-=======
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_ray.c                                       :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/21 15:18:14 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/21 15:18:27 by ekrause          ###   ########.fr       */
+/*   Created: 2025/02/01 16:53:31 by nidionis          #+#    #+#             */
+/*   Updated: 2025/02/01 17:18:31 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
->>>>>>> ekrause
 
-#include <cube3d.h>
+#include <libft.h>
 
-void	update_ray(void *param)
+char	*ft_strndup(const char *s, size_t n)
 {
-	t_game	*game;
+	char	*str;
 
-	game = param;
-	ray_casting(game);
+	str = ft_calloc(n + 1, sizeof(char));
+	if (!str)
+		return (NULL);
+	ft_strlcpy(str, s, n + 1);
+	return (str);
 }

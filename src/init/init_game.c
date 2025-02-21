@@ -13,10 +13,10 @@
 void	init_game(t_game *game)
 {
 	game->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Cub3D", false);
-	game->tile_size = WIN_WIDTH / game->map.x;
+	game->tile_size = WIN_WIDTH / game->map.width;
 	game->ray = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
 	game->player.image = mlx_new_image(game->mlx, 1, 1);
-	game->player.angle = 3 * M_PI / 2;
+	game->player.angle = M_PI;
 	game->player.rotation_speed = 0.1;
 	game->wall = mlx_new_image(game->mlx, game->tile_size, game->tile_size);
 	game->background = mlx_new_image(game->mlx, game->tile_size, game->tile_size);

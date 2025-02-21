@@ -1,22 +1,29 @@
-#ifndef INCLUDE_H
-# define INCLUDE_H
+#ifndef CUBE3D_H
+# define CUBE3D_H
 
-#include "../MLX42/include/MLX42/MLX42.h"
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <math.h>
-#include <stdlib.h>
+# include "../MLX42/include/MLX42/MLX42.h"
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <math.h>
+# include <stdlib.h>
 
-#define WIN_WIDTH 2560
-#define WIN_HEIGHT (WIN_WIDTH * 9 / 16)
-#define FOV 90
-#define FOV_RAD (FOV * (M_PI / 180))
-//#define PI 3.14159265359
+# define WIN_WIDTH 2560
+# define WIN_HEIGHT (WIN_WIDTH * 9 / 16)
+# define FOV 90
+# define FOV_RAD (FOV * (M_PI / 180))
+
+# define NORTH 0
+# define SOUTH 1
+# define EAST 2
+# define WEST 3
+
+
+# define ERR_OPENFILE -1
 
 // ####################
 // Structures
-typedef struct player
+typedef struct s_player
 {
 	mlx_image_t	*image;
 	int			x;
@@ -26,14 +33,19 @@ typedef struct player
 	float		rotation_speed;
 }	t_player;
 
-typedef struct map
+typedef struct s_map
 {
-	char	**map;
-	int		x;
-	int		y;
+	char	**tab;
+	int		width;
+	int		height;
 }	t_map;
 
-typedef struct game
+typedef struct s_textures
+{
+	char	*f_names[4];
+} t_textures;
+
+typedef struct s_game
 {
 	mlx_t		*mlx;
 	int			tile_size;
@@ -42,15 +54,23 @@ typedef struct game
 	t_player	player;
 	mlx_image_t *wall;
 	mlx_image_t	*background;
+	t_textures	textures;
 }	t_game;
 
 // ####################
 // Prototypes
+void	display_map(t_game game);
 void	init_game(t_game* game);
 void	move(void *param);
 int		map_parser(t_map *map, char *filename);
-void	cast_ray(t_game *game);
+void	ray_casting(t_game *game);
 void	update_ray(void *param);
 void	free_map(t_map *map);
+
+// ####################
+// utils
+void clean_exit(t_game *game, char *msg, int exit_code);
+
+int	ft_error(const char *message, int value);
 
 #endif

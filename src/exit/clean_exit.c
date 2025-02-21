@@ -1,25 +1,20 @@
-<<<<<<< HEAD
-#include <cube3d.h>
-=======
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_ray.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/21 15:18:14 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/21 15:18:27 by ekrause          ###   ########.fr       */
+/*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
+/*   Updated: 2025/02/18 21:07:40 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
->>>>>>> ekrause
 
 #include <cube3d.h>
 
-void	update_ray(void *param)
+void clean_exit(t_game *game, char *msg, int exit_code)
 {
-	t_game	*game;
-
-	game = param;
-	ray_casting(game);
+    free_map(&game->map);
+    mlx_terminate(game->mlx);
+    exit(ft_error(msg, exit_code));
 }
