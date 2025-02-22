@@ -10,7 +10,7 @@
 
 # define WIN_WIDTH 2560
 # define WIN_HEIGHT (WIN_WIDTH * 9 / 16)
-# define FOV 90
+# define FOV 60
 # define FOV_RAD (FOV * (M_PI / 180))
 
 # define HEX_BLACK 0x000000FF
@@ -76,7 +76,7 @@ typedef struct s_game
 // Prototypes
 void	display_map(t_game game);
 void	init_game(t_game* game);
-void	move(void *param);
+void	movements(void *param);
 int		map_parser(t_map *map, char *filename);
 void	ray_casting(t_game *game);
 void	update_ray(void *param);
