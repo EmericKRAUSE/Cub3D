@@ -6,12 +6,13 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 14:44:56 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/22 16:30:00 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/02/22 18:23:11 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube3d.h>
 
+// Update the new_x and new_y variable depending on the player angle
 void	move_player(t_game *game, float *new_x, float *new_y)
 {
 	float	move_x;
@@ -41,6 +42,7 @@ void	move_player(t_game *game, float *new_x, float *new_y)
 	}
 }
 
+// Update the angle of the player (0 to 2PI)
 void	rotate_player(t_game *game)
 {
 	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
@@ -57,6 +59,7 @@ void	rotate_player(t_game *game)
 	}
 }
 
+// Hook for the movement and rotation of the player
 void	movements(void *param)
 {
 	t_game	*game;

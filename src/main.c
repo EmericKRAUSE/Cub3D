@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/22 16:22:21 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/02/22 18:43:43 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int	main(int argc, char **argv)
 
 	printf ("WIDTH: %d\nHEIGHT: %d\n", WIN_WIDTH, WIN_HEIGHT);
 
-	game.player.x = 5;
-	game.player.y = 5;
+	game.player.start_x = 5;
+	game.player.start_y = 5;
 
 	init_game(&game);
 	display_map(game);

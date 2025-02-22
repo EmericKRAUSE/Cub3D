@@ -41,8 +41,8 @@ typedef struct s_point
 typedef struct s_player
 {
 	mlx_image_t	*image;
-	int			x;
-	int			y;
+	int			start_x;
+	int			start_y;
 	int			move_dist;
 	float		angle;
 	float		rotation_speed;
@@ -58,7 +58,7 @@ typedef struct s_map
 typedef struct s_textures
 {
 	char	*f_names[4];
-} t_textures;
+} 	t_textures;
 
 typedef struct s_game
 {
