@@ -12,6 +12,9 @@
 # define WIN_HEIGHT (WIN_WIDTH * 9 / 16)
 # define FOV 60
 # define FOV_RAD (FOV * (M_PI / 180))
+# define RENDER_3D 1
+# define RENDER_2D 0
+# define RENDER_MODE RENDER_3D
 
 # define HEX_BLACK 0x000000FF
 # define HEX_WHITE 0xFFFFFFFF
@@ -75,6 +78,7 @@ typedef struct s_game
 // ####################
 // Prototypes
 void	display_map(t_game game);
+void	display_3d_map(t_game *game);
 void	init_game(t_game* game);
 void	movements(void *param);
 int		map_parser(t_map *map, char *filename);
