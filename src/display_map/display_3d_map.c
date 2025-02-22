@@ -6,13 +6,13 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:14:15 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/22 19:25:21 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/02/23 00:05:17 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube3d.h>
 
-void	draw_rectangle(t_game *game, mlx_image_t *img, int x_pos, int y_pos, uint32_t color)
+void	draw_rectangle(mlx_image_t *img, uint32_t color)
 {
 	int	x;
 	int	y;
@@ -29,7 +29,6 @@ void	draw_rectangle(t_game *game, mlx_image_t *img, int x_pos, int y_pos, uint32
 		}
 		y++;
 	}
-	mlx_image_to_window(game->mlx, img, x_pos, y_pos);
 }
 
 void display_3d_map(t_game *game)
@@ -40,11 +39,14 @@ void display_3d_map(t_game *game)
 	floor = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT / 2);
 	ceiling = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT / 2);
 	
-	draw_rectangle(game, ceiling, 0, 0, HEX_BLACK);
-	draw_rectangle(game, floor, 0, WIN_HEIGHT / 2, HEX_WHITE);
+	draw_rectangle(ceiling, COLOR_CEILING);
+	draw_rectangle(floor, COLOR_FLOOR);
 
 	mlx_image_to_window(game->mlx, ceiling, 0, 0);
+	mlx_image_to_window(game->mlx, floor, 0, WIN_HEIGHT / 2);
 	mlx_image_to_window(game->mlx, game->player.image,
 						game->player.start_x * game->tile_size,
 						game->player.start_y * game->tile_size);
+
+	//draw_world(game);
 }
