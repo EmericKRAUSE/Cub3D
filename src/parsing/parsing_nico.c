@@ -106,6 +106,13 @@ void load_map(t_game *game, char *line, int fd)
         game->map.tab = get_map(game, fd, &line);
 }
 
+void invalid_line(t_game *game, char *line)
+{
+    if (line)
+        free(line);
+    line = NULL;
+    clean_exit(game, "Error: Invalid line", ERR_INVALID_LINE);
+
 int impor_cub_file(t_game *game, int fd)
 {
     char *line;
@@ -115,9 +122,7 @@ int impor_cub_file(t_game *game, int fd)
     while (line)
     {
         if (is_map(line))
-        {
             load_map(game, line, fd);
-        }
         //if (is_texture(game, line))
         //    if (get_texture(game, line) == ERR_LOADING_TEXTURE)
         //        clean_exit(game, "[get_texture] something went wrong", ERR_TEXTURE);
@@ -131,10 +136,7 @@ int impor_cub_file(t_game *game, int fd)
         }
         else
         {
-            if (line)
-                free(line);
-            line = NULL;
-            clean_exit(game, "Error: Invalid line", ERR_INVALID_LINE);
+            invalid_line(game, line);
         }
     }
     return (TRUE);
@@ -164,5 +166,5 @@ int parse_args(int argc, char **argv, t_game *game)
     impor_cub_file(game, fd);   
     (void)fd;
     (void)textures;
-    return (TRUE);
+    return (OK);
 }
