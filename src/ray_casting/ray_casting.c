@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:48:38 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/23 00:00:24 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/03 18:12:30 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,69 @@ static int	is_wall_hit(t_game *game, float ray_x, float ray_y)
 			[(int)(ray_x / game->tile_size)] == '1');
 }
 
-// Cast a single ray
+// Draw a point at every intersection
 static void	cast_ray(t_game *game, float ray_angle, int i)
 {
 	float	ray_x;
 	float	ray_y;
 	float	dx;
 	float	dy;
+	int		tile_size = game->tile_size;
 
 	ray_x = game->player.image->instances->x;
 	ray_y = game->player.image->instances->y;
-	dx = cos(ray_angle);
-	dy = sin(ray_angle);
-	while (1)
+	if (ray_angle >= 7 * M_PI / 4 && ray_angle < 2 * M_PI)
 	{
+		printf("7\n");
+		dx = tile_size;
+		dy = -tile_size * tan(2 * M_PI - ray_angle);
+	}
+	else if (ray_angle >= 3 * M_PI / 2 && ray_angle < 7 * M_PI / 4)
+	{
+		printf("6\n");
+		dx = tile_size * tan(ray_angle - 3 * M_PI / 2);
+		dy = -tile_size;
+	}
+	else if (ray_angle >= 5 * M_PI / 4 && ray_angle < 3 * M_PI / 2)
+	{
+		printf("5\n");
+		dx = -tile_size * tan(3 * M_PI / 2 - ray_angle);
+		dy = -tile_size;
+	}
+	else if (ray_angle >= M_PI && ray_angle < 5 * M_PI / 4)
+	{
+		printf("4\n");
+		dx = -tile_size;
+		dy = -tile_size * tan(ray_angle - M_PI);
+	}
+	else if (ray_angle >= 3 * M_PI / 4 && ray_angle < M_PI)
+	{
+		printf("3\n");
+		dx = -tile_size;
+		dy = tile_size * tan(M_PI - ray_angle);
+	}
+	else if (ray_angle >= M_PI / 2 && ray_angle < 3 * M_PI / 4)
+	{
+		printf("2\n");
+		dx = -tile_size * tan(ray_angle - M_PI / 2);
+		dy = tile_size;
+	}
+	else if (ray_angle >= M_PI / 4 && ray_angle < M_PI / 2)
+	{
+		printf("1\n");
+		dx = tile_size * tan(M_PI / 2 - ray_angle);
+		dy = tile_size;
+	}
+	else if (ray_angle >= 0 && ray_angle < M_PI / 4)
+	{
+		printf("0\n");
+		dx = tile_size;	
+		dy = tile_size * tan(ray_angle);
+	}
+	int j = 0;
+	while (j < 4)
+	{
+		mlx_put_pixel(game->ray, (int)ray_x, (int)ray_y, COLOR_RAY);
 		ray_x += dx;
 		ray_y += dy;
 		if (is_wall_hit(game, ray_x, ray_y))
@@ -54,7 +103,7 @@ static void	cast_ray(t_game *game, float ray_angle, int i)
 			calculate_distance(game, ray_x, ray_y, i);
 			break ;
 		}
-		mlx_put_pixel(game->ray, (int)ray_x, (int)ray_y, COLOR_RAY);
+		j++;
 	}
 }
 
@@ -98,15 +147,16 @@ void	ray_casting(t_game *game)
 	i = 0;
 	start_angle = game->player.angle - FOV_RAD / 2;
 	step_angle = FOV_RAD / WIN_WIDTH;
+	(void)ray_angle;
 	if (game->ray)
 		mlx_delete_image(game->mlx, game->ray);
 	game->ray = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
 	if (!game->ray)
 		return ;
-	while (i < WIN_WIDTH)
+	while (i < 1)
 	{
 		ray_angle = start_angle + i * step_angle;
-		cast_ray(game, ray_angle, i);
+		cast_ray(game, game->player.angle, i);
 		i++;
 	}
 	if (DISPLAY_MODE == RENDER_2D)

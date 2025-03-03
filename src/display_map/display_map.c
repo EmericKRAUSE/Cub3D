@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 15:19:25 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/22 19:14:47 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/03 13:43:47 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ static void	draw_square(t_game game, mlx_image_t *img,
 	int	x;
 	int	y;
 
-	y = 0;
+	y = 1;
 	while (y < game.tile_size)
 	{
-		x = 0;
+		x = 1;
 		while (x < game.tile_size)
 		{
 			mlx_put_pixel(img, x, y, color);

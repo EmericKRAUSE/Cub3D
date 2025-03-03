@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 14:44:56 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/22 18:23:11 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/03 18:12:41 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ void	rotate_player(t_game *game)
 	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
 	{
 		game->player.angle -= game->player.rotation_speed;
-		if (game->player.angle > 2 * M_PI)
-			game->player.angle -= 2 * M_PI;
+		if (game->player.angle < 0)
+			game->player.angle += 2 * M_PI;
 	}
 	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
 	{
 		game->player.angle += game->player.rotation_speed;
-		if (game->player.angle < 0)
-			game->player.angle += 2 * M_PI;
+		if (game->player.angle > 2 * M_PI)
+			game->player.angle -= 2 * M_PI;
 	}
 }
 
