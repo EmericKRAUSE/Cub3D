@@ -12,7 +12,6 @@
 // Macros
 
 // General
-//# include <get_next_line.h>
 # include "../lib/libft/include/libft.h"
 # define WIN_WIDTH 2560
 # define WIN_HEIGHT (WIN_WIDTH * 9 / 16)
@@ -59,7 +58,7 @@
 # define ERR_INVALID_LINE -10
 
 # define HABIBI 000707
-# define BLANK_CHAR " \t\n"
+# define BLANK_CHAR "\t\n "
 
 # define MAP_CHARS "01NSEW \n"
 # define TEXTURES_BALISE "NO /SO /EA /WE "

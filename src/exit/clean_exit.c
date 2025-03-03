@@ -22,6 +22,12 @@
 //    }
 //}
 
+int ft_error(const char *msg, int exit_code)
+{
+    printf("%s\n", msg);
+    return (exit_code);
+}
+
 void clean_exit(t_game *game, char *msg, int exit_code)
 {
     int i;

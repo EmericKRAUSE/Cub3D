@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/03 22:24:02 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/18 21:07:40 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,31 @@ int	main(int argc, char **argv)
 }
 */
 
+int get_next_line_tester(char *filename)
+{
+    char	*line;
+    int fd;
+
+    fd = open(filename, O_RDONLY);
+    line = get_next_line(fd);
+    while (line)
+    {
+        printf("%s\n", line);
+        free(line);
+        line = get_next_line(fd);
+    }
+    close(fd);
+    return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	*game;
 
     (void)game;
     (void)argc;
-    game = ft_calloc(sizeof(t_game), 1);
-	printf("[is_rgb] %i\n", is_rgb(argv[1]));
-    //printf("[parse args] %i\n", parse_args(argc, argv, game));
-    clean_exit(game, "Ciao", 0);
+    game = malloc(sizeof(t_game));
+	printf("[parse args] %i\n", parse_args(argc, argv, game));
+    //printf("[get_next_line] %i\n", get_next_line_tester(argv[1]));
+    clean_exit(game, NULL, 0);
 }
