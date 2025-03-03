@@ -1,7 +1,7 @@
 NAME    =   Cub3D
 
 # Définition des bibliothèques à utiliser : libft et minilibx
-LIBRARIES = #libft
+LIBRARIES = ft
 LIB_NAMES = $(addprefix lib, $(LIBRARIES))
 
 LIB_DIR = ./lib

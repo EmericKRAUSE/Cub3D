@@ -17,7 +17,8 @@ FILES = ft_atoi.c ft_atoi_err.c ft_bzero.c ft_calloc.c \
 		ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c \
 		ft_strncmp.c ft_strndup.c ft_strnstr.c ft_strrchr.c \
 		ft_strtrim.c ft_substr.c ft_tabdup.c ft_tablen.c \
-		ft_tolower.c ft_toupper.c ft_wd_count.c
+		ft_tolower.c ft_toupper.c ft_wd_count.c ft_append_tab.c \
+		ft_strlen_char.c
 
 SRCS = $(addprefix $(SRC_DIR)/, $(FILES))
 

@@ -12,6 +12,8 @@
 // Macros
 
 // General
+# include <get_next_line.h>
+# include "../lib/libft/include/libft.h"
 # define WIN_WIDTH 2560
 # define WIN_HEIGHT (WIN_WIDTH * 9 / 16)
 # define FOV 60
@@ -41,7 +43,24 @@
 # define EAST 2
 # define WEST 3
 
+# define CMP_FOUND 0
+
 # define ERR_OPENFILE -1
+# define ERR_MULTIPLE_MAPS -2
+# define ERR_LOADING_TEXTURE -3
+# define ERR_MALLOC -4
+# define ERR_COLOR -5
+# define ERR_TEXTURE -6
+# define ERR_NBARGS -7
+# define ERR_CUBEXT -8
+# define ERR_INVALID_MAP -9
+# define ERR_INVALID_LINE -10
+
+# define HABIBI 000707
+# define BLANK_CHAR "\t\n "
+
+# define MAP_CHARS "01NSEW \n"
+# define TEXTURES_BALISE "NO /SO /EA /WE "
 
 	// ####################
 	// Structures
@@ -71,7 +90,7 @@ typedef struct s_map
 typedef struct s_textures
 {
 	char	*f_names[4];
-} 	t_textures;
+} t_textures;
 
 typedef struct s_game
 {
@@ -97,6 +116,7 @@ void	movements(void *param);
 int		map_parser(t_map *map, char *filename);
 void	ray_casting(t_game *game);
 void	update_ray(void *param);
+void	free_tab(char **tab);
 void	free_map(t_map *map);
 
 // ####################
@@ -104,5 +124,13 @@ void	free_map(t_map *map);
 void clean_exit(t_game *game, char *msg, int exit_code);
 
 int	ft_error(const char *message, int value);
+
+// ####################
+// parsing
+int parse_args(int argc, char **argv, t_game *game);
+
+// ####################
+// debug
+void print_tab(char **tab);
 
 #endif

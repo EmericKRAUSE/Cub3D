@@ -66,15 +66,33 @@ int	get_map_size(t_map *map, char *filename)
 	return (1);
 }
 
-void    free_map(t_map *map)
+void free_tab(char **map)
 {
-    int y;
+	char **tmp;
 
-    y = 0;
-    while (y < map->height)
-        free(map->tab[y++]);
-    free (map->tab);
+    tmp = map;
+	if (map)
+		while (*tmp)
+			free(*tmp++);
+    free(map);
 }
+
+//void    free_tab(char ***map_addr)
+//{
+//	char **map_originale;
+//	char **map;
+//
+//	map_originale = *map_addr;
+//	map = *map_addr;
+//	if (map)
+//	{
+//		if (*map)
+//			while (*map)
+//				free(*map++);
+//		free(map_originale);
+//		map_originale = NULL;
+//	}
+//}
 
 int alloc_map(t_map *map)
 {
@@ -89,7 +107,8 @@ int alloc_map(t_map *map)
         map->tab[y] = malloc(sizeof(char) * (map->width + 1));
         if (!map->tab[y])
         {
-            free_map(map);
+			//nico: I thing this function sucks, I'll try to fix it
+            //free_tab(map);
             return (-1);
         }
         y++;
