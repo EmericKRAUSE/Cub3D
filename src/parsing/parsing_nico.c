@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parsing_nico.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/18 21:07:40 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/03 22:22:36 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ void invalid_line(t_game *game, char *line)
         free(line);
     line = NULL;
     clean_exit(game, "Error: Invalid line", ERR_INVALID_LINE);
+}
 
 int impor_cub_file(t_game *game, int fd)
 {
