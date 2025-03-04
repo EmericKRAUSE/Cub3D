@@ -24,11 +24,28 @@
 
 void clean_exit(t_game *game, char *msg, int exit_code)
 {
+    int i;
+    char *next_line;
+
     if (game)
     {
+        next_line = get_next_line(game->fd);
+        while (next_line)
+        {
+            free(next_line);
+            next_line = get_next_line(game->fd);
+        }
+        close(game->fd);
         free_tab(game->map.tab);
         if (game->mlx)
             mlx_terminate(game->mlx);
+        i = 0;
+        while (i < 4)
+        {
+            if (game->textures.f_names[i])
+                free(game->textures.f_names[i]);
+            i++;
+        }
         free(game);
     }
     exit(ft_error(msg, exit_code));

@@ -42,6 +42,7 @@
 # define SOUTH 1
 # define EAST 2
 # define WEST 3
+# define BALISE_ERROR -1
 
 # define CMP_FOUND 0
 # define OK 1
@@ -109,6 +110,7 @@ typedef struct s_game
 	mlx_image_t	*background;
 	mlx_image_t *world;
 	t_textures	textures;
+    int		    fd;
 }	t_game;
 
 // ####################
