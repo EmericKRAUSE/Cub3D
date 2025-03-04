@@ -44,6 +44,7 @@
 # define WEST 3
 
 # define CMP_FOUND 0
+# define OK 1
 
 # define ERR_OPENFILE -1
 # define ERR_MULTIPLE_MAPS -2
@@ -69,6 +70,12 @@
 	int	x;
 	int	y;
 }	t_point;
+
+typedef struct s_float_pt
+{
+    float   x;
+    float   y;
+}   t_float_pt;
 
 typedef struct s_player
 {
@@ -132,5 +139,6 @@ int parse_args(int argc, char **argv, t_game *game);
 // ####################
 // debug
 void print_tab(char **tab);
+
 
 #endif

@@ -130,6 +130,8 @@ int fill_map(t_map *map, char *filename)
     x = 0;
 	while ((byte_read = read(fd, &buffer, 1)) > 0)
 	{
+        if (byte_read == -1)
+            return (-1);
         if (buffer == '\n')
 		{
 			map->tab[y][x] = '\0';
@@ -151,8 +153,9 @@ int map_parser(t_map *map, char *filename)
     if (get_map_size(map, filename) == -1)
         return (-1);
     if (alloc_map(map) == -1)
-    	return (-1);
+        return (-1);
     if (fill_map(map, filename) == -1)
         return (-1);
     return (1);
 }
+

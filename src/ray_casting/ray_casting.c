@@ -12,19 +12,19 @@
 
 #include <cube3d.h>
 
-// Calculate the distance of a ray using Pythagoras and store it into an array
-static void	calculate_distance(t_game *game, float ray_x, float ray_y, int i)
-{
-	float	player_x;
-	float	player_y;
-
-	player_x = game->player.image->instances->x;
-	player_y = game->player.image->instances->y;
-	
-	game->ray_distances[i] = sqrtf(powf(player_x - ray_x, 2) + powf(player_y - ray_y, 2)) / game->tile_size;
-	if (game->ray_distances[i] < 1)
-		game->ray_distances[i] = 1;
-}
+//// Calculate the distance of a ray using Pythagoras and store it into an array
+//static void	calculate_distance(t_game *game, float ray_x, float ray_y, int i)
+//{
+//	float	player_x;
+//	float	player_y;
+//
+//	player_x = game->player.image->instances->x;
+//	player_y = game->player.image->instances->y;
+//
+//	game->ray_distances[i] = sqrtf(powf(player_x - ray_x, 2) + powf(player_y - ray_y, 2)) / game->tile_size;
+//	if (game->ray_distances[i] < 1)
+//		game->ray_distances[i] = 1;
+//}
 
 // Return true if the position given in px is located in a wall
 static int	is_wall_hit(t_game *game, float ray_x, float ray_y)
@@ -33,6 +33,54 @@ static int	is_wall_hit(t_game *game, float ray_x, float ray_y)
 			[(int)(ray_x / game->tile_size)] == '1');
 }
 
+static void set_step(t_float_pt *step, float x, float y)
+{
+    step->x = x;
+    step->y = y;
+}
+
+static void cast_until_wall(t_game *game, t_float_pt *ray, t_float_pt *step, int i)
+{
+    while (!is_wall_hit(game, ray->x, ray->y))
+    {
+        ray->x += step->x;
+        ray->y += step->y;
+        if (DISPLAY_MODE == RENDER_2D)
+            mlx_put_pixel(game->ray, ray->x, ray->y, COLOR_RAY);
+    }
+    game->ray_distances[i] = sqrt(pow(ray->x - game->player.image->instances->x, 2) +
+                                  pow(ray->y - game->player.image->instances->y, 2));
+}
+
+static void    cast_ray(t_game *game, float ray_angle, int i)
+{
+    t_float_pt  ray;
+    t_float_pt  step;
+    int         tile_size;
+
+    tile_size = game->tile_size;
+    ray.x = game->player.image->instances->x;
+    ray.y = game->player.image->instances->y;
+    if (ray_angle >= 7 * M_PI / 4 && ray_angle < 2 * M_PI)
+        set_step(&step, tile_size, -tile_size * tan(2 * M_PI - ray_angle));
+    else if (ray_angle >= 3 * M_PI / 2 && ray_angle < 7 * M_PI / 4)
+        set_step(&step, tile_size * tan(ray_angle - 3 * M_PI / 2), -tile_size);
+    else if (ray_angle >= 5 * M_PI / 4 && ray_angle < 3 * M_PI / 2)
+        set_step(&step, -tile_size * tan(3 * M_PI / 2 - ray_angle), -tile_size);
+    else if (ray_angle >= M_PI && ray_angle < 5 * M_PI / 4)
+        set_step(&step, -tile_size, -tile_size * tan(ray_angle - M_PI));
+    else if (ray_angle >= 3 * M_PI / 4 && ray_angle < M_PI)
+        set_step(&step, -tile_size, tile_size * tan(M_PI - ray_angle));
+    else if (ray_angle >= M_PI / 2 && ray_angle < 3 * M_PI / 4)
+        set_step(&step, -tile_size * tan(ray_angle - M_PI / 2), tile_size);
+    else if (ray_angle >= M_PI / 4 && ray_angle < M_PI / 2)
+        set_step(&step, tile_size * tan(M_PI / 2 - ray_angle), tile_size);
+    else
+        set_step(&step, tile_size, tile_size * tan(ray_angle));
+    cast_until_wall(game, &ray, &step, i);
+}
+
+/*
 // Draw a point at every intersection
 static void	cast_ray(t_game *game, float ray_angle, int i)
 {
@@ -106,6 +154,7 @@ static void	cast_ray(t_game *game, float ray_angle, int i)
 		j++;
 	}
 }
+*/
 
 void draw_world(t_game *game)
 {

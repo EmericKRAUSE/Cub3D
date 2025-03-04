@@ -106,12 +106,12 @@ void load_map(t_game *game, char *line, int fd)
         game->map.tab = get_map(game, fd, &line);
 }
 
-void invalid_line(t_game *game, char *line)
-{
+void invalid_line(t_game *game, char *line) {
     if (line)
         free(line);
     line = NULL;
     clean_exit(game, "Error: Invalid line", ERR_INVALID_LINE);
+}
 
 int impor_cub_file(t_game *game, int fd)
 {

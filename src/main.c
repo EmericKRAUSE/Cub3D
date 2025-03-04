@@ -12,13 +12,6 @@
 
 #include <cube3d.h>
 
-int	ft_error(const char *message, int value)
-{
-	write(2, message, ft_strlen(message));
-	write(2, "\n", 1);
-	return (value);
-}
-
 int	read_file(const char *filename)
 {
 	char	buffer;
@@ -77,7 +70,7 @@ void	display_map(t_game game)
 		}
 		y++;
 	}
-	mlx_image_to_window(game.mlx, game.player.image, game.player.x * game.tile_size, game.player.y * game.tile_size);
+	mlx_image_to_window(game.mlx, game.player.image, game.player.start_x * game.tile_size, game.player.start_y * game.tile_size);
 }
 
 int	main(int argc, char **argv)
@@ -107,6 +100,7 @@ int	main(int argc, char **argv)
 	mlx_loop(game.mlx);
 	mlx_terminate(game.mlx);
 	free_map(&game.map);
+    //calculated_distance(&game);
 	
 	return (0);
 }
