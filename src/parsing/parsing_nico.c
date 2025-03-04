@@ -159,6 +159,35 @@ int get_texture(t_game *game, char *line)
     return (load_texture(game, ind, line));
 }
 
+//is_rgb return if the string contains 3 numbers in the range 0-255
+//and separated by a ','
+int is_rgb(char *str)
+{
+    int i;
+    int count;
+    int nb;
+
+    i = 0;
+    count = 0;
+    nb = 0;
+    while (str[i])
+    {
+        if (str[i] >= '0' && str[i] <= '9')
+            nb = nb * 10 + (str[i] - '0');
+        else if (str[i] == ',')
+        {
+            count++;
+            nb = 0;
+        }
+        else if (nb > 255)
+            return (FALSE);
+        else if (!ft_strchr(BLANK_CHAR, str[i]))
+            return (FALSE);
+        i++;
+    }
+    return (count == 2 && nb <= 255);
+}
+
 int impor_cub_file(t_game *game)
 {
     char *line;

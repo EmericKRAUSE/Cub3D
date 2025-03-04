@@ -98,6 +98,7 @@ int	main(int argc, char **argv)
     (void)game;
     (void)argc;
     game = ft_calloc(sizeof(t_game), 1);
-	printf("[parse args] %i\n", parse_args(argc, argv, game));
+	printf("[is_rgb] %i\n", is_rgb(argv[1]));
+    //printf("[parse args] %i\n", parse_args(argc, argv, game));
     clean_exit(game, "Ciao", 0);
 }

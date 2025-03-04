@@ -145,6 +145,7 @@ int	ft_error(const char *message, int value);
 // parsing
 int parse_args(int argc, char **argv, t_game *game);
 char	*get_next_line(int fd);
+int is_rgb(char *str);
 
 // ####################
 // debug
