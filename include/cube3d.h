@@ -12,7 +12,6 @@
 // Macros
 
 // General
-# include <get_next_line.h>
 # include "../lib/libft/include/libft.h"
 # define WIN_WIDTH 2560
 # define WIN_HEIGHT (WIN_WIDTH * 9 / 16)
@@ -62,6 +61,10 @@
 
 # define MAP_CHARS "01NSEW \n"
 # define TEXTURES_BALISE "NO /SO /EA /WE "
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 4
+# endif
 
 	// ####################
 	// Structures
@@ -135,10 +138,10 @@ int	ft_error(const char *message, int value);
 // ####################
 // parsing
 int parse_args(int argc, char **argv, t_game *game);
+char	*get_next_line(int fd);
 
 // ####################
 // debug
 void print_tab(char **tab);
-
 
 #endif
