@@ -76,6 +76,13 @@
 	int	y;
 }	t_point;
 
+typedef struct s_rbg
+{
+    int	r;
+    int	g;
+    int	b;
+} t_rbg;
+
 typedef struct s_player
 {
 	mlx_image_t	*image;
@@ -96,6 +103,8 @@ typedef struct s_map
 typedef struct s_textures
 {
 	char	*f_names[4];
+    t_rbg   floor;
+    t_rbg   ceiling;
 } t_textures;
 
 typedef struct s_game
