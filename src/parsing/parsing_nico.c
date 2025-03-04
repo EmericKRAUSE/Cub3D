@@ -93,7 +93,7 @@ char **get_map(t_game *game, int fd, char **line_addr)
         *line_addr = line;
     else
         *line_addr = NULL;
-    print_tab(map);
+    //print_tab(map);
     return (map);
 }
 
@@ -106,12 +106,13 @@ int is_blank(char *line)
     return (TRUE);
 }
 
-void load_map(t_game *game, char *line)
+char *load_map(t_game *game, char *line)
 {
     if (game->map.tab)
         clean_exit(game, "[map] whould be in one block", ERR_MULTIPLE_MAPS);
     else
         game->map.tab = get_map(game, game->fd, &line);
+    return (line);
 }
 
 void invalid_line(t_game *game, char *line)
@@ -129,7 +130,7 @@ int load_texture(t_game *game, int ind, char *line)
     filename = ft_get_next_wd(line, ' ');
     if (!filename)
         clean_exit(game, "Error: Invalid texture filename", ERR_LOADING_TEXTURE);
-    game->textures.f_names[ind] = ft_strdup(filename);
+    game->textures.f_names[ind] = ft_strtrim(filename, " \t\n");
     return (OK);
 }
 
@@ -164,21 +165,23 @@ int impor_cub_file(t_game *game)
     game->map.tab = NULL;
     while (line)
     {
-        if (is_map(line))
-            load_map(game, line);
-       else if (is_texture(game, line))
-       {
-            if (get_texture(game, line) == ERR_LOADING_TEXTURE)
-                clean_exit(game, "[get_texture] something went wrong", ERR_TEXTURE);
-        }
-        //if (is_color(game, line))
-        //    if (get_color(game, line) == ERR_LOADING_TEXTURE)
-        //        clean_exit(game, "[get_color] something went wrong", ERR_COLOR);
-        else if (is_blank(line))
+        if (is_blank(line))
         {
             free(line);
             line = get_next_line(game->fd);
         }
+        else if (is_map(line))
+            line = load_map(game, line);
+       else if (is_texture(game, line))
+       {
+            if (get_texture(game, line) == ERR_LOADING_TEXTURE)
+                clean_exit(game, "[get_texture] something went wrong", ERR_TEXTURE);
+            free(line);
+           line = get_next_line(game->fd);
+        }
+        //if (is_color(game, line))
+        //    if (get_color(game, line) == ERR_LOADING_TEXTURE)
+        //        clean_exit(game, "[get_color] something went wrong", ERR_COLOR);
         else
         {
             invalid_line(game, line);
@@ -198,6 +201,18 @@ int is_cub_file(char *filename)
     return (FALSE);
 }
 
+void print_game(t_game *game)
+{
+    //printf("fd: %d\n", game->fd);
+    printf("map:\n");
+    print_tab(game->map.tab);
+    printf("\n");
+    printf("north: %s\n", game->textures.f_names[NORTH]);
+    printf("south: %s\n", game->textures.f_names[SOUTH]);
+    printf("west: %s\n", game->textures.f_names[WEST]);
+    printf("east: %s\n", game->textures.f_names[EAST]);
+}
+
 int parse_args(int argc, char **argv, t_game *game)
 {
     t_textures *textures;
@@ -208,6 +223,7 @@ int parse_args(int argc, char **argv, t_game *game)
         clean_exit(NULL, "Error: File must be .cub", ERR_CUBEXT);
     game->fd = open_file(game, argv[1]);
     impor_cub_file(game);
+    print_game(game);
     (void)textures;
     return (OK);
 }

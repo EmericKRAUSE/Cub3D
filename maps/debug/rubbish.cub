@@ -1,7 +1,9 @@
 
 
 
-SO
+SO  a b
+NO ./test
+    NO ./test
     N
     01
 0

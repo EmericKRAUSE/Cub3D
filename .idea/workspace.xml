@@ -24,9 +24,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ce34a21e-9ae3-4659-a029-2a819e221774" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/cube3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/cube3d.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/maps/debug/rubbish.cub" beforeDir="false" afterPath="$PROJECT_DIR$/maps/debug/rubbish.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exit/clean_exit.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/exit/clean_exit.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/parsing/parsing_nico.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing/parsing_nico.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
