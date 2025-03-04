@@ -29,6 +29,7 @@ void clean_exit(t_game *game, char *msg, int exit_code)
         free_tab(game->map.tab);
         if (game->mlx)
             mlx_terminate(game->mlx);
+        free(game);
     }
     exit(ft_error(msg, exit_code));
 }

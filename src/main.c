@@ -91,30 +91,13 @@ int	main(int argc, char **argv)
 }
 */
 
-int get_next_line_tester(char *filename)
-{
-    char	*line;
-    int fd;
-
-    fd = open(filename, O_RDONLY);
-    line = get_next_line(fd);
-    while (line)
-    {
-        printf("%s\n", line);
-        free(line);
-        line = get_next_line(fd);
-    }
-    close(fd);
-    return (0);
-}
-
 int	main(int argc, char **argv)
 {
-	t_game	game;
+	t_game	*game;
 
     (void)game;
     (void)argc;
-	//printf("[parse args] %i\n", parse_args(argc, argv, &game));
-    printf("[get_next_line] %i\n", get_next_line_tester(argv[1]));
-
+    game = ft_calloc(sizeof(t_game), 1);
+	printf("[parse args] %i\n", parse_args(argc, argv, game));
+    free(game);
 }

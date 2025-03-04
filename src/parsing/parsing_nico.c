@@ -22,12 +22,23 @@ int open_file(t_game *game, char *filename)
     return (fd);
 }
 
-int is_map(char *line)
+int is_blank_line(char *line)
 {
     if (!line)
         return (FALSE);
     else
         while (*line)
+            if (!ft_strchr(BLANK_CHAR, *line++))
+                return (FALSE);
+    return (TRUE);
+}
+
+int is_map(char *line)
+{
+    if (!line || is_blank_line(line))
+        return (FALSE);
+    else
+        while (!is_blank_line(line))
             if (!ft_strchr(MAP_CHARS, *line++))
                 return (FALSE);
     return (TRUE);
@@ -98,10 +109,7 @@ int is_blank(char *line)
 void load_map(t_game *game, char *line, int fd)
 {
     if (game->map.tab)
-    {
-        free(line);
         clean_exit(game, "[map] whould be in one block", ERR_MULTIPLE_MAPS);
-    }
     else
         game->map.tab = get_map(game, fd, &line);
 }

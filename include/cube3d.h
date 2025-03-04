@@ -58,7 +58,7 @@
 # define ERR_INVALID_LINE -10
 
 # define HABIBI 000707
-# define BLANK_CHAR "\t\n "
+# define BLANK_CHAR " \t\n"
 
 # define MAP_CHARS "01NSEW \n"
 # define TEXTURES_BALISE "NO /SO /EA /WE "
