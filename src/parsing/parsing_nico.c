@@ -127,6 +127,8 @@ int load_texture(t_game *game, int ind, char *line)
 {
     char *filename;
 
+    if (game->textures.f_names[ind])
+        clean_exit(game, "Error: Two files for the same texture", ERR_LOADING_TEXTURE);
     filename = ft_get_next_wd(line, ' ');
     if (!filename)
         clean_exit(game, "Error: Invalid texture filename", ERR_LOADING_TEXTURE);
