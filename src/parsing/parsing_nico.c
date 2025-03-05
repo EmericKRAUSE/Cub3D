@@ -119,6 +119,7 @@ void invalid_line(t_game *game, char *line)
     if (line)
         free(line);
     line = NULL;
+    printf("error: %s\n", line);
     clean_exit(game, "Error: Invalid line", ERR_INVALID_LINE);
 }
 
@@ -194,6 +195,33 @@ int is_color(char *line)
     return (is_rgb(line));
 }
 
+t_rgb *get_rgb(t_game *game, char *line, t_rgb *rgb)
+{
+    if (rgb->b || rgb->g || rgb->r)
+        clean_exit(game, "Error: Two color for the same texture", ERR_LOADING_TEXTURE);
+    rgb->r = ft_atoi(line);
+    line = ft_get_next_wd(line, ',');
+    rgb->g = ft_atoi(line);
+    line = ft_get_next_wd(line, ',');
+    rgb->b = ft_atoi(line);
+    return (rgb);
+}
+
+int get_color(t_game *game, char *line)
+{
+    if (*line == 'F')
+    {
+        line = ft_get_next_wd(line, ' ');
+        get_rgb(game, line, &game->textures.floor);
+    }
+    else if (*line == 'C')
+    {
+        line = ft_get_next_wd(line, ' ');
+        get_rgb(game, line, &game->textures.ceiling);
+    }
+    return (OK);
+}
+
 int impor_cub_file(t_game *game)
 {
     char *line;
@@ -216,9 +244,13 @@ int impor_cub_file(t_game *game)
             free(line);
            line = get_next_line(game->fd);
         }
-        //if (is_color(line))
-        //    if (get_color(game, line) == ERR_LOADING_TEXTURE)
-        //        clean_exit(game, "[get_color] something went wrong", ERR_COLOR);
+        else if (is_color(line))
+        {
+            if (get_color(game, line) == ERR_LOADING_TEXTURE)
+                clean_exit(game, "[get_color] something went wrong", ERR_COLOR);
+            free(line);
+            line = get_next_line(game->fd);
+        }
         else
         {
             invalid_line(game, line);
@@ -248,6 +280,8 @@ void print_game(t_game *game)
     printf("south: %s\n", game->textures.f_names[SOUTH]);
     printf("west: %s\n", game->textures.f_names[WEST]);
     printf("east: %s\n", game->textures.f_names[EAST]);
+    printf("floor: %d %d %d\n", game->textures.floor.r, game->textures.floor.g, game->textures.floor.b);
+    printf("ceiling: %d %d %d\n", game->textures.ceiling.r, game->textures.ceiling.g, game->textures.ceiling.b);
 }
 
 int parse_args(int argc, char **argv, t_game *game)

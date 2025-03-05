@@ -75,12 +75,12 @@
 	int	y;
 }	t_point;
 
-typedef struct s_rbg
+typedef struct s_rgb
 {
     int	r;
     int	g;
     int	b;
-} t_rbg;
+} t_rgb;
 
 typedef struct s_player
 {
@@ -102,8 +102,8 @@ typedef struct s_map
 typedef struct s_textures
 {
 	char	*f_names[4];
-    t_rbg   floor;
-    t_rbg   ceiling;
+    t_rgb   floor;
+    t_rgb   ceiling;
 } t_textures;
 
 typedef struct s_game

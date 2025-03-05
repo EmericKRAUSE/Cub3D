@@ -23,76 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce34a21e-9ae3-4659-a029-2a819e221774" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Cub3D" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/libft.a" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_append_tab.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_atoi.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_atoi_err.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_bzero.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_calloc.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_errmsg.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_get_next_wd.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_isalnum.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_isalpha.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_isascii.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_isdigit.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_isprint.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_itoa.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_lstadd_back.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_lstadd_front.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_lstclear.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_lstdelone.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_lstiter.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_lstlast.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_lstmap.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_lstnew.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_lstsize.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_memchr.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_memcmp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_memcpy.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_memmove.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_memset.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_putchar_fd.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_putendl_fd.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_putnbr_fd.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_putstr_fd.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_split.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_strchr.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_strcmp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_strdup.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_striteri.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_strjoin.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_strlcat.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_strlcpy.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_strlen.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_strlen_char.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_strmapi.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_strncmp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_strndup.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_strnstr.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_strrchr.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_strtrim.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_substr.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_tabdup.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_tablen.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_tolower.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_toupper.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/libft/obj/ft_wd_count.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/debug/print_tab.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/display_map/display_3d_map.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/display_map/display_map.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exit/clean_exit.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/init/init_game.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/move/move.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/parsing/map_parser.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/parsing/parsing_nico.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ray_casting/ray_casting.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ray_casting/update_ray.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/maps/debug/available_00.cub" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/cube3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/cube3d.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maps/debug/rubbish.cub" beforeDir="false" afterPath="$PROJECT_DIR$/maps/debug/rubbish.cub" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/exit/clean_exit.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/exit/clean_exit.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parsing/parsing_nico.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing/parsing_nico.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +70,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "com.codeium.enabled": "true",
-    "git-widget-placeholder": "Cherry-picking in main",
+    "git-widget-placeholder": "nico",
     "last_opened_file_path": "/home/nidionis/Cub3D",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",

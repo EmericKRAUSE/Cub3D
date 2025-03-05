@@ -24,7 +24,8 @@
 
 int ft_error(const char *msg, int exit_code)
 {
-    printf("%s\n", msg);
+    if (msg)
+        printf("%s\n", msg);
     return (exit_code);
 }
 
