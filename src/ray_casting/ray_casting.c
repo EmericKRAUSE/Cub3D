@@ -6,105 +6,134 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:48:38 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/03 18:12:30 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/05 22:26:11 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube3d.h>
 
 // Calculate the distance of a ray using Pythagoras and store it into an array
-static void	calculate_distance(t_game *game, float ray_x, float ray_y, int i)
-{
-	float	player_x;
-	float	player_y;
+// static void	calculate_distance(t_game *game, float ray_x, float ray_y, int i)
+// {
+// 	float	player_x;
+// 	float	player_y;
 
-	player_x = game->player.image->instances->x;
-	player_y = game->player.image->instances->y;
+// 	player_x = game->player.image->instances->x;
+// 	player_y = game->player.image->instances->y;
 	
-	game->ray_distances[i] = sqrtf(powf(player_x - ray_x, 2) + powf(player_y - ray_y, 2)) / game->tile_size;
-	if (game->ray_distances[i] < 1)
-		game->ray_distances[i] = 1;
+// 	game->ray_distances[i] = sqrtf(powf(player_x - ray_x, 2) + powf(player_y - ray_y, 2)) / game->tile_size;
+// 	if (game->ray_distances[i] < 1)
+// 		game->ray_distances[i] = 1;
+// }
+
+static int	is_out_of_map(t_game *game, float pos_x, float pos_y)
+{
+	int	map_width;
+	int	map_height;
+	int	pos_in_grid_x;
+	int	pos_in_grid_y;
+
+	map_width = game->map.width;
+	map_height = game->map.height;
+	pos_in_grid_x = pos_x / game->tile_size;
+	pos_in_grid_y = pos_y / game->tile_size;
+	return ((pos_in_grid_x < 0 || pos_in_grid_x >= map_width || pos_in_grid_y < 0 || pos_in_grid_y >= map_height));
 }
 
 // Return true if the position given in px is located in a wall
-static int	is_wall_hit(t_game *game, float ray_x, float ray_y)
+static int	is_wall_hit(t_game *game, float pos_x, float pos_y)
 {
-	return (game->map.tab[(int)(ray_y / game->tile_size)]
-			[(int)(ray_x / game->tile_size)] == '1');
+	char	**map;
+	int		map_x;
+	int		map_y;
+
+	map = game->map.tab;
+	map_x = pos_x / game->tile_size;
+	map_y = pos_y / game->tile_size;
+	return (map[map_y][map_x] == '1');
+}
+
+float find_vertical_inter(t_game *game, float angle)
+{
+	int tile_size;
+	float delta_x;
+	float delta_y;
+	float step_x;
+	float step_y;
+
+	tile_size = game->tile_size;
+	delta_x = game->player.image->instances->x;
+	delta_y = game->player.image->instances->y;
+
+	if (fabs(cos(angle)) < 0.0001) // Regard vertical
+		return (0);
+	if (cos(angle) > 0) // Regarde a droite
+		step_x = tile_size;
+	else // Regarde a gauche
+		step_x= -tile_size - 1;
+	step_y = step_x * tan(angle);
+	if (fabs(sin(angle)) < 0.0001) // Regard horizontal
+		step_y = 0;
+
+	while (!is_out_of_map(game, roundf(delta_x), roundf(delta_y)))
+	{
+		if (is_wall_hit(game, delta_x, delta_y))
+			break ;
+		for (int j = 0; j < 5; j++)
+			for (int k = 0; k < 5; k++)
+				mlx_put_pixel(game->ray, roundf(delta_x) + k, roundf(delta_y) + j, COLOR_RAY);
+		delta_x += step_x;
+		delta_y += step_y;
+	}
+	return (sqrt(pow(delta_x, 2) + pow(delta_y, 2)));
+}
+
+float	find_horizontal_inter(t_game *game, float angle)
+{
+	int tile_size;
+	float	delta_x;
+	float	delta_y;
+	float	step_x;
+	float	step_y;
+			
+	tile_size = game->tile_size;
+	delta_x = game->player.image->instances->x;
+	delta_y = game->player.image->instances->y;
+	
+	if (fabs(sin(angle)) < 0.0001) // Regard horizontal
+		return (0);
+	if (sin(angle) > 0) // Regarde vers le bas
+		step_y = tile_size;
+	else // Regarde vers le haut
+		step_y = -tile_size - 1;
+	step_x = step_y / tan(angle);
+	if (fabs(cos(angle)) < 0.0001) // Regard vertical
+		step_x = 0;
+
+	while (!is_out_of_map(game, roundf(delta_x), roundf(delta_y)))
+	{
+		if (is_wall_hit(game, roundf(delta_x), roundf(delta_y)))
+			break ;
+		for (int j = 0; j < 4; j++)
+			for (int k = 0; k < 4; k++)
+				mlx_put_pixel(game->ray, roundf(delta_x) + k, roundf(delta_y) + j, COLOR_RAY);
+		delta_x += step_x;
+		delta_y += step_y;
+	}
+	return (sqrt(pow(delta_x, 2) + pow(delta_y, 2)));
 }
 
 // Draw a point at every intersection
 static void	cast_ray(t_game *game, float ray_angle, int i)
 {
-	float	ray_x;
-	float	ray_y;
-	float	dx;
-	float	dy;
-	int		tile_size = game->tile_size;
+	float	vertical_dist;
+	float	horizontal_dist;
 
-	ray_x = game->player.image->instances->x;
-	ray_y = game->player.image->instances->y;
-	if (ray_angle >= 7 * M_PI / 4 && ray_angle < 2 * M_PI)
-	{
-		printf("7\n");
-		dx = tile_size;
-		dy = -tile_size * tan(2 * M_PI - ray_angle);
-	}
-	else if (ray_angle >= 3 * M_PI / 2 && ray_angle < 7 * M_PI / 4)
-	{
-		printf("6\n");
-		dx = tile_size * tan(ray_angle - 3 * M_PI / 2);
-		dy = -tile_size;
-	}
-	else if (ray_angle >= 5 * M_PI / 4 && ray_angle < 3 * M_PI / 2)
-	{
-		printf("5\n");
-		dx = -tile_size * tan(3 * M_PI / 2 - ray_angle);
-		dy = -tile_size;
-	}
-	else if (ray_angle >= M_PI && ray_angle < 5 * M_PI / 4)
-	{
-		printf("4\n");
-		dx = -tile_size;
-		dy = -tile_size * tan(ray_angle - M_PI);
-	}
-	else if (ray_angle >= 3 * M_PI / 4 && ray_angle < M_PI)
-	{
-		printf("3\n");
-		dx = -tile_size;
-		dy = tile_size * tan(M_PI - ray_angle);
-	}
-	else if (ray_angle >= M_PI / 2 && ray_angle < 3 * M_PI / 4)
-	{
-		printf("2\n");
-		dx = -tile_size * tan(ray_angle - M_PI / 2);
-		dy = tile_size;
-	}
-	else if (ray_angle >= M_PI / 4 && ray_angle < M_PI / 2)
-	{
-		printf("1\n");
-		dx = tile_size * tan(M_PI / 2 - ray_angle);
-		dy = tile_size;
-	}
-	else if (ray_angle >= 0 && ray_angle < M_PI / 4)
-	{
-		printf("0\n");
-		dx = tile_size;	
-		dy = tile_size * tan(ray_angle);
-	}
-	int j = 0;
-	while (j < 4)
-	{
-		mlx_put_pixel(game->ray, (int)ray_x, (int)ray_y, COLOR_RAY);
-		ray_x += dx;
-		ray_y += dy;
-		if (is_wall_hit(game, ray_x, ray_y))
-		{
-			calculate_distance(game, ray_x, ray_y, i);
-			break ;
-		}
-		j++;
-	}
+	vertical_dist = find_vertical_inter(game, ray_angle);
+	horizontal_dist = find_horizontal_inter(game, ray_angle);
+	(void)vertical_dist;
+	(void)horizontal_dist;
+	(void)i;
 }
 
 void draw_world(t_game *game)
@@ -153,10 +182,14 @@ void	ray_casting(t_game *game)
 	game->ray = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
 	if (!game->ray)
 		return ;
-	while (i < 1)
+	while (i < WIN_HEIGHT)
 	{
 		ray_angle = start_angle + i * step_angle;
-		cast_ray(game, game->player.angle, i);
+		if (ray_angle > 2 * M_PI)
+			ray_angle -= 2 * M_PI;
+		else if (ray_angle < 0)
+			ray_angle += 2 * M_PI;
+		cast_ray(game, ray_angle, i);
 		i++;
 	}
 	if (DISPLAY_MODE == RENDER_2D)
