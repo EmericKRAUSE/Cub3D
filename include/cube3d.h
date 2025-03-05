@@ -12,7 +12,7 @@
 // Macros
 
 // General
-# include <get_next_line.h>
+//# include <get_next_line.h>
 # include "../lib/libft/include/libft.h"
 # define WIN_WIDTH 2560
 # define WIN_HEIGHT (WIN_WIDTH * 9 / 16)
@@ -42,8 +42,10 @@
 # define SOUTH 1
 # define EAST 2
 # define WEST 3
+# define BALISE_ERROR -1
 
 # define CMP_FOUND 0
+# define OK 1
 
 # define ERR_OPENFILE -1
 # define ERR_MULTIPLE_MAPS -2
@@ -57,10 +59,14 @@
 # define ERR_INVALID_LINE -10
 
 # define HABIBI 000707
-# define BLANK_CHAR "\t\n "
+# define BLANK_CHAR " \t\n"
 
 # define MAP_CHARS "01NSEW \n"
 # define TEXTURES_BALISE "NO /SO /EA /WE "
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 4
+# endif
 
 	// ####################
 	// Structures
@@ -69,6 +75,13 @@
 	int	x;
 	int	y;
 }	t_point;
+
+typedef struct s_rbg
+{
+    int	r;
+    int	g;
+    int	b;
+} t_rbg;
 
 typedef struct s_player
 {
@@ -90,6 +103,8 @@ typedef struct s_map
 typedef struct s_textures
 {
 	char	*f_names[4];
+    t_rbg   floor;
+    t_rbg   ceiling;
 } t_textures;
 
 typedef struct s_game
@@ -104,6 +119,7 @@ typedef struct s_game
 	mlx_image_t	*background;
 	mlx_image_t *world;
 	t_textures	textures;
+    int		    fd;
 }	t_game;
 
 // ####################
@@ -128,6 +144,8 @@ int	ft_error(const char *message, int value);
 // ####################
 // parsing
 int parse_args(int argc, char **argv, t_game *game);
+char	*get_next_line(int fd);
+int is_rgb(char *str);
 
 // ####################
 // debug
