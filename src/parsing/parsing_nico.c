@@ -65,7 +65,6 @@ int is_texture(t_game *game, char *line)
     return (found);
 }
 
-int is_color(t_game *game, char *line);
 int get_texture(t_game *game, char *line);
 int get_color(t_game *game, char *line);
 
@@ -188,6 +187,13 @@ int is_rgb(char *str)
     return (count == 2 && nb <= 255);
 }
 
+int is_color(char *line)
+{
+    if (*line == 'F' || *line == 'C')
+        line = ft_get_next_wd(line, ' ');
+    return (is_rgb(line));
+}
+
 int impor_cub_file(t_game *game)
 {
     char *line;
@@ -210,7 +216,7 @@ int impor_cub_file(t_game *game)
             free(line);
            line = get_next_line(game->fd);
         }
-        //if (is_color(game, line))
+        //if (is_color(line))
         //    if (get_color(game, line) == ERR_LOADING_TEXTURE)
         //        clean_exit(game, "[get_color] something went wrong", ERR_COLOR);
         else

@@ -12,12 +12,12 @@
 
 #include <cube3d.h>
 
-int	ft_error(const char *message, int value)
-{
-	write(2, message, ft_strlen(message));
-	write(2, "\n", 1);
-	return (value);
-}
+//int	ft_error(const char *message, int value)
+//{
+//	write(2, message, ft_strlen(message));
+//	write(2, "\n", 1);
+//	return (value);
+//}
 
 int	read_file(const char *filename)
 {
