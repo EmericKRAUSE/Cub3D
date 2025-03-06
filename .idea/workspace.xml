@@ -24,12 +24,17 @@
   <component name="ChangeListManager">
     <list default="true" id="ce34a21e-9ae3-4659-a029-2a819e221774" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing/import_cub.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing/import_line.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing/line_types.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing/load_ft.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing/map_parser.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing/parsing_nico.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/cube3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/cube3d.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/debug/print_tab.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/debug/print_tab.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parsing/bak/import_cub.c.back" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parsing/bak/import_line.c.back" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parsing/bak/line_types.c.back" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parsing/bak/load_ft.c.back" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parsing/bak/map_parser.c.back" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parsing/bak/parsing_nico.c.back" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parsing/import_cub_fixed.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing/import_cub_fixed.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parsing/map_parser_fixed.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing/map_parser_fixed.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parsing/parsing_nico_fixed.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing/parsing_nico_fixed.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

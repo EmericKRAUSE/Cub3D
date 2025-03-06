@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cube3d.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nidionis <nidionis@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
+/*   Updated: 2025/03/06 17:20:59 by nidionis         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUBE3D_H
 # define CUBE3D_H
 
@@ -167,5 +179,6 @@ int load_texture(t_game *game, int ind, char *line);
 // ####################
 // debug
 void print_tab(char **tab);
+void	print_game(t_game *game);
 
 #endif

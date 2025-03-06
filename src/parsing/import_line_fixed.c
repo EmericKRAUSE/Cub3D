@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/06 16:50:20 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/06 17:25:27 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ int	get_texture(t_game *game, char *line)
 	return (load_texture(game, ind, line));
 }
 
-t_rgb *get_rgb(t_game *game, char *line, t_rgb *rgb)
+t_rgb	*get_rgb(t_game *game, char *line, t_rgb *rgb)
 {
 	if (rgb->b || rgb->g || rgb->r)
-		clean_exit(game, "Error: Two color for the same texture", ERR_LOADING_TEXTURE);
+		clean_exit(game, "Error: Duplicated color", ERR_LOADING_TEXTURE);
 	rgb->r = ft_atoi(line);
 	line = ft_get_next_wd(line, ',');
 	rgb->g = ft_atoi(line);
