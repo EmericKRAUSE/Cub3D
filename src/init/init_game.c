@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 14:44:24 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/05 22:24:39 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/06 15:51:57 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	init_game(t_game *game)
 	game->ray = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
 	game->player.image = mlx_new_image(game->mlx, 1, 1);
 	game->player.angle = 0;
-	game->player.rotation_speed = 0.02;
+	game->player.rotation_speed = 0.025;
 	game->wall = mlx_new_image(game->mlx, game->tile_size, game->tile_size);
 	game->background = mlx_new_image(game->mlx, game->tile_size, game->tile_size);
-	game->player.move_dist = game->tile_size / 5;
+	game->player.move_dist = 8;
 }
