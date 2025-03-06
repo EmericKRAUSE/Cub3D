@@ -23,13 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce34a21e-9ae3-4659-a029-2a819e221774" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/parsing/impmort_cub.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/parsing/import_line.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/parsing/line_types.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/parsing/load_ft.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/cube3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/cube3d.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing/parsing_nico.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing/parsing_nico.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parsing/import_cub.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parsing/import_line.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parsing/line_types.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parsing/load_ft.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parsing/map_parser.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parsing/parsing_nico.c" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +79,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie",
+    "structure.view.defaults.are.configured": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
