@@ -23,11 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce34a21e-9ae3-4659-a029-2a819e221774" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/maps/debug/available_00.cub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/parsing/impmort_cub.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/parsing/import_line.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/parsing/line_types.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/parsing/load_ft.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/cube3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/cube3d.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maps/debug/rubbish.cub" beforeDir="false" afterPath="$PROJECT_DIR$/maps/debug/rubbish.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exit/clean_exit.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/exit/clean_exit.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/parsing/parsing_nico.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing/parsing_nico.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +78,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.general",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -139,6 +140,7 @@
       <workItem from="1741037356378" duration="2425000" />
       <workItem from="1741112583427" duration="954000" />
       <workItem from="1741037356378" duration="2425000" />
+      <workItem from="1741270021424" duration="2592000" />
     </task>
     <servers />
   </component>

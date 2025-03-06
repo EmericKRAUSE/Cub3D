@@ -69,7 +69,7 @@
 
 	// ####################
 	// Structures
-	typedef struct s_point
+typedef struct s_point
 {
 	int	x;
 	int	y;
@@ -144,7 +144,25 @@ int	ft_error(const char *message, int value);
 // parsing
 int parse_args(int argc, char **argv, t_game *game);
 char	*get_next_line(int fd);
+int import_cub_file(t_game *game);
+int is_cub_file(char *filename);
+
 int is_rgb(char *str);
+int is_texture(t_game *game, char *line);
+int is_map(char *line);
+int is_blank_line(char *line);
+int is_color(char *line);
+
+int get_texture(t_game *game, char *line);
+int get_color(t_game *game, char *line);
+int get_texture_ind_from_balise(char *balise);
+int get_texture(t_game *game, char *line);
+t_rgb *get_rgb(t_game *game, char *line, t_rgb *rgb);
+int get_color(t_game *game, char *line);
+char **get_map(t_game *game, int fd, char **line_addr);
+char *load_map(t_game *game, char *line);
+void invalid_line(t_game *game, char *line);
+int load_texture(t_game *game, int ind, char *line);
 
 // ####################
 // debug
