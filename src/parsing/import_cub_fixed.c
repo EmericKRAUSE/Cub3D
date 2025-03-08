@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   import_cub_fixed.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/08 18:17:47 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/08 20:10:11 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ int is_out_of_bounds(char **map, int y, int x)
 int floodfill(char **map, int y, int x)
 {
     if (is_out_of_bounds(map, y, x))
+        return (FALSE);
+    if (ft_strchr(BLANK_CHAR, map[y][x]))
         return (FALSE);
     if (map[y][x] == FLOODFILL_VISITED)
         return (TRUE);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nidionis <nidionis@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/08 16:55:26 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/08 20:04:30 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@
 # define MAP_CHARS "01NSEW \n"
 # define TEXTURES_BALISE "NO /SO /EA /WE "
 # define PLAYER_CHARS "NSEW"
-# define FLOODFILL_CHARS "NSEW0 "
+# define FLOODFILL_CHARS "NSEW0"
 # define FLOODFILL_VISITED 'V'
 
 
