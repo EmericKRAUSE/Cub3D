@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/18 21:07:40 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/08 14:39:12 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,10 @@ int	main(int argc, char **argv)
     (void)game;
     (void)argc;
     game = malloc(sizeof(t_game));
+    if (!game)
+    {
+        return (ERR_MALLOC);
+    }
 	printf("[parse args] %i\n", parse_args(argc, argv, game));
     //printf("[get_next_line] %i\n", get_next_line_tester(argv[1]));
     clean_exit(game, NULL, 0);

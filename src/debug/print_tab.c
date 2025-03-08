@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/06 17:05:11 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/08 14:25:29 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,13 @@ void print_tab(char **tab)
 
 void	print_game(t_game *game)
 {
-	printf("map:\n");																							
-	print_tab(game->map.tab);
+	printf("map:\n");
+    if (game->map.tab) {
+        print_tab(game->map.tab);
+    }
+    else {
+        printf("NO MAP\n");
+    }
 	printf("\n");																								
 	printf("north:														 %s\n", game->textures.f_names[NORTH]);
 	printf("south:														 %s\n", game->textures.f_names[SOUTH]);
