@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/06 17:20:59 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/08 15:14:22 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,14 @@
 # define ERR_CUBEXT -8
 # define ERR_INVALID_MAP -9
 # define ERR_INVALID_LINE -10
+# define ERR_MAP -11
 
 # define HABIBI 000707
 # define BLANK_CHAR "\t\n "
 
 # define MAP_CHARS "01NSEW \n"
 # define TEXTURES_BALISE "NO /SO /EA /WE "
+# define PLAYER_CHARS "NSEW"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4
@@ -149,8 +151,11 @@ void	free_map(t_map *map);
 // ####################
 // utils
 void clean_exit(t_game *game, char *msg, int exit_code);
-
 int	ft_error(const char *message, int value);
+
+// ####################
+// map_utils
+char **dup_tab(char **tab);
 
 // ####################
 // parsing
@@ -175,6 +180,7 @@ char **get_map(t_game *game, int fd, char **line_addr);
 char *load_map(t_game *game, char *line);
 void invalid_line(t_game *game, char *line);
 int load_texture(t_game *game, int ind, char *line);
+void    set_map_point(char **map, t_point pt, char c);
 
 // ####################
 // debug

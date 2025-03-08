@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/06 17:22:36 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/08 15:21:16 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,60 @@ void	process_line(t_game *game, char **line)
 		invalid_line(game, *line);
 }
 
+t_point get_player_position(char **map)
+{
+    t_point pos_player;
+
+    pos_player.x = 0;
+    pos_player.y = 0;
+    while (map[pos_player.y])
+    {
+        pos_player.x = 0;
+        while (map[pos_player.y][pos_player.x])
+        {
+            if (ft_strchr("NSWE", map[pos_player.y][pos_player.x]))
+                return (pos_player);
+            pos_player.x++;
+        }
+        pos_player.y++;
+    }
+    return (pos_player);
+}
+
+int one_player_only(char **map)
+{
+    t_point pos_player;
+    char **map_copy;
+
+    map_copy = dup_tab(map);
+    pos_player = get_player_position(map_copy);
+    if (map[pos_player.y] == NULL)
+    {
+        printf("[one_player_only] no player\n");
+        free_tab(map_copy);
+        return (FALSE);
+    }
+    set_map_point(map_copy, pos_player, '0');
+    pos_player = get_player_position(map_copy);
+    free_tab(map_copy);
+    if (map[pos_player.y] == NULL)
+        return (TRUE);
+    printf("[one_player_only] more than one player\n");
+    return (FALSE);
+}
+
+
+int is_map_available(t_game *game)
+{
+    if (game->map.tab == NULL)
+        return (FALSE);
+    if (!one_player_only(game->map.tab))
+        return (FALSE);
+    //if (!is_map_closed(game))
+    //    return (FALSE);
+    return (TRUE);
+}
+
 int	import_cub_file(t_game *game)
 {
 	char	*line;
@@ -47,7 +101,13 @@ int	import_cub_file(t_game *game)
 	line = get_next_line(game->fd);
 	game->map.tab = NULL;
 	while (line)
-		process_line(game, &line);
+	{
+        process_line(game, &line);
+    }
+    if (!is_map_available(game))
+    {
+        clean_exit(game, "[import_cub_file] map not available", ERR_MAP);
+    }
 	return (TRUE);
 }
 
