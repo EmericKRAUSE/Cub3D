@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/18 21:07:40 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/08 13:43:31 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,27 @@ int ft_error(const char *msg, int exit_code)
     return (exit_code);
 }
 
+void    clean_get_next_line(t_game *game)
+{
+    char *next_line;
+
+    if (game->fd <= 0)
+        return ;
+    next_line = get_next_line(game->fd);
+    while (next_line) {
+        free(next_line);
+        next_line = get_next_line(game->fd);
+    }
+    close(game->fd);
+}
+
 void clean_exit(t_game *game, char *msg, int exit_code)
 {
     int i;
-    char *next_line;
 
     if (game)
     {
-        next_line = get_next_line(game->fd);
-        while (next_line)
-        {
-            free(next_line);
-            next_line = get_next_line(game->fd);
-        }
-        close(game->fd);
+        clean_get_next_line(game);
         free_tab(game->map.tab);
         if (game->mlx)
             mlx_terminate(game->mlx);

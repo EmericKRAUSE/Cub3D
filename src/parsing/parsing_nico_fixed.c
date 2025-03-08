@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/06 17:06:44 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/08 13:36:32 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	open_file(t_game *game, char *filename)
 	int	fd;
 
 	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		clean_exit(game, "Error: File not found", ERR_OPENFILE);
+	if (fd <= 0)
+		clean_exit(game, "Error: cannot open file", ERR_OPENFILE);
 	return (fd);
 }
 
