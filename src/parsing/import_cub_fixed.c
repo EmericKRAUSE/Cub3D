@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/08 15:21:16 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/08 18:17:47 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,51 @@ int one_player_only(char **map)
     return (FALSE);
 }
 
+int is_out_of_bounds(char **map, int y, int x)
+{
+    if (y < 0 || x < 0)
+        return (TRUE);
+    if (map[y] == NULL)
+        return (TRUE);
+    if (map[y][x] == '\0')
+        return (TRUE);
+    return (FALSE);
+}
+
+int floodfill(char **map, int y, int x)
+{
+    if (is_out_of_bounds(map, y, x))
+        return (FALSE);
+    if (map[y][x] == FLOODFILL_VISITED)
+        return (TRUE);
+    if (ft_strchr(FLOODFILL_CHARS, map[y][x]))
+    {
+        map[y][x] = FLOODFILL_VISITED;
+        if (floodfill(map, y + 1, x))
+            if (floodfill(map, y - 1, x))
+                if (floodfill(map, y, x + 1))
+                    if (floodfill(map, y, x - 1))
+                        return (TRUE);
+        return (FALSE);
+    }
+    return (TRUE);
+}
+
+int is_map_closed(char **map)
+{
+    t_point pos_player;
+    char **map_cpy;
+    int is_closed;
+
+    map_cpy = dup_tab(map);
+    pos_player = get_player_position(map_cpy);
+    is_closed = floodfill(map_cpy, pos_player.y, pos_player.x);
+    if (!is_closed)
+        printf("[is_map_closed] map not closed\n");
+    //print_tab(map_cpy);
+    free_tab(map_cpy);
+    return (is_closed);
+}
 
 int is_map_available(t_game *game)
 {
@@ -89,8 +134,8 @@ int is_map_available(t_game *game)
         return (FALSE);
     if (!one_player_only(game->map.tab))
         return (FALSE);
-    //if (!is_map_closed(game))
-    //    return (FALSE);
+    if (!is_map_closed(game->map.tab))
+        return (FALSE);
     return (TRUE);
 }
 

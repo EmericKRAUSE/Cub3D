@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/08 15:14:22 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/08 16:55:26 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,9 @@
 # define MAP_CHARS "01NSEW \n"
 # define TEXTURES_BALISE "NO /SO /EA /WE "
 # define PLAYER_CHARS "NSEW"
+# define FLOODFILL_CHARS "NSEW0 "
+# define FLOODFILL_VISITED 'V'
+
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4
