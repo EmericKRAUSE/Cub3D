@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:14:15 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/10 17:41:27 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/10 20:29:52 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void trim_map(char ***map_addr)
             *line = line[smallest_gap];
             line++;
         }
+        *line = line[smallest_gap];
         map++;
     }
 }
@@ -96,7 +97,7 @@ char	*load_map(t_game *game, char *line)
 		clean_exit(game, "[map] Error: Multiple maps", ERR_MULTIPLE_MAPS);
 	else
 		game->map.tab = get_map(game, game->fd, &line);
-    //trim_map(&game->map.tab);
+    trim_map(&game->map.tab);
     set_width_and_lenght(game);
 	return (line);
 }
