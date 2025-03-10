@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:14:15 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/06 17:26:29 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:08:21 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,13 @@ int	load_texture(t_game *game, int ind, char *line)
 		clean_exit(game, "Error: Duplicated texture", ERR_LOADING_TEXTURE);
 	filename = ft_get_next_wd(line, ' ');
 	if (!filename)
-		clean_exit(game, "Error: texture filename", ERR_LOADING_TEXTURE);
+		clean_exit(game, "Error: No texture filename", ERR_LOADING_TEXTURE);
 	game->textures.f_names[ind] = ft_strtrim(filename, " \t\n");
+    game->textures.orientation[ind] = mlx_load_png(game->textures.f_names[ind]);
+    if (!game->textures.orientation[ind])
+    {
+        printf("error: %s\n", game->textures.f_names[ind]);
+        clean_exit(game, "Error: mlx_load_png failed, check filename", ERR_LOADING_TEXTURE);
+    }
 	return (OK);
 }

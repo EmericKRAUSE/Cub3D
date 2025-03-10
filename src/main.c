@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/10 13:50:28 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:09:47 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,5 +147,7 @@ int	main(int argc, char **argv)
     }
 	printf("[parse args] %i\n", parse_args(argc, argv, game));
     //printf("[get_next_line] %i\n", get_next_line_tester(argv[1]));
+    //display_map(*game);
+    //mlx_loop(game->mlx);
     clean_exit(game, NULL, 0);
 }

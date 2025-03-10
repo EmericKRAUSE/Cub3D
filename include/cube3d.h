@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/10 13:31:24 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/10 15:39:32 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ typedef struct s_map
 typedef struct s_textures
 {
 	char	*f_names[4];
+    mlx_texture_t *orientation[4];
     t_rgb   floor;
     t_rgb   ceiling;
 } t_textures;
