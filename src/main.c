@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/08 14:39:12 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/10 13:50:28 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,13 +108,39 @@ int get_next_line_tester(char *filename)
     return (0);
 }
 
+t_rgb init_color(int r, int g, int b)
+{
+    t_rgb color;
+
+    color.r = r;
+    color.g = g;
+    color.b = b;
+    return (color);
+}
+
+void init_game(t_game *game)
+{
+    game->textures.ceiling = init_color(UNSET_COLOR, UNSET_COLOR, UNSET_COLOR);
+    game->textures.floor = init_color(UNSET_COLOR, UNSET_COLOR, UNSET_COLOR);
+    //game->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Cub3D", false);
+    //game->tile_size = WIN_WIDTH / game->map.width;
+    //game->ray = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
+    //game->player.image = mlx_new_image(game->mlx, 1, 1);
+    //game->player.angle = 0;
+    //game->player.rotation_speed = 0.05;
+    //game->wall = mlx_new_image(game->mlx, game->tile_size, game->tile_size);
+    //game->background = mlx_new_image(game->mlx, game->tile_size, game->tile_size);
+    //game->player.move_dist = game->tile_size / 5;
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	*game;
 
     (void)game;
     (void)argc;
-    game = malloc(sizeof(t_game));
+    game = ft_calloc(sizeof(t_game), 1);
+    init_game(game);
     if (!game)
     {
         return (ERR_MALLOC);

@@ -14,7 +14,13 @@
   <component name="ChangeListManager">
     <list default="true" id="90963887-31d1-4ae4-bece-84ecff793343" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/cube3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/cube3d.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/maps/debug/available_00.cub" beforeDir="false" afterPath="$PROJECT_DIR$/maps/debug/available_00.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init/init_game.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init/init_game.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parsing/import_cub_fixed.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing/import_cub_fixed.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parsing/import_line_fixed.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing/import_line_fixed.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parsing/map_parser_fixed.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing/map_parser_fixed.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,10 +33,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2u2BE20XRo8oV1oJCchTAQ0iWmk" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -52,6 +58,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "structure.view.defaults.are.configured": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -64,6 +71,7 @@
       <option name="presentableId" value="Default" />
       <updated>1741436674736</updated>
       <workItem from="1741436676593" duration="13866000" />
+      <workItem from="1741607620810" duration="3764000" />
     </task>
     <servers />
   </component>

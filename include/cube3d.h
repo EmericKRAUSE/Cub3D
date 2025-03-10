@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/08 20:04:30 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/10 13:31:24 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@
 # define COLOR_BACKGROUND HEX_BLACK
 # define COLOR_CEILING HEX_BLUE
 # define COLOR_FLOOR HEX_BROWN
+# define UNSET_COLOR -1
 
 # define NORTH 0
 # define SOUTH 1

@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/08 20:10:11 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/10 13:54:29 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,26 @@ int is_map_available(t_game *game)
     return (TRUE);
 }
 
+int param_missing(t_game *game)
+{
+    int i;
+
+    i = 0;
+    if (game->map.tab == NULL)
+        clean_exit(game, "[param_missing] map is missing", ERR_MAP);
+    if (game->textures.ceiling.r == UNSET_COLOR)
+        clean_exit(game, "[param_missing] ceiling is missing", ERR_MAP);
+    if (game->textures.floor.r == UNSET_COLOR)
+        clean_exit(game, "[param_missing] floor is missing", ERR_MAP);
+    while (i < 4)
+    {
+        if (game->textures.f_names[i] == NULL)
+            clean_exit(game, "[param_missing] texture is missing", ERR_MAP);
+        i++;
+    }
+    return (FALSE);
+}
+
 int	import_cub_file(t_game *game)
 {
 	char	*line;
@@ -155,7 +175,11 @@ int	import_cub_file(t_game *game)
     {
         clean_exit(game, "[import_cub_file] map not available", ERR_MAP);
     }
-	return (TRUE);
+	if (param_missing(game))
+    {
+        clean_exit(game, "[import_cub_file] param missing", ERR_MAP);
+    }
+    return (TRUE);
 }
 
 int	is_cub_file(char *filename)

@@ -5,11 +5,25 @@ WE ./path_to_the_west_texture
 EA ./path_to_the_east_texture
 
 F 220,100,0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 111
  1
 1011
 1001
-10N0
+10N01
 1001
 1111
 
