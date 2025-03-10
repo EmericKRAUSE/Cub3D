@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/10 13:31:24 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:23:41 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ typedef struct s_game
 
 // ####################
 // Prototypes
-void	display_map(t_game game);
+void	display_map(t_game *game);
 void	display_3d_map(t_game *game);
 void	display_world(void *param);
 void	init_game(t_game* game);

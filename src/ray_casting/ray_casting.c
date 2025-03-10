@@ -6,25 +6,11 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:48:38 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/06 19:18:06 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/10 17:22:40 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube3d.h>
-
-// Calculate the distance of a ray using Pythagoras and store it into an array
-// static void	calculate_distance(t_game *game, float ray_x, float ray_y, int i)
-// {
-// 	float	player_x;
-// 	float	player_y;
-
-// 	player_x = game->player.image->instances->x;
-// 	player_y = game->player.image->instances->y;
-	
-// 	game->ray_distances[i] = sqrtf(powf(player_x - ray_x, 2) + powf(player_y - ray_y, 2)) / game->tile_size;
-// 	if (game->ray_distances[i] < 1)
-// 		game->ray_distances[i] = 1;
-// }
 
 static int	is_out_of_map(t_game *game, float pos_x, float pos_y)
 {
@@ -131,42 +117,49 @@ float	find_horizontal_inter(t_game *game, float angle)
 	}
 	if (fabs(sin(angle)) < 0.0001) // Regard horizontal
 	{
+		//printf("horizontal\n");
 		step_y = 0;
 		step_x = tile_size;
 	}
 
-	while (1)
+	int j = 0;
+	while (j < 10)
 	{
+		j++;
 		delta_x += step_x;
 		delta_y += step_y;
+		//printf("x: %f\ty: %f\n", delta_x, delta_y);
 		if (is_out_of_map(game, roundf(delta_x), roundf(delta_y)) || is_wall_hit(game, roundf(delta_x), roundf(delta_y)))
 			break;
 		for (int j = 0; j < 4; j++)
 			for (int k = 0; k < 4; k++)
+			{
+				printf("test\n");
 				mlx_put_pixel(game->ray, roundf(delta_x) + k, roundf(delta_y) + j, COLOR_RAY);
+			}
 	}
 	return sqrt(pow(delta_x - game->player.image->instances->x, 2) + pow(delta_y - game->player.image->instances->y, 2));
 }
 
-void draw_slice(t_game *game, float dist, int i, float ray_angle)
-{
-	// Correction pour le fish-eye effect
-	//float corrected_dist = dist * cos(ray_angle); // Corrige la distance en fonction de l'angle
-	(void)ray_angle;
-	// Calcul de la hauteur de la colonne en fonction de la distance corrigée
-	int column_height = (WIN_HEIGHT / (dist / 100));
+// void draw_slice(t_game *game, float dist, int i, float ray_angle)
+// {
+// 	// Correction pour le fish-eye effect
+// 	//float corrected_dist = dist * cos(ray_angle); // Corrige la distance en fonction de l'angle
+// 	(void)ray_angle;
+// 	// Calcul de la hauteur de la colonne en fonction de la distance corrigée
+// 	int column_height = (WIN_HEIGHT / (dist / 100));
 
-	// Calcul de l'endroit où commencer et finir la colonne
-	int start_y = (WIN_HEIGHT / 2) - (column_height / 2);
-	int end_y = (WIN_HEIGHT / 2) + (column_height / 2);
+// 	// Calcul de l'endroit où commencer et finir la colonne
+// 	int start_y = (WIN_HEIGHT / 2) - (column_height / 2);
+// 	int end_y = (WIN_HEIGHT / 2) + (column_height / 2);
 
-	// Dessiner la colonne
-	printf("start: %i\tend: %i\tcol: %i\tdist: %f\n", start_y, end_y, column_height, dist);
-	for (int y = start_y; y < end_y; y++)
-	{
-		mlx_put_pixel(game->world, i, y, HEX_WHITE);
-	}
-}
+// 	// Dessiner la colonne
+// 	printf("start: %i\tend: %i\tcol: %i\tdist: %f\n", start_y, end_y, column_height, dist);
+// 	for (int y = start_y; y < end_y; y++)
+// 	{
+// 		mlx_put_pixel(game->world, i, y, HEX_WHITE);
+// 	}
+// }
 
 // float	cast_test(t_game *game, float ray_angle)
 // {
@@ -192,17 +185,17 @@ static void	cast_ray(t_game *game, float ray_angle, int i)
 	float	vertical_dist;
 	float	horizontal_dist;
 
-	vertical_dist = find_vertical_inter(game, ray_angle);
+	//vertical_dist = find_vertical_inter(game, ray_angle);
 	horizontal_dist = find_horizontal_inter(game, ray_angle);
 
-	if (vertical_dist < horizontal_dist)
-	{
-		draw_slice(game, vertical_dist, i, ray_angle);
-	}
-	else
-	{
-		draw_slice(game, horizontal_dist, i, ray_angle);
-	}
+	// if (vertical_dist < horizontal_dist)
+	// {
+	// 	draw_slice(game, vertical_dist, i, ray_angle);
+	// }
+	// else
+	// {
+	// 	draw_slice(game, horizontal_dist, i, ray_angle);
+	// }
 	(void)i;
 	(void)horizontal_dist;
 	(void)vertical_dist;
@@ -230,14 +223,14 @@ void	ray_casting(t_game *game)
 	if (!game->world)
 		return ;
 
-	while (i < WIN_WIDTH)
+	while (i < 1)
 	{
 		ray_angle = start_angle + i * step_angle;
 		if (ray_angle > 2 * M_PI)
 			ray_angle -= 2 * M_PI;
 		else if (ray_angle < 0)
 			ray_angle += 2 * M_PI;
-		cast_ray(game, ray_angle, i);
+		cast_ray(game, game->player.angle, i);
 		i++;
 	}
 	if (DISPLAY_MODE == RENDER_2D)
