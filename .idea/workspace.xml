@@ -14,9 +14,6 @@
   <component name="ChangeListManager">
     <list default="true" id="90963887-31d1-4ae4-bece-84ecff793343" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init/init_game.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init/init_game.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/move/move.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/move/move.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray_casting/ray_casting.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray_casting/ray_casting.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +44,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "com.codeium.enabled": "true",
-    "git-widget-placeholder": "Merging nico",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "/home/nidionis/Cub3D",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
