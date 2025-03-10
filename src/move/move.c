@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 14:44:56 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/03 18:12:41 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/06 15:49:43 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,24 @@ void	movements(void *param)
 	float	new_y;
 	int		map_x;
 	int		map_y;
+	float	collision_margin;
 
 	game = param;
 	new_x = game->player.image->instances->x;
 	new_y = game->player.image->instances->y;
 	rotate_player(game);
 	move_player(game, &new_x, &new_y);
-	map_x = (int)new_x / game->tile_size;
-	map_y = (int)new_y / game->tile_size;
-	if (game->map.tab[map_y][map_x] != '1')
-	{
-		game->player.image->instances->x = roundf(new_x);
+	collision_margin = game->tile_size * 0.1;
+	if (new_x > game->player.image->instances->x)
+		map_x = (int)(new_x + collision_margin) / game->tile_size;
+	else
+		map_x = (int)(new_x - collision_margin) / game->tile_size;
+	if (new_y > game->player.image->instances->y)
+		map_y = (int)(new_y + collision_margin) / game->tile_size;
+	else
+		map_y = (int)(new_y - collision_margin) / game->tile_size;
+	if (game->map.tab[map_y][game->player.image->instances->x / game->tile_size] != '1')
 		game->player.image->instances->y = roundf(new_y);
-	}
+	if (game->map.tab[game->player.image->instances->y / game->tile_size][map_x] != '1')
+		game->player.image->instances->x = roundf(new_x);
 }
