@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:14:15 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/11 13:56:03 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/11 14:12:09 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int smallest_blank_gap_at_left_side(char **map)
     return (smallest_gap);
 }
 
-void trim_map(char ***map_addr)
+void shift_to_left(char ***map_addr)
 {
     int smallest_gap;
     char **map;
@@ -62,7 +62,6 @@ void trim_map(char ***map_addr)
 	int		i;
 
     map = *map_addr;
-    strip_map(map_addr);
     smallest_gap = smallest_blank_gap_at_left_side(map);
 	i = 0;
     while (map[i])
@@ -77,6 +76,15 @@ void trim_map(char ***map_addr)
         i++;
     }
 	*map_addr = map;
+}
+
+void trim_map(char ***map_addr)
+{
+    char **map;
+
+    map = *map_addr;
+    strip_map(&map);
+	shift_to_left(&map);
 }
 
 void set_width_and_lenght(t_game *game)
@@ -152,10 +160,12 @@ char	*load_map(t_game *game, char *line)
 		clean_exit(game, "[map] Error: Multiple maps", ERR_MULTIPLE_MAPS);
 	else
 		game->map.tab = get_map(game, game->fd, &line);
+	if (!game->map.tab)
+		clean_exit(game, "[map] Error: Map not available", ERR_MULTIPLE_MAPS);
     trim_map(&game->map.tab);
-	print_tab(game->map.tab);
     set_width_and_lenght(game);
-    //ft_square_map(game, CHAR_BLANK_MAP);
+    ft_square_map(game, CHAR_BLANK_MAP);
+	//print_tab(game->map.tab);
 	return (line);
 }
 
