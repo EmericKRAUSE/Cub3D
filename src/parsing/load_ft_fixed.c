@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:14:15 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/11 14:12:09 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/11 14:28:29 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void    strip_map(char ***map_addr)
         map[last_line] = NULL;
 		last_line--;
     }
-    if (last_line == 0)
+    if (last_line <= 0)
     {
         free(map[last_line]);
         free(map);
@@ -80,11 +80,9 @@ void shift_to_left(char ***map_addr)
 
 void trim_map(char ***map_addr)
 {
-    char **map;
-
-    map = *map_addr;
-    strip_map(&map);
-	shift_to_left(&map);
+    strip_map(map_addr);
+	if (*map_addr)
+		shift_to_left(map_addr);
 }
 
 void set_width_and_lenght(t_game *game)
@@ -163,8 +161,10 @@ char	*load_map(t_game *game, char *line)
 	if (!game->map.tab)
 		clean_exit(game, "[map] Error: Map not available", ERR_MULTIPLE_MAPS);
     trim_map(&game->map.tab);
+	if (!game->map.tab)
+		clean_exit(game, "[map] Error: Map not available", ERR_MULTIPLE_MAPS);
     set_width_and_lenght(game);
-    ft_square_map(game, CHAR_BLANK_MAP);
+    //ft_square_map(game, CHAR_BLANK_MAP);
 	//print_tab(game->map.tab);
 	return (line);
 }

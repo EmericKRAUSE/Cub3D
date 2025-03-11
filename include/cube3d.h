@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/10 21:12:35 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/11 14:25:31 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@
 
 # define HABIBI 000707
 # define BLANK_CHAR "\t\n "
-# define CHAR_BLANK_MAP '1'
+# define CHAR_BLANK_MAP 'W'
 
 # define MAP_CHARS "01NSEW \n"
 # define TEXTURES_BALISE "NO /SO /EA /WE "
