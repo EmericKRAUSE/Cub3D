@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:14:15 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/11 15:55:49 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/11 21:35:56 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void set_width_and_lenght(t_game *game)
 				j--;
 		}
 
-        if (j  + 1> game->map.width)
+        if (j + 1> game->map.width)
             game->map.width = j + 1;
         i++;
     }
@@ -135,12 +135,12 @@ char **square_malloc(int width, int height)
     char **tab;
 
     i = 0;
-    tab = ft_calloc(sizeof(char *), height);
+    tab = ft_calloc(sizeof(char *), height + 1);
     if (!tab)
         return (NULL);
     while (i < height)
     {
-        tab[i] = ft_calloc(sizeof(char), width);
+        tab[i] = ft_calloc(sizeof(char), width + 1);
         if (!tab[i])
         {
             ft_free_split(&tab);
@@ -148,6 +148,7 @@ char **square_malloc(int width, int height)
         }
         i++;
     }
+    tab[i] = NULL;
     return (tab);
 }
 
@@ -159,7 +160,7 @@ void ft_square_map(t_game *game, char c)
     char **new_map;
 
     i = 0;
-    new_map = square_malloc(game->map.width + 1, game->map.height + 1);
+    new_map = square_malloc(game->map.width, game->map.height);
     if (!new_map)
         clean_exit(game, "Error: malloc failed (ft_square_map)", ERR_MALLOC);
     while (i < game->map.height)
@@ -169,7 +170,8 @@ void ft_square_map(t_game *game, char c)
         {
             new_map[i][j] = c;
             if (j < (int)ft_strlen(map[i]))
-                new_map[i][j] = map[i][j];
+                if (map[i][j] != ' ')
+                    new_map[i][j] = map[i][j];
             j++;
         }
         i++;
@@ -190,12 +192,7 @@ char	*load_map(t_game *game, char *line)
 	if (!game->map.tab)
 		clean_exit(game, "[map] Error: Map not available", ERR_MULTIPLE_MAPS);
     set_width_and_lenght(game);
-	printf("Before square map\n");
-	print_game(game);
-	print_tab(game->map.tab);
     ft_square_map(game, CHAR_BLANK_MAP);
-	printf("after square map\n");
-	print_tab(game->map.tab);
 	return (line);
 }
 
