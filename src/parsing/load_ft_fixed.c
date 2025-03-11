@@ -6,13 +6,13 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:14:15 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/11 14:28:29 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:55:49 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube3d.h>
 
-void    strip_map(char ***map_addr)
+void    delete_blank_lines(char ***map_addr)
 {
     ssize_t last_line;
     char **map = *map_addr;
@@ -78,11 +78,30 @@ void shift_to_left(char ***map_addr)
 	*map_addr = map;
 }
 
+void ft_trim_right(char ***map_addr)
+{
+    int i;
+    int j;
+    char **map = *map_addr;
+
+    i = 0;
+    while (map[i])
+    {
+        j = ft_strlen(map[i]) - 1;
+        while (ft_strchr(" \n", map[i][j]))
+            j--;
+        map[i][j + 1] = '\0';
+        i++;
+    }
+    *map_addr = map;
+}
+
 void trim_map(char ***map_addr)
 {
-    strip_map(map_addr);
+    delete_blank_lines(map_addr);
 	if (*map_addr)
 		shift_to_left(map_addr);
+    ft_trim_right(map_addr);
 }
 
 void set_width_and_lenght(t_game *game)
@@ -94,10 +113,17 @@ void set_width_and_lenght(t_game *game)
     while (game->map.tab[i])
     {
         j = 0;
-        while (game->map.tab[i][j])
-            j++;
-        if (j > game->map.width)
-            game->map.width = j;
+		j = ft_strlen(game->map.tab[i]);
+		while (j >= 0)
+		{
+			if (!ft_strchr(" \n", game->map.tab[i][j]))
+				break ;
+			else
+				j--;
+		}
+
+        if (j  + 1> game->map.width)
+            game->map.width = j + 1;
         i++;
     }
     game->map.height = i;
@@ -127,8 +153,8 @@ char **square_malloc(int width, int height)
 
 void ft_square_map(t_game *game, char c)
 {
-    size_t i;
-    size_t j;
+    int i;
+    int j;
     char **map = game->map.tab;
     char **new_map;
 
@@ -136,13 +162,13 @@ void ft_square_map(t_game *game, char c)
     new_map = square_malloc(game->map.width + 1, game->map.height + 1);
     if (!new_map)
         clean_exit(game, "Error: malloc failed (ft_square_map)", ERR_MALLOC);
-    while (i < (size_t)game->map.height)
+    while (i < game->map.height)
     {
         j = 0;
-        while (j < (size_t)game->map.width)
+        while (j < game->map.width)
         {
             new_map[i][j] = c;
-            if (j <= ft_strlen(map[i]))
+            if (j < (int)ft_strlen(map[i]))
                 new_map[i][j] = map[i][j];
             j++;
         }
@@ -164,8 +190,12 @@ char	*load_map(t_game *game, char *line)
 	if (!game->map.tab)
 		clean_exit(game, "[map] Error: Map not available", ERR_MULTIPLE_MAPS);
     set_width_and_lenght(game);
-    //ft_square_map(game, CHAR_BLANK_MAP);
-	//print_tab(game->map.tab);
+	printf("Before square map\n");
+	print_game(game);
+	print_tab(game->map.tab);
+    ft_square_map(game, CHAR_BLANK_MAP);
+	printf("after square map\n");
+	print_tab(game->map.tab);
 	return (line);
 }
 

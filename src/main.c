@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/10 21:14:17 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:48:26 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,7 @@ void init_game(t_game *game)
 //}
 
 int main(int argc, char **argv)
+
 {
 	t_game *game;
     t_point player;
