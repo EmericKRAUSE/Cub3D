@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/10 17:56:46 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/10 21:14:17 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,15 +122,15 @@ void init_game(t_game *game)
 {
     game->textures.ceiling = init_color(UNSET_COLOR, UNSET_COLOR, UNSET_COLOR);
     game->textures.floor = init_color(UNSET_COLOR, UNSET_COLOR, UNSET_COLOR);
-    game->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Cub3D", false);
-    game->tile_size = 64;
-    game->ray = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
-    game->player.image = mlx_new_image(game->mlx, 1, 1);
-    game->player.angle = 0;
-    game->player.rotation_speed = 0.05;
-    game->wall = mlx_new_image(game->mlx, game->tile_size, game->tile_size);
-    game->background = mlx_new_image(game->mlx, game->tile_size, game->tile_size);
-    game->player.move_dist = game->tile_size / 4;
+    //game->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Cub3D", false);
+    //game->tile_size = 64;
+    //game->ray = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
+    //game->player.image = mlx_new_image(game->mlx, 1, 1);
+    //game->player.angle = 0;
+    //game->player.rotation_speed = 0.05;
+    //game->wall = mlx_new_image(game->mlx, game->tile_size, game->tile_size);
+    //game->background = mlx_new_image(game->mlx, game->tile_size, game->tile_size);
+    //game->player.move_dist = game->tile_size / 4;
 }
 
 //int	main(int argc, char **argv)
@@ -153,6 +153,7 @@ void init_game(t_game *game)
 int main(int argc, char **argv)
 {
 	t_game *game;
+    t_point player;
 
 	game = ft_calloc(sizeof(t_game), 1);
 	init_game(game);
@@ -162,8 +163,9 @@ int main(int argc, char **argv)
 	}
 	parse_args(argc, argv, game);
 
-	game->player.start_x = 5;
-	game->player.start_y = 5;
+	player = get_player_position(game->map.tab);
+    game->player.start_x = player.x;
+    game->player.start_y = player.y;
 
     print_game(game);
     printf("WIDTH: %d\nHEIGHT: %d\n", game->map.width, game->map.height);

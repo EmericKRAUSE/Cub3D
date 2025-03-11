@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/10 17:23:41 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/10 21:12:35 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@
 
 # define HABIBI 000707
 # define BLANK_CHAR "\t\n "
+# define CHAR_BLANK_MAP '1'
 
 # define MAP_CHARS "01NSEW \n"
 # define TEXTURES_BALISE "NO /SO /EA /WE "
@@ -186,6 +187,7 @@ char *load_map(t_game *game, char *line);
 void invalid_line(t_game *game, char *line);
 int load_texture(t_game *game, int ind, char *line);
 void    set_map_point(char **map, t_point pt, char c);
+t_point get_player_position(char **map);
 
 // ####################
 // debug

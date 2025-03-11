@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/10 16:41:43 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/11 11:57:45 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,17 +87,16 @@ int one_player_only(char **map)
     t_point pos_player;
     char **map_copy;
 
-    map_copy = dup_tab(map);
-    pos_player = get_player_position(map_copy);
+    pos_player = get_player_position(map);
     if (map[pos_player.y] == NULL)
     {
         printf("[one_player_only] no player\n");
-        free_tab(map_copy);
         return (FALSE);
     }
+    map_copy = dup_tab(map);
     set_map_point(map_copy, pos_player, '0');
     pos_player = get_player_position(map_copy);
-    free_tab(map_copy);
+    ft_free_split(&map_copy);
     if (map[pos_player.y] == NULL)
         return (TRUE);
     printf("[one_player_only] more than one player\n");
@@ -147,7 +146,7 @@ int is_map_closed(char **map)
     is_closed = floodfill(map_cpy, pos_player.y, pos_player.x);
     if (!is_closed)
         printf("[is_map_closed] map not closed\n");
-    free_tab(map_cpy);
+    ft_free_split(&map_cpy);
     return (is_closed);
 }
 
@@ -200,6 +199,7 @@ int	import_cub_file(t_game *game)
     {
         clean_exit(game, "[import_cub_file] param missing", ERR_MAP);
     }
+    //game->player.start_x = get_player_position(game->map.tab);
     return (TRUE);
 }
 

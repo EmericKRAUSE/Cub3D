@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:14:15 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/10 20:29:52 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/11 13:56:03 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,20 @@ void    strip_map(char ***map_addr)
 
     if (map == NULL)
         return ;
-    last_line = ft_tablen(map);
-    while (last_line && is_blank_line(map[--last_line]))
+    last_line = ft_tablen(map) - 1;
+    while (last_line && is_blank_line(map[last_line]))
     {
         free(map[last_line]);
         map[last_line] = NULL;
+		last_line--;
     }
     if (last_line == 0)
     {
+        free(map[last_line]);
         free(map);
-        *map_addr = NULL;
+        map= NULL;
     }
+	*map_addr = map;
 }
 
 int smallest_blank_gap_at_left_side(char **map)
@@ -56,21 +59,24 @@ void trim_map(char ***map_addr)
     int smallest_gap;
     char **map;
     char *line;
+	int		i;
 
     map = *map_addr;
     strip_map(map_addr);
     smallest_gap = smallest_blank_gap_at_left_side(map);
-    while (*map)
+	i = 0;
+    while (map[i])
     {
-        line = *map;
+        line = map[i];
         while (line[smallest_gap])
         {
             *line = line[smallest_gap];
             line++;
         }
         *line = line[smallest_gap];
-        map++;
+        i++;
     }
+	*map_addr = map;
 }
 
 void set_width_and_lenght(t_game *game)
@@ -91,6 +97,55 @@ void set_width_and_lenght(t_game *game)
     game->map.height = i;
 }
 
+char **square_malloc(int width, int height)
+{
+    int i;
+    char **tab;
+
+    i = 0;
+    tab = ft_calloc(sizeof(char *), height);
+    if (!tab)
+        return (NULL);
+    while (i < height)
+    {
+        tab[i] = ft_calloc(sizeof(char), width);
+        if (!tab[i])
+        {
+            ft_free_split(&tab);
+            return (NULL);
+        }
+        i++;
+    }
+    return (tab);
+}
+
+void ft_square_map(t_game *game, char c)
+{
+    size_t i;
+    size_t j;
+    char **map = game->map.tab;
+    char **new_map;
+
+    i = 0;
+    new_map = square_malloc(game->map.width + 1, game->map.height + 1);
+    if (!new_map)
+        clean_exit(game, "Error: malloc failed (ft_square_map)", ERR_MALLOC);
+    while (i < (size_t)game->map.height)
+    {
+        j = 0;
+        while (j < (size_t)game->map.width)
+        {
+            new_map[i][j] = c;
+            if (j <= ft_strlen(map[i]))
+                new_map[i][j] = map[i][j];
+            j++;
+        }
+        i++;
+    }
+    ft_free_split(&game->map.tab);
+    game->map.tab = new_map;
+}
+
 char	*load_map(t_game *game, char *line)
 {
 	if (game->map.tab)
@@ -98,7 +153,9 @@ char	*load_map(t_game *game, char *line)
 	else
 		game->map.tab = get_map(game, game->fd, &line);
     trim_map(&game->map.tab);
+	print_tab(game->map.tab);
     set_width_and_lenght(game);
+    //ft_square_map(game, CHAR_BLANK_MAP);
 	return (line);
 }
 

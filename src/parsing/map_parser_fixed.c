@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/10 13:24:58 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/10 21:32:16 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ char	**get_map(t_game *game, int fd, char **line_addr)
     if (line && !is_map(line))
         *line_addr = line;
     else
-        *line_addr = NULL;
+        *line_addr = get_next_line(fd);
     return (map);
 }
