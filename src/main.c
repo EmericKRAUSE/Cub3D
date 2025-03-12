@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/11 15:48:26 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/12 13:27:17 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ int main(int argc, char **argv)
 	t_game *game;
     t_point player;
 
-	game = ft_calloc(sizeof(t_game), 1);
+	game = NULL;
 	init_game(game);
 	if (!game)
 	{
