@@ -14,10 +14,7 @@
   <component name="ChangeListManager">
     <list default="true" id="90963887-31d1-4ae4-bece-84ecff793343" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/cube3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/cube3d.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maps/debug/available_00.cub" beforeDir="false" afterPath="$PROJECT_DIR$/maps/debug/available_00.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maps/debug/debug.cub" beforeDir="false" afterPath="$PROJECT_DIR$/maps/debug/debug.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing/load_ft_fixed.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing/load_ft_fixed.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parsing/import_cub_fixed.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing/import_cub.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
