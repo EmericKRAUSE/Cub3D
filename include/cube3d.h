@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/10 17:23:41 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/12 15:36:49 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 // Display mode
 # define RENDER_3D 1
 # define RENDER_2D 0
-# define DISPLAY_MODE RENDER_2D
+# define DISPLAY_MODE RENDER_3D
 
 // Color management
 # define HEX_BLACK 0x000000FF
