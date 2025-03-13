@@ -6,31 +6,11 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/10 13:24:58 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/10 21:32:16 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube3d.h>
-
-void    strip_map(char ***map_addr)
-{
-    ssize_t last_line;
-    char **map = *map_addr;
-
-    if (map == NULL)
-        return ;
-    last_line = ft_tablen(map);
-    while (last_line && is_blank_line(map[--last_line]))
-    {
-        free(map[last_line]);
-        map[last_line] = NULL;
-    }
-    if (last_line == 0)
-    {
-        free(map);
-        *map_addr = NULL;
-    }
-}
 
 char	**get_map(t_game *game, int fd, char **line_addr)
 {
@@ -55,7 +35,6 @@ char	**get_map(t_game *game, int fd, char **line_addr)
     if (line && !is_map(line))
         *line_addr = line;
     else
-        *line_addr = NULL;
-    strip_map(&map);
+        *line_addr = get_next_line(fd);
     return (map);
 }

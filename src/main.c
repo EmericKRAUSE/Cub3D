@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/12 15:07:26 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/12 23:18:20 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,53 +127,51 @@ void init_game(t_game *game)
     game->ray = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
     game->player.image = mlx_new_image(game->mlx, 1, 1);
     game->player.angle = 0;
-    game->player.rotation_speed = 0.04;
+    game->player.rotation_speed = 0.05;
     game->wall = mlx_new_image(game->mlx, game->tile_size, game->tile_size);
     game->background = mlx_new_image(game->mlx, game->tile_size, game->tile_size);
     game->player.move_dist = game->tile_size / 4;
 }
 
-// int	main(int argc, char **argv)
-// {
-// 	t_game	*game;
-
-//     (void)game;
-//     (void)argc;
-//     game = ft_calloc(sizeof(t_game), 1);
-//     init_game(game);
-//     if (!game)
-//     {
-//         return (ERR_MALLOC);
-//     }
-// 	printf("[parse args] %i\n", parse_args(argc, argv, game));
-//     //printf("[get_next_line] %i\n", get_next_line_tester(argv[1]));
-//     clean_exit(game, NULL, 0);
-// }
-
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_game *game;
+	t_game	*game;
 
-	game = ft_calloc(sizeof(t_game), 1);
-	init_game(game);
-	if (!game)
-	{
-		return (ERR_MALLOC);
-	}
-	parse_args(argc, argv, game);
-	
-	game->player.start_x = 5;
-	game->player.start_y = 5;
-	game->map.width = 39;
-	game->map.height = 21;
-
-	if (DISPLAY_MODE == RENDER_2D)
-		display_map(game);
-	else if (DISPLAY_MODE == RENDER_3D)
-		display_3d_map(game);
-		
-	mlx_loop_hook(game->mlx, &movements, game);
-	mlx_loop_hook(game->mlx, &update_ray, game);
-	mlx_loop(game->mlx);
-	clean_exit(game, NULL, 0);
+    (void)game;
+    (void)argc;
+    game = ft_calloc(sizeof(t_game), 1);
+    init_game(game);
+    if (!game)
+    {
+        return (ERR_MALLOC);
+    }
+	printf("[parse args] %i\n", parse_args(argc, argv, game));
+    //printf("[get_next_line] %i\n", get_next_line_tester(argv[1]));
+ 	display_map(game);
+ 	mlx_loop_hook(game->mlx, &movements, game);
+ 	mlx_loop_hook(game->mlx, &update_ray, game);
+ 	mlx_loop(game->mlx);
+    clean_exit(game, NULL, 0);
 }
+
+// int main(int argc, char **argv)
+// {
+// 	t_game *game;
+
+// 	game = ft_calloc(sizeof(t_game), 1);
+// 	init_game(game);
+// 	if (!game)
+// 	{
+// 		return (ERR_MALLOC);
+// 	}
+// 	parse_args(argc, argv, game);
+	
+// 	game->player.start_x = 5;
+// 	game->player.start_y = 5;
+	
+// 	display_map(game);
+// 	mlx_loop_hook(game->mlx, &movements, game);
+// 	mlx_loop_hook(game->mlx, &update_ray, game);
+// 	mlx_loop(game->mlx);
+// 	clean_exit(game, NULL, 0);
+// }

@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/10 13:54:29 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/12 11:15:58 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,34 @@ char	*free_and_get_line(char	*line, int fd)
 	return (get_next_line(fd));
 }
 
+int param_missing_but_map(t_game *game)
+{
+    int i;
+
+    i = 0;
+    if (game->textures.ceiling.r == UNSET_COLOR)
+        return (TRUE);
+    if (game->textures.floor.r == UNSET_COLOR)
+        return (TRUE);
+    while (i < 4)
+    {
+        if (game->textures.f_names[i] == NULL)
+            return (TRUE);
+        i++;
+    }
+    return (FALSE);
+}
+
 void	process_line(t_game *game, char **line)
 {
 	if (is_blank_line(*line))
 		*line = free_and_get_line(*line, game->fd);
 	else if (is_map(*line))
-		*line = load_map(game, *line);
+    {
+        if (param_missing_but_map(game))
+            printf("[process_line] WARNING: map should be the last param\n");
+        *line = load_map(game, *line);
+    }
 	else if (is_texture(game, *line))
 	{
 		if (get_texture(game, *line) == ERR_LOADING_TEXTURE)
@@ -65,17 +87,16 @@ int one_player_only(char **map)
     t_point pos_player;
     char **map_copy;
 
-    map_copy = dup_tab(map);
-    pos_player = get_player_position(map_copy);
+    pos_player = get_player_position(map);
     if (map[pos_player.y] == NULL)
     {
         printf("[one_player_only] no player\n");
-        free_tab(map_copy);
         return (FALSE);
     }
+    map_copy = dup_tab(map);
     set_map_point(map_copy, pos_player, '0');
     pos_player = get_player_position(map_copy);
-    free_tab(map_copy);
+    ft_free_split(&map_copy);
     if (map[pos_player.y] == NULL)
         return (TRUE);
     printf("[one_player_only] more than one player\n");
@@ -98,6 +119,8 @@ int floodfill(char **map, int y, int x)
     if (is_out_of_bounds(map, y, x))
         return (FALSE);
     if (ft_strchr(BLANK_CHAR, map[y][x]))
+        return (FALSE);
+    if (map[y][x] == CHAR_BLANK_MAP)
         return (FALSE);
     if (map[y][x] == FLOODFILL_VISITED)
         return (TRUE);
@@ -125,8 +148,7 @@ int is_map_closed(char **map)
     is_closed = floodfill(map_cpy, pos_player.y, pos_player.x);
     if (!is_closed)
         printf("[is_map_closed] map not closed\n");
-    //print_tab(map_cpy);
-    free_tab(map_cpy);
+    ft_free_split(&map_cpy);
     return (is_closed);
 }
 
@@ -179,6 +201,7 @@ int	import_cub_file(t_game *game)
     {
         clean_exit(game, "[import_cub_file] param missing", ERR_MAP);
     }
+    //game->player.start_x = get_player_position(game->map.tab);
     return (TRUE);
 }
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   import_line_fixed.c                                :+:      :+:    :+:   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/08 15:17:33 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/11 13:37:39 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ char **dup_tab(char **tab)
     int i;
 
     i = 0;
-    dup = malloc(sizeof(char *) * (ft_tablen(tab) + 1));
+	if (!tab)
+		return (NULL);
+    dup = ft_calloc(sizeof(char *), (ft_tablen(tab) + 1));
+    if (!dup)
+        return (NULL);
     while (tab[i])
     {
         dup[i] = ft_strdup(tab[i]);

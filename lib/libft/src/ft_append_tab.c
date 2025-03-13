@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_append_tab.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/18 21:07:40 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/11 13:10:34 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,17 @@ char **append_tab(char **tab, char *str)
     int len;
 
     len = tab_len(tab);
-    ret = malloc((len + 2) * sizeof(char *));
+    ret = ft_calloc((len + 2), sizeof(char *));
     if (!ret)
+	{
+		ft_free_split(&tab);
         return (NULL);
+	}
     ret[len] = str;
     ret[len + 1] = NULL;
     if (tab)
         while (len--)
             ret[len] = tab[len];
-    if (tab)
-        free(tab);
+    free(tab);
     return (ret);
 }
