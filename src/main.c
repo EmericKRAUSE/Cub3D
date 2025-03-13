@@ -1,3 +1,4 @@
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
@@ -165,8 +166,6 @@ int main(int argc, char **argv)
 	pt_player = get_player_position(game->map.tab);
 	game->player.start_x = pt_player.x;
 	game->player.start_y = pt_player.y;
-	game->map.width = 39;
-	game->map.height = 21;
 
 	if (DISPLAY_MODE == RENDER_2D)
 		display_map(game);

@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 16:31:55 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/01 17:10:17 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/11 12:17:10 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,17 @@
 void	ft_free_split(char ***t)
 {
 	char	**tab;
-	char	**temp;
 
 	if (!t || !*t)
 		return ;
 	tab = *t;
-	temp = tab;
 	while (*tab)
 	{
 		free(*tab);
 		*tab = NULL;
 		tab++;
 	}
-	free(temp);
+	free(*t);
 	*t = NULL;
 }
 

@@ -12,16 +12,16 @@
 
 #include <cube3d.h>
 
-void	free_tab(char **map)
-{
-	char		**tmp;
-
-	tmp = map;
-	if (map)
-		while (*tmp)
-			free(*tmp++);
-	free(map);
-}
+//void	free_tab(char **map)
+//{
+//	char		**tmp;
+//
+//	tmp = map;
+//	if (map)
+//		while (*tmp)
+//			free(*tmp++);
+//	free(map);
+//}
 
 int	open_file(t_game *game, char *filename)
 {
@@ -41,6 +41,5 @@ int	parse_args(int argc, char **argv, t_game *game)
 		clean_exit(NULL, "Error: File must be .cub", ERR_CUBEXT);
 	game->fd = open_file(game, argv[1]);
 	import_cub_file(game);
-	print_game(game);
 	return (OK);
 }

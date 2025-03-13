@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/08 14:25:29 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:53:18 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void print_tab(char **tab)
     int i = 0;
     while (tab[i])
     {
-        printf("%s", tab[i]);
+        printf("%s\n", tab[i]);
         i++;
     }
 }
@@ -38,5 +38,6 @@ void	print_game(t_game *game)
 	printf("east:															 %s\n", game->textures.f_names[EAST]);
 	printf("floor:		 %d %d %d\n", game->textures.floor.r, game->textures.floor.g, game->textures.floor.b);
 	printf("ceiling: %d %d %d\n", game->textures.ceiling.r, game->textures.ceiling.g, game->textures.ceiling.b);
+	printf("size: width %d height %d\n", game->map.width, game->map.height);
 
 }

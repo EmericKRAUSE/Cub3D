@@ -1,31 +1,22 @@
 
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO ./textures/forest00.png
+SO ./textures/forest01.png
+WE ./textures/forest02.png
+EA ./textures/forest03.png
 
 F 220,100,0
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-111
-111
-1011
-10011
-10N01
-10011
-1111
-
-
 C 225,30,0
+
+
+
+
+
+                              11
+                             10N1
+                              11
+
+
