@@ -6,17 +6,17 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 14:44:56 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/10 17:24:08 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/12 16:02:13 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube3d.h>
 
 // Update the new_x and new_y variable depending on the player angle
-void	move_player(t_game *game, float *new_x, float *new_y)
+void	move_player(t_game *game, double *new_x, double *new_y)
 {
-	float	move_x;
-	float	move_y;
+	double	move_x;
+	double	move_y;
 
 	move_x = cos(game->player.angle);
 	move_y = sin(game->player.angle);
@@ -63,11 +63,11 @@ void	rotate_player(t_game *game)
 void	movements(void *param)
 {
 	t_game	*game;
-	float	new_x;
-	float	new_y;
-	int		map_x;
-	int		map_y;
-	float	collision_margin;
+	double	new_x;
+	double	new_y;
+	double	map_x;
+	double	map_y;
+	double	collision_margin;
 
 	game = param;
 	new_x = game->player.image->instances->x;
@@ -76,15 +76,16 @@ void	movements(void *param)
 	move_player(game, &new_x, &new_y);
 	collision_margin = game->tile_size * 0.1;
 	if (new_x > game->player.image->instances->x)
-		map_x = (int)(new_x + collision_margin) / game->tile_size;
+		map_x = (new_x + collision_margin) / game->tile_size;
 	else
-		map_x = (int)(new_x - collision_margin) / game->tile_size;
+		map_x = (new_x - collision_margin) / game->tile_size;
 	if (new_y > game->player.image->instances->y)
-		map_y = (int)(new_y + collision_margin) / game->tile_size;
+		map_y = (new_y + collision_margin) / game->tile_size;
 	else
-		map_y = (int)(new_y - collision_margin) / game->tile_size;
-	if (game->map.tab[map_y][game->player.image->instances->x / game->tile_size] != '1')
-		game->player.image->instances->y = roundf(new_y);
-	if (game->map.tab[game->player.image->instances->y / game->tile_size][map_x] != '1')
-		game->player.image->instances->x = roundf(new_x);
+		map_y = (new_y - collision_margin) / game->tile_size;
+	
+	if (game->map.tab[game->player.image->instances->y / game->tile_size][(int)map_x] != '1')
+		game->player.image->instances->x = round(new_x);
+	if (game->map.tab[(int)map_y][game->player.image->instances->x / game->tile_size] != '1')
+		game->player.image->instances->y = round(new_y);
 }

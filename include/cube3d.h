@@ -33,7 +33,7 @@
 // Display mode
 # define RENDER_3D 1
 # define RENDER_2D 0
-# define DISPLAY_MODE RENDER_2D
+# define DISPLAY_MODE RENDER_3D
 
 // Color management
 # define HEX_BLACK 0x000000FF

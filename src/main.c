@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/11 15:48:26 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:24:25 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,57 +122,56 @@ void init_game(t_game *game)
 {
     game->textures.ceiling = init_color(UNSET_COLOR, UNSET_COLOR, UNSET_COLOR);
     game->textures.floor = init_color(UNSET_COLOR, UNSET_COLOR, UNSET_COLOR);
-    //game->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Cub3D", false);
-    //game->tile_size = 64;
-    //game->ray = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
-    //game->player.image = mlx_new_image(game->mlx, 1, 1);
-    //game->player.angle = 0;
-    //game->player.rotation_speed = 0.05;
-    //game->wall = mlx_new_image(game->mlx, game->tile_size, game->tile_size);
-    //game->background = mlx_new_image(game->mlx, game->tile_size, game->tile_size);
-    //game->player.move_dist = game->tile_size / 4;
+    game->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Cub3D", false);
+    game->tile_size = 64;
+    game->ray = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
+    game->player.image = mlx_new_image(game->mlx, 1, 1);
+    game->player.angle = 0;
+    game->player.rotation_speed = 0.05;
+    game->wall = mlx_new_image(game->mlx, game->tile_size, game->tile_size);
+    game->background = mlx_new_image(game->mlx, game->tile_size, game->tile_size);
+    game->player.move_dist = game->tile_size / 4;
 }
 
-//int	main(int argc, char **argv)
-//{
-//	t_game	*game;
-//
-//    (void)game;
-//    (void)argc;
-//    game = ft_calloc(sizeof(t_game), 1);
-//    init_game(game);
-//    if (!game)
-//    {
-//        return (ERR_MALLOC);
-//    }
-//	printf("[parse args] %i\n", parse_args(argc, argv, game));
-//    //printf("[get_next_line] %i\n", get_next_line_tester(argv[1]));
-//    clean_exit(game, NULL, 0);
-//}
-
-int main(int argc, char **argv)
-
+int	main(int argc, char **argv)
 {
-	t_game *game;
-    t_point player;
+	t_game	*game;
 
-	game = ft_calloc(sizeof(t_game), 1);
-	init_game(game);
-	if (!game)
-	{
-		return (ERR_MALLOC);
-	}
-	parse_args(argc, argv, game);
-
-	player = get_player_position(game->map.tab);
-    game->player.start_x = player.x;
-    game->player.start_y = player.y;
-
-    print_game(game);
-    printf("WIDTH: %d\nHEIGHT: %d\n", game->map.width, game->map.height);
-	//display_map(game);
-	//mlx_loop_hook(game->mlx, &movements, game);
-	//mlx_loop_hook(game->mlx, &update_ray, game);
-	//mlx_loop(game->mlx);
-	clean_exit(game, NULL, 0);
+    (void)game;
+    (void)argc;
+    game = ft_calloc(sizeof(t_game), 1);
+    init_game(game);
+    if (!game)
+    {
+        return (ERR_MALLOC);
+    }
+	printf("[parse args] %i\n", parse_args(argc, argv, game));
+    //printf("[get_next_line] %i\n", get_next_line_tester(argv[1]));
+ 	display_map(game);
+ 	mlx_loop_hook(game->mlx, &movements, game);
+ 	mlx_loop_hook(game->mlx, &update_ray, game);
+ 	mlx_loop(game->mlx);
+    clean_exit(game, NULL, 0);
 }
+
+// int main(int argc, char **argv)
+// {
+// 	t_game *game;
+
+// 	game = ft_calloc(sizeof(t_game), 1);
+// 	init_game(game);
+// 	if (!game)
+// 	{
+// 		return (ERR_MALLOC);
+// 	}
+// 	parse_args(argc, argv, game);
+	
+// 	game->player.start_x = 5;
+// 	game->player.start_y = 5;
+	
+// 	display_map(game);
+// 	mlx_loop_hook(game->mlx, &movements, game);
+// 	mlx_loop_hook(game->mlx, &update_ray, game);
+// 	mlx_loop(game->mlx);
+// 	clean_exit(game, NULL, 0);
+// }
