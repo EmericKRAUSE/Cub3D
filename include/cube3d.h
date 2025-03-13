@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/11 15:59:01 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/13 15:37:32 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,7 @@ int is_map(char *line);
 int is_blank_line(char *line);
 int is_color(char *line);
 
+int load_texture(t_game *game, int ind, char *line);
 int get_texture(t_game *game, char *line);
 int get_color(t_game *game, char *line);
 int get_texture_ind_from_balise(char *balise);
@@ -183,11 +184,20 @@ int get_texture(t_game *game, char *line);
 t_rgb *get_rgb(t_game *game, char *line, t_rgb *rgb);
 int get_color(t_game *game, char *line);
 char **get_map(t_game *game, int fd, char **line_addr);
+
 char *load_map(t_game *game, char *line);
 void invalid_line(t_game *game, char *line);
-int load_texture(t_game *game, int ind, char *line);
 void    set_map_point(char **map, t_point pt, char c);
 t_point get_player_position(char **map);
+int param_missing_but_map(t_game *game);
+int param_missing(t_game *game);
+int is_map_available(t_game *game);
+void trim_map(char ***map_addr);
+void set_width_and_lenght(t_game *game);
+void set_width_and_lenght(t_game *game);
+void ft_square_map(t_game *game, char c);
+int one_player_only(char **map);
+int is_map_closed(char **map);
 
 // ####################
 // debug
