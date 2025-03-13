@@ -1,4 +1,3 @@
-/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
@@ -153,6 +152,7 @@ void init_game(t_game *game)
 int main(int argc, char **argv)
 {
 	t_game *game;
+	t_point	pt_player;
 
 	game = ft_calloc(sizeof(t_game), 1);
 	init_game(game);
@@ -162,8 +162,9 @@ int main(int argc, char **argv)
 	}
 	parse_args(argc, argv, game);
 	
-	game->player.start_x = 5;
-	game->player.start_y = 5;
+	pt_player = get_player_position(game->map.tab);
+	game->player.start_x = pt_player.x;
+	game->player.start_y = pt_player.y;
 	game->map.width = 39;
 	game->map.height = 21;
 

@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/10 13:54:29 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/13 19:15:44 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,8 @@ int	import_cub_file(t_game *game)
     {
         clean_exit(game, "[import_cub_file] param missing", ERR_MAP);
     }
+	game->map.width = ft_strlen(game->map.tab[0]);
+	game->map.height = tab_len(game->map.tab);
     return (TRUE);
 }
 

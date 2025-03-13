@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/12 15:36:49 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/13 19:10:27 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,6 +185,8 @@ char *load_map(t_game *game, char *line);
 void invalid_line(t_game *game, char *line);
 int load_texture(t_game *game, int ind, char *line);
 void    set_map_point(char **map, t_point pt, char c);
+
+t_point get_player_position(char **map);
 
 // ####################
 // debug
