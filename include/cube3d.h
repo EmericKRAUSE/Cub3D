@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/12 18:44:10 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/14 19:59:04 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUBE3D_H
 
 # include "../MLX42/include/MLX42/MLX42.h"
+# include "../lib/libft/include/libft.h"
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -24,7 +25,6 @@
 // Macros
 
 // General
-# include "../lib/libft/include/libft.h"
 # define WIN_WIDTH 2560
 # define WIN_HEIGHT (WIN_WIDTH * 9 / 16)
 # define FOV 60
@@ -39,19 +39,25 @@
 # define DISPLAY_MODE RENDER_3D
 
 // Color management
-# define HEX_BLACK 0x000000FF
-# define HEX_WHITE 0xFFFFFFFF
-# define HEX_YELLOW 0xFFFF00FF
-# define HEX_BLUE 0x77B5FEFF
-# define HEX_BROWN 0x5C4033DF
+# define HEX_BLACK		0x000000FF
+# define HEX_WHITE		0xFFFFFFFF
+# define HEX_YELLOW		0xFFFF00FF
+# define HEX_BLUE		0x77B5FEFF
+# define HEX_BROWN		0x5C4033DF
+# define HEX_GREEN		0x008000FF
+# define HEX_DARK_GREEN	0x0A5C0AFF
 
-# define COLOR_PLAYER HEX_WHITE
-# define COLOR_RAY HEX_YELLOW
-# define COLOR_WALL HEX_WHITE
-# define COLOR_BACKGROUND HEX_BLACK
-# define COLOR_CEILING HEX_BLUE
-# define COLOR_FLOOR HEX_BROWN
-# define UNSET_COLOR -1
+# define COLOR_PLAYER		HEX_WHITE
+# define COLOR_RAY			HEX_YELLOW
+# define COLOR_WALL			HEX_GREEN
+# define COLOR_WALL_NORTH	HEX_GREEN
+# define COLOR_WALL_SOUTH	HEX_GREEN
+# define COLOR_WALL_EAST	HEX_DARK_GREEN
+# define COLOR_WALL_WEST	HEX_DARK_GREEN
+# define COLOR_BACKGROUND	HEX_BLACK
+# define COLOR_CEILING		HEX_BLUE
+# define COLOR_FLOOR		HEX_BROWN
+# define UNSET_COLOR		-1
 
 # define NORTH 0
 # define SOUTH 1
@@ -142,6 +148,7 @@ typedef struct s_game
 	mlx_image_t *wall;
 	mlx_image_t	*background;
 	mlx_image_t *world;
+	mlx_image_t *gun;
 	t_textures	textures;
     int		    fd;
 }	t_game;

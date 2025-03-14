@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/12 18:43:03 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/14 20:08:50 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void init_game(t_game *game)
     game->player.rotation_speed = 0.04;
     game->wall = mlx_new_image(game->mlx, game->tile_size, game->tile_size);
     game->background = mlx_new_image(game->mlx, game->tile_size, game->tile_size);
-    game->player.move_dist = game->tile_size / 4;
+    game->player.move_dist = game->tile_size / 8;
 }
 
 // int	main(int argc, char **argv)
@@ -166,6 +166,11 @@ int main(int argc, char **argv)
 	}
 	parse_args(argc, argv, game);
 	
+	mlx_texture_t *gun_texture = mlx_load_png("gun.png");
+	game->gun = mlx_texture_to_image(game->mlx, gun_texture);
+	mlx_image_to_window(game->mlx, game->gun, (WIN_WIDTH / 2) - (555 / 2), WIN_HEIGHT - 555);
+	mlx_set_instance_depth(&game->gun->instances[0], 2);
+
 	pt_player = get_player_position(game->map.tab);
 	game->player.start_x = pt_player.x;
 	game->player.start_y = pt_player.y;

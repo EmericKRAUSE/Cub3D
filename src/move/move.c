@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 14:44:56 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/14 15:02:50 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/14 17:34:42 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,16 +69,14 @@ void	on_cursor_move(double xpos, double ypos, void *param)
 	game = param;
 	sens = (SENSIVITY / 10000);
 	x_travel = xpos - X_CENTER;
-	
 	game->player.angle += x_travel * sens;
-
+	
 	if (game->player.angle > 2 * M_PI)
 		game->player.angle -= 2 * M_PI;
 	else if (game->player.angle < 0)
 		game->player.angle += 2 * M_PI;
-
+	
 	mlx_set_mouse_pos(game->mlx, WIN_WIDTH / 2, WIN_HEIGHT / 2);
-
 	(void)ypos;
 }
 

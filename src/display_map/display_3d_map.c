@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:14:15 by ekrause           #+#    #+#             */
-/*   Updated: 2025/02/23 00:05:17 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/14 20:07:35 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ void display_3d_map(t_game *game)
 						game->player.start_x * game->tile_size,
 						game->player.start_y * game->tile_size);
 
-	//draw_world(game);
+	ceiling->instances->z = 0;
+	floor->instances->z = 0;
 }
