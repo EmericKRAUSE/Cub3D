@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/12 15:36:49 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/12 18:44:10 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@
 # define WIN_HEIGHT (WIN_WIDTH * 9 / 16)
 # define FOV 60
 # define FOV_RAD (FOV * (M_PI / 180))
+# define SENSIVITY 2.00
+# define X_CENTER (WIN_WIDTH / 2)
+# define Y_CENTER (WIN_HEIGHT / 2)
 
 // Display mode
 # define RENDER_3D 1
@@ -106,6 +109,8 @@ typedef struct s_player
 	mlx_image_t	*image;
 	int			start_x;
 	int			start_y;
+	double		mouse_x;
+	double		mouse_y;
 	int			move_dist;
 	float		angle;
 	float		rotation_speed;
@@ -153,6 +158,7 @@ void	ray_casting(t_game *game);
 void	update_ray(void *param);
 void	free_tab(char **tab);
 void	free_map(t_map *map);
+void	on_cursor_move(double xpos, double ypos, void *param);
 
 // ####################
 // utils

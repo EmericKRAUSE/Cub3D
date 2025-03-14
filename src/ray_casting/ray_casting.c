@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:48:38 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/12 16:19:15 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/12 18:57:08 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ float find_vertical_inter(t_game *game, float angle)
 	}
 	else // Regarde a gauche
 	{
-		next_x = floor(player_x / tile_size) * tile_size - 0.1;
+		next_x = floor(player_x / tile_size) * tile_size - 0.001;
 		step_x= -tile_size;
 	}
 
@@ -91,7 +91,7 @@ float find_horizontal_inter(t_game *game, float angle)
 	}
 	else // Regarde vers le haut
 	{
-		next_y = floor(player_y / tile_size) * tile_size - 0.1;
+		next_y = floor(player_y / tile_size) * tile_size - 0.001;
 		step_y = -tile_size;
 	}
 
@@ -117,10 +117,10 @@ void draw_slice(t_game *game, float dist, int i, float ray_angle)
 {
 	float corrected_dist = dist * cos(ray_angle - game->player.angle);
 
-	if (corrected_dist < 1)
-		corrected_dist = 1;
+	// if (corrected_dist < 1)
+	// 	corrected_dist = 1;
 
-	int column_height = (WIN_HEIGHT / (corrected_dist / 64));
+	int column_height = (WIN_HEIGHT / (corrected_dist / 100));
 	int	max_column_height = WIN_HEIGHT;
 
 	if (column_height > max_column_height)
@@ -131,7 +131,7 @@ void draw_slice(t_game *game, float dist, int i, float ray_angle)
 
 	for (int y = start_y; y < end_y; y++)
 	{
-		mlx_put_pixel(game->world, i, y, HEX_WHITE);
+		mlx_put_pixel(game->world, i, y, COLOR_WALL);
 	}
 }
 
