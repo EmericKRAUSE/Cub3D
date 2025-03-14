@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/14 19:59:04 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/14 21:53:51 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@
 # define HEX_DARK_GREEN	0x0A5C0AFF
 
 # define COLOR_PLAYER		HEX_WHITE
+# define COLOR_CROSSHAIR	HEX_YELLOW
 # define COLOR_RAY			HEX_YELLOW
 # define COLOR_WALL			HEX_GREEN
 # define COLOR_WALL_NORTH	HEX_GREEN
@@ -148,7 +149,7 @@ typedef struct s_game
 	mlx_image_t *wall;
 	mlx_image_t	*background;
 	mlx_image_t *world;
-	mlx_image_t *gun;
+	mlx_image_t	*crosshair;
 	t_textures	textures;
     int		    fd;
 }	t_game;

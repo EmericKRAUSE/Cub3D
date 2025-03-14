@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:14:15 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/14 20:07:35 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/14 21:53:35 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,44 @@ void	draw_rectangle(mlx_image_t *img, uint32_t color)
 	}
 }
 
+void	draw_crosshair(t_game *game, int width, int height)
+{
+	int	x;
+	int	y = 0;
+	game->crosshair = mlx_new_image(game->mlx, width, height);
+
+	while(y < height)
+	{
+		x = 0;
+		while (x < width)
+		{
+			if (x == width / 2 || y == height / 2)
+			mlx_put_pixel(game->crosshair, x, y, COLOR_CROSSHAIR);
+			x++;
+		}
+		y++;
+	}
+	mlx_image_to_window(game->mlx, game->crosshair, X_CENTER - game->crosshair->width / 2, Y_CENTER - game->crosshair->height / 2);
+	game->crosshair->instances->z = 4;
+}
+
+void	draw_gun(t_game *game)
+{
+	mlx_texture_t	*gun_texture;
+	mlx_image_t		*gun_image;
+	
+	gun_texture = mlx_load_png("gun.png");
+	if (!gun_texture)
+		return ;
+
+	gun_image = mlx_texture_to_image(game->mlx, gun_texture);
+	if (!gun_image)
+		return ;
+
+	mlx_image_to_window(game->mlx, gun_image, X_CENTER - (gun_image->width / 2), WIN_HEIGHT - gun_image->height);
+	gun_image->instances->z = 3;
+}
+
 void display_3d_map(t_game *game)
 {
 	mlx_image_t *floor;
@@ -50,4 +88,7 @@ void display_3d_map(t_game *game)
 
 	ceiling->instances->z = 0;
 	floor->instances->z = 0;
+
+	draw_gun(game);
+	draw_crosshair(game, 21, 21);
 }

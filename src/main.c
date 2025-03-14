@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/14 20:08:50 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/14 21:13:15 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,19 @@ void init_game(t_game *game)
 //     clean_exit(game, NULL, 0);
 // }
 
+void mouse_event(mouse_key_t button, action_t action, modifier_key_t mods, void *param)
+{
+	t_game *game = (t_game *)param;
+
+	if (button == MLX_MOUSE_BUTTON_LEFT)
+	{
+		if (action == MLX_PRESS)
+			printf("Tir ! 🔫\n");
+	}
+	(void)game;
+	(void)mods;
+}
+
 int main(int argc, char **argv)
 {
 	t_game *game;
@@ -165,11 +178,6 @@ int main(int argc, char **argv)
 		return (ERR_MALLOC);
 	}
 	parse_args(argc, argv, game);
-	
-	mlx_texture_t *gun_texture = mlx_load_png("gun.png");
-	game->gun = mlx_texture_to_image(game->mlx, gun_texture);
-	mlx_image_to_window(game->mlx, game->gun, (WIN_WIDTH / 2) - (555 / 2), WIN_HEIGHT - 555);
-	mlx_set_instance_depth(&game->gun->instances[0], 2);
 
 	pt_player = get_player_position(game->map.tab);
 	game->player.start_x = pt_player.x;
@@ -184,8 +192,10 @@ int main(int argc, char **argv)
 		display_3d_map(game);
 
 	mlx_loop_hook(game->mlx, &movements, game);
-	mlx_cursor_hook(game->mlx, on_cursor_move, game);
 	mlx_loop_hook(game->mlx, &update_ray, game);
+	mlx_cursor_hook(game->mlx, on_cursor_move, game);
+	mlx_mouse_hook(game->mlx, mouse_event, game);
+	
 	mlx_loop(game->mlx);
 	clean_exit(game, NULL, 0);
 }
