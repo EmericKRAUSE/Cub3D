@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/14 21:13:15 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/17 18:57:19 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,14 +150,37 @@ void init_game(t_game *game)
 //     clean_exit(game, NULL, 0);
 // }
 
-void mouse_event(mouse_key_t button, action_t action, modifier_key_t mods, void *param)
+void	shoot(t_game *game)
+{
+	float vertical_dist;
+	float horizontal_dist;
+	float final_dist;
+	float hit_x;
+	float hit_y;
+
+	horizontal_dist = find_horizontal_inter(game, game->player.angle);
+	vertical_dist = find_vertical_inter(game, game->player.angle);
+
+	if (vertical_dist < horizontal_dist)
+		final_dist = vertical_dist;
+	else
+		final_dist = horizontal_dist;
+
+	hit_x = game->player.image->instances->x + final_dist * cos(game->player.angle);
+	hit_y = game->player.image->instances->y + final_dist * sin(game->player.angle);
+
+	if (game->map.tab[(int)hit_y / game->tile_size][(int)hit_x / game->tile_size] == '1')
+		game->map.tab[(int)hit_y / game->tile_size][(int)hit_x / game->tile_size] = '0';
+}
+	
+void	mouse_event(mouse_key_t button, action_t action, modifier_key_t mods, void *param)
 {
 	t_game *game = (t_game *)param;
 
 	if (button == MLX_MOUSE_BUTTON_LEFT)
 	{
 		if (action == MLX_PRESS)
-			printf("Tir ! 🔫\n");
+			shoot(game);
 	}
 	(void)game;
 	(void)mods;

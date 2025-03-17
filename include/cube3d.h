@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/17 13:50:18 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/17 18:49:47 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,8 @@ void	update_ray(void *param);
 void	free_tab(char **tab);
 void	free_map(t_map *map);
 void	on_cursor_move(double xpos, double ypos, void *param);
+float	find_horizontal_inter(t_game *game, float angle);
+float	find_vertical_inter(t_game *game, float angle);
 
 // ####################
 // utils
