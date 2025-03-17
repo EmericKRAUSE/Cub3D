@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 14:44:56 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/12 16:02:13 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/17 13:37:36 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,27 @@ void	rotate_player(t_game *game)
 	}
 }
 
+
+void	on_cursor_move(double xpos, double ypos, void *param)
+{
+	t_game	*game;
+	double	x_travel;
+	double	sens;
+
+	game = param;
+	sens = (SENSIVITY / 10000);
+	x_travel = xpos - WIN_WIDTH / 2;
+	game->player.angle += x_travel * sens;
+	
+	if (game->player.angle > 2 * M_PI)
+		game->player.angle -= 2 * M_PI;
+	else if (game->player.angle < 0)
+		game->player.angle += 2 * M_PI;
+	
+	mlx_set_mouse_pos(game->mlx, WIN_WIDTH / 2, WIN_HEIGHT / 2);
+	(void)ypos;
+}
+
 // Hook for the movement and rotation of the player
 void	movements(void *param)
 {
@@ -72,6 +93,9 @@ void	movements(void *param)
 	game = param;
 	new_x = game->player.image->instances->x;
 	new_y = game->player.image->instances->y;
+
+	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
+		clean_exit(game, NULL, 0);
 	rotate_player(game);
 	move_player(game, &new_x, &new_y);
 	collision_margin = game->tile_size * 0.1;
@@ -88,4 +112,10 @@ void	movements(void *param)
 		game->player.image->instances->x = round(new_x);
 	if (game->map.tab[(int)map_y][game->player.image->instances->x / game->tile_size] != '1')
 		game->player.image->instances->y = round(new_y);
+
+	// if (game->map.tab[(int)map_y][(int)map_x] != '1')
+	// {
+	// 	game->player.image->instances->x = round(new_x);
+	// 	game->player.image->instances->y = round(new_y);
+	// }
 }

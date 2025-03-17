@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/12 15:07:26 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/14 21:13:15 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void init_game(t_game *game)
     game->player.rotation_speed = 0.04;
     game->wall = mlx_new_image(game->mlx, game->tile_size, game->tile_size);
     game->background = mlx_new_image(game->mlx, game->tile_size, game->tile_size);
-    game->player.move_dist = game->tile_size / 4;
+    game->player.move_dist = game->tile_size / 8;
 }
 
 // int	main(int argc, char **argv)
@@ -150,10 +150,26 @@ void init_game(t_game *game)
 //     clean_exit(game, NULL, 0);
 // }
 
+void mouse_event(mouse_key_t button, action_t action, modifier_key_t mods, void *param)
+{
+	t_game *game = (t_game *)param;
+
+	if (button == MLX_MOUSE_BUTTON_LEFT)
+	{
+		if (action == MLX_PRESS)
+			printf("Tir ! 🔫\n");
+	}
+	(void)game;
+	(void)mods;
+}
+
 int main(int argc, char **argv)
 {
 	t_game *game;
 	t_point	pt_player;
+
+	if (SENSIVITY < 1 || SENSIVITY > 10)
+		return (1);
 
 	game = ft_calloc(sizeof(t_game), 1);
 	init_game(game);
@@ -162,18 +178,24 @@ int main(int argc, char **argv)
 		return (ERR_MALLOC);
 	}
 	parse_args(argc, argv, game);
-	
+
 	pt_player = get_player_position(game->map.tab);
 	game->player.start_x = pt_player.x;
 	game->player.start_y = pt_player.y;
+
+	mlx_set_mouse_pos(game->mlx, WIN_WIDTH / 2, WIN_HEIGHT / 2);
+	mlx_set_cursor_mode(game->mlx, MLX_MOUSE_HIDDEN);
 
 	if (DISPLAY_MODE == RENDER_2D)
 		display_map(game);
 	else if (DISPLAY_MODE == RENDER_3D)
 		display_3d_map(game);
-		
+
 	mlx_loop_hook(game->mlx, &movements, game);
 	mlx_loop_hook(game->mlx, &update_ray, game);
+	mlx_cursor_hook(game->mlx, on_cursor_move, game);
+	mlx_mouse_hook(game->mlx, mouse_event, game);
+	
 	mlx_loop(game->mlx);
 	clean_exit(game, NULL, 0);
 }
