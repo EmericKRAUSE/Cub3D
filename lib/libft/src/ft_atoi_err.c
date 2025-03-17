@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 19:13:11 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/01 17:14:25 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:44:08 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_isspace(const char c)
 
 static long int	c_to_i(char c)
 {
-	return ((long int)c - (long int) '0');
+	return (c - '0');
 }
 
 int	ft_atoi_err(char *str)
