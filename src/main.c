@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/17 19:40:47 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/17 20:59:36 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,33 +109,33 @@ void	mouse_event(mouse_key_t button, action_t action, modifier_key_t mods, void 
 	(void)game;
 	(void)mods;
 }
-void	get_next_line_tester(int argc, char **argv)
-{
-	int		fd;
-	char	*line;
 
-	if (argc == 2)
-	{
-		fd = open(argv[1], O_RDONLY);
-		while ((line = get_next_line(fd)))
-		{
-			printf("%s", line);
-			free(line);
-			line = NULL;
-		}
-		close(fd);
-	}
-	else
-		printf("Usage: %s <file>\n", argv[0]);
-}
+//void	get_next_line_tester(int argc, char **argv)
+//{
+//	int		fd;
+//	char	*line;
+//
+//	if (argc == 2)
+//	{
+//		fd = open(argv[1], O_RDONLY);
+//		while ((line = get_next_line(fd)))
+//		{
+//			printf("%s", line);
+//			free(line);
+//			line = NULL;
+//		}
+//		close(fd);
+//	}
+//	else
+//		printf("Usage: %s <file>\n", argv[0]);
+//}
+//
+//int	main(int argc, char **argv)
+//{
+//	get_next_line_tester(argc, argv);
+//	return (0);
+//}
 
-int	main(int argc, char **argv)
-{
-	get_next_line_tester(argc, argv);
-	return (0);
-}
-
-/*
 int	main(int argc, char **argv)
 {
 	t_game	*game;
@@ -166,4 +166,3 @@ int	main(int argc, char **argv)
 	mlx_loop(game->mlx);
 	clean_exit(game, NULL, 0);
 }
-*/
