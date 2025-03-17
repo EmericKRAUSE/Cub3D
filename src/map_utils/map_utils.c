@@ -12,27 +12,27 @@
 
 #include <cube3d.h>
 
-char **dup_tab(char **tab)
+char	**dup_tab(char **tab)
 {
-    char **dup;
-    int i;
+	char	**dup;
+	int		i;
 
-    i = 0;
+	i = 0;
 	if (!tab)
 		return (NULL);
-    dup = ft_calloc(sizeof(char *), (ft_tablen(tab) + 1));
-    if (!dup)
-        return (NULL);
-    while (tab[i])
-    {
-        dup[i] = ft_strdup(tab[i]);
-        i++;
-    }
-    dup[i] = NULL;
-    return (dup);
+	dup = ft_calloc(sizeof(char *), (ft_tablen(tab) + 1));
+	if (!dup)
+		return (NULL);
+	while (tab[i])
+	{
+		dup[i] = ft_strdup(tab[i]);
+		i++;
+	}
+	dup[i] = NULL;
+	return (dup);
 }
 
-void    set_map_point(char **map, t_point pt, char c)
+void	set_map_point(char **map, t_point pt, char c)
 {
-    map[pt.y][pt.x] = c;
+	map[pt.y][pt.x] = c;
 }

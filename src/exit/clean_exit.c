@@ -6,21 +6,11 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/17 16:30:25 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:31:14 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube3d.h>
-
-// void free_map(t_map *map)
-//{
-//    if (map)
-//    {
-//        if (map->tab)
-//            free_tab(&map->tab);
-//        free(map);
-//    }
-//}
 
 int	ft_error(const char *msg, int exit_code)
 {
