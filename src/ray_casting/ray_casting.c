@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:48:38 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/17 13:35:13 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/17 16:21:31 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ float find_horizontal_inter(t_game *game, float angle)
 	while (1)
 	{
 		if (is_out_of_map(game, next_x, next_y) || is_wall_hit(game, next_x, next_y))
-			break;
+			break ;
 
 		for (int j = 0; j < 4; j++)
 			for (int k = 0; k < 4; k++)
@@ -153,9 +153,9 @@ void draw_slice(t_game *game, float dist, int i, float ray_angle, int color)
 // 		dx += cx * 1;
 // 		dy += sy * 1;
 
-// 		// for (int j = 0; j < 4; j++)
-// 		// 	for (int k = 0; k < 4; k++)
-// 				//mlx_put_pixel(game->ray, roundf(dx), roundf(dy), COLOR_RAY);
+// 		for (int j = 0; j < 4; j++)
+// 			for (int k = 0; k < 4; k++)
+// 				mlx_put_pixel(game->ray, roundf(dx), roundf(dy), COLOR_RAY);
 // 	}
 // 	return sqrt(pow(dx - player_x, 2) + pow(dy - player_y, 2));
 // }
