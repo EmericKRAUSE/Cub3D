@@ -6,12 +6,13 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:14:15 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/17 14:12:58 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/17 14:22:46 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube3d.h>
 
+// Draw a rectangle of size x: WIN_WIDTH y: WIN_HEIGHT / 2
 void	draw_rectangle(mlx_image_t *img, uint32_t color)
 {
 	int	x;
@@ -31,6 +32,7 @@ void	draw_rectangle(mlx_image_t *img, uint32_t color)
 	}
 }
 
+// Draw a crosshair based on CROSSHAIR_SIZE and CROSSHAIR_THICKNESS
 void	draw_crosshair(t_game *game)
 {
 	int	x;
@@ -59,6 +61,7 @@ void	draw_crosshair(t_game *game)
 	game->crosshair->instances->z = 4;
 }
 
+// Draw a gun on the middle bottom of the screen
 void	draw_gun(t_game *game)
 {
 	mlx_texture_t	*gun_texture;
@@ -69,12 +72,14 @@ void	draw_gun(t_game *game)
 	game->gun = mlx_texture_to_image(game->mlx, gun_texture);
 	if (!game->gun)
 		return ;
+	mlx_delete_texture(gun_texture);
 	mlx_image_to_window(game->mlx, game->gun,
 		WIN_WIDTH / 2 - (game->gun->width / 2),
 		WIN_HEIGHT - game->gun->height);
 	game->gun->instances->z = 3;
 }
 
+// Draw the ceiling and floor using draw_rectanlge function
 void	draw_ceiling_and_floor(t_game *game)
 {
 	game->images.ceiling = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT / 2);
@@ -89,6 +94,7 @@ void	draw_ceiling_and_floor(t_game *game)
 	game->images.floor->instances->z = 0;
 }
 
+// Draw everything needed for the 3D
 void	display_3d_map(t_game *game)
 {
 	draw_ceiling_and_floor(game);
