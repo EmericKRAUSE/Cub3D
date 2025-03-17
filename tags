@@ -27,18 +27,7 @@ $webglGetExtensions	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemor
 %	MLX42/build/Makefile	/^% : SCCS\/s.%$/;"	t
 %	MLX42/build/Makefile	/^% : s.%$/;"	t
 **Found a bug?**	MLX42/CONTRIBUTING.md	/^## **Found a bug?**$/;"	s	chapter:How to contribute to MLX42
--0,0 +1,63	.idea/shelf/Uncommitted_changes_before_Checkout_at_08_03_25_13_27_[Changes]/shelved.patch	/^@@ -0,0 +1,63 @@$/;"	h	newFile:b/src/parsing/import_cub_fixed.c
--1,3 +1,15	.idea/shelf/Uncommitted_changes_before_Checkout_at_08_03_25_13_27_[Changes]/shelved.patch	/^@@ -1,3 +1,15 @@$/;"	h	modifiedFile:a/include/cube3d.h
--105,4 +152,33	.idea/shelf/Uncommitted_changes_before_Checkout_at_08_03_25_13_27_[Changes]/shelved.patch	/^@@ -105,4 +152,33 @@$/;"	h	modifiedFile:a/include/cube3d.h
--12,6 +24,7	.idea/shelf/Uncommitted_changes_before_Checkout_at_08_03_25_13_27_[Changes]/shelved.patch	/^@@ -12,6 +24,7 @@$/;"	h	modifiedFile:a/include/cube3d.h
 -22,20 +22,7	.idea/shelf/Uncommitted_changes_before_Checkout_at_06_03_25_17_34_[Changes]/shelved.patch	/^@@ -22,20 +22,7 @@$/;"	h	modifiedFile:a/.idea/workspace.xml
--40,17 +53,47	.idea/shelf/Uncommitted_changes_before_Checkout_at_08_03_25_13_27_[Changes]/shelved.patch	/^@@ -40,17 +53,47 @@$/;"	h	modifiedFile:a/include/cube3d.h
--49,6 +39,26	.idea/shelf/Uncommitted_changes_before_Checkout_at_08_03_25_13_27_[Changes]/shelved.patch	/^@@ -49,6 +39,26 @@$/;"	h	modifiedFile:a/src/main.c
--6,28 +6,18	.idea/shelf/Uncommitted_changes_before_Checkout_at_08_03_25_13_27_[Changes]/shelved.patch	/^@@ -6,28 +6,18 @@$/;"	h	modifiedFile:a/src/main.c
--71,7 +114,9	.idea/shelf/Uncommitted_changes_before_Checkout_at_08_03_25_13_27_[Changes]/shelved.patch	/^@@ -71,7 +114,9 @@$/;"	h	modifiedFile:a/include/cube3d.h
--79,3 +89,33	.idea/shelf/Uncommitted_changes_before_Checkout_at_08_03_25_13_27_[Changes]/shelved.patch	/^@@ -79,3 +89,33 @@$/;"	h	modifiedFile:a/src/main.c
--85,6 +130,7	.idea/shelf/Uncommitted_changes_before_Checkout_at_08_03_25_13_27_[Changes]/shelved.patch	/^@@ -85,6 +130,7 @@$/;"	h	modifiedFile:a/include/cube3d.h
--97,6 +143,7	.idea/shelf/Uncommitted_changes_before_Checkout_at_08_03_25_13_27_[Changes]/shelved.patch	/^@@ -97,6 +143,7 @@$/;"	h	modifiedFile:a/include/cube3d.h
 0	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	M	class:FS.createLazyFile.LazyUint8Array
 1	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	M	class:FS.createLazyFile.LazyUint8Array
 1. Warning	MLX42/CODE_OF_CONDUCT.md	/^### 1. Warning$/;"	S	section:Contributor Covenant Code of Conduct""Enforcement Guidelines
@@ -151,6 +140,7 @@ CERROR_RETURN_ERROR	MLX42/lib/png/lodepng.c	/^#define CERROR_RETURN_ERROR(/;"	d	
 CERROR_TRY_RETURN	MLX42/lib/png/lodepng.c	/^#define CERROR_TRY_RETURN(/;"	d	file:
 CFLAGS	Makefile	/^CFLAGS  =   -Wall -Wextra -Werror -I include -g3$/;"	m
 CFLAGS	lib/libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror -Iinclude$/;"	m
+CHAR_BLANK_MAP	include/cube3d.h	/^# define CHAR_BLANK_MAP /;"	d
 CLCL_ORDER	MLX42/lib/png/lodepng.c	/^static const unsigned CLCL_ORDER[NUM_CODE_LENGTH_CODES]$/;"	v	typeref:typename:const unsigned[]	file:
 CMAKE_AR	MLX42/build/CMakeFiles/3.22.1/CMakeCCompiler.cmake	/^set(CMAKE_AR "\/usr\/bin\/ar")$/;"	v
 CMAKE_AR	MLX42/build/CMakeFiles/3.22.1/CMakeCXXCompiler.cmake	/^set(CMAKE_AR "\/usr\/bin\/ar")$/;"	v
@@ -292,12 +282,17 @@ CMAKE_SYSTEM_PROCESSOR	MLX42/build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMA
 CMAKE_SYSTEM_VERSION	MLX42/build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SYSTEM_VERSION "6.6.52-1-t2-jammy")$/;"	v
 CMAKE_TARGET_LINKED_INFO_FILES	MLX42/build/CMakeFiles/mlx42.dir/DependInfo.cmake	/^set(CMAKE_TARGET_LINKED_INFO_FILES$/;"	v
 CMP_FOUND	include/cube3d.h	/^# define CMP_FOUND /;"	d
-COLOR_BACKGROUND	include/cube3d.h	/^# define COLOR_BACKGROUND /;"	d
-COLOR_CEILING	include/cube3d.h	/^# define COLOR_CEILING /;"	d
-COLOR_FLOOR	include/cube3d.h	/^# define COLOR_FLOOR /;"	d
-COLOR_PLAYER	include/cube3d.h	/^# define COLOR_PLAYER /;"	d
-COLOR_RAY	include/cube3d.h	/^# define COLOR_RAY /;"	d
-COLOR_WALL	include/cube3d.h	/^# define COLOR_WALL /;"	d
+COLOR_BACKGROUND	include/cube3d.h	/^# define COLOR_BACKGROUND	/;"	d
+COLOR_CEILING	include/cube3d.h	/^# define COLOR_CEILING	/;"	d
+COLOR_CROSSHAIR	include/cube3d.h	/^# define COLOR_CROSSHAIR	/;"	d
+COLOR_FLOOR	include/cube3d.h	/^# define COLOR_FLOOR	/;"	d
+COLOR_PLAYER	include/cube3d.h	/^# define COLOR_PLAYER	/;"	d
+COLOR_RAY	include/cube3d.h	/^# define COLOR_RAY	/;"	d
+COLOR_WALL	include/cube3d.h	/^# define COLOR_WALL	/;"	d
+COLOR_WALL_EAST	include/cube3d.h	/^# define COLOR_WALL_EAST	/;"	d
+COLOR_WALL_NORTH	include/cube3d.h	/^# define COLOR_WALL_NORTH	/;"	d
+COLOR_WALL_SOUTH	include/cube3d.h	/^# define COLOR_WALL_SOUTH	/;"	d
+COLOR_WALL_WEST	include/cube3d.h	/^# define COLOR_WALL_WEST	/;"	d
 COMPILER_ID	MLX42/build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_ID /;"	d	file:
 COMPILER_ID	MLX42/build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_ID /;"	d	file:
 COMPILER_VERSION	MLX42/build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#   define COMPILER_VERSION /;"	d	file:
@@ -2417,11 +2412,13 @@ HEAPU32	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HE
 HEAPU8	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 HEX	MLX42/build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#define HEX(/;"	d	file:
 HEX	MLX42/build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define HEX(/;"	d	file:
-HEX_BLACK	include/cube3d.h	/^# define HEX_BLACK /;"	d
-HEX_BLUE	include/cube3d.h	/^# define HEX_BLUE /;"	d
-HEX_BROWN	include/cube3d.h	/^# define HEX_BROWN /;"	d
-HEX_WHITE	include/cube3d.h	/^# define HEX_WHITE /;"	d
-HEX_YELLOW	include/cube3d.h	/^# define HEX_YELLOW /;"	d
+HEX_BLACK	include/cube3d.h	/^# define HEX_BLACK	/;"	d
+HEX_BLUE	include/cube3d.h	/^# define HEX_BLUE	/;"	d
+HEX_BROWN	include/cube3d.h	/^# define HEX_BROWN	/;"	d
+HEX_DARK_GREEN	include/cube3d.h	/^# define HEX_DARK_GREEN	/;"	d
+HEX_GREEN	include/cube3d.h	/^# define HEX_GREEN	/;"	d
+HEX_WHITE	include/cube3d.h	/^# define HEX_WHITE	/;"	d
+HEX_YELLOW	include/cube3d.h	/^# define HEX_YELLOW	/;"	d
 Ha	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:assignWasmImports.wasmImports
 Hash	MLX42/lib/png/lodepng.c	/^typedef struct Hash {$/;"	s	file:
 Hash	MLX42/lib/png/lodepng.c	/^} Hash;$/;"	t	typeref:struct:Hash	file:
@@ -3892,6 +3889,7 @@ Rendering	MLX42/docs/42.md	/^### Rendering$/;"	S	section:Technical comparison""M
 Reporting a Vulnerability	MLX42/SECURITY.md	/^## Reporting a Vulnerability$/;"	s	chapter:Security Policy
 Resize Hook	MLX42/docs/Hooks.md	/^### Resize Hook$/;"	S	section:Hooks in MLX42""Specialized Hooks
 S	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:assignWasmImports.wasmImports
+SENSIVITY	include/cube3d.h	/^# define SENSIVITY /;"	d
 SHELL	MLX42/build/Makefile	/^SHELL = \/bin\/sh$/;"	m
 SIMULATE_ID	MLX42/build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  define SIMULATE_ID /;"	d	file:
 SIMULATE_ID	MLX42/build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define SIMULATE_ID /;"	d	file:
@@ -3957,7 +3955,7 @@ Toc	MLX42/docs/index.md	/^## Toc$/;"	s	chapter:Introduction
 Tools	MLX42/docs/XPM42.md	/^## Tools$/;"	s	chapter:XPM42
 Transparency	MLX42/docs/Images.md	/^## Transparency$/;"	s	chapter:Images
 U	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:assignWasmImports.wasmImports
-UNSET_COLOR	include/cube3d.h	/^# define UNSET_COLOR /;"	d
+UNSET_COLOR	include/cube3d.h	/^# define UNSET_COLOR	/;"	d
 UTF8ArrayToString	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 UTF8Decoder	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 UTF8ToString	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
@@ -3988,11 +3986,13 @@ WindowFromId	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffe
 X	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:assignWasmImports.wasmImports
 XPM42	MLX42/docs/42.md	/^### XPM42$/;"	S	section:Technical comparison""MLX42
 XPM42	MLX42/docs/XPM42.md	/^# XPM42$/;"	c
+X_CENTER	include/cube3d.h	/^# define X_CENTER /;"	d
 Xa	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:assignWasmImports.wasmImports
 Xb	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:assignWasmImports.wasmImports
 Xc	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:assignWasmImports.wasmImports
 Xd	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:assignWasmImports.wasmImports
 Y	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:assignWasmImports.wasmImports
+Y_CENTER	include/cube3d.h	/^# define Y_CENTER /;"	d
 Ya	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:assignWasmImports.wasmImports
 Yb	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:assignWasmImports.wasmImports
 Yc	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:assignWasmImports.wasmImports
@@ -4635,8 +4635,6 @@ a	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.bu
 a	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:flagModes
 a+	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:flagModes
 a/.idea/workspace.xml	.idea/shelf/Uncommitted_changes_before_Checkout_at_06_03_25_17_34_[Changes]/shelved.patch	/^--- a\/.idea\/workspace.xml	(revision 0f32690edfca8891cedbbd1b13c9928d62fa6b49)$/;"	m
-a/include/cube3d.h	.idea/shelf/Uncommitted_changes_before_Checkout_at_08_03_25_13_27_[Changes]/shelved.patch	/^--- a\/include\/cube3d.h	(revision bf6c257ce3c506582d7ad510eb562ae7c30419a7)$/;"	m
-a/src/main.c	.idea/shelf/Uncommitted_changes_before_Checkout_at_08_03_25_13_27_[Changes]/shelved.patch	/^--- a\/src\/main.c	(revision bf6c257ce3c506582d7ad510eb562ae7c30419a7)$/;"	m
 aa	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:assignWasmImports.wasmImports
 ab	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:assignWasmImports.wasmImports
 abort	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	f
@@ -4722,7 +4720,6 @@ axesCount	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=
 b	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:assignWasmImports.wasmImports
 b	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 b	include/cube3d.h	/^    int	b;$/;"	m	struct:s_rgb	typeref:typename:int
-b/src/parsing/import_cub_fixed.c	.idea/shelf/Uncommitted_changes_before_Checkout_at_08_03_25_13_27_[Changes]/shelved.patch	/^+++ b\/src\/parsing\/import_cub_fixed.c	(date 1741278852914)$/;"	n
 ba	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:assignWasmImports.wasmImports
 background	include/cube3d.h	/^	mlx_image_t	*background;$/;"	m	struct:s_game	typeref:typename:mlx_image_t *
 background_b	MLX42/include/lodepng/lodepng.h	/^  unsigned background_b;       \/*blue component of suggested background color*\/$/;"	m	struct:LodePNGInfo	typeref:typename:unsigned
@@ -4895,6 +4892,7 @@ createStandardStreams	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMem
 createStream	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	m	class:FS
 createWasm	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	f
 createWindow	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
+crosshair	include/cube3d.h	/^	mlx_image_t	*crosshair;$/;"	m	struct:s_game	typeref:typename:mlx_image_t *
 crypto_module	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 ctx	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 currentFrameNumber	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:MainLoop
@@ -4946,6 +4944,7 @@ deflateDynamic	MLX42/lib/png/lodepng.c	/^static unsigned deflateDynamic(LodePNGB
 deflateFixed	MLX42/lib/png/lodepng.c	/^static unsigned deflateFixed(LodePNGBitWriter* writer, Hash* hash,$/;"	f	typeref:typename:unsigned	file:
 deflateNoCompression	MLX42/lib/png/lodepng.c	/^static unsigned deflateNoCompression(ucvector* out, const unsigned char* data, size_t datasize) /;"	f	typeref:typename:unsigned	file:
 deleteContext	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
+delete_blank_lines	src/parsing/map/format_map.c	/^void    delete_blank_lines(char ***map_addr)$/;"	f	typeref:typename:void
 delta	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 delta_time	MLX42/include/MLX42/MLX42.h	/^	double		delta_time;$/;"	m	struct:mlx	typeref:typename:double
 dep	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
@@ -4968,10 +4967,12 @@ doReload	MLX42/web/coi-serviceworker.js	/^            doReload: () => window.loc
 doRun	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	f	function:run
 doXHR	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v	class:FS
 done	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	f	function:FS.syncfs
+draw_crosshair	src/display_map/display_3d_map.c	/^void	draw_crosshair(t_game *game, int width, int height)$/;"	f	typeref:typename:void
+draw_gun	src/display_map/display_3d_map.c	/^void	draw_gun(t_game *game)$/;"	f	typeref:typename:void
 draw_queue	MLX42/include/MLX42/MLX42_Int.h	/^typedef struct draw_queue$/;"	s
 draw_queue_t	MLX42/include/MLX42/MLX42_Int.h	/^}	draw_queue_t;$/;"	t	typeref:struct:draw_queue
 draw_rectangle	src/display_map/display_3d_map.c	/^void	draw_rectangle(mlx_image_t *img, uint32_t color)$/;"	f	typeref:typename:void
-draw_slice	src/ray_casting/ray_casting.c	/^void draw_slice(t_game *game, float dist, int i, float ray_angle)$/;"	f	typeref:typename:void
+draw_slice	src/ray_casting/ray_casting.c	/^void draw_slice(t_game *game, float dist, int i, float ray_angle, int color)$/;"	f	typeref:typename:void
 draw_square	src/display_map/display_map.c	/^static void	draw_square(t_game *game, mlx_image_t *img,$/;"	f	typeref:typename:void	file:
 draw_square	src/main.c	/^void draw_square(t_game game, mlx_image_t *img, uint32_t color, int x_position, int y_position)$/;"	f	typeref:typename:void
 draw_tile	src/display_map/display_map.c	/^void	draw_tile(t_game *game, char tile, int x, int y)$/;"	f	typeref:typename:void
@@ -5065,7 +5066,7 @@ fixedGetContext	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.bu
 flagModes	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	c
 flags	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 flagsToPermissionString	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	m	class:FS
-floodfill	src/parsing/import_cub_fixed.c	/^int floodfill(char **map, int y, int x)$/;"	f	typeref:typename:int
+floodfill	src/parsing/map/floodfill.c	/^int floodfill(char **map, int y, int x)$/;"	f	typeref:typename:int
 floor	include/cube3d.h	/^    t_rgb   floor;$/;"	m	struct:s_textures	typeref:typename:t_rgb
 follow_mount	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:FS.lookupPath.defaults
 font_atlas	MLX42/src/font/font.h	/^}	font_atlas = {$/;"	v	typeref:struct:s_font
@@ -5075,9 +5076,8 @@ frag_shader	MLX42/build/mlx_frag_shader.c	/^const char* frag_shader = "#version 
 framebuffer	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 framebuffer_callback	MLX42/src/mlx_init.c	/^static void framebuffer_callback(GLFWwindow *window, int width, int height)$/;"	f	typeref:typename:void	file:
 framebuffers	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:GL
-free_and_get_line	src/parsing/import_cub_fixed.c	/^char	*free_and_get_line(char	*line, int fd)$/;"	f	typeref:typename:char *
+free_and_get_line	src/parsing/import_cub.c	/^char	*free_and_get_line(char	*line, int fd)$/;"	f	typeref:typename:char *
 free_exts	MLX42/lib/glad/glad.c	/^static void free_exts(void) {$/;"	f	typeref:typename:void	file:
-free_tab	src/parsing/parsing_nico_fixed.c	/^void	free_tab(char **map)$/;"	f	typeref:typename:void
 freelist	MLX42/lib/png/lodepng.c	/^  BPMNode** freelist;$/;"	m	struct:BPMLists	typeref:typename:BPMNode **	file:
 fs	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 fsync	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	m	class:TTY.default_tty1_ops
@@ -5122,6 +5122,7 @@ ft_putendl_fd	lib/libft/src/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd
 ft_putnbr_fd	lib/libft/src/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f	typeref:typename:void
 ft_putstr_fd	lib/libft/src/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f	typeref:typename:void
 ft_split	lib/libft/src/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f	typeref:typename:char **
+ft_square_map	src/parsing/map/format_map.c	/^void ft_square_map(t_game *game, char c)$/;"	f	typeref:typename:void
 ft_strchr	lib/libft/src/ft_strchr.c	/^char	*ft_strchr(const char *str, int c)$/;"	f	typeref:typename:char *
 ft_strcmp	lib/libft/src/ft_strcmp.c	/^int	ft_strcmp(const char *s1, const char *s2)$/;"	f	typeref:typename:int
 ft_strdup	lib/libft/src/ft_strdup.c	/^char	*ft_strdup(const char *str)$/;"	f	typeref:typename:char *
@@ -5143,6 +5144,7 @@ ft_tabdup	lib/libft/src/ft_tabdup.c	/^char	**ft_tabdup(char **tab_original)$/;"	
 ft_tablen	lib/libft/src/ft_tablen.c	/^size_t	ft_tablen(char **tab)$/;"	f	typeref:typename:size_t
 ft_tolower	lib/libft/src/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f	typeref:typename:int
 ft_toupper	lib/libft/src/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f	typeref:typename:int
+ft_trim_right	src/parsing/map/format_map.c	/^void ft_trim_right(char ***map_addr)$/;"	f	typeref:typename:void
 ft_wd_count	lib/libft/src/ft_wd_count.c	/^int	ft_wd_count(char *str, char sep)$/;"	f	typeref:typename:int
 ftruncate	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	m	class:FS
 fullname	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
@@ -5217,16 +5219,16 @@ getWasmTableEntry	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.
 getWindowPos	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 getWindowSize	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 get_char	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	m	class:TTY.default_tty_ops
-get_color	src/parsing/import_line_fixed.c	/^int	get_color(t_game *game, char *line)$/;"	f	typeref:typename:int
+get_color	src/parsing/get_textures_and_colors.c	/^int	get_color(t_game *game, char *line)$/;"	f	typeref:typename:int
 get_exts	MLX42/lib/glad/glad.c	/^static int get_exts(void) {$/;"	f	typeref:typename:int	file:
-get_map	src/parsing/map_parser_fixed.c	/^char	**get_map(t_game *game, int fd, char **line_addr)$/;"	f	typeref:typename:char **
+get_map	src/parsing/map/get_map_brut.c	/^char	**get_map(t_game *game, int fd, char **line_addr)$/;"	f	typeref:typename:char **
 get_next_line	src/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f	typeref:typename:char *
 get_next_line_tester	src/main.c	/^int get_next_line_tester(char *filename)$/;"	f	typeref:typename:int
-get_player_position	src/parsing/import_cub_fixed.c	/^t_point get_player_position(char **map)$/;"	f	typeref:typename:t_point
+get_player_position	src/parsing/set_player.c	/^t_point get_player_position(char **map)$/;"	f	typeref:typename:t_point
 get_proc	MLX42/lib/glad/glad.c	/^void* get_proc(const char *namez) {$/;"	f	typeref:typename:void *	file:
-get_rgb	src/parsing/import_line_fixed.c	/^t_rgb	*get_rgb(t_game *game, char *line, t_rgb *rgb)$/;"	f	typeref:typename:t_rgb *
-get_texture	src/parsing/import_line_fixed.c	/^int	get_texture(t_game *game, char *line)$/;"	f	typeref:typename:int
-get_texture_ind_from_balise	src/parsing/import_line_fixed.c	/^int	get_texture_ind_from_balise(char *balise)$/;"	f	typeref:typename:int
+get_rgb	src/parsing/get_textures_and_colors.c	/^t_rgb	*get_rgb(t_game *game, char *line, t_rgb *rgb)$/;"	f	typeref:typename:t_rgb *
+get_texture	src/parsing/get_textures_and_colors.c	/^int	get_texture(t_game *game, char *line)$/;"	f	typeref:typename:int
+get_texture_ind_from_balise	src/parsing/get_textures_and_colors.c	/^int	get_texture_ind_from_balise(char *balise)$/;"	f	typeref:typename:int
 getattr	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	m	class:MEMFS.node_ops
 getattr	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:MEMFS.ops_table.chrdev.node
 getattr	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:MEMFS.ops_table.dir.node
@@ -8452,7 +8454,7 @@ imagePlugin	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer
 imagePlugin_canHandle	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	f	function:Browser.init
 imagePlugin_handle	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	f	function:Browser.init
 images	MLX42/include/MLX42/MLX42_Int.h	/^	mlx_list_t*		images;$/;"	m	struct:mlx_ctx	typeref:typename:mlx_list_t *
-import_cub_file	src/parsing/import_cub_fixed.c	/^int	import_cub_file(t_game *game)$/;"	f	typeref:typename:int
+import_cub_file	src/parsing/import_cub.c	/^int	import_cub_file(t_game *game)$/;"	f	typeref:typename:int
 in_use	MLX42/lib/png/lodepng.c	/^  int in_use;$/;"	m	struct:BPMNode	typeref:typename:int	file:
 include.h	.vscode/settings.json	/^		"include.h": "c",$/;"	s	object:files.associations
 index	MLX42/lib/png/lodepng.c	/^  int index; \/*the payload. Only has a meaningful value if this is in the last level*\/$/;"	m	struct:ColorTree	typeref:typename:int	file:
@@ -8547,16 +8549,16 @@ isRoot	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEA
 isRoot	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:FS.analyzePath.ret
 isSocket	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	m	class:FS
 isTouchType	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	C
-is_blank_line	src/parsing/line_types_fixed.c	/^int	is_blank_line(char *line)$/;"	f	typeref:typename:int
-is_color	src/parsing/line_types_fixed.c	/^int	is_color(char *line)$/;"	f	typeref:typename:int
-is_cub_file	src/parsing/import_cub_fixed.c	/^int	is_cub_file(char *filename)$/;"	f	typeref:typename:int
-is_map	src/parsing/line_types_fixed.c	/^int	is_map(char *line)$/;"	f	typeref:typename:int
-is_map_available	src/parsing/import_cub_fixed.c	/^int is_map_available(t_game *game)$/;"	f	typeref:typename:int
-is_map_closed	src/parsing/import_cub_fixed.c	/^int is_map_closed(char **map)$/;"	f	typeref:typename:int
-is_out_of_bounds	src/parsing/import_cub_fixed.c	/^int is_out_of_bounds(char **map, int y, int x)$/;"	f	typeref:typename:int
+is_blank_line	src/parsing/line_types.c	/^int	is_blank_line(char *line)$/;"	f	typeref:typename:int
+is_color	src/parsing/line_types.c	/^int	is_color(char *line)$/;"	f	typeref:typename:int
+is_cub_file	src/parsing/import_cub.c	/^int	is_cub_file(char *filename)$/;"	f	typeref:typename:int
+is_map	src/parsing/line_types.c	/^int	is_map(char *line)$/;"	f	typeref:typename:int
+is_map_available	src/parsing/map/check.c	/^int is_map_available(t_game *game)$/;"	f	typeref:typename:int
+is_map_closed	src/parsing/map/floodfill.c	/^int is_map_closed(char **map)$/;"	f	typeref:typename:int
+is_out_of_bounds	src/parsing/map/floodfill.c	/^int is_out_of_bounds(char **map, int y, int x)$/;"	f	typeref:typename:int
 is_out_of_map	src/ray_casting/ray_casting.c	/^static int	is_out_of_map(t_game *game, float pos_x, float pos_y)$/;"	f	typeref:typename:int	file:
-is_rgb	src/parsing/line_types_fixed.c	/^int	is_rgb(char *str)$/;"	f	typeref:typename:int
-is_texture	src/parsing/line_types_fixed.c	/^int	is_texture(t_game *game, char *line)$/;"	f	typeref:typename:int
+is_rgb	src/parsing/line_types.c	/^int	is_rgb(char *str)$/;"	f	typeref:typename:int
+is_texture	src/parsing/line_types.c	/^int	is_texture(t_game *game, char *line)$/;"	f	typeref:typename:int
 is_wall_hit	src/ray_casting/ray_casting.c	/^static int	is_wall_hit(t_game *game, float pos_x, float pos_y)$/;"	f	typeref:typename:int	file:
 iterFunc	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 itext_keys	MLX42/include/lodepng/lodepng.h	/^  char** itext_keys; \/*the English keyword of the text chunk (e.g. "Comment")*\/$/;"	m	struct:LodePNGInfo	typeref:typename:char **
@@ -9053,11 +9055,14 @@ mouseMovementX	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buf
 mouseMovementY	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:Browser
 mouseX	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:Browser
 mouseY	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:Browser
+mouse_event	src/main.c	/^void mouse_event(mouse_key_t button, action_t action, modifier_key_t mods, void *param)$/;"	f	typeref:typename:void
 mouse_hook	MLX42/include/MLX42/MLX42_Int.h	/^	mlx_mouse_t		mouse_hook;$/;"	m	struct:mlx_ctx	typeref:typename:mlx_mouse_t
 mouse_key	MLX42/include/MLX42/MLX42.h	/^typedef enum mouse_key$/;"	g
 mouse_key_t	MLX42/include/MLX42/MLX42.h	/^}	mouse_key_t;$/;"	t	typeref:enum:mouse_key
 mouse_mode	MLX42/include/MLX42/MLX42.h	/^typedef enum mouse_mode$/;"	g
 mouse_mode_t	MLX42/include/MLX42/MLX42.h	/^}	mouse_mode_t;$/;"	t	typeref:enum:mouse_mode
+mouse_x	include/cube3d.h	/^	double		mouse_x;$/;"	m	struct:s_player	typeref:typename:double
+mouse_y	include/cube3d.h	/^	double		mouse_y;$/;"	m	struct:s_player	typeref:typename:double
 move_dist	include/cube3d.h	/^	int			move_dist;$/;"	m	struct:s_player	typeref:typename:int
 move_player	src/move/move.c	/^void	move_player(t_game *game, double *new_x, double *new_y)$/;"	f	typeref:typename:void
 movements	src/move/move.c	/^void	movements(void *param)$/;"	f	typeref:typename:void
@@ -9145,16 +9150,18 @@ onMouseleave	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffe
 onMousemove	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 onWindowContentScaleChanged	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 onWindowSizeChanged	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
-one_player_only	src/parsing/import_cub_fixed.c	/^int one_player_only(char **map)$/;"	f	typeref:typename:int
+on_cursor_move	src/move/move.c	/^void	on_cursor_move(double xpos, double ypos, void *param)$/;"	f	typeref:typename:void
+one_player_only	src/parsing/set_player.c	/^int one_player_only(char **map)$/;"	f	typeref:typename:int
 onerror	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	f	function:audio
 open	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	m	class:FS
 open	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	m	class:FS.chrdev_stream_ops
 open	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	m	class:TTY.stream_ops
-open_file	src/parsing/parsing_nico_fixed.c	/^int	open_file(t_game *game, char *filename)$/;"	f	typeref:typename:int
+open_file	src/parsing/parse_args.c	/^int	open_file(t_game *game, char *filename)$/;"	f	typeref:typename:int
 open_gl	MLX42/lib/glad/glad.c	/^int open_gl(void) {$/;"	f	typeref:typename:int	file:
 ops	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	M	class:TTY.ttys
 ops_table	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	c	class:MEMFS
 ops_table	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:MEMFS
+orientation	include/cube3d.h	/^    mlx_texture_t *orientation[4];$/;"	m	struct:s_textures	typeref:typename:mlx_texture_t * [4]
 os_key	MLX42/include/MLX42/MLX42.h	/^	int32_t			os_key;$/;"	m	struct:mlx_key_data	typeref:typename:int32_t
 out	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 output	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:TTY.ttys
@@ -9176,12 +9183,13 @@ param	MLX42/include/MLX42/MLX42_Int.h	/^	void*			param;$/;"	m	struct:mlx_resize	
 param	MLX42/include/MLX42/MLX42_Int.h	/^	void*			param;$/;"	m	struct:mlx_srcoll	typeref:typename:void *
 param	MLX42/include/MLX42/MLX42_Int.h	/^	void*	param;$/;"	m	struct:mlx_hook	typeref:typename:void *
 param	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
-param_missing	src/parsing/import_cub_fixed.c	/^int param_missing(t_game *game)$/;"	f	typeref:typename:int
+param_missing	src/parsing/missing_params.c	/^int param_missing(t_game *game)$/;"	f	typeref:typename:int
+param_missing_but_map	src/parsing/missing_params.c	/^int param_missing_but_map(t_game *game)$/;"	f	typeref:typename:int
 parentExists	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:FS.analyzePath.ret
 parentObject	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:FS.analyzePath.ret
 parentPath	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:FS.analyzePath.ret
 parentPort	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
-parse_args	src/parsing/parsing_nico_fixed.c	/^int	parse_args(int argc, char **argv, t_game *game)$/;"	f	typeref:typename:int
+parse_args	src/parsing/parse_args.c	/^int	parse_args(int argc, char **argv, t_game *game)$/;"	f	typeref:typename:int
 path	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:FS.analyzePath.ret
 pause	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	m	class:MainLoop
 pb	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:assignWasmImports.wasmImports
@@ -9228,7 +9236,7 @@ printCharBuffers	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.b
 print_game	src/debug/print_tab.c	/^void	print_game(t_game *game)$/;"	f	typeref:typename:void
 print_tab	src/debug/print_tab.c	/^void print_tab(char **tab)$/;"	f	typeref:typename:void
 processData	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	f
-process_line	src/parsing/import_cub_fixed.c	/^void	process_line(t_game *game, char **line)$/;"	f	typeref:typename:void
+process_line	src/parsing/import_cub.c	/^void	process_line(t_game *game, char **line)$/;"	f	typeref:typename:void
 program	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 programs	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:GL
 properties	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	c
@@ -9441,6 +9449,7 @@ setWindowTitle	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buf
 setWindowedCanvasSize	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	m	class:Browser
 set_map_point	src/map_utils/map_utils.c	/^void    set_map_point(char **map, t_point pt, char c)$/;"	f	typeref:typename:void
 set_point	src/display_map/display_map.c	/^static void	set_point(t_point *point, int x, int y)$/;"	f	typeref:typename:void	file:
+set_width_and_lenght	src/parsing/map/format_map.c	/^void set_width_and_lenght(t_game *game)$/;"	f	typeref:typename:void
 setattr	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	m	class:MEMFS.node_ops
 setattr	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:MEMFS.ops_table.chrdev.node
 setattr	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:MEMFS.ops_table.dir.node
@@ -9449,6 +9458,7 @@ setattr	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HE
 shader	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 shaderprogram	MLX42/include/MLX42/MLX42_Int.h	/^	GLuint			shaderprogram;$/;"	m	struct:mlx_ctx	typeref:typename:GLuint
 shaders	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:GL
+shift_to_left	src/parsing/map/format_map.c	/^void shift_to_left(char ***map_addr)$/;"	f	typeref:typename:void
 shouldDeregister	MLX42/web/coi-serviceworker.js	/^            shouldDeregister: () => false,$/;"	p	class:coi
 shouldRegister	MLX42/web/coi-serviceworker.js	/^            shouldRegister: () => !reloadedBySelf,$/;"	p	class:coi
 shouldRunNow	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
@@ -9460,12 +9470,14 @@ size	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8
 size	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 sizeAndId	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 sizePerPixel	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
+smallest_blank_gap_at_left_side	src/parsing/map/format_map.c	/^int smallest_blank_gap_at_left_side(char **map)$/;"	f	typeref:typename:int
 sort_queue	MLX42/src/mlx_init.c	/^bool sort_queue = false;$/;"	v	typeref:typename:bool
 source	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 sourceLength	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 sp	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 spawnThread	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 splitPath	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:PATH
+square_malloc	src/parsing/map/format_map.c	/^char **square_malloc(int width, int height)$/;"	f	typeref:typename:char **
 src/font/mlx_font.c.i	MLX42/build/Makefile	/^src\/font\/mlx_font.c.i:$/;"	t
 src/font/mlx_font.c.o	MLX42/build/Makefile	/^src\/font\/mlx_font.c.o:$/;"	t
 src/font/mlx_font.c.s	MLX42/build/Makefile	/^src\/font\/mlx_font.c.s:$/;"	t
@@ -9608,7 +9620,6 @@ stringToUTF8OnStack	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemor
 string_cleanup	MLX42/lib/png/lodepng.c	/^static void string_cleanup(char** out) {$/;"	f	typeref:typename:void	file:
 stringiCache	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:GL
 stringiCache	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
-strip_map	src/parsing/map_parser_fixed.c	/^void    strip_map(char ***map_addr)$/;"	f	typeref:typename:void
 supportedExtensions	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 swapBuffers	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 sx	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
@@ -9675,6 +9686,7 @@ trailingSlash	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buff
 transformFeedback	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	v
 transformFeedbacks	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:GL
 trim	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	f
+trim_map	src/parsing/map/format_map.c	/^void trim_map(char ***map_addr)$/;"	f	typeref:typename:void
 truncate	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	m	class:FS
 ttys	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	c	class:TTY
 ttys	MLX42/web/demo.js	/^function GROWABLE_HEAP_I8(){if(wasmMemory.buffer!=HEAP8.buffer){updateMemoryViews()}return HEAP8/;"	p	class:TTY
