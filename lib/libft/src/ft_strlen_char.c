@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strlen_char.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 16:48:16 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/01 05:47:15 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:43:13 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-size_t ft_strlen_char(char *str, char c)
+size_t	ft_strlen_char(char *str, char c)
 {
-    size_t	i;
+	size_t	i;
 
-    i = 0;
-    while (str[i] && str[i] != c)
-        i++;
-    return (i);
+	i = 0;
+	while (str[i] && str[i] != c)
+		i++;
+	return (i);
 }
