@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:48:38 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/14 21:56:36 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/17 13:35:13 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,13 +197,15 @@ static void	cast_ray(t_game *game, float ray_angle, int i)
 void	ray_casting(t_game *game)
 {
 	int		i;
+	float	fov_rad;
 	float	start_angle;
 	float	step_angle;
 	float	ray_angle;
 
 	i = 0;
-	start_angle = game->player.angle - FOV_RAD / 2;
-	step_angle = FOV_RAD / WIN_WIDTH;
+	fov_rad	= FOV * (M_PI / 180);
+	start_angle = game->player.angle - fov_rad / 2;
+	step_angle = fov_rad / WIN_WIDTH;
 	if (game->ray)
 		mlx_delete_image(game->mlx, game->ray);
 	game->ray = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
