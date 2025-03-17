@@ -47,14 +47,15 @@ Adam7_interlace	MLX42/lib/png/lodepng.c	/^static void Adam7_interlace(unsigned c
 Attribution	MLX42/CODE_OF_CONDUCT.md	/^## Attribution$/;"	s	chapter:Contributor Covenant Code of Conduct
 Available Options	MLX42/README.md	/^### Available Options$/;"	S	section:Features ✨""Download and build - MLX42
 Available options	MLX42/docs/index.md	/^### Available options$/;"	S	section:Introduction""Build options
-BALISE_ERROR	include/cube3d.h	/^# define BALISE_ERROR	/;"	d
-BLANK_CHAR	include/cube3d.h	/^# define BLANK_CHAR	/;"	d
+BALISE_ERROR	include/cube3d.h	/^# define BALISE_ERROR /;"	d
+BLANK_CHAR	include/cube3d.h	/^# define BLANK_CHAR /;"	d
 BPMLists	MLX42/lib/png/lodepng.c	/^typedef struct BPMLists {$/;"	s	file:
 BPMLists	MLX42/lib/png/lodepng.c	/^} BPMLists;$/;"	t	typeref:struct:BPMLists	file:
 BPMNode	MLX42/lib/png/lodepng.c	/^typedef struct BPMNode {$/;"	s	file:
 BPMNode	MLX42/lib/png/lodepng.c	/^} BPMNode;$/;"	t	typeref:struct:BPMNode	file:
 BPP	MLX42/include/MLX42/MLX42_Int.h	/^# define BPP /;"	d
-BUFFER_SIZE	include/cube3d.h	/^#  define BUFFER_SIZE	/;"	d
+BUFFER_SIZE	include/cube3d.h	/^#  define BUFFER_SIZE /;"	d
+BUFFER_SIZE	include/get_next_line.h	/^#  define BUFFER_SIZE /;"	d
 BUILD_TESTS	MLX42/CMakeLists.txt	/^set(BUILD_TESTS	OFF CACHE BOOL "Build the tests to verify the integrity of the lib")$/;"	v
 Basics	MLX42/docs/Basics.md	/^# Basics$/;"	c
 Beware	MLX42/docs/Shaders.md	/^## Beware$/;"	s	chapter:Shaders
@@ -70,7 +71,7 @@ CERROR_RETURN_ERROR	MLX42/lib/png/lodepng.c	/^#define CERROR_RETURN_ERROR(/;"	d	
 CERROR_TRY_RETURN	MLX42/lib/png/lodepng.c	/^#define CERROR_TRY_RETURN(/;"	d	file:
 CFLAGS	Makefile	/^CFLAGS  =   -Wall -Wextra -Werror -I include -g3$/;"	m
 CFLAGS	lib/libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror -Iinclude$/;"	m
-CHAR_BLANK_MAP	include/cube3d.h	/^# define CHAR_BLANK_MAP	/;"	d
+CHAR_BLANK_MAP	include/cube3d.h	/^# define CHAR_BLANK_MAP /;"	d
 CLCL_ORDER	MLX42/lib/png/lodepng.c	/^static const unsigned CLCL_ORDER[NUM_CODE_LENGTH_CODES]$/;"	v	typeref:typename:const unsigned[]	file:
 CMAKE_AR	MLX42/build/CMakeFiles/3.22.1/CMakeCCompiler.cmake	/^set(CMAKE_AR "\/usr\/bin\/ar")$/;"	v
 CMAKE_AR	MLX42/build/CMakeFiles/3.22.1/CMakeCXXCompiler.cmake	/^set(CMAKE_AR "\/usr\/bin\/ar")$/;"	v
@@ -211,18 +212,18 @@ CMAKE_SYSTEM_NAME	MLX42/build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SY
 CMAKE_SYSTEM_PROCESSOR	MLX42/build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SYSTEM_PROCESSOR "x86_64")$/;"	v
 CMAKE_SYSTEM_VERSION	MLX42/build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SYSTEM_VERSION "6.6.52-1-t2-jammy")$/;"	v
 CMAKE_TARGET_LINKED_INFO_FILES	MLX42/build/CMakeFiles/mlx42.dir/DependInfo.cmake	/^set(CMAKE_TARGET_LINKED_INFO_FILES$/;"	v
-CMP_FOUND	include/cube3d.h	/^# define CMP_FOUND	/;"	d
-COLOR_BACKGROUND	include/cube3d.h	/^# define COLOR_BACKGROUND	/;"	d
-COLOR_CEILING	include/cube3d.h	/^# define COLOR_CEILING	/;"	d
-COLOR_CROSSHAIR	include/cube3d.h	/^# define COLOR_CROSSHAIR	/;"	d
-COLOR_FLOOR	include/cube3d.h	/^# define COLOR_FLOOR	/;"	d
-COLOR_PLAYER	include/cube3d.h	/^# define COLOR_PLAYER	/;"	d
-COLOR_RAY	include/cube3d.h	/^# define COLOR_RAY	/;"	d
-COLOR_WALL	include/cube3d.h	/^# define COLOR_WALL	/;"	d
-COLOR_WALL_EAST	include/cube3d.h	/^# define COLOR_WALL_EAST	/;"	d
-COLOR_WALL_NORTH	include/cube3d.h	/^# define COLOR_WALL_NORTH	/;"	d
-COLOR_WALL_SOUTH	include/cube3d.h	/^# define COLOR_WALL_SOUTH	/;"	d
-COLOR_WALL_WEST	include/cube3d.h	/^# define COLOR_WALL_WEST	/;"	d
+CMP_FOUND	include/cube3d.h	/^# define CMP_FOUND /;"	d
+COLOR_BACKGROUND	include/cube3d.h	/^# define COLOR_BACKGROUND /;"	d
+COLOR_CEILING	include/cube3d.h	/^# define COLOR_CEILING /;"	d
+COLOR_CROSSHAIR	include/cube3d.h	/^# define COLOR_CROSSHAIR /;"	d
+COLOR_FLOOR	include/cube3d.h	/^# define COLOR_FLOOR /;"	d
+COLOR_PLAYER	include/cube3d.h	/^# define COLOR_PLAYER /;"	d
+COLOR_RAY	include/cube3d.h	/^# define COLOR_RAY /;"	d
+COLOR_WALL	include/cube3d.h	/^# define COLOR_WALL /;"	d
+COLOR_WALL_EAST	include/cube3d.h	/^# define COLOR_WALL_EAST /;"	d
+COLOR_WALL_NORTH	include/cube3d.h	/^# define COLOR_WALL_NORTH /;"	d
+COLOR_WALL_SOUTH	include/cube3d.h	/^# define COLOR_WALL_SOUTH /;"	d
+COLOR_WALL_WEST	include/cube3d.h	/^# define COLOR_WALL_WEST /;"	d
 COMPILER_ID	MLX42/build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_ID /;"	d	file:
 COMPILER_ID	MLX42/build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_ID /;"	d	file:
 COMPILER_VERSION	MLX42/build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#   define COMPILER_VERSION /;"	d	file:
@@ -263,8 +264,8 @@ COMPILER_VERSION_TWEAK	MLX42/build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerI
 COMPILER_VERSION_TWEAK	MLX42/build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_VERSION_TWEAK /;"	d	file:
 COMPILER_VERSION_TWEAK	MLX42/build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define COMPILER_VERSION_TWEAK /;"	d	file:
 COMPILER_VERSION_TWEAK	MLX42/build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_VERSION_TWEAK /;"	d	file:
-CROSSHAIR_SIZE	include/cube3d.h	/^# define CROSSHAIR_SIZE	/;"	d
-CROSSHAIR_THICKNESS	include/cube3d.h	/^# define CROSSHAIR_THICKNESS	/;"	d
+CROSSHAIR_SIZE	include/cube3d.h	/^# define CROSSHAIR_SIZE /;"	d
+CROSSHAIR_THICKNESS	include/cube3d.h	/^# define CROSSHAIR_THICKNESS /;"	d
 CUBE3D_H	include/cube3d.h	/^# define CUBE3D_H$/;"	d
 CXX_STD	MLX42/build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#      define CXX_STD /;"	d	file:
 CXX_STD	MLX42/build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#    define CXX_STD /;"	d	file:
@@ -287,7 +288,7 @@ DEBUG	MLX42/CMakeLists.txt	/^set(DEBUG		OFF CACHE BOOL "Build MLX42 in debug mod
 DEC	MLX42/build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#define DEC(/;"	d	file:
 DEC	MLX42/build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define DEC(/;"	d	file:
 DEFAULT_WINDOWSIZE	MLX42/lib/png/lodepng.c	/^#define DEFAULT_WINDOWSIZE /;"	d	file:
-DISPLAY_MODE	include/cube3d.h	/^# define DISPLAY_MODE	/;"	d
+DISPLAY_MODE	include/cube3d.h	/^# define DISPLAY_MODE /;"	d
 DISTANCEBASE	MLX42/lib/png/lodepng.c	/^static const unsigned DISTANCEBASE[30]$/;"	v	typeref:typename:const unsigned[30]	file:
 DISTANCEEXTRA	MLX42/lib/png/lodepng.c	/^static const unsigned DISTANCEEXTRA[30]$/;"	v	typeref:typename:const unsigned[30]	file:
 Debugging	MLX42/docs/index.md	/^## Debugging$/;"	s	chapter:Introduction
@@ -296,22 +297,22 @@ Dependencies	MLX42/docs/42.md	/^#### Dependencies$/;"	t	subsection:Technical com
 Documentation	MLX42/docs/42.md	/^### Documentation$/;"	S	section:Technical comparison""MLX42
 Documented 📚	MLX42/README.md	/^## Documented 📚$/;"	s	chapter:Features ✨
 Download and build - MLX42	MLX42/README.md	/^## Download and build - MLX42$/;"	s	chapter:Features ✨
-EAST	include/cube3d.h	/^# define EAST	/;"	d
+EAST	include/cube3d.h	/^# define EAST /;"	d
 EMSCRIPTEN_VALUE	MLX42/CMakeLists.txt	/^    set(EMSCRIPTEN_VALUE 0)$/;"	v
 EMSCRIPTEN_VALUE	MLX42/CMakeLists.txt	/^    set(EMSCRIPTEN_VALUE 1)$/;"	v
 EQUALS	MLX42/build/Makefile	/^EQUALS = =$/;"	m
 ERROR_BREAK	MLX42/lib/png/lodepng.c	/^#define ERROR_BREAK(/;"	d	file:
-ERR_COLOR	include/cube3d.h	/^# define ERR_COLOR	/;"	d
-ERR_CUBEXT	include/cube3d.h	/^# define ERR_CUBEXT	/;"	d
-ERR_INVALID_LINE	include/cube3d.h	/^# define ERR_INVALID_LINE	/;"	d
-ERR_INVALID_MAP	include/cube3d.h	/^# define ERR_INVALID_MAP	/;"	d
-ERR_LOADING_TEXTURE	include/cube3d.h	/^# define ERR_LOADING_TEXTURE	/;"	d
-ERR_MALLOC	include/cube3d.h	/^# define ERR_MALLOC	/;"	d
-ERR_MAP	include/cube3d.h	/^# define ERR_MAP	/;"	d
-ERR_MULTIPLE_MAPS	include/cube3d.h	/^# define ERR_MULTIPLE_MAPS	/;"	d
-ERR_NBARGS	include/cube3d.h	/^# define ERR_NBARGS	/;"	d
-ERR_OPENFILE	include/cube3d.h	/^# define ERR_OPENFILE	/;"	d
-ERR_TEXTURE	include/cube3d.h	/^# define ERR_TEXTURE	/;"	d
+ERR_COLOR	include/cube3d.h	/^# define ERR_COLOR /;"	d
+ERR_CUBEXT	include/cube3d.h	/^# define ERR_CUBEXT /;"	d
+ERR_INVALID_LINE	include/cube3d.h	/^# define ERR_INVALID_LINE /;"	d
+ERR_INVALID_MAP	include/cube3d.h	/^# define ERR_INVALID_MAP /;"	d
+ERR_LOADING_TEXTURE	include/cube3d.h	/^# define ERR_LOADING_TEXTURE /;"	d
+ERR_MALLOC	include/cube3d.h	/^# define ERR_MALLOC /;"	d
+ERR_MAP	include/cube3d.h	/^# define ERR_MAP /;"	d
+ERR_MULTIPLE_MAPS	include/cube3d.h	/^# define ERR_MULTIPLE_MAPS /;"	d
+ERR_NBARGS	include/cube3d.h	/^# define ERR_NBARGS /;"	d
+ERR_OPENFILE	include/cube3d.h	/^# define ERR_OPENFILE /;"	d
+ERR_TEXTURE	include/cube3d.h	/^# define ERR_TEXTURE /;"	d
 Emscripten Compatibility 🚀	MLX42/README.md	/^## Emscripten Compatibility 🚀$/;"	s	chapter:Features ✨
 Encoding & Decoding	MLX42/docs/Colors.md	/^## Encoding & Decoding$/;"	s	chapter:Colors
 Enforcement	MLX42/CODE_OF_CONDUCT.md	/^## Enforcement$/;"	s	chapter:Contributor Covenant Code of Conduct
@@ -328,12 +329,12 @@ FALSE	lib/libft/include/libft.h	/^# define FALSE /;"	d
 FILES	lib/libft/Makefile	/^FILES = ft_atoi.c ft_atoi_err.c ft_bzero.c ft_calloc.c \\$/;"	m
 FIRSTBITS	MLX42/lib/png/lodepng.c	/^#define FIRSTBITS /;"	d	file:
 FIRST_LENGTH_CODE_INDEX	MLX42/lib/png/lodepng.c	/^#define FIRST_LENGTH_CODE_INDEX /;"	d	file:
-FLOODFILL_CHARS	include/cube3d.h	/^# define FLOODFILL_CHARS	/;"	d
-FLOODFILL_VISITED	include/cube3d.h	/^# define FLOODFILL_VISITED	/;"	d
+FLOODFILL_CHARS	include/cube3d.h	/^# define FLOODFILL_CHARS /;"	d
+FLOODFILL_VISITED	include/cube3d.h	/^# define FLOODFILL_VISITED /;"	d
 FONT_H	MLX42/src/font/font.h	/^# define FONT_H$/;"	d
 FONT_HEIGHT	MLX42/src/font/font.h	/^# define FONT_HEIGHT /;"	d
 FONT_WIDTH	MLX42/src/font/font.h	/^# define FONT_WIDTH /;"	d
-FOV	include/cube3d.h	/^# define FOV	/;"	d
+FOV	include/cube3d.h	/^# define FOV /;"	d
 Features ✨	MLX42/README.md	/^# Features ✨$/;"	c
 For Linux:	MLX42/README.md	/^## For Linux:$/;"	s	chapter:Features ✨
 For MacOS:	MLX42/README.md	/^## For MacOS:$/;"	s	chapter:Features ✨
@@ -342,6 +343,7 @@ For Windows Native:	MLX42/README.md	/^## For Windows Native:$/;"	s	chapter:Featu
 Foreword	MLX42/docs/42.md	/^# Foreword$/;"	c
 Functions	MLX42/docs/Functions.md	/^# Functions$/;"	c
 GETLINE_BUFF	MLX42/include/MLX42/MLX42_Int.h	/^# define GETLINE_BUFF /;"	d
+GET_NEXT_LINE_H	include/get_next_line.h	/^# define GET_NEXT_LINE_H$/;"	d
 GLAD_GL_VERSION_1_0	MLX42/include/glad/glad.h	/^GLAPI int GLAD_GL_VERSION_1_0;$/;"	v	typeref:typename:GLAPI int
 GLAD_GL_VERSION_1_0	MLX42/lib/glad/glad.c	/^int GLAD_GL_VERSION_1_0 = 0;$/;"	v	typeref:typename:int
 GLAD_GL_VERSION_1_1	MLX42/include/glad/glad.h	/^GLAPI int GLAD_GL_VERSION_1_1;$/;"	v	typeref:typename:GLAPI int
@@ -2264,20 +2266,20 @@ GLvoid	MLX42/include/glad/glad.h	/^typedef void GLvoid;$/;"	t	typeref:typename:v
 General compilation	MLX42/README.md	/^### General compilation$/;"	S	section:Features ✨""Installation 🏗️
 Generic Hook	MLX42/docs/Hooks.md	/^## Generic Hook$/;"	s	chapter:Hooks in MLX42
 Generic Hook + function	MLX42/docs/Input.md	/^### Generic Hook + function$/;"	S	section:Input methods""Key Detection
-HABIBI	include/cube3d.h	/^# define HABIBI	/;"	d
+HABIBI	include/cube3d.h	/^# define HABIBI /;"	d
 HASH_BIT_MASK	MLX42/lib/png/lodepng.c	/^static const unsigned HASH_BIT_MASK = 65535; \/*HASH_NUM_VALUES - 1, but C90 does not like that /;"	v	typeref:typename:const unsigned	file:
 HASH_NUM_VALUES	MLX42/lib/png/lodepng.c	/^static const unsigned HASH_NUM_VALUES = 65536;$/;"	v	typeref:typename:const unsigned	file:
 HAVE_WINAPIFAMILY	MLX42/lib/glad/glad.c	/^    #define HAVE_WINAPIFAMILY /;"	d	file:
 HAVE_WINAPIFAMILY	MLX42/lib/glad/glad.c	/^  #define HAVE_WINAPIFAMILY /;"	d	file:
 HEX	MLX42/build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#define HEX(/;"	d	file:
 HEX	MLX42/build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define HEX(/;"	d	file:
-HEX_BLACK	include/cube3d.h	/^# define HEX_BLACK	/;"	d
-HEX_BLUE	include/cube3d.h	/^# define HEX_BLUE	/;"	d
-HEX_BROWN	include/cube3d.h	/^# define HEX_BROWN	/;"	d
-HEX_DARK_GREEN	include/cube3d.h	/^# define HEX_DARK_GREEN	/;"	d
-HEX_GREEN	include/cube3d.h	/^# define HEX_GREEN	/;"	d
-HEX_WHITE	include/cube3d.h	/^# define HEX_WHITE	/;"	d
-HEX_YELLOW	include/cube3d.h	/^# define HEX_YELLOW	/;"	d
+HEX_BLACK	include/cube3d.h	/^# define HEX_BLACK /;"	d
+HEX_BLUE	include/cube3d.h	/^# define HEX_BLUE /;"	d
+HEX_BROWN	include/cube3d.h	/^# define HEX_BROWN /;"	d
+HEX_DARK_GREEN	include/cube3d.h	/^# define HEX_DARK_GREEN /;"	d
+HEX_GREEN	include/cube3d.h	/^# define HEX_GREEN /;"	d
+HEX_WHITE	include/cube3d.h	/^# define HEX_WHITE /;"	d
+HEX_YELLOW	include/cube3d.h	/^# define HEX_YELLOW /;"	d
 Hash	MLX42/lib/png/lodepng.c	/^typedef struct Hash {$/;"	s	file:
 Hash	MLX42/lib/png/lodepng.c	/^} Hash;$/;"	t	typeref:struct:Hash	file:
 Highlights	MLX42/README.md	/^### Highlights$/;"	S	section:Features ✨""Emscripten Compatibility 🚀
@@ -2409,7 +2411,7 @@ LodePNGTime	MLX42/include/lodepng/lodepng.h	/^} LodePNGTime;$/;"	t	typeref:struc
 LodePNGUnknownChunks_cleanup	MLX42/lib/png/lodepng.c	/^static void LodePNGUnknownChunks_cleanup(LodePNGInfo* info) {$/;"	f	typeref:typename:void	file:
 LodePNGUnknownChunks_copy	MLX42/lib/png/lodepng.c	/^static unsigned LodePNGUnknownChunks_copy(LodePNGInfo* dest, const LodePNGInfo* src) {$/;"	f	typeref:typename:unsigned	file:
 LodePNGUnknownChunks_init	MLX42/lib/png/lodepng.c	/^static void LodePNGUnknownChunks_init(LodePNGInfo* info) {$/;"	f	typeref:typename:void	file:
-MAP_CHARS	include/cube3d.h	/^# define MAP_CHARS	/;"	d
+MAP_CHARS	include/cube3d.h	/^# define MAP_CHARS /;"	d
 MAX_SUPPORTED_DEFLATE_LENGTH	MLX42/lib/png/lodepng.c	/^static const size_t MAX_SUPPORTED_DEFLATE_LENGTH = 258;$/;"	v	typeref:typename:const size_t	file:
 MLX42	MLX42/docs/42.md	/^## MLX42$/;"	s	chapter:Technical comparison
 MLX42_H	MLX42/include/MLX42/MLX42.h	/^# define MLX42_H$/;"	d
@@ -2588,7 +2590,7 @@ Makefile Example	MLX42/docs/Basics.md	/^## Makefile Example$/;"	s	chapter:Basics
 MiniLibX	MLX42/docs/42.md	/^## MiniLibX$/;"	s	chapter:Technical comparison
 NAME	Makefile	/^NAME    =   Cub3D$/;"	m
 NAME	lib/libft/Makefile	/^NAME = libft.a$/;"	m
-NORTH	include/cube3d.h	/^# define NORTH	/;"	d
+NORTH	include/cube3d.h	/^# define NORTH /;"	d
 NUM_CODE_LENGTH_CODES	MLX42/lib/png/lodepng.c	/^#define NUM_CODE_LENGTH_CODES /;"	d	file:
 NUM_DEFLATE_CODE_SYMBOLS	MLX42/lib/png/lodepng.c	/^#define NUM_DEFLATE_CODE_SYMBOLS /;"	d	file:
 NUM_DISTANCE_SYMBOLS	MLX42/lib/png/lodepng.c	/^#define NUM_DISTANCE_SYMBOLS /;"	d	file:
@@ -2596,7 +2598,7 @@ Notes	MLX42/docs/index.md	/^## Notes$/;"	s	chapter:Introduction
 OBJ	Makefile	/^OBJ     =   $(SRC:.c=.o)$/;"	m
 OBJS	lib/libft/Makefile	/^OBJS = $(SRCS:$(SRC_DIR)\/%.c=$(OBJ_DIR)\/%.o)$/;"	m
 OBJ_DIR	lib/libft/Makefile	/^OBJ_DIR = obj$/;"	m
-OK	include/cube3d.h	/^# define OK	/;"	d
+OK	include/cube3d.h	/^# define OK /;"	d
 Open source && Community driven 🌐	MLX42/README.md	/^## Open source && Community driven 🌐$/;"	s	chapter:Features ✨
 Our Pledge	MLX42/CODE_OF_CONDUCT.md	/^## Our Pledge$/;"	s	chapter:Contributor Covenant Code of Conduct
 Our Standards	MLX42/CODE_OF_CONDUCT.md	/^## Our Standards$/;"	s	chapter:Contributor Covenant Code of Conduct
@@ -3658,16 +3660,16 @@ PLATFORM_ID	MLX42/build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/
 PLATFORM_ID	MLX42/build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define PLATFORM_ID$/;"	d	file:
 PLATFORM_ID	MLX42/build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID /;"	d	file:
 PLATFORM_ID	MLX42/build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID$/;"	d	file:
-PLAYER_CHARS	include/cube3d.h	/^# define PLAYER_CHARS	/;"	d
+PLAYER_CHARS	include/cube3d.h	/^# define PLAYER_CHARS /;"	d
 Performance 🚀	MLX42/README.md	/^## Performance 🚀$/;"	s	chapter:Features ✨
-RENDER_2D	include/cube3d.h	/^# define RENDER_2D	/;"	d
-RENDER_3D	include/cube3d.h	/^# define RENDER_3D	/;"	d
+RENDER_2D	include/cube3d.h	/^# define RENDER_2D /;"	d
+RENDER_3D	include/cube3d.h	/^# define RENDER_3D /;"	d
 RM	MLX42/build/Makefile	/^RM = \/usr\/bin\/cmake -E rm -f$/;"	m
 Read the wiki for repo codestyle!	MLX42/CONTRIBUTING.md	/^## Read the wiki for repo codestyle!$/;"	s	chapter:How to contribute to MLX42
 Rendering	MLX42/docs/42.md	/^### Rendering$/;"	S	section:Technical comparison""MLX42
 Reporting a Vulnerability	MLX42/SECURITY.md	/^## Reporting a Vulnerability$/;"	s	chapter:Security Policy
 Resize Hook	MLX42/docs/Hooks.md	/^### Resize Hook$/;"	S	section:Hooks in MLX42""Specialized Hooks
-SENSIVITY	include/cube3d.h	/^# define SENSIVITY	/;"	d
+SENSIVITY	include/cube3d.h	/^# define SENSIVITY /;"	d
 SHELL	MLX42/build/Makefile	/^SHELL = \/bin\/sh$/;"	m
 SIMULATE_ID	MLX42/build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  define SIMULATE_ID /;"	d	file:
 SIMULATE_ID	MLX42/build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define SIMULATE_ID /;"	d	file:
@@ -3686,7 +3688,7 @@ SIMULATE_VERSION_PATCH	MLX42/build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerI
 SIMULATE_VERSION_PATCH	MLX42/build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define SIMULATE_VERSION_PATCH /;"	d	file:
 SIMULATE_VERSION_PATCH	MLX42/build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define SIMULATE_VERSION_PATCH /;"	d	file:
 SOURCE_DIR	MLX42/CMakeLists.txt	/^set(SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}\/src)$/;"	v
-SOUTH	include/cube3d.h	/^# define SOUTH	/;"	d
+SOUTH	include/cube3d.h	/^# define SOUTH /;"	d
 SRC	Makefile	/^SRC = $(shell find src -type f -name "*.c")$/;"	m
 SRCS	lib/libft/Makefile	/^SRCS = $(addprefix $(SRC_DIR)\/, $(FILES))$/;"	m
 SRC_DIR	lib/libft/Makefile	/^SRC_DIR = src$/;"	m
@@ -3712,7 +3714,7 @@ TEST_F	MLX42/tests/tests.cpp	/^TEST_F(Window, Basic)$/;"	f
 TEST_F	MLX42/tests/tests.cpp	/^TEST_F(Window, MultipleImages)$/;"	f
 TEST_F	MLX42/tests/tests.cpp	/^TEST_F(Window, SingleImage)$/;"	f
 TEST_F	MLX42/tests/tests.cpp	/^TEST_F(Window, stringTortureTest)$/;"	f
-TEXTURES_BALISE	include/cube3d.h	/^# define TEXTURES_BALISE	/;"	d
+TEXTURES_BALISE	include/cube3d.h	/^# define TEXTURES_BALISE /;"	d
 TOOLS_DIR	MLX42/CMakeLists.txt	/^set(TOOLS_DIR ${CMAKE_CURRENT_SOURCE_DIR}\/tools)$/;"	v
 TRUE	lib/libft/include/libft.h	/^# define TRUE /;"	d
 TearDown	MLX42/tests/WindowFixture.hpp	/^	inline void TearDown() override$/;"	f	class:Window	typeref:typename:void
@@ -3722,12 +3724,12 @@ Textures vs Images	MLX42/docs/Textures.md	/^## Textures vs Images$/;"	s	chapter:
 Toc	MLX42/docs/index.md	/^## Toc$/;"	s	chapter:Introduction
 Tools	MLX42/docs/XPM42.md	/^## Tools$/;"	s	chapter:XPM42
 Transparency	MLX42/docs/Images.md	/^## Transparency$/;"	s	chapter:Images
-UNSET_COLOR	include/cube3d.h	/^# define UNSET_COLOR	/;"	d
+UNSET_COLOR	include/cube3d.h	/^# define UNSET_COLOR /;"	d
 Unit tests	MLX42/README.md	/^### Unit tests$/;"	S	section:Features ✨""Installation 🏗️
 Via [Homebrew](https://brew.sh/) / [42Homebrew](https://github.com/kube/42homebrew)	MLX42/README.md	/^#### Via [Homebrew](https:\/\/brew.sh\/) \/ [42Homebrew](https:\/\/github.com\/kube\/42homebrew)$/;"	t	subsection:Features ✨""For MacOS:""Installing the dependencies
-WEST	include/cube3d.h	/^# define WEST	/;"	d
-WIN_HEIGHT	include/cube3d.h	/^# define WIN_HEIGHT	/;"	d
-WIN_WIDTH	include/cube3d.h	/^# define WIN_WIDTH	/;"	d
+WEST	include/cube3d.h	/^# define WEST /;"	d
+WIN_HEIGHT	include/cube3d.h	/^# define WIN_HEIGHT /;"	d
+WIN_WIDTH	include/cube3d.h	/^# define WIN_WIDTH /;"	d
 WRITEBIT	MLX42/lib/png/lodepng.c	/^#define WRITEBIT(/;"	d	file:
 Window	MLX42/tests/WindowFixture.hpp	/^class Window : public ::testing::Test$/;"	c
 XPM42	MLX42/docs/42.md	/^### XPM42$/;"	S	section:Technical comparison""MLX42
@@ -3780,14 +3782,14 @@ allocsize	MLX42/lib/png/lodepng.c	/^  size_t allocsize; \/*allocated size*\/$/;"
 allow_greyscale	MLX42/include/lodepng/lodepng.h	/^  unsigned allow_greyscale; \/*default 1. if 0, choose RGB or RGBA even if the image only has gr/;"	m	struct:LodePNGColorStats	typeref:typename:unsigned
 allow_palette	MLX42/include/lodepng/lodepng.h	/^  unsigned allow_palette; \/*default 1. if 0, disallow choosing palette colortype in auto_choose/;"	m	struct:LodePNGColorStats	typeref:typename:unsigned
 alpha	MLX42/include/lodepng/lodepng.h	/^  unsigned alpha; \/*image is not opaque and alpha channel or alpha palette required*\/$/;"	m	struct:LodePNGColorStats	typeref:typename:unsigned
-angle	include/cube3d.h	/^	float		angle;$/;"	m	struct:s_player	typeref:typename:float
+angle	include/cube3d.h	/^	float			angle;$/;"	m	struct:s_player	typeref:typename:float
 append_line	lib/libft/src/ft_split.c	/^static size_t	append_line(char *str, char sep, char **ret, size_t i_wd)$/;"	f	typeref:typename:size_t	file:
-append_tab	lib/libft/src/ft_append_tab.c	/^char **append_tab(char **tab, char *str)$/;"	f	typeref:typename:char **
+append_tab	lib/libft/src/ft_append_tab.c	/^char	**append_tab(char **tab, char *str)$/;"	f	typeref:typename:char **
 array	.vscode/settings.json	/^		"array": "c",$/;"	s	object:files.associations
 auto_choose_color	MLX42/lib/png/lodepng.c	/^static unsigned auto_choose_color(LodePNGColorMode* mode_out,$/;"	f	typeref:typename:unsigned	file:
 auto_convert	MLX42/include/lodepng/lodepng.h	/^  unsigned auto_convert; \/*automatically choose output PNG color type. Default: true*\/$/;"	m	struct:LodePNGEncoderSettings	typeref:typename:unsigned
-b	include/cube3d.h	/^	int	b;$/;"	m	struct:s_rgb	typeref:typename:int
-background	include/cube3d.h	/^	mlx_image_t	*background;$/;"	m	struct:s_game	typeref:typename:mlx_image_t *
+b	include/cube3d.h	/^	int				b;$/;"	m	struct:s_rgb	typeref:typename:int
+background	include/cube3d.h	/^	mlx_image_t		*background;$/;"	m	struct:s_game	typeref:typename:mlx_image_t *
 background_b	MLX42/include/lodepng/lodepng.h	/^  unsigned background_b;       \/*blue component of suggested background color*\/$/;"	m	struct:LodePNGInfo	typeref:typename:unsigned
 background_defined	MLX42/include/lodepng/lodepng.h	/^  unsigned background_defined; \/*is a suggested background color given?*\/$/;"	m	struct:LodePNGInfo	typeref:typename:unsigned
 background_g	MLX42/include/lodepng/lodepng.h	/^  unsigned background_g;       \/*green component of suggested background color*\/$/;"	m	struct:LodePNGInfo	typeref:typename:unsigned
@@ -3809,7 +3811,7 @@ buffer	MLX42/lib/png/lodepng.c	/^  unsigned buffer; \/*buffer for reading bits. 
 bytes_per_pixel	MLX42/include/MLX42/MLX42.h	/^	uint8_t		bytes_per_pixel;$/;"	m	struct:mlx_texture	typeref:typename:uint8_t
 c_to_i	lib/libft/src/ft_atoi_err.c	/^static long int	c_to_i(char c)$/;"	f	typeref:typename:long int	file:
 cast_ray	src/ray_casting/ray_casting.c	/^static void	cast_ray(t_game *game, float ray_angle, int i)$/;"	f	typeref:typename:void	file:
-ceiling	include/cube3d.h	/^	mlx_image_t *ceiling;$/;"	m	struct:s_images	typeref:typename:mlx_image_t *
+ceiling	include/cube3d.h	/^	mlx_image_t		*ceiling;$/;"	m	struct:s_images	typeref:typename:mlx_image_t *
 ceiling	include/cube3d.h	/^	t_rgb			ceiling;$/;"	m	struct:s_textures	typeref:typename:t_rgb
 chain	MLX42/lib/png/lodepng.c	/^  unsigned short* chain;$/;"	m	struct:Hash	typeref:typename:unsigned short *	file:
 chains0	MLX42/lib/png/lodepng.c	/^  BPMNode** chains0;$/;"	m	struct:BPMLists	typeref:typename:BPMNode **	file:
@@ -3830,9 +3832,9 @@ clean	MLX42/build/Makefile	/^clean:$/;"	t
 clean	Makefile	/^clean:$/;"	t
 clean	lib/libft/Makefile	/^clean:$/;"	t
 clean/fast	MLX42/build/Makefile	/^clean\/fast: clean$/;"	t
-clean_exit	src/exit/clean_exit.c	/^void clean_exit(t_game *game, char *msg, int exit_code)$/;"	f	typeref:typename:void
-clean_get_next_line	src/exit/clean_exit.c	/^void    clean_get_next_line(t_game *game)$/;"	f	typeref:typename:void
-clean_lines	src/get_next_line.c	/^char	*clean_lines(char **next_line, char **buff)$/;"	f	typeref:typename:char *
+clean_exit	src/exit/clean_exit.c	/^void	clean_exit(t_game *game, char *msg, int exit_code)$/;"	f	typeref:typename:void
+clean_get_next_line	src/exit/clean_exit.c	/^void	clean_get_next_line(t_game *game)$/;"	f	typeref:typename:void
+clear_stash	src/get_next_line/get_next_line.c	/^void	clear_stash(char **stash)$/;"	f	typeref:typename:void
 close_gl	MLX42/lib/glad/glad.c	/^void close_gl(void) {$/;"	f	typeref:typename:void	file:
 close_hook	MLX42/include/MLX42/MLX42_Int.h	/^	mlx_close_t		close_hook;$/;"	m	struct:mlx_ctx	typeref:typename:mlx_close_t
 cmake_check_build_system	MLX42/build/Makefile	/^cmake_check_build_system:$/;"	t
@@ -3861,7 +3863,7 @@ context	MLX42/include/MLX42/MLX42.h	/^	void*		context;$/;"	m	struct:mlx	typeref:
 count	MLX42/include/MLX42/MLX42.h	/^	size_t			count;$/;"	m	struct:mlx_image	typeref:typename:size_t
 countZeros	MLX42/lib/png/lodepng.c	/^static unsigned countZeros(const unsigned char* data, size_t size, size_t pos) {$/;"	f	typeref:typename:unsigned	file:
 cpp	MLX42/include/MLX42/MLX42.h	/^	int32_t			cpp;$/;"	m	struct:xpm	typeref:typename:int32_t
-crosshair	include/cube3d.h	/^	mlx_image_t	*crosshair;$/;"	m	struct:s_game	typeref:typename:mlx_image_t *
+crosshair	include/cube3d.h	/^	mlx_image_t		*crosshair;$/;"	m	struct:s_game	typeref:typename:mlx_image_t *
 cursor	MLX42/include/MLX42/MLX42.h	/^typedef enum cursor$/;"	g
 cursor_hook	MLX42/include/MLX42/MLX42_Int.h	/^	mlx_cursor_t	cursor_hook;$/;"	m	struct:mlx_ctx	typeref:typename:mlx_cursor_t
 cursor_t	MLX42/include/MLX42/MLX42.h	/^}	cursor_t;$/;"	t	typeref:enum:cursor
@@ -3901,9 +3903,9 @@ draw_queue_t	MLX42/include/MLX42/MLX42_Int.h	/^}	draw_queue_t;$/;"	t	typeref:str
 draw_rectangle	src/display_map/display_3d_map.c	/^void	draw_rectangle(mlx_image_t *img, uint32_t color)$/;"	f	typeref:typename:void
 draw_slice	src/ray_casting/ray_casting.c	/^void draw_slice(t_game *game, float dist, int i, float ray_angle, int color)$/;"	f	typeref:typename:void
 draw_square	src/display_map/display_map.c	/^static void	draw_square(t_game *game, mlx_image_t *img,$/;"	f	typeref:typename:void	file:
-draw_square	src/main.c	/^void draw_square(t_game game, mlx_image_t *img, uint32_t color, int x_position, int y_position)$/;"	f	typeref:typename:void
+draw_square	src/main.c	/^void	draw_square(t_game game, mlx_image_t *img, uint32_t color,$/;"	f	typeref:typename:void
 draw_tile	src/display_map/display_map.c	/^void	draw_tile(t_game *game, char tile, int x, int y)$/;"	f	typeref:typename:void
-dup_tab	src/map_utils/map_utils.c	/^char **dup_tab(char **tab)$/;"	f	typeref:typename:char **
+dup_tab	src/map_utils/map_utils.c	/^char	**dup_tab(char **tab)$/;"	f	typeref:typename:char **
 edit_cache	MLX42/build/Makefile	/^edit_cache:$/;"	t
 edit_cache/fast	MLX42/build/Makefile	/^edit_cache\/fast: edit_cache$/;"	t
 enabled	MLX42/include/MLX42/MLX42.h	/^	bool			enabled;$/;"	m	struct:mlx_image	typeref:typename:bool
@@ -3918,12 +3920,13 @@ ensureBits25	MLX42/lib/png/lodepng.c	/^static LODEPNG_INLINE void ensureBits25(L
 ensureBits32	MLX42/lib/png/lodepng.c	/^static LODEPNG_INLINE void ensureBits32(LodePNGBitReader* reader, size_t nbits) {$/;"	f	typeref:typename:LODEPNG_INLINE void	file:
 ensureBits9	MLX42/lib/png/lodepng.c	/^static LODEPNG_INLINE void ensureBits9(LodePNGBitReader* reader, size_t nbits) {$/;"	f	typeref:typename:LODEPNG_INLINE void	file:
 error	MLX42/include/lodepng/lodepng.h	/^  unsigned error;$/;"	m	struct:LodePNGState	typeref:typename:unsigned
+extract_line	src/get_next_line/get_next_line.c	/^void	extract_line(char *stash, char **line)$/;"	f	typeref:typename:void
 exts	MLX42/lib/glad/glad.c	/^static const char *exts = NULL;$/;"	v	typeref:typename:const char *	file:
 exts_i	MLX42/lib/glad/glad.c	/^static char **exts_i = NULL;$/;"	v	typeref:typename:char **	file:
 f_names	include/cube3d.h	/^	char			*f_names[4];$/;"	m	struct:s_textures	typeref:typename:char * [4]
 fclean	Makefile	/^fclean: clean$/;"	t
 fclean	lib/libft/Makefile	/^fclean: clean$/;"	t
-fd	include/cube3d.h	/^	int			fd;$/;"	m	struct:s_game	typeref:typename:int
+fd	include/cube3d.h	/^	int				fd;$/;"	m	struct:s_game	typeref:typename:int
 files.associations	.vscode/settings.json	/^	"files.associations": {$/;"	o
 filter	MLX42/lib/png/lodepng.c	/^static unsigned filter(unsigned char* out, const unsigned char* in, unsigned w, unsigned h,$/;"	f	typeref:typename:unsigned	file:
 filterScanline	MLX42/lib/png/lodepng.c	/^static void filterScanline(unsigned char* out, const unsigned char* scanline, const unsigned cha/;"	f	typeref:typename:void	file:
@@ -3935,13 +3938,16 @@ find_extensionsGL	MLX42/lib/glad/glad.c	/^static int find_extensionsGL(void) {$/
 find_horizontal_inter	src/ray_casting/ray_casting.c	/^float find_horizontal_inter(t_game *game, float angle)$/;"	f	typeref:typename:float
 find_vertical_inter	src/ray_casting/ray_casting.c	/^float find_vertical_inter(t_game *game, float angle)$/;"	f	typeref:typename:float
 floodfill	src/parsing/map/floodfill.c	/^int	floodfill(char **map, int y, int x)$/;"	f	typeref:typename:int
-floor	include/cube3d.h	/^	mlx_image_t *floor;$/;"	m	struct:s_images	typeref:typename:mlx_image_t *
+floor	include/cube3d.h	/^	mlx_image_t		*floor;$/;"	m	struct:s_images	typeref:typename:mlx_image_t *
 floor	include/cube3d.h	/^	t_rgb			floor;$/;"	m	struct:s_textures	typeref:typename:t_rgb
 font_atlas	MLX42/src/font/font.h	/^}	font_atlas = {$/;"	v	typeref:struct:s_font
 force_palette	MLX42/include/lodepng/lodepng.h	/^  unsigned force_palette;$/;"	m	struct:LodePNGEncoderSettings	typeref:typename:unsigned
+found_newline	src/get_next_line/get_next_line_utils.c	/^int	found_newline(char *stash)$/;"	f	typeref:typename:int
 frag_shader	MLX42/build/mlx_frag_shader.c	/^const char* frag_shader = "#version 330 core\\n"$/;"	v	typeref:typename:const char *
 framebuffer_callback	MLX42/src/mlx_init.c	/^static void framebuffer_callback(GLFWwindow *window, int width, int height)$/;"	f	typeref:typename:void	file:
+free_and_get_line	src/parsing/import_cub.c	/^char	*free_and_get_line(char	*line, int fd)$/;"	f	typeref:typename:char *
 free_exts	MLX42/lib/glad/glad.c	/^static void free_exts(void) {$/;"	f	typeref:typename:void	file:
+free_stash	src/get_next_line/get_next_line_utils.c	/^void	free_stash(char *stash)$/;"	f	typeref:typename:void
 freelist	MLX42/lib/png/lodepng.c	/^  BPMNode** freelist;$/;"	m	struct:BPMLists	typeref:typename:BPMNode **	file:
 ft_atoi	lib/libft/src/ft_atoi.c	/^int	ft_atoi(const char *str0)$/;"	f	typeref:typename:int
 ft_atoi_err	lib/libft/src/ft_atoi_err.c	/^int	ft_atoi_err(char *str)$/;"	f	typeref:typename:int
@@ -3949,7 +3955,7 @@ ft_bzero	lib/libft/src/ft_bzero.c	/^void	*ft_bzero(void *s, size_t n)$/;"	f	type
 ft_calloc	lib/libft/src/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f	typeref:typename:void *
 ft_draw	MLX42/tests/tests.cpp	/^static void ft_draw(void* param)$/;"	f	typeref:typename:void	file:
 ft_errmsg	lib/libft/src/ft_errmsg.c	/^void	ft_errmsg(char *str)$/;"	f	typeref:typename:void
-ft_error	src/exit/clean_exit.c	/^int ft_error(const char *msg, int exit_code)$/;"	f	typeref:typename:int
+ft_error	src/exit/clean_exit.c	/^int	ft_error(const char *msg, int exit_code)$/;"	f	typeref:typename:int
 ft_free_split	lib/libft/src/ft_split.c	/^void	ft_free_split(char ***t)$/;"	f	typeref:typename:void
 ft_get_next_wd	lib/libft/src/ft_get_next_wd.c	/^char	*ft_get_next_wd(char *sentence, char sep)$/;"	f	typeref:typename:char *
 ft_intlen	lib/libft/src/ft_itoa.c	/^static size_t	ft_intlen(long int n)$/;"	f	typeref:typename:size_t	file:
@@ -3986,12 +3992,15 @@ ft_square_map	src/parsing/map/format_map.c	/^void	ft_square_map(t_game *game, ch
 ft_strchr	lib/libft/src/ft_strchr.c	/^char	*ft_strchr(const char *str, int c)$/;"	f	typeref:typename:char *
 ft_strcmp	lib/libft/src/ft_strcmp.c	/^int	ft_strcmp(const char *s1, const char *s2)$/;"	f	typeref:typename:int
 ft_strdup	lib/libft/src/ft_strdup.c	/^char	*ft_strdup(const char *str)$/;"	f	typeref:typename:char *
+ft_strdup	src/get_next_line/get_next_line_utils.c	/^char	*ft_strdup(char *str)$/;"	f	typeref:typename:char *
 ft_striteri	lib/libft/src/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char *))$/;"	f	typeref:typename:void
 ft_strjoin	lib/libft/src/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f	typeref:typename:char *
+ft_strjoin	src/get_next_line/get_next_line_utils.c	/^char	*ft_strjoin(char *s1, char *s2)$/;"	f	typeref:typename:char *
 ft_strlcat	lib/libft/src/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)$/;"	f	typeref:typename:size_t
 ft_strlcpy	lib/libft/src/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)$/;"	f	typeref:typename:size_t
 ft_strlen	lib/libft/src/ft_strlen.c	/^size_t	ft_strlen(const char *str)$/;"	f	typeref:typename:size_t
-ft_strlen_char	lib/libft/src/ft_strlen_char.c	/^size_t ft_strlen_char(char *str, char c)$/;"	f	typeref:typename:size_t
+ft_strlen	src/get_next_line/get_next_line_utils.c	/^int	ft_strlen(char *str)$/;"	f	typeref:typename:int
+ft_strlen_char	lib/libft/src/ft_strlen_char.c	/^size_t	ft_strlen_char(char *str, char c)$/;"	f	typeref:typename:size_t
 ft_strmapi	lib/libft/src/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f	typeref:typename:char *
 ft_strncmp	lib/libft/src/ft_strncmp.c	/^int	ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f	typeref:typename:int
 ft_strndup	lib/libft/src/ft_strndup.c	/^char	*ft_strndup(const char *s, size_t n)$/;"	f	typeref:typename:char *
@@ -4013,7 +4022,7 @@ func	MLX42/include/MLX42/MLX42_Int.h	/^	mlx_mousefunc	func;$/;"	m	struct:mlx_mou
 func	MLX42/include/MLX42/MLX42_Int.h	/^	mlx_resizefunc	func;$/;"	m	struct:mlx_resize	typeref:typename:mlx_resizefunc
 func	MLX42/include/MLX42/MLX42_Int.h	/^	mlx_scrollfunc	func;$/;"	m	struct:mlx_srcoll	typeref:typename:mlx_scrollfunc
 func	MLX42/include/MLX42/MLX42_Int.h	/^	void	(*func)(void*);$/;"	m	struct:mlx_hook	typeref:typename:void (*)(void *)
-g	include/cube3d.h	/^	int	g;$/;"	m	struct:s_rgb	typeref:typename:int
+g	include/cube3d.h	/^	int				g;$/;"	m	struct:s_rgb	typeref:typename:int
 gama_defined	MLX42/include/lodepng/lodepng.h	/^  unsigned gama_defined; \/* Whether a gAMA chunk is present (0 = not present, 1 = present). *\/$/;"	m	struct:LodePNGInfo	typeref:typename:unsigned
 gama_gamma	MLX42/include/lodepng/lodepng.h	/^  unsigned gama_gamma;   \/* Gamma exponent times 100000 *\/$/;"	m	struct:LodePNGInfo	typeref:typename:unsigned
 generateFixedDistanceTree	MLX42/lib/png/lodepng.c	/^static unsigned generateFixedDistanceTree(HuffmanTree* tree) {$/;"	f	typeref:typename:unsigned	file:
@@ -4030,9 +4039,8 @@ getValueRequiredBits	MLX42/lib/png/lodepng.c	/^static unsigned getValueRequiredB
 get_color	src/parsing/get_textures_and_colors.c	/^int	get_color(t_game *game, char *line)$/;"	f	typeref:typename:int
 get_exts	MLX42/lib/glad/glad.c	/^static int get_exts(void) {$/;"	f	typeref:typename:int	file:
 get_map	src/parsing/map/get_map_brut.c	/^char	**get_map(t_game *game, int fd, char **line_addr)$/;"	f	typeref:typename:char **
-get_next_line	src/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f	typeref:typename:char *
-get_next_line_tester	src/main.c	/^int get_next_line_tester(char *filename)$/;"	f	typeref:typename:int
-get_pixel	src/textures/resize.c	/^uint8_t get_pixel(mlx_texture_t *texture, uint32_t x, uint32_t y)$/;"	f	typeref:typename:uint8_t
+get_next_line	src/get_next_line/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f	typeref:typename:char *
+get_pixel	src/textures/resize.c	/^uint8_t	get_pixel(mlx_texture_t *texture, uint32_t x, uint32_t y)$/;"	f	typeref:typename:uint8_t
 get_player_position	src/parsing/set_player.c	/^t_point	get_player_position(char **map)$/;"	f	typeref:typename:t_point
 get_proc	MLX42/lib/glad/glad.c	/^void* get_proc(const char *namez) {$/;"	f	typeref:typename:void *	file:
 get_rgb	src/parsing/get_textures_and_colors.c	/^t_rgb	*get_rgb(t_game *game, char *line, t_rgb *rgb)$/;"	f	typeref:typename:t_rgb *
@@ -7189,7 +7197,7 @@ glad_glWindowPos3sv	MLX42/include/glad/glad.h	/^GLAPI PFNGLWINDOWPOS3SVPROC glad
 glad_glWindowPos3sv	MLX42/lib/glad/glad.c	/^PFNGLWINDOWPOS3SVPROC glad_glWindowPos3sv = NULL;$/;"	v	typeref:typename:PFNGLWINDOWPOS3SVPROC
 glfw3_FOUND	MLX42/cmake/Findglfw3.cmake	/^	set(glfw3_FOUND "NO")$/;"	v
 glfw3_FOUND	MLX42/cmake/Findglfw3.cmake	/^	set(glfw3_FOUND "YES")$/;"	v
-gun	include/cube3d.h	/^	mlx_image_t	*gun;$/;"	m	struct:s_game	typeref:typename:mlx_image_t *
+gun	include/cube3d.h	/^	mlx_image_t		*gun;$/;"	m	struct:s_game	typeref:typename:mlx_image_t *
 has_ext	MLX42/lib/glad/glad.c	/^static int has_ext(const char *ext) {$/;"	f	typeref:typename:int	file:
 hash_cleanup	MLX42/lib/png/lodepng.c	/^static void hash_cleanup(Hash* hash) {$/;"	f	typeref:typename:void	file:
 hash_init	MLX42/lib/png/lodepng.c	/^static unsigned hash_init(Hash* hash, unsigned windowsize) {$/;"	f	typeref:typename:unsigned	file:
@@ -7200,7 +7208,7 @@ height	MLX42/include/MLX42/MLX42.h	/^	int32_t		height;$/;"	m	struct:mlx	typeref:
 height	MLX42/include/MLX42/MLX42.h	/^	uint32_t	height;$/;"	m	struct:mlx_texture	typeref:typename:uint32_t
 height	MLX42/src/font/font.h	/^	uint32_t		height;$/;"	m	struct:s_font	typeref:typename:uint32_t
 height	MLX42/tests/WindowFixture.hpp	/^	static const int32_t height = 400;$/;"	m	class:Window	typeref:typename:const int32_t
-height	include/cube3d.h	/^	int		height;$/;"	m	struct:s_map	typeref:typename:int
+height	include/cube3d.h	/^	int				height;$/;"	m	struct:s_map	typeref:typename:int
 help	MLX42/build/Makefile	/^help:$/;"	t
 hooks	MLX42/include/MLX42/MLX42_Int.h	/^	mlx_list_t*		hooks;$/;"	m	struct:mlx_ctx	typeref:typename:mlx_list_t *
 hour	MLX42/include/lodepng/lodepng.h	/^  unsigned hour;    \/*0-23*\/$/;"	m	struct:LodePNGTime	typeref:typename:unsigned
@@ -7217,9 +7225,10 @@ ignore_nlen	MLX42/include/lodepng/lodepng.h	/^  unsigned ignore_nlen; \/*ignore 
 ilog2	MLX42/lib/png/lodepng.c	/^static size_t ilog2(size_t i) {$/;"	f	typeref:typename:size_t	file:
 ilog2i	MLX42/lib/png/lodepng.c	/^static size_t ilog2i(size_t i) {$/;"	f	typeref:typename:size_t	file:
 image	MLX42/include/MLX42/MLX42_Int.h	/^	mlx_image_t*	image;$/;"	m	struct:draw_queue	typeref:typename:mlx_image_t *
-image	include/cube3d.h	/^	mlx_image_t	*image;$/;"	m	struct:s_player	typeref:typename:mlx_image_t *
+image	include/cube3d.h	/^	mlx_image_t		*image;$/;"	m	struct:s_player	typeref:typename:mlx_image_t *
 images	MLX42/include/MLX42/MLX42_Int.h	/^	mlx_list_t*		images;$/;"	m	struct:mlx_ctx	typeref:typename:mlx_list_t *
-images	include/cube3d.h	/^	t_images	images;$/;"	m	struct:s_game	typeref:typename:t_images
+images	include/cube3d.h	/^	t_images		images;$/;"	m	struct:s_game	typeref:typename:t_images
+import_cub_file	src/parsing/import_cub.c	/^int	import_cub_file(t_game *game)$/;"	f	typeref:typename:int
 in_use	MLX42/lib/png/lodepng.c	/^  int in_use;$/;"	m	struct:BPMNode	typeref:typename:int	file:
 include.h	.vscode/settings.json	/^		"include.h": "c",$/;"	s	object:files.associations
 index	MLX42/lib/png/lodepng.c	/^  int index; \/*the payload. Only has a meaningful value if this is in the last level*\/$/;"	m	struct:ColorTree	typeref:typename:int	file:
@@ -7253,8 +7262,8 @@ info_version_internal	MLX42/build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId
 info_version_internal	MLX42/build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^char const* info_version_internal = "INFO" ":" "compiler_version_internal[" COMPILER_VERSION_INT/;"	v	typeref:typename:char const *
 info_version_internal	MLX42/build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version_internal[] = {$/;"	v	typeref:typename:char const[]
 info_version_internal	MLX42/build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_version_internal = "INFO" ":" "compiler_version_internal[" COMPILER_VERSION_INT/;"	v	typeref:typename:char const *
-init_color	src/main.c	/^t_rgb init_color(int r, int g, int b)$/;"	f	typeref:typename:t_rgb
-init_game	src/main.c	/^void init_game(t_game *game)$/;"	f	typeref:typename:void
+init_color	src/main.c	/^t_rgb	init_color(int r, int g, int b)$/;"	f	typeref:typename:t_rgb
+init_game	src/main.c	/^void	init_game(t_game *game)$/;"	f	typeref:typename:void
 initialHeight	MLX42/include/MLX42/MLX42_Int.h	/^	int32_t			initialHeight;$/;"	m	struct:mlx_ctx	typeref:typename:int32_t
 initialWidth	MLX42/include/MLX42/MLX42_Int.h	/^	int32_t			initialWidth;$/;"	m	struct:mlx_ctx	typeref:typename:int32_t
 initializer_list	.vscode/settings.json	/^		"initializer_list": "c",$/;"	s	object:files.associations
@@ -7273,6 +7282,7 @@ isGrayICCProfile	MLX42/lib/png/lodepng.c	/^static unsigned isGrayICCProfile(cons
 isRGBICCProfile	MLX42/lib/png/lodepng.c	/^static unsigned isRGBICCProfile(const unsigned char* profile, unsigned size) {$/;"	f	typeref:typename:unsigned	file:
 is_blank_line	src/parsing/line_types.c	/^int	is_blank_line(char *line)$/;"	f	typeref:typename:int
 is_color	src/parsing/line_types.c	/^int	is_color(char *line)$/;"	f	typeref:typename:int
+is_cub_file	src/parsing/import_cub.c	/^int	is_cub_file(char *filename)$/;"	f	typeref:typename:int
 is_map	src/parsing/line_types.c	/^int	is_map(char *line)$/;"	f	typeref:typename:int
 is_map_available	src/parsing/map/check.c	/^int	is_map_available(t_game *game)$/;"	f	typeref:typename:int
 is_map_closed	src/parsing/map/floodfill.c	/^int	is_map_closed(char **map)$/;"	f	typeref:typename:int
@@ -7372,7 +7382,6 @@ load_GL_VERSION_4_6	MLX42/lib/glad/glad.c	/^static void load_GL_VERSION_4_6(GLAD
 load_file	MLX42/lib/png/lodepng.c	/^unsigned load_file(std::vector<unsigned char>& buffer, const std::string& filename) {$/;"	f	typeref:typename:unsigned
 load_map	src/parsing/load_ft.c	/^char	*load_map(t_game *game, char *line)$/;"	f	typeref:typename:char *
 load_texture	src/parsing/load_ft.c	/^int	load_texture(t_game *game, int ind, char *line)$/;"	f	typeref:typename:int
-load_until_line	src/get_next_line.c	/^char	*load_until_line(int fd, char **buff)$/;"	f	typeref:typename:char *
 lodepng	MLX42/include/lodepng/lodepng.h	/^namespace lodepng {$/;"	n
 lodepng_add_itext	MLX42/lib/png/lodepng.c	/^unsigned lodepng_add_itext(LodePNGInfo* info, const char* key, const char* langtag,$/;"	f	typeref:typename:unsigned
 lodepng_add_itext_sized	MLX42/lib/png/lodepng.c	/^static unsigned lodepng_add_itext_sized(LodePNGInfo* info, const char* key, const char* langtag,$/;"	f	typeref:typename:unsigned	file:
@@ -7491,13 +7500,13 @@ main	MLX42/build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^int main(arg
 main	MLX42/build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f	typeref:typename:void
 main	MLX42/build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f	typeref:typename:int
 main	MLX42/tools/xpm3_conv.py	/^def main():$/;"	f
-main	src/main.c	/^int main(int argc, char **argv)$/;"	f	typeref:typename:int
+main	src/main.c	/^int	main(int argc, char **argv)$/;"	f	typeref:typename:int
 major	MLX42/include/glad/glad.h	/^    int major;$/;"	m	struct:gladGLversionStruct	typeref:typename:int
 make_libs	Makefile	/^make_libs:$/;"	t
 make_str	lib/libft/src/ft_itoa.c	/^static void	make_str(long int *n, char *str, int len)$/;"	f	typeref:typename:void	file:
 make_tab	lib/libft/src/ft_split.c	/^static char	**make_tab(char **ret, char const *s, char sep, unsigned int nb_wd)$/;"	f	typeref:typename:char **	file:
 malloc_len	lib/libft/src/ft_substr.c	/^size_t	malloc_len(char const *s, unsigned int start, size_t len)$/;"	f	typeref:typename:size_t
-map	include/cube3d.h	/^	t_map		map;$/;"	m	struct:s_game	typeref:typename:t_map
+map	include/cube3d.h	/^	t_map			map;$/;"	m	struct:s_game	typeref:typename:t_map
 math.h	.vscode/settings.json	/^		"math.h": "c",$/;"	s	object:files.associations
 max_icc_size	MLX42/include/lodepng/lodepng.h	/^  size_t max_icc_size;$/;"	m	struct:LodePNGDecoderSettings	typeref:typename:size_t
 max_loaded_major	MLX42/lib/glad/glad.c	/^static int max_loaded_major;$/;"	v	typeref:typename:int	file:
@@ -7512,7 +7521,7 @@ minor	MLX42/include/glad/glad.h	/^    int minor;$/;"	m	struct:gladGLversionStruc
 minute	MLX42/include/lodepng/lodepng.h	/^  unsigned minute;  \/*0-59*\/$/;"	m	struct:LodePNGTime	typeref:typename:unsigned
 mlx	MLX42/include/MLX42/MLX42.h	/^typedef struct mlx$/;"	s
 mlx	MLX42/tests/WindowFixture.hpp	/^	mlx_t* mlx = nullptr;$/;"	m	class:Window	typeref:typename:mlx_t *
-mlx	include/cube3d.h	/^	mlx_t		*mlx;$/;"	m	struct:s_game	typeref:typename:mlx_t *
+mlx	include/cube3d.h	/^	mlx_t			*mlx;$/;"	m	struct:s_game	typeref:typename:mlx_t *
 mlx42	MLX42/CMakeLists.txt	/^add_library(mlx42 STATIC$/;"	t
 mlx42	MLX42/CMakeLists.txt	/^project(mlx42 VERSION 2.4.1)$/;"	p
 mlx42	MLX42/build/Makefile	/^mlx42: cmake_check_build_system$/;"	t
@@ -7664,13 +7673,13 @@ modifier	MLX42/include/MLX42/MLX42.h	/^	modifier_key_t	modifier;$/;"	m	struct:ml
 modifier_key	MLX42/include/MLX42/MLX42.h	/^typedef enum modifier_key$/;"	g
 modifier_key_t	MLX42/include/MLX42/MLX42.h	/^}	modifier_key_t;$/;"	t	typeref:enum:modifier_key
 month	MLX42/include/lodepng/lodepng.h	/^  unsigned month;   \/*1-12*\/$/;"	m	struct:LodePNGTime	typeref:typename:unsigned
-mouse_event	src/main.c	/^void mouse_event(mouse_key_t button, action_t action, modifier_key_t mods, void *param)$/;"	f	typeref:typename:void
+mouse_event	src/main.c	/^void	mouse_event(mouse_key_t button, action_t action, modifier_key_t mods, void *param)$/;"	f	typeref:typename:void
 mouse_hook	MLX42/include/MLX42/MLX42_Int.h	/^	mlx_mouse_t		mouse_hook;$/;"	m	struct:mlx_ctx	typeref:typename:mlx_mouse_t
 mouse_key	MLX42/include/MLX42/MLX42.h	/^typedef enum mouse_key$/;"	g
 mouse_key_t	MLX42/include/MLX42/MLX42.h	/^}	mouse_key_t;$/;"	t	typeref:enum:mouse_key
 mouse_mode	MLX42/include/MLX42/MLX42.h	/^typedef enum mouse_mode$/;"	g
 mouse_mode_t	MLX42/include/MLX42/MLX42.h	/^}	mouse_mode_t;$/;"	t	typeref:enum:mouse_mode
-move_dist	include/cube3d.h	/^	int			move_dist;$/;"	m	struct:s_player	typeref:typename:int
+move_dist	include/cube3d.h	/^	int				move_dist;$/;"	m	struct:s_player	typeref:typename:int
 move_player	src/move/move.c	/^void	move_player(t_game *game, double *new_x, double *new_y)$/;"	f	typeref:typename:void
 movements	src/move/move.c	/^void	movements(void *param)$/;"	f	typeref:typename:void
 name	MLX42/tests/WindowFixture.hpp	/^	static constexpr const char* name = "MLX42";$/;"	m	class:Window	typeref:typename:const char *
@@ -7712,8 +7721,7 @@ phys_y	MLX42/include/lodepng/lodepng.h	/^  unsigned phys_y; \/*pixels per unit i
 pixels	MLX42/include/MLX42/MLX42.h	/^	uint8_t*		pixels;$/;"	m	struct:mlx_image	typeref:typename:uint8_t *
 pixels	MLX42/include/MLX42/MLX42.h	/^	uint8_t*	pixels;$/;"	m	struct:mlx_texture	typeref:typename:uint8_t *
 pixels	MLX42/src/font/font.h	/^	char*			pixels;$/;"	m	struct:s_font	typeref:typename:char *
-player	include/cube3d.h	/^	t_player	player;$/;"	m	struct:s_game	typeref:typename:t_player
-pop_line	src/get_next_line.c	/^char	*pop_line(char *buff)$/;"	f	typeref:typename:char *
+player	include/cube3d.h	/^	t_player		player;$/;"	m	struct:s_game	typeref:typename:t_player
 postProcessScanlines	MLX42/lib/png/lodepng.c	/^static unsigned postProcessScanlines(unsigned char* out, unsigned char* in,$/;"	f	typeref:typename:unsigned	file:
 preProcessScanlines	MLX42/lib/png/lodepng.c	/^static unsigned preProcessScanlines(unsigned char** out, size_t* outsize, const unsigned char* i/;"	f	typeref:typename:unsigned	file:
 predefined_filters	MLX42/include/lodepng/lodepng.h	/^  const unsigned char* predefined_filters;$/;"	m	struct:LodePNGEncoderSettings	typeref:typename:const unsigned char *
@@ -7721,12 +7729,13 @@ preinstall	MLX42/build/Makefile	/^preinstall: all$/;"	t
 preinstall/fast	MLX42/build/Makefile	/^preinstall\/fast:$/;"	t
 prev	MLX42/include/MLX42/MLX42_Int.h	/^	struct mlx_list*	prev;$/;"	m	struct:mlx_list	typeref:struct:mlx_list *
 print_game	src/debug/print_tab.c	/^void	print_game(t_game *game)$/;"	f	typeref:typename:void
-print_tab	src/debug/print_tab.c	/^void print_tab(char **tab)$/;"	f	typeref:typename:void
+print_tab	src/debug/print_tab.c	/^void	print_tab(char **tab)$/;"	f	typeref:typename:void
+process_line	src/parsing/import_cub.c	/^void	process_line(t_game *game, char **line)$/;"	f	typeref:typename:void
 qnxnto	MLX42/build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v	typeref:typename:char const *
 qnxnto	MLX42/build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v	typeref:typename:char const *
-r	include/cube3d.h	/^	int	r;$/;"	m	struct:s_rgb	typeref:typename:int
+r	include/cube3d.h	/^	int				r;$/;"	m	struct:s_rgb	typeref:typename:int
 ranges	.vscode/settings.json	/^		"ranges": "c",$/;"	s	object:files.associations
-ray	include/cube3d.h	/^	mlx_image_t	*ray;$/;"	m	struct:s_game	typeref:typename:mlx_image_t *
+ray	include/cube3d.h	/^	mlx_image_t		*ray;$/;"	m	struct:s_game	typeref:typename:mlx_image_t *
 ray_casting	src/ray_casting/ray_casting.c	/^void	ray_casting(t_game *game)$/;"	f	typeref:typename:void
 re	Makefile	/^re: fclean all$/;"	t
 re	lib/libft/Makefile	/^re: fclean all$/;"	t
@@ -7746,7 +7755,7 @@ readChunk_tEXt	MLX42/lib/png/lodepng.c	/^static unsigned readChunk_tEXt(LodePNGI
 readChunk_tIME	MLX42/lib/png/lodepng.c	/^static unsigned readChunk_tIME(LodePNGInfo* info, const unsigned char* data, size_t chunkLength)/;"	f	typeref:typename:unsigned	file:
 readChunk_tRNS	MLX42/lib/png/lodepng.c	/^static unsigned readChunk_tRNS(LodePNGColorMode* color, const unsigned char* data, size_t chunkL/;"	f	typeref:typename:unsigned	file:
 readChunk_zTXt	MLX42/lib/png/lodepng.c	/^static unsigned readChunk_zTXt(LodePNGInfo* info, const LodePNGDecoderSettings* decoder,$/;"	f	typeref:typename:unsigned	file:
-read_file	src/main.c	/^int	read_file(const char *filename)$/;"	f	typeref:typename:int
+read_and_add	src/get_next_line/get_next_line.c	/^void	read_and_add(int fd, char **line, char **stash, int *readed)$/;"	f	typeref:typename:void
 read_text_chunks	MLX42/include/lodepng/lodepng.h	/^  unsigned read_text_chunks; \/*if false but remember_unknown_chunks is true, they're stored in /;"	m	struct:LodePNGDecoderSettings	typeref:typename:unsigned
 rebuild_cache	MLX42/build/Makefile	/^rebuild_cache:$/;"	t
 rebuild_cache/fast	MLX42/build/Makefile	/^rebuild_cache\/fast: rebuild_cache$/;"	t
@@ -7758,7 +7767,7 @@ reverseBits	MLX42/lib/png/lodepng.c	/^static unsigned reverseBits(unsigned bits,
 rgba16ToPixel	MLX42/lib/png/lodepng.c	/^static void rgba16ToPixel(unsigned char* out, size_t i,$/;"	f	typeref:typename:void	file:
 rgba8ToPixel	MLX42/lib/png/lodepng.c	/^static unsigned rgba8ToPixel(unsigned char* out, size_t i,$/;"	f	typeref:typename:unsigned	file:
 rotate_player	src/move/move.c	/^void	rotate_player(t_game *game)$/;"	f	typeref:typename:void
-rotation_speed	include/cube3d.h	/^	float		rotation_speed;$/;"	m	struct:s_player	typeref:typename:float
+rotation_speed	include/cube3d.h	/^	float			rotation_speed;$/;"	m	struct:s_player	typeref:typename:float
 s_font	MLX42/src/font/font.h	/^static struct s_font$/;"	s
 s_game	include/cube3d.h	/^typedef struct s_game$/;"	s
 s_images	include/cube3d.h	/^typedef struct s_images$/;"	s
@@ -7778,11 +7787,12 @@ scroll_hook	MLX42/include/MLX42/MLX42_Int.h	/^	mlx_scroll_t	scroll_hook;$/;"	m	s
 searchCodeIndex	MLX42/lib/png/lodepng.c	/^static size_t searchCodeIndex(const unsigned* array, size_t array_size, size_t value) {$/;"	f	typeref:typename:size_t	file:
 second	MLX42/include/lodepng/lodepng.h	/^  unsigned second;  \/*0-60 (to allow for leap seconds)*\/$/;"	m	struct:LodePNGTime	typeref:typename:unsigned
 setBitOfReversedStream	MLX42/lib/png/lodepng.c	/^static void setBitOfReversedStream(size_t* bitpointer, unsigned char* bitstream, unsigned char b/;"	f	typeref:typename:void	file:
-set_map_point	src/map_utils/map_utils.c	/^void    set_map_point(char **map, t_point pt, char c)$/;"	f	typeref:typename:void
+set_map_point	src/map_utils/map_utils.c	/^void	set_map_point(char **map, t_point pt, char c)$/;"	f	typeref:typename:void
 set_point	src/display_map/display_map.c	/^static void	set_point(t_point *point, int x, int y)$/;"	f	typeref:typename:void	file:
 set_width_and_lenght	src/parsing/map/format_map.c	/^void	set_width_and_lenght(t_game *game)$/;"	f	typeref:typename:void
 shaderprogram	MLX42/include/MLX42/MLX42_Int.h	/^	GLuint			shaderprogram;$/;"	m	struct:mlx_ctx	typeref:typename:GLuint
 shift_to_left	src/parsing/map/trim.c	/^void	shift_to_left(char ***map_addr)$/;"	f	typeref:typename:void
+shoot	src/main.c	/^void	shoot(t_game *game)$/;"	f	typeref:typename:void
 size	MLX42/lib/png/lodepng.c	/^  size_t size; \/*size in number of unsigned longs*\/$/;"	m	struct:uivector	typeref:typename:size_t	file:
 size	MLX42/lib/png/lodepng.c	/^  size_t size; \/*size of data in bytes*\/$/;"	m	struct:__anon24854bff0208	typeref:typename:size_t	file:
 size	MLX42/lib/png/lodepng.c	/^  size_t size; \/*used size*\/$/;"	m	struct:ucvector	typeref:typename:size_t	file:
@@ -7900,20 +7910,20 @@ src/utils/mlx_utils.o	MLX42/build/Makefile	/^src\/utils\/mlx_utils.o: src\/utils
 src/utils/mlx_utils.s	MLX42/build/Makefile	/^src\/utils\/mlx_utils.s: src\/utils\/mlx_utils.c.s$/;"	t
 srgb_defined	MLX42/include/lodepng/lodepng.h	/^  unsigned srgb_defined; \/* Whether an sRGB chunk is present (0 = not present, 1 = present). *\/$/;"	m	struct:LodePNGInfo	typeref:typename:unsigned
 srgb_intent	MLX42/include/lodepng/lodepng.h	/^  unsigned srgb_intent;  \/* Rendering intent: 0=perceptual, 1=rel. colorimetric, 2=saturation, /;"	m	struct:LodePNGInfo	typeref:typename:unsigned
-start_x	include/cube3d.h	/^	int			start_x;$/;"	m	struct:s_player	typeref:typename:int
-start_y	include/cube3d.h	/^	int			start_y;$/;"	m	struct:s_player	typeref:typename:int
+start_x	include/cube3d.h	/^	int				start_x;$/;"	m	struct:s_player	typeref:typename:int
+start_y	include/cube3d.h	/^	int				start_y;$/;"	m	struct:s_player	typeref:typename:int
 string_cleanup	MLX42/lib/png/lodepng.c	/^static void string_cleanup(char** out) {$/;"	f	typeref:typename:void	file:
 string_view	.vscode/settings.json	/^		"string_view": "c",$/;"	s	object:files.associations
-t_game	include/cube3d.h	/^}	t_game;$/;"	t	typeref:struct:s_game
-t_images	include/cube3d.h	/^}	t_images;$/;"	t	typeref:struct:s_images
+t_game	include/cube3d.h	/^}					t_game;$/;"	t	typeref:struct:s_game
+t_images	include/cube3d.h	/^}					t_images;$/;"	t	typeref:struct:s_images
 t_list	lib/libft/include/libft.h	/^}	t_list;$/;"	t	typeref:struct:s_list
-t_map	include/cube3d.h	/^}	t_map;$/;"	t	typeref:struct:s_map
-t_player	include/cube3d.h	/^}	t_player;$/;"	t	typeref:struct:s_player
-t_point	include/cube3d.h	/^}	t_point;$/;"	t	typeref:struct:s_point
-t_rgb	include/cube3d.h	/^}	t_rgb;$/;"	t	typeref:struct:s_rgb
-t_textures	include/cube3d.h	/^}	t_textures;$/;"	t	typeref:struct:s_textures
-tab	include/cube3d.h	/^	char	**tab;$/;"	m	struct:s_map	typeref:typename:char **
-tab_len	lib/libft/src/ft_append_tab.c	/^int tab_len(char **tab)$/;"	f	typeref:typename:int
+t_map	include/cube3d.h	/^}					t_map;$/;"	t	typeref:struct:s_map
+t_player	include/cube3d.h	/^}					t_player;$/;"	t	typeref:struct:s_player
+t_point	include/cube3d.h	/^}					t_point;$/;"	t	typeref:struct:s_point
+t_rgb	include/cube3d.h	/^}					t_rgb;$/;"	t	typeref:struct:s_rgb
+t_textures	include/cube3d.h	/^}					t_textures;$/;"	t	typeref:struct:s_textures
+tab	include/cube3d.h	/^	char			**tab;$/;"	m	struct:s_map	typeref:typename:char **
+tab_len	lib/libft/src/ft_append_tab.c	/^int	tab_len(char **tab)$/;"	f	typeref:typename:int
 table_len	MLX42/lib/png/lodepng.c	/^  unsigned char* table_len; \/*length of symbol from lookup table, or max length if secondary lo/;"	m	struct:HuffmanTree	typeref:typename:unsigned char *	file:
 table_value	MLX42/lib/png/lodepng.c	/^  unsigned short* table_value; \/*value of symbol from lookup table, or pointer to secondary tab/;"	m	struct:HuffmanTree	typeref:typename:unsigned short *	file:
 tail	MLX42/lib/png/lodepng.c	/^  struct BPMNode* tail; \/*the next nodes in this chain (null if last)*\/$/;"	m	struct:BPMNode	typeref:struct:BPMNode *	file:
@@ -7924,10 +7934,10 @@ text_num	MLX42/include/lodepng/lodepng.h	/^  size_t text_num; \/*the amount of t
 text_strings	MLX42/include/lodepng/lodepng.h	/^  char** text_strings; \/*the actual text*\/$/;"	m	struct:LodePNGInfo	typeref:typename:char **
 texture	MLX42/include/MLX42/MLX42.h	/^	mlx_texture_t	texture;$/;"	m	struct:xpm	typeref:typename:mlx_texture_t
 texture	MLX42/include/MLX42/MLX42_Int.h	/^	GLuint	texture;$/;"	m	struct:mlx_image_ctx	typeref:typename:GLuint
-texture_line	src/textures/resize.c	/^mlx_texture_t texture_line(mlx_texture_t *texture, float hit_ratio)$/;"	f	typeref:typename:mlx_texture_t
-texture_resize_line	src/textures/resize.c	/^mlx_texture_t texture_resize_line(mlx_texture_t *texture, int32_t scaled_height)$/;"	f	typeref:typename:mlx_texture_t
-textures	include/cube3d.h	/^	t_textures	textures;$/;"	m	struct:s_game	typeref:typename:t_textures
-tile_size	include/cube3d.h	/^	int			tile_size;$/;"	m	struct:s_game	typeref:typename:int
+texture_line	src/textures/resize.c	/^mlx_texture_t	texture_line(mlx_texture_t *texture, float hit_ratio)$/;"	f	typeref:typename:mlx_texture_t
+texture_resize_line	src/textures/resize.c	/^mlx_texture_t	texture_resize_line(mlx_texture_t *texture,$/;"	f	typeref:typename:mlx_texture_t
+textures	include/cube3d.h	/^	t_textures		textures;$/;"	m	struct:s_game	typeref:typename:t_textures
+tile_size	include/cube3d.h	/^	int				tile_size;$/;"	m	struct:s_game	typeref:typename:int
 time	MLX42/include/lodepng/lodepng.h	/^  LodePNGTime time;$/;"	m	struct:LodePNGInfo	typeref:typename:LodePNGTime
 time_defined	MLX42/include/lodepng/lodepng.h	/^  unsigned time_defined; \/*set to 1 to make the encoder generate a tIME chunk*\/$/;"	m	struct:LodePNGInfo	typeref:typename:unsigned
 trim_map	src/parsing/map/trim.c	/^void	trim_map(char ***map_addr)$/;"	f	typeref:typename:void
@@ -7960,29 +7970,29 @@ vert_shader	MLX42/build/mlx_vert_shader.c	/^const char* vert_shader = "#version 
 vertex	MLX42/include/MLX42/MLX42_Int.h	/^typedef struct vertex$/;"	s
 vertex_t	MLX42/include/MLX42/MLX42_Int.h	/^}	vertex_t;$/;"	t	typeref:struct:vertex
 volatile	MLX42/build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define volatile$/;"	d	file:
-wall	include/cube3d.h	/^	mlx_image_t	*wall;$/;"	m	struct:s_game	typeref:typename:mlx_image_t *
+wall	include/cube3d.h	/^	mlx_image_t		*wall;$/;"	m	struct:s_game	typeref:typename:mlx_image_t *
 weight	MLX42/lib/png/lodepng.c	/^  int weight; \/*the sum of all weights in this chain*\/$/;"	m	struct:BPMNode	typeref:typename:int	file:
 width	MLX42/include/MLX42/MLX42.h	/^	const uint32_t	width;$/;"	m	struct:mlx_image	typeref:typename:const uint32_t
 width	MLX42/include/MLX42/MLX42.h	/^	int32_t		width;$/;"	m	struct:mlx	typeref:typename:int32_t
 width	MLX42/include/MLX42/MLX42.h	/^	uint32_t	width;$/;"	m	struct:mlx_texture	typeref:typename:uint32_t
 width	MLX42/src/font/font.h	/^	uint32_t		width;$/;"	m	struct:s_font	typeref:typename:uint32_t
 width	MLX42/tests/WindowFixture.hpp	/^	static const int32_t width = 400;$/;"	m	class:Window	typeref:typename:const int32_t
-width	include/cube3d.h	/^	int		width;$/;"	m	struct:s_map	typeref:typename:int
+width	include/cube3d.h	/^	int				width;$/;"	m	struct:s_map	typeref:typename:int
 window	MLX42/include/MLX42/MLX42.h	/^	void*		window;$/;"	m	struct:mlx	typeref:typename:void *
 windowsize	MLX42/include/lodepng/lodepng.h	/^  unsigned windowsize; \/*must be a power of two <= 32768. higher compresses more but is slower./;"	m	struct:LodePNGCompressSettings	typeref:typename:unsigned
-world	include/cube3d.h	/^	mlx_image_t	*world;$/;"	m	struct:s_game	typeref:typename:mlx_image_t *
+world	include/cube3d.h	/^	mlx_image_t		*world;$/;"	m	struct:s_game	typeref:typename:mlx_image_t *
 writeBits	MLX42/lib/png/lodepng.c	/^static void writeBits(LodePNGBitWriter* writer, unsigned value, size_t nbits) {$/;"	f	typeref:typename:void	file:
 writeBitsReversed	MLX42/lib/png/lodepng.c	/^static void writeBitsReversed(LodePNGBitWriter* writer, unsigned value, size_t nbits) {$/;"	f	typeref:typename:void	file:
 writeLZ77data	MLX42/lib/png/lodepng.c	/^static void writeLZ77data(LodePNGBitWriter* writer, const uivector* lz77_encoded,$/;"	f	typeref:typename:void	file:
 writeSignature	MLX42/lib/png/lodepng.c	/^static unsigned writeSignature(ucvector* out) {$/;"	f	typeref:typename:unsigned	file:
 x	MLX42/include/MLX42/MLX42.h	/^	int32_t	x;$/;"	m	struct:mlx_instance	typeref:typename:int32_t
 x	MLX42/include/MLX42/MLX42_Int.h	/^	float	x;$/;"	m	struct:vertex	typeref:typename:float
-x	include/cube3d.h	/^	int	x;$/;"	m	struct:s_point	typeref:typename:int
+x	include/cube3d.h	/^	int				x;$/;"	m	struct:s_point	typeref:typename:int
 xpm	MLX42/include/MLX42/MLX42.h	/^typedef struct xpm$/;"	s
 xpm_t	MLX42/include/MLX42/MLX42.h	/^}	xpm_t;$/;"	t	typeref:struct:xpm
 y	MLX42/include/MLX42/MLX42.h	/^	int32_t	y;$/;"	m	struct:mlx_instance	typeref:typename:int32_t
 y	MLX42/include/MLX42/MLX42_Int.h	/^	float	y;$/;"	m	struct:vertex	typeref:typename:float
-y	include/cube3d.h	/^	int	y;$/;"	m	struct:s_point	typeref:typename:int
+y	include/cube3d.h	/^	int				y;$/;"	m	struct:s_point	typeref:typename:int
 year	MLX42/include/lodepng/lodepng.h	/^  unsigned year;    \/*2 bytes used (0-65535)*\/$/;"	m	struct:LodePNGTime	typeref:typename:unsigned
 z	MLX42/include/MLX42/MLX42.h	/^	int32_t	z;$/;"	m	struct:mlx_instance	typeref:typename:int32_t
 z	MLX42/include/MLX42/MLX42_Int.h	/^	float	z;$/;"	m	struct:vertex	typeref:typename:float

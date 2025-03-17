@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/17 16:31:14 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:22:06 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	clean_exit(t_game *game, char *msg, int exit_code)
 
 	if (game)
 	{
-		clean_get_next_line(game);
+		//clean_get_next_line(game);
 		ft_free_split(&game->map.tab);
 		if (game->mlx)
 			mlx_terminate(game->mlx);

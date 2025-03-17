@@ -13,7 +13,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90963887-31d1-4ae4-bece-84ecff793343" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/ray_casting/ray_casting.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray_casting/ray_casting.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/cube3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/cube3d.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maps/map1.cub" beforeDir="false" afterPath="$PROJECT_DIR$/maps/map1.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exit/clean_exit.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/exit/clean_exit.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/get_next_line.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/get_next_line/get_next_line.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/get_next_line/get_next_line.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/get_next_line/get_next_line.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/get_next_line/get_next_line_utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/get_next_line/get_next_line_utils.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags" beforeDir="false" afterPath="$PROJECT_DIR$/tags" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +34,8 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/src/get_next_line" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -44,7 +55,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "com.codeium.enabled": "true",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "/home/nidionis/Cub3D",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -71,5 +82,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/get_next_line/get_next_line.c</url>
+          <line>36</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
