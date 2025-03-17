@@ -3,6 +3,12 @@
 	"files.associations": {
 		"include.h": "c",
 		"math.h": "c",
-		"cmath": "c"
+		"cmath": "c",
+		"array": "c",
+		"string_view": "c",
+		"initializer_list": "c",
+		"ranges": "c",
+		"span": "c",
+		"utility": "c"
 	}
 }
