@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/17 17:36:20 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/17 21:12:14 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@
 # define BLANK_CHAR "\t\n "
 # define CHAR_BLANK_MAP '+'
 
-# define MAP_CHARS "01NSEW \n"
+# define MAP_CHARS "01NSEWD \n"
 # define TEXTURES_BALISE "NO /SO /EA /WE "
 # define PLAYER_CHARS "NSEW"
 # define FLOODFILL_CHARS "NSEW0"

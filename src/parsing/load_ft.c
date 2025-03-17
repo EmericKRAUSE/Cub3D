@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_ft_fixed.c                                    :+:      :+:    :+:   */
+/*   load_ft.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:14:15 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/11 21:35:56 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/17 21:23:03 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ char	*load_map(t_game *game, char *line)
 
 void	invalid_line(t_game *game, char *line)
 {
+	printf("error: %s\n", line);
 	if (line)
 		free(line);
 	line = NULL;
-	printf("error: %s\n", line);
 	clean_exit(game, "Error: Invalid line", ERR_INVALID_LINE);
 }
 
