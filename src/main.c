@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/18 16:28:59 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/18 17:02:31 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ int	main(int argc, char **argv)
 		display_map(game);
 	else if (DISPLAY_MODE == RENDER_3D)
 		display_3d_map(game);
+    print_game(game);
 	mlx_loop_hook(game->mlx, &movements, game);
 	mlx_loop_hook(game->mlx, &update_ray, game);
 	mlx_loop_hook(game->mlx, &hook_time, game);
