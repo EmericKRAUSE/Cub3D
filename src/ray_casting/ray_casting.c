@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:48:38 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/17 13:35:13 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/18 19:34:06 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,13 @@ float find_vertical_inter(t_game *game, float angle)
 		step_x= -tile_size;
 	}
 
-	next_y = player_y + (next_x - player_x) * tan(angle);
-	step_y = step_x * tan(angle);
+	double d_tan = tan(angle);
+    if (d_tan != d_tan)
+    {
+        d_tan = INT_MAX;
+    }
+	next_y = player_y + (next_x - player_x) * d_tan;
+	step_y = step_x * d_tan;
 
 	while (1)
 	{
