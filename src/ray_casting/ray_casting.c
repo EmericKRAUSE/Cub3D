@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:48:38 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/18 19:34:06 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/18 20:01:22 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static int	is_out_of_map(t_game *game, float pos_x, float pos_y)
 	map_height = game->map.height;
 	pos_in_grid_x = pos_x / game->tile_size;
 	pos_in_grid_y = pos_y / game->tile_size;
+	if (pos_x <= 0 || pos_y <= 0)
+		return (1);
 	return ((pos_in_grid_x < 0 || pos_in_grid_x >= map_width || pos_in_grid_y < 0 || pos_in_grid_y >= map_height));
 }
 
@@ -48,7 +50,9 @@ float find_vertical_inter(t_game *game, float angle)
 	float step_x, step_y;
 
 	if (fabs(cos(angle)) < 0.0001)
+	{
 		return (INT_MAX);
+	}
 	if (cos(angle) > 0) // Regarde a droite
 	{
 		next_x = floor(player_x / tile_size) * tile_size + tile_size;
@@ -59,23 +63,17 @@ float find_vertical_inter(t_game *game, float angle)
 		next_x = floor(player_x / tile_size) * tile_size - 0.001;
 		step_x= -tile_size;
 	}
-
-	double d_tan = tan(angle);
-    if (d_tan != d_tan)
-    {
-        d_tan = INT_MAX;
-    }
-	next_y = player_y + (next_x - player_x) * d_tan;
-	step_y = step_x * d_tan;
+	next_y = player_y + (next_x - player_x) * tan(angle);
+	step_y = step_x * tan(angle);
 
 	while (1)
 	{
 		if (is_out_of_map(game, next_x, next_y) || is_wall_hit(game, next_x, next_y))
 			break ;
 			
-		for (int j = 0; j < 4; j++)
-			for (int k = 0; k < 4; k++)
-				mlx_put_pixel(game->ray, next_x + k, next_y + j, COLOR_RAY);
+		// for (int j = 0; j < 4; j++)
+		// 	for (int k = 0; k < 4; k++)
+		// 		mlx_put_pixel(game->ray, next_x + k, next_y + j, COLOR_RAY);
 
 		next_x += step_x;
 		next_y += step_y;
@@ -92,7 +90,9 @@ float find_horizontal_inter(t_game *game, float angle)
 	float step_x, step_y;
 
 	if (fabs(sin(angle)) < 0.0001)
+	{
 		return (INT_MAX);
+	}
 	if (sin(angle) > 0) // Regarde vers le bas
 	{
 		next_y = floor(player_y / tile_size) * tile_size + tile_size;
@@ -103,7 +103,6 @@ float find_horizontal_inter(t_game *game, float angle)
 		next_y = floor(player_y / tile_size) * tile_size - 0.001;
 		step_y = -tile_size;
 	}
-
 	next_x = player_x + (next_y - player_y) / tan(angle);
 	step_x = step_y / tan(angle);
 
@@ -112,10 +111,9 @@ float find_horizontal_inter(t_game *game, float angle)
 		if (is_out_of_map(game, next_x, next_y) || is_wall_hit(game, next_x, next_y))
 			break;
 
-		for (int j = 0; j < 4; j++)
-			for (int k = 0; k < 4; k++)
-				mlx_put_pixel(game->ray, next_x + k, next_y + j, COLOR_RAY);
-
+		// for (int j = 0; j < 4; j++)
+		// 	for (int k = 0; k < 4; k++)
+		// 		mlx_put_pixel(game->ray, next_x + k, next_y + j, COLOR_RAY);
 		next_x += step_x;
 		next_y += step_y;
 	}
