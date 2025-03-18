@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/17 18:57:19 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/18 16:05:02 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,39 +58,6 @@ void draw_square(t_game game, mlx_image_t *img, uint32_t color, int x_position, 
 	mlx_image_to_window(game.mlx, img, x_position, y_position);
 }
 
-/*
-int	main(int argc, char **argv)
-{
-	t_game	game;
-
-	if (argc != 2)
-		return (ft_error("Error: Argument must be 1", 1));
-
-	if (map_parser(&game.map, argv[1]) == -1)
-		return (ft_error("Error: error while read the file", 1));
-
-	printf ("WIDTH: %d\nHEIGHT: %d\n", WIN_WIDTH, WIN_HEIGHT);
-
-	game.player.start_x = 5;
-	game.player.start_y = 5;
-
-	init_game(&game);
-	if (DISPLAY_MODE == RENDER_3D)
-		display_3d_map(&game);
-	else if (DISPLAY_MODE == RENDER_2D)
-		display_map(game);
-
-	mlx_loop_hook(game.mlx, movements, &game);
-	mlx_loop_hook(game.mlx, update_ray, &game);
-
-	mlx_loop(game.mlx);
-	mlx_terminate(game.mlx);
-	free_map(&game.map);
-	
-	return (0);
-}
-*/
-
 int get_next_line_tester(char *filename)
 {
     char	*line;
@@ -123,6 +90,9 @@ void init_game(t_game *game)
     game->textures.ceiling = init_color(UNSET_COLOR, UNSET_COLOR, UNSET_COLOR);
     game->textures.floor = init_color(UNSET_COLOR, UNSET_COLOR, UNSET_COLOR);
     game->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Cub3D", false);
+	game->is_shooting = false;
+	game->time = 0;
+	game->launcher_frame = 0;
     game->tile_size = 64;
     game->ray = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
     game->player.image = mlx_new_image(game->mlx, 1, 1);
@@ -133,22 +103,37 @@ void init_game(t_game *game)
     game->player.move_dist = game->tile_size / 8;
 }
 
-// int	main(int argc, char **argv)
-// {
-// 	t_game	*game;
+void	update_launcher(t_game *game)
+{
+	if (game->launcher_frame == 0)
+		game->rocket_launcher[6]->instances->enabled = false;
+	else
+		game->rocket_launcher[game->launcher_frame - 1]->instances->enabled = false;
+	game->rocket_launcher[game->launcher_frame]->instances->enabled = true;
+}
 
-//     (void)game;
-//     (void)argc;
-//     game = ft_calloc(sizeof(t_game), 1);
-//     init_game(game);
-//     if (!game)
-//     {
-//         return (ERR_MALLOC);
-//     }
-// 	printf("[parse args] %i\n", parse_args(argc, argv, game));
-//     //printf("[get_next_line] %i\n", get_next_line_tester(argv[1]));
-//     clean_exit(game, NULL, 0);
-// }
+void	hook_time(void *param)
+{
+	t_game *game;
+	game = (t_game *)param;
+	
+	if (!game->is_shooting)
+		return;
+
+	game->time++;
+	if (game->time == INT_MAX)
+		game->time = 0;
+	if (game->time % 4 == 0)
+	{
+		game->launcher_frame++;
+		if (game->launcher_frame > 6)
+		{
+			game->launcher_frame = 0;
+			game->is_shooting = false;
+		}
+		update_launcher(game);
+	}
+}
 
 void	shoot(t_game *game)
 {
@@ -177,10 +162,13 @@ void	mouse_event(mouse_key_t button, action_t action, modifier_key_t mods, void 
 {
 	t_game *game = (t_game *)param;
 
-	if (button == MLX_MOUSE_BUTTON_LEFT)
+	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS)
 	{
-		if (action == MLX_PRESS)
+		if (!game->is_shooting)
+		{
+			game->is_shooting = true;
 			shoot(game);
+		}
 	}
 	(void)game;
 	(void)mods;
@@ -216,6 +204,7 @@ int main(int argc, char **argv)
 
 	mlx_loop_hook(game->mlx, &movements, game);
 	mlx_loop_hook(game->mlx, &update_ray, game);
+	mlx_loop_hook(game->mlx, &hook_time, game);
 	mlx_cursor_hook(game->mlx, on_cursor_move, game);
 	mlx_mouse_hook(game->mlx, mouse_event, game);
 	
