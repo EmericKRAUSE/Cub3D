@@ -13,10 +13,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90963887-31d1-4ae4-bece-84ecff793343" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ROCKETLAUNCHER_0001.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ROCKETLAUNCHER_0002.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ROCKETLAUNCHER_0003.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ROCKETLAUNCHER_0004.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ROCKETLAUNCHER_0005.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ROCKETLAUNCHER_0006.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ROCKETLAUNCHER_0007.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/cube3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/cube3d.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maps/debug/debug.cub" beforeDir="false" afterPath="$PROJECT_DIR$/maps/debug/debug.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maps/map1.cub" beforeDir="false" afterPath="$PROJECT_DIR$/maps/map1.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display_map/display_3d_map.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/display_map/display_3d_map.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ray_casting/ray_casting.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray_casting/ray_casting.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,26 +47,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.codeium.enabled": "true",
-    "git-widget-placeholder": "Merging ekrause",
-    "last_opened_file_path": "/home/nidionis/Cub3D",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "structure.view.defaults.are.configured": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Merging ekrause&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/nidionis/Cub3D&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;structure.view.defaults.are.configured&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

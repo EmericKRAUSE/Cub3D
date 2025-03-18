@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/14 21:13:15 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/17 18:57:19 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,9 @@ void init_game(t_game *game)
     game->textures.ceiling = init_color(UNSET_COLOR, UNSET_COLOR, UNSET_COLOR);
     game->textures.floor = init_color(UNSET_COLOR, UNSET_COLOR, UNSET_COLOR);
     game->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Cub3D", false);
+	game->is_shooting = false;
+	game->time = 0;
+	game->launcher_frame = 0;
     game->tile_size = 64;
     game->ray = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
     game->player.image = mlx_new_image(game->mlx, 1, 1);
@@ -133,22 +136,37 @@ void init_game(t_game *game)
     game->player.move_dist = game->tile_size / 8;
 }
 
-// int	main(int argc, char **argv)
-// {
-// 	t_game	*game;
+void	update_launcher(t_game *game)
+{
+	if (game->launcher_frame == 0)
+		game->rocket_launcher[6]->instances->enabled = false;
+	else
+		game->rocket_launcher[game->launcher_frame - 1]->instances->enabled = false;
+	game->rocket_launcher[game->launcher_frame]->instances->enabled = true;
+}
 
-//     (void)game;
-//     (void)argc;
-//     game = ft_calloc(sizeof(t_game), 1);
-//     init_game(game);
-//     if (!game)
-//     {
-//         return (ERR_MALLOC);
-//     }
-// 	printf("[parse args] %i\n", parse_args(argc, argv, game));
-//     //printf("[get_next_line] %i\n", get_next_line_tester(argv[1]));
-//     clean_exit(game, NULL, 0);
-// }
+void	hook_time(void *param)
+{
+	t_game *game;
+	game = (t_game *)param;
+
+	if (!game->is_shooting)
+		return;
+
+	game->time++;
+	if (game->time == INT_MAX)
+		game->time = 0;
+	if (game->time % 4 == 0)
+	{
+		game->launcher_frame++;
+		if (game->launcher_frame > 6)
+		{
+			game->launcher_frame = 0;
+			game->is_shooting = false;
+		}
+		update_launcher(game);
+	}
+}
 
 void	shoot(t_game *game)
 {
@@ -172,15 +190,18 @@ void	shoot(t_game *game)
 	if (game->map.tab[(int)hit_y / game->tile_size][(int)hit_x / game->tile_size] == '1')
 		game->map.tab[(int)hit_y / game->tile_size][(int)hit_x / game->tile_size] = '0';
 }
-
+	
 void	mouse_event(mouse_key_t button, action_t action, modifier_key_t mods, void *param)
 {
 	t_game *game = (t_game *)param;
 
-	if (button == MLX_MOUSE_BUTTON_LEFT)
+	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS)
 	{
-		if (action == MLX_PRESS)
+		if (!game->is_shooting)
+		{
+			game->is_shooting = true;
 			shoot(game);
+		}
 	}
 	(void)game;
 	(void)mods;
@@ -216,6 +237,7 @@ int main(int argc, char **argv)
 
 	mlx_loop_hook(game->mlx, &movements, game);
 	mlx_loop_hook(game->mlx, &update_ray, game);
+	mlx_loop_hook(game->mlx, &hook_time, game);
 	mlx_cursor_hook(game->mlx, on_cursor_move, game);
 	mlx_mouse_hook(game->mlx, mouse_event, game);
 	
