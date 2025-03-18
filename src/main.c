@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/18 19:58:48 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/18 21:47:41 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	init_game(t_game *game)
 	game->textures.ceiling = init_color(UNSET_COLOR, UNSET_COLOR, UNSET_COLOR);
 	game->textures.floor = init_color(UNSET_COLOR, UNSET_COLOR, UNSET_COLOR);
 	game->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Cub3D", false);
-	game->tile_size = 64;
+	game->tile_size = WIN_WIDTH / 42;
 	game->ray = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
 	game->player.image = mlx_new_image(game->mlx, 1, 1);
 	game->player.angle = 0;
@@ -130,6 +130,14 @@ void	mouse_event(mouse_key_t button, action_t action, modifier_key_t mods, void 
 	(void)mods;
 }
 
+void	set_tile_size(t_game *game)
+{
+	if (WIN_WIDTH / game->map.width < WIN_HEIGHT / game->map.height)
+		game->tile_size = WIN_WIDTH / game->map.width;
+	else
+		game->tile_size = WIN_HEIGHT / game->map.height;
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	*game;
@@ -147,6 +155,9 @@ int	main(int argc, char **argv)
 	pt_player = get_player_position(game->map.tab);
 	game->player.start_x = pt_player.x;
 	game->player.start_y = pt_player.y;
+
+	set_tile_size(game);
+		
 	mlx_set_mouse_pos(game->mlx, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	mlx_set_cursor_mode(game->mlx, MLX_MOUSE_HIDDEN);
 	if (DISPLAY_MODE == RENDER_2D)

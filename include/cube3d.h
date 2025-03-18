@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/18 20:00:33 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/18 21:50:33 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 // Macros
 
 // General
-# define WIN_WIDTH 3000
+# define WIN_WIDTH	2560
 # define WIN_HEIGHT 1440
 # define FOV 60
 # define SENSIVITY 2.00
@@ -134,7 +134,7 @@ typedef struct s_textures
 	mlx_texture_t	*orientation[4];
 	t_rgb			floor;
 	t_rgb			ceiling;
-}					t_textures;
+} t_textures;
 
 typedef struct s_images
 {

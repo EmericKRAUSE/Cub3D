@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:48:38 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/18 20:01:22 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/18 21:31:38 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,6 @@ float find_vertical_inter(t_game *game, float angle)
 	float next_x, next_y;
 	float step_x, step_y;
 
-	if (fabs(cos(angle)) < 0.0001)
-	{
-		return (INT_MAX);
-	}
 	if (cos(angle) > 0) // Regarde a droite
 	{
 		next_x = floor(player_x / tile_size) * tile_size + tile_size;
@@ -71,9 +67,9 @@ float find_vertical_inter(t_game *game, float angle)
 		if (is_out_of_map(game, next_x, next_y) || is_wall_hit(game, next_x, next_y))
 			break ;
 			
-		// for (int j = 0; j < 4; j++)
-		// 	for (int k = 0; k < 4; k++)
-		// 		mlx_put_pixel(game->ray, next_x + k, next_y + j, COLOR_RAY);
+		for (int j = 0; j < 4; j++)
+			for (int k = 0; k < 4; k++)
+				mlx_put_pixel(game->ray, next_x + k, next_y + j, COLOR_RAY);
 
 		next_x += step_x;
 		next_y += step_y;
@@ -89,10 +85,6 @@ float find_horizontal_inter(t_game *game, float angle)
 	float next_x, next_y;
 	float step_x, step_y;
 
-	if (fabs(sin(angle)) < 0.0001)
-	{
-		return (INT_MAX);
-	}
 	if (sin(angle) > 0) // Regarde vers le bas
 	{
 		next_y = floor(player_y / tile_size) * tile_size + tile_size;
@@ -111,9 +103,10 @@ float find_horizontal_inter(t_game *game, float angle)
 		if (is_out_of_map(game, next_x, next_y) || is_wall_hit(game, next_x, next_y))
 			break;
 
-		// for (int j = 0; j < 4; j++)
-		// 	for (int k = 0; k < 4; k++)
-		// 		mlx_put_pixel(game->ray, next_x + k, next_y + j, COLOR_RAY);
+		for (int j = 0; j < 4; j++)
+			for (int k = 0; k < 4; k++)
+				mlx_put_pixel(game->ray, next_x + k, next_y + j, COLOR_RAY);
+				
 		next_x += step_x;
 		next_y += step_y;
 	}
