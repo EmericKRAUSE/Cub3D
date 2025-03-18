@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/18 21:47:41 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/18 22:09:48 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	init_game(t_game *game)
 	game->player.angle = 0;
 	game->player.rotation_speed = 0.04;
 	game->wall = mlx_new_image(game->mlx, game->tile_size, game->tile_size);
+	game->door = mlx_new_image(game->mlx, game->tile_size, game->tile_size);
 	game->background = mlx_new_image(game->mlx, game->tile_size,
 			game->tile_size);
 	game->player.move_dist = game->tile_size / 8;
@@ -109,7 +110,7 @@ void	shoot(t_game *game)
 	hit_x = game->player.image->instances->x + final_dist * cos(game->player.angle);
 	hit_y = game->player.image->instances->y + final_dist * sin(game->player.angle);
 
-	if (game->map.tab[(int)hit_y / game->tile_size][(int)hit_x / game->tile_size] == '1')
+	if (game->map.tab[(int)hit_y / game->tile_size][(int)hit_x / game->tile_size] == 'D')
 		game->map.tab[(int)hit_y / game->tile_size][(int)hit_x / game->tile_size] = '0';
 }
 	

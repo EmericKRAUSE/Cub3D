@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 15:19:25 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/10 16:39:14 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/18 22:11:19 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	draw_tile(t_game *game, char tile, int x, int y)
 	set_point(&point, x * game->tile_size, y * game->tile_size);
 	if (tile == '1')
 		draw_square(game, game->wall, COLOR_WALL, &point);
+	else if (tile == 'D')
+		draw_square(game, game->door, COLOR_DOOR, &point);
 	else
 		draw_square(game, game->background, COLOR_BACKGROUND, &point);
 }

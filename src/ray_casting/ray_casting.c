@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:48:38 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/18 21:31:38 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/18 22:11:16 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	is_wall_hit(t_game *game, float pos_x, float pos_y)
 	map = game->map.tab;
 	map_x = pos_x / game->tile_size;
 	map_y = pos_y / game->tile_size;
-	return (map[map_y][map_x] == '1');
+	return (map[map_y][map_x] == '1' || map[map_y][map_x] == 'D');
 }
 
 float find_vertical_inter(t_game *game, float angle)
@@ -166,6 +166,8 @@ static void	cast_ray(t_game *game, float ray_angle, int i)
 	float		vertical_dist;
 	float		horizontal_dist;
 	float		final_dist;
+	float		hit_x;
+	float		hit_y;
 	int			color;
 
 	vertical_dist = find_vertical_inter(game, ray_angle);
@@ -189,6 +191,10 @@ static void	cast_ray(t_game *game, float ray_angle, int i)
 			else
 				color = COLOR_WALL_NORTH;
 		}
+		hit_x = game->player.image->instances->x + final_dist * cos(ray_angle);
+		hit_y = game->player.image->instances->y + final_dist * sin(ray_angle);
+		if (game->map.tab[(int)hit_y / game->tile_size][(int)hit_x / game->tile_size] == 'D')
+			color = COLOR_DOOR;
 		draw_slice(game, final_dist, i, ray_angle, color);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/18 21:50:33 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/18 22:09:12 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@
 # define COLOR_CROSSHAIR HEX_YELLOW
 # define COLOR_RAY HEX_YELLOW
 # define COLOR_WALL HEX_GREEN
+# define COLOR_DOOR	HEX_WHITE
 # define COLOR_WALL_NORTH HEX_GREEN
 # define COLOR_WALL_SOUTH HEX_GREEN
 # define COLOR_WALL_EAST HEX_DARK_GREEN
@@ -86,7 +87,7 @@
 # define BLANK_CHAR "\t\n "
 # define CHAR_BLANK_MAP '0'
 
-# define MAP_CHARS "01NSEW \n"
+# define MAP_CHARS "01DNSEW \n"
 # define TEXTURES_BALISE "NO /SO /EA /WE "
 # define PLAYER_CHARS "NSEW"
 # define FLOODFILL_CHARS "NSEW0"
@@ -153,6 +154,7 @@ typedef struct s_game
 	int			is_shooting;
 	mlx_image_t	*ray;
 	mlx_image_t	*wall;
+	mlx_image_t *door;
 	mlx_image_t	*background;
 	mlx_image_t	*world;
 	mlx_image_t	*crosshair;
