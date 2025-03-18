@@ -12,34 +12,34 @@
 
 #include <libft.h>
 
-int tab_len(char **tab)
+int	tab_len(char **tab)
 {
-    int len;
+	int	len;
 
-    len = 0;
-    if (tab)
-        while (tab[len])
-            len++;
-    return (len);
+	len = 0;
+	if (tab)
+		while (tab[len])
+			len++;
+	return (len);
 }
 
-char **append_tab(char **tab, char *str)
+char	**append_tab(char **tab, char *str)
 {
-    char **ret;
-    int len;
+	char	**ret;
+	int		len;
 
-    len = tab_len(tab);
-    ret = ft_calloc((len + 2), sizeof(char *));
-    if (!ret)
+	len = tab_len(tab);
+	ret = ft_calloc((len + 2), sizeof(char *));
+	if (!ret)
 	{
 		ft_free_split(&tab);
-        return (NULL);
+		return (NULL);
 	}
-    ret[len] = str;
-    ret[len + 1] = NULL;
-    if (tab)
-        while (len--)
-            ret[len] = tab[len];
-    free(tab);
-    return (ret);
+	ret[len] = str;
+	ret[len + 1] = NULL;
+	if (tab)
+		while (len--)
+			ret[len] = tab[len];
+	free(tab);
+	return (ret);
 }

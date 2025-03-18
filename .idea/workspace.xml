@@ -12,34 +12,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90963887-31d1-4ae4-bece-84ecff793343" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/parsing/import_cub.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/parsing/map/check.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/parsing/map/floodfill.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/parsing/map/format_map.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/parsing/missing_params.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/parsing/set_player.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/textures/forest00.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/textures/forest01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/textures/forest02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/textures/forest03.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/cube3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/cube3d.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libft/src/ft_append_tab.c" beforeDir="false" afterPath="$PROJECT_DIR$/lib/libft/src/ft_append_tab.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libft/src/ft_split.c" beforeDir="false" afterPath="$PROJECT_DIR$/lib/libft/src/ft_split.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maps/debug/available_00.cub" beforeDir="false" afterPath="$PROJECT_DIR$/maps/debug/available_00.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maps/debug/debug.cub" beforeDir="false" afterPath="$PROJECT_DIR$/maps/debug/debug.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maps/map1.cub" beforeDir="false" afterPath="$PROJECT_DIR$/maps/map1.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/debug/print_tab.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/debug/print_tab.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exit/clean_exit.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/exit/clean_exit.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map_utils/map_utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/map_utils/map_utils.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing/import_cub_fixed.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing/import_line_fixed.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing/get_textures_and_colors.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing/line_types_fixed.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing/line_types.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing/load_ft_fixed.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing/load_ft_fixed.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing/map_parser_fixed.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing/map/get_map_brut.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing/parsing_nico_fixed.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing/parse_args.c" afterDir="false" />
-    </list>
+    <list default="true" id="90963887-31d1-4ae4-bece-84ecff793343" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +42,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "com.codeium.enabled": "true",
-    "git-widget-placeholder": "Merging ekrause",
+    "git-widget-placeholder": "nico",
     "last_opened_file_path": "/home/nidionis/Cub3D",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -90,6 +63,7 @@
       <updated>1741436674736</updated>
       <workItem from="1741436676593" duration="13866000" />
       <workItem from="1741607620810" duration="4711000" />
+      <workItem from="1741957091019" duration="8946000" />
     </task>
     <servers />
   </component>

@@ -55,13 +55,13 @@ int	is_texture(t_game *game, char *line)
 	return (found);
 }
 
-//is_rgb return if the string contains 3 numbers in the range 0 - 255
-//and separated by a ',';
+// is_rgb return if the string contains 3 numbers in the range 0 - 255
+// and separated by a ',';
 int	is_rgb(char *str)
 {
-	int		i;
-	int		count;
-	int		nb;
+	int	i;
+	int	count;
+	int	nb;
 
 	i = 0;
 	count = 0;
@@ -69,7 +69,7 @@ int	is_rgb(char *str)
 	while (str[i])
 	{
 		if (str[i] >= '0' && str[i] <= '9')
-			nb = nb *10 + (str[i] - '0');
+			nb = nb * 10 + (str[i] - '0');
 		else if (str[i] == ',')
 		{
 			count++;

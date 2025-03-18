@@ -12,40 +12,40 @@
 
 #include <cube3d.h>
 
-int param_missing_but_map(t_game *game)
+int	param_missing_but_map(t_game *game)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (game->textures.ceiling.r == UNSET_COLOR)
-        return (TRUE);
-    if (game->textures.floor.r == UNSET_COLOR)
-        return (TRUE);
-    while (i < 4)
-    {
-        if (game->textures.f_names[i] == NULL)
-            return (TRUE);
-        i++;
-    }
-    return (FALSE);
+	i = 0;
+	if (game->textures.ceiling.r == UNSET_COLOR)
+		return (TRUE);
+	if (game->textures.floor.r == UNSET_COLOR)
+		return (TRUE);
+	while (i < 4)
+	{
+		if (game->textures.f_names[i] == NULL)
+			return (TRUE);
+		i++;
+	}
+	return (FALSE);
 }
 
-int param_missing(t_game *game)
+int	param_missing(t_game *game)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (game->map.tab == NULL)
-        clean_exit(game, "[param_missing] map is missing", ERR_MAP);
-    if (game->textures.ceiling.r == UNSET_COLOR)
-        clean_exit(game, "[param_missing] ceiling is missing", ERR_MAP);
-    if (game->textures.floor.r == UNSET_COLOR)
-        clean_exit(game, "[param_missing] floor is missing", ERR_MAP);
-    while (i < 4)
-    {
-        if (game->textures.f_names[i] == NULL)
-            clean_exit(game, "[param_missing] texture is missing", ERR_MAP);
-        i++;
-    }
-    return (FALSE);
+	i = 0;
+	if (game->map.tab == NULL)
+		clean_exit(game, "[param_missing] map is missing", ERR_MAP);
+	if (game->textures.ceiling.r == UNSET_COLOR)
+		clean_exit(game, "[param_missing] ceiling is missing", ERR_MAP);
+	if (game->textures.floor.r == UNSET_COLOR)
+		clean_exit(game, "[param_missing] floor is missing", ERR_MAP);
+	while (i < 4)
+	{
+		if (game->textures.f_names[i] == NULL)
+			clean_exit(game, "[param_missing] texture is missing", ERR_MAP);
+		i++;
+	}
+	return (FALSE);
 }

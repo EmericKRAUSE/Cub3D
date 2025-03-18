@@ -20,11 +20,11 @@ char	*load_map(t_game *game, char *line)
 		game->map.tab = get_map(game, game->fd, &line);
 	if (!game->map.tab)
 		clean_exit(game, "[map] Error: Map not available", ERR_MULTIPLE_MAPS);
-    trim_map(&game->map.tab);
+	trim_map(&game->map.tab);
 	if (!game->map.tab)
 		clean_exit(game, "[map] Error: Map not available", ERR_MULTIPLE_MAPS);
-    set_width_and_lenght(game);
-    ft_square_map(game, CHAR_BLANK_MAP);
+	set_width_and_lenght(game);
+	ft_square_map(game, CHAR_BLANK_MAP);
 	return (line);
 }
 
@@ -39,7 +39,7 @@ void	invalid_line(t_game *game, char *line)
 
 int	load_texture(t_game *game, int ind, char *line)
 {
-	char						*filename;
+	char	*filename;
 
 	if (game->textures.f_names[ind])
 		clean_exit(game, "Error: Duplicated texture", ERR_LOADING_TEXTURE);
@@ -47,11 +47,12 @@ int	load_texture(t_game *game, int ind, char *line)
 	if (!filename)
 		clean_exit(game, "Error: No texture filename", ERR_LOADING_TEXTURE);
 	game->textures.f_names[ind] = ft_strtrim(filename, " \t\n");
-    game->textures.orientation[ind] = mlx_load_png(game->textures.f_names[ind]);
-    if (!game->textures.orientation[ind])
-    {
-        printf("error: %s\n", game->textures.f_names[ind]);
-        clean_exit(game, "Error: mlx_load_png failed, check filename", ERR_LOADING_TEXTURE);
-    }
+	game->textures.orientation[ind] = mlx_load_png(game->textures.f_names[ind]);
+	if (!game->textures.orientation[ind])
+	{
+		printf("error: %s\n", game->textures.f_names[ind]);
+		clean_exit(game, "Error: mlx_load_png failed, check filename",
+			ERR_LOADING_TEXTURE);
+	}
 	return (OK);
 }

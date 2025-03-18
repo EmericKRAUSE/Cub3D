@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   import_cub_fixed.c                                 :+:      :+:    :+:   */
+/*   import_cub.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/13 19:25:40 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:07:02 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ void	process_line(t_game *game, char **line)
 	if (is_blank_line(*line))
 		*line = free_and_get_line(*line, game->fd);
 	else if (is_map(*line))
-    {
-        if (param_missing_but_map(game))
-            printf("[process_line] WARNING: map should be the last param\n");
-        *line = load_map(game, *line);
-    }
+	{
+		if (param_missing_but_map(game))
+			printf("[process_line] WARNING: map should be the last param\n");
+		*line = load_map(game, *line);
+	}
 	else if (is_texture(game, *line))
 	{
 		if (get_texture(game, *line) == ERR_LOADING_TEXTURE)
@@ -46,13 +46,13 @@ void	process_line(t_game *game, char **line)
 
 int	is_cub_file(char *filename)
 {
-    char	*ext;
+	char	*ext;
 
-    ext = ft_strrchr(filename, '.');
-    if (ext)
-        if (ft_strncmp(ext, ".cub", 5) == CMP_FOUND)
-            return (TRUE);
-    return (FALSE);
+	ext = ft_strrchr(filename, '.');
+	if (ext)
+		if (ft_strncmp(ext, ".cub", 5) == CMP_FOUND)
+			return (TRUE);
+	return (FALSE);
 }
 
 int	import_cub_file(t_game *game)
@@ -63,18 +63,17 @@ int	import_cub_file(t_game *game)
 	game->map.tab = NULL;
 	while (line)
 	{
-        process_line(game, &line);
-    }
-    if (!is_map_available(game))
-    {
-        clean_exit(game, "[import_cub_file] map not available", ERR_MAP);
-    }
+		process_line(game, &line);
+	}
+	if (!is_map_available(game))
+	{
+		clean_exit(game, "[import_cub_file] map not available", ERR_MAP);
+	}
 	if (param_missing(game))
-    {
-        clean_exit(game, "[import_cub_file] param missing", ERR_MAP);
-    }
-    //game->player.start_x = get_player_position(game->map.tab);
-    game->map.height = tab_len(game->map.tab);
-    game->map.width = ft_strlen(game->map.tab[0]);
-    return (TRUE);
+	{
+		clean_exit(game, "[import_cub_file] param missing", ERR_MAP);
+	}
+	game->map.height = tab_len(game->map.tab);
+	game->map.width = ft_strlen(game->map.tab[0]);
+	return (TRUE);
 }
