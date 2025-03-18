@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/17 13:50:18 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/18 14:12:58 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,6 +220,7 @@ void	set_width_and_lenght(t_game *game);
 void	ft_square_map(t_game *game, char c);
 int		one_player_only(char **map);
 int		is_map_closed(char **map);
+void	delete_blank_lines(char ***map_addr);
 
 // ####################
 // debug
