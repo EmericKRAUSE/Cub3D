@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/18 17:11:25 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/19 14:56:04 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 // Crosshair
 # define CROSSHAIR_SIZE 31
 # define CROSSHAIR_THICKNESS 3
+# define DEEPEST_DEPTH 10
 
 // Display mode
 # define RENDER_3D 1

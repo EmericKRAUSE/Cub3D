@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:48:38 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/18 19:34:06 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/19 16:01:23 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ float find_vertical_inter(t_game *game, float angle)
 	}
 
 	double d_tan = tan(angle);
-    if (d_tan != d_tan)
+    if (d_tan != d_tan || d_tan > INT_MAX)
     {
         d_tan = INT_MAX;
     }
@@ -122,24 +122,47 @@ float find_horizontal_inter(t_game *game, float angle)
 	return sqrt(pow(next_x - player_x, 2) + pow(next_y - player_y, 2));
 }
 
-void draw_slice(t_game *game, float dist, int i, float ray_angle, int color)
+//void draw_slice(t_game *game, float dist, int i, float ray_angle, int color)
+//{
+//	float corrected_dist = dist * cos(ray_angle - game->player.angle);
+//
+//	int column_height = (WIN_HEIGHT / (corrected_dist / 100));
+//	int	max_column_height = WIN_HEIGHT;
+//
+//	if (column_height > max_column_height)
+//		column_height = max_column_height;
+//
+//	int start_y = (WIN_HEIGHT / 2) - (column_height / 2);
+//	int end_y = (WIN_HEIGHT / 2) + (column_height / 2);
+//
+//	mlx_texture_t *line = game->textures.orientation[0];
+//    mlx_texture_to_image(game->mlx, line);
+//	for (int y = start_y; y < end_y; y++)
+//	{
+//		mlx_put_pixel(game->world, i, y, color);
+//	}
+//}
+
+// Draw a gun on the middle bottom of the screen
+void	draw_texture_pixel_put(t_game *game, mlx_texture_t *texture, t_point *pos)
 {
-	float corrected_dist = dist * cos(ray_angle - game->player.angle);
+    int x_init;
 
-	int column_height = (WIN_HEIGHT / (corrected_dist / 100));
-	int	max_column_height = WIN_HEIGHT;
-
-	if (column_height > max_column_height)
-		column_height = max_column_height;
-
-	int start_y = (WIN_HEIGHT / 2) - (column_height / 2);
-	int end_y = (WIN_HEIGHT / 2) + (column_height / 2);
-
-	for (int y = start_y; y < end_y; y++)
-	{
-		mlx_put_pixel(game->world, i, y, color);
-	}
+    x_init = pos->x;
+    if (!texture)
+        return ;
+    while (pos->y < WIN_HEIGHT && pos->y < (int)texture->height)
+    {
+        while (pos->x < WIN_WIDTH && pos->x < (int)texture->width)
+        {
+			mlx_put_pixel(game->world, pos->x, pos->y, );
+            pos->x++;
+        }
+        pos->x = x_init;
+        pos->y++;
+    }
 }
+
 
 // double	cast_test(t_game *game, float angle)
 // {
@@ -198,7 +221,9 @@ static void	cast_ray(t_game *game, float ray_angle, int i)
 			else
 				color = COLOR_WALL_NORTH;
 		}
-		draw_slice(game, final_dist, i, ray_angle, color);
+		//draw_slice(game, final_dist, i, ray_angle, color);
+		//void	draw_texture_pixel_put(t_game *game, mlx_texture_t *texture, t_point *pos)
+		printf("[cast_ray] raycasting.c => implement raycasting with textures here. draw_texture_pixel_put can help\n");
 	}
 }
 
@@ -220,7 +245,7 @@ void	ray_casting(t_game *game)
 	game->ray = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
 	if (!game->ray)
 		return ;
-		
+
 	if (game->world)
 		mlx_delete_image(game->mlx, game->world);
 	game->world = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
