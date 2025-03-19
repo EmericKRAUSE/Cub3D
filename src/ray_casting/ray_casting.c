@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:48:38 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/19 16:01:23 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:05:10 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,34 +192,62 @@ void	draw_texture_pixel_put(t_game *game, mlx_texture_t *texture, t_point *pos)
 // 	return sqrt(pow(dx - player_x, 2) + pow(dy - player_y, 2));
 // }
 
-// Draw a point at every intersection
-static void	cast_ray(t_game *game, float ray_angle, int i)
-{
-	float		vertical_dist;
-	float		horizontal_dist;
-	float		final_dist;
-	int			color;
+//// Draw a point at every intersection
+//static void	cast_ray(t_game *game, float ray_angle, int i)
+//{
+//	float		vertical_dist;
+//	float		horizontal_dist;
+//	float		final_dist;
+//	int			color;
+//
+//	vertical_dist = find_vertical_inter(game, ray_angle);
+//	horizontal_dist = find_horizontal_inter(game, ray_angle);
+//
+//	if (DISPLAY_MODE == RENDER_3D)
+//	{
+//		if (vertical_dist < horizontal_dist)
+//		{
+//			final_dist = vertical_dist;
+//			if (cos(ray_angle) > 0)
+//				color = COLOR_WALL_EAST;
+//			else
+//				color = COLOR_WALL_WEST;
+//		}
+//		else
+//		{
+//			final_dist = horizontal_dist;
+//			if (sin(ray_angle) > 0)
+//				color = COLOR_WALL_SOUTH;
+//			else
+//				color = COLOR_WALL_NORTH;
+//		}
+//		draw_slice(game, final_dist, i, ray_angle, color);
+//	}
+//}
 
-	vertical_dist = find_vertical_inter(game, ray_angle);
-	horizontal_dist = find_horizontal_inter(game, ray_angle);
+t_ray find_vertical_inter(t_game *game, float ray_angle)
+{
+
+}
+
+// Draw a point at every intersection
+static void	cast_ray_textured(t_game *game, float ray_angle, int i)
+{
+    t_ray arr_rays[2]; //horizontal, verticatal
+    int i_best_ray;
+
+	arr_rays[HORIZONTAL] = find_vertical_inter(game, ray_angle);
+	arr_rays[VERTICAL] = find_horizontal_inter(game, ray_angle);
 
 	if (DISPLAY_MODE == RENDER_3D)
 	{
-		if (vertical_dist < horizontal_dist)
+		if (arr_rays[VERTICAL].dist < arr_rays[HORIZONTAL].dist)
 		{
-			final_dist = vertical_dist;
-			if (cos(ray_angle) > 0)
-				color = COLOR_WALL_EAST;
-			else
-				color = COLOR_WALL_WEST;
+			i_best_ray = VERTICAL;
 		}
 		else
 		{
 			final_dist = horizontal_dist;
-			if (sin(ray_angle) > 0)
-				color = COLOR_WALL_SOUTH;
-			else
-				color = COLOR_WALL_NORTH;
 		}
 		//draw_slice(game, final_dist, i, ray_angle, color);
 		//void	draw_texture_pixel_put(t_game *game, mlx_texture_t *texture, t_point *pos)

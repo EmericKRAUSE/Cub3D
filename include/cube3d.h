@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/19 14:56:04 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:20:00 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,11 @@
 # define FLOODFILL_CHARS "NSEW0"
 # define FLOODFILL_VISITED 'V'
 
+// ####################
+// Indexes
+# define HORIZONTAL 0
+# define VERTICAL 1
+
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4
 # endif
@@ -163,6 +168,14 @@ typedef struct s_game
 	int			tile_size;
 	int			fd;
 }	t_game;
+
+typedef struct s_ray
+{
+    t_point			hit_point;
+    float			ratio;
+    float			dist;
+    int				orientation;
+}				t_ray;
 
 // ####################
 // Prototypes
