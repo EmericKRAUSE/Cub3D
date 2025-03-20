@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/18 22:09:48 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/20 14:40:00 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	hook_time(void *param)
 	game->time++;
 	if (game->time == INT_MAX)
 		game->time = 0;
-	if (game->time % 4 == 0)
+	if (game->time % 3 == 0)
 	{
 		game->launcher_frame++;
 		if (game->launcher_frame > 6)

@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:48:38 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/18 22:11:16 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/20 14:37:08 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ float find_vertical_inter(t_game *game, float angle)
 		if (is_out_of_map(game, next_x, next_y) || is_wall_hit(game, next_x, next_y))
 			break ;
 			
-		for (int j = 0; j < 4; j++)
-			for (int k = 0; k < 4; k++)
-				mlx_put_pixel(game->ray, next_x + k, next_y + j, COLOR_RAY);
+		// for (int j = 0; j < 4; j++)
+		// 	for (int k = 0; k < 4; k++)
+		// 		mlx_put_pixel(game->ray, next_x + k, next_y + j, COLOR_RAY);
 
 		next_x += step_x;
 		next_y += step_y;
@@ -103,9 +103,9 @@ float find_horizontal_inter(t_game *game, float angle)
 		if (is_out_of_map(game, next_x, next_y) || is_wall_hit(game, next_x, next_y))
 			break;
 
-		for (int j = 0; j < 4; j++)
-			for (int k = 0; k < 4; k++)
-				mlx_put_pixel(game->ray, next_x + k, next_y + j, COLOR_RAY);
+		// for (int j = 0; j < 4; j++)
+		// 	for (int k = 0; k < 4; k++)
+		// 		mlx_put_pixel(game->ray, next_x + k, next_y + j, COLOR_RAY);
 				
 		next_x += step_x;
 		next_y += step_y;
@@ -113,8 +113,26 @@ float find_horizontal_inter(t_game *game, float angle)
 	return sqrt(pow(next_x - player_x, 2) + pow(next_y - player_y, 2));
 }
 
-void draw_slice(t_game *game, float dist, int i, float ray_angle, int color)
+uint32_t get_color_pixel(mlx_texture_t *texture, int x, int y)
 {
+	int		index;
+	uint8_t r, g, b, a;
+
+	if (x < 0 || x >= (int)texture->width || y < 0 || y >= (int)texture->height)
+		return (0xFF000000);
+
+	index = (y * texture->width + x) * texture->bytes_per_pixel;
+
+	r = texture->pixels[index];
+	g = texture->pixels[index + 1];
+	b = texture->pixels[index + 2];
+	a = texture->pixels[index + 3];
+
+	return(r * 16777216 + g * 65536 + b * 256 + a);
+}
+
+void draw_slice(t_game *game, float dist, int i, float ray_angle, float hit_ratio)
+{	
 	float corrected_dist = dist * cos(ray_angle - game->player.angle);
 
 	int column_height = (WIN_HEIGHT / (corrected_dist / 100));
@@ -126,39 +144,14 @@ void draw_slice(t_game *game, float dist, int i, float ray_angle, int color)
 	int start_y = (WIN_HEIGHT / 2) - (column_height / 2);
 	int end_y = (WIN_HEIGHT / 2) + (column_height / 2);
 
+	printf("%f\n", hit_ratio);
 	for (int y = start_y; y < end_y; y++)
 	{
-		mlx_put_pixel(game->world, i, y, color);
+		int texture_y = ((y - start_y) * game->textures.orientation[SOUTH]->height) / column_height;
+		mlx_put_pixel(game->world, i, y, get_color_pixel(game->textures.orientation[SOUTH], hit_ratio * game->textures.orientation[SOUTH]->width, texture_y));
 	}
+	(void)hit_ratio;
 }
-
-// double	cast_test(t_game *game, float angle)
-// {
-// 	int		player_x, player_y;
-// 	double	dx, dy;
-// 	double	cx, sy;
-	
-// 	player_x = game->player.image->instances->x;
-// 	player_y = game->player.image->instances->y;
-// 	dx = player_x;
-// 	dy = player_y;
-// 	cx = cos(angle);
-// 	sy = sin(angle);
-	
-// 	while (1)
-// 	{
-// 		if (is_out_of_map(game, dx, dy) || is_wall_hit(game, dx, dy))
-// 			break;
-
-// 		dx += cx * 1;
-// 		dy += sy * 1;
-
-// 		// for (int j = 0; j < 4; j++)
-// 		// 	for (int k = 0; k < 4; k++)
-// 				//mlx_put_pixel(game->ray, roundf(dx), roundf(dy), COLOR_RAY);
-// 	}
-// 	return sqrt(pow(dx - player_x, 2) + pow(dy - player_y, 2));
-// }
 
 // Draw a point at every intersection
 static void	cast_ray(t_game *game, float ray_angle, int i)
@@ -168,7 +161,7 @@ static void	cast_ray(t_game *game, float ray_angle, int i)
 	float		final_dist;
 	float		hit_x;
 	float		hit_y;
-	int			color;
+	float		hit_ratio;
 
 	vertical_dist = find_vertical_inter(game, ray_angle);
 	horizontal_dist = find_horizontal_inter(game, ray_angle);
@@ -178,24 +171,17 @@ static void	cast_ray(t_game *game, float ray_angle, int i)
 		if (vertical_dist < horizontal_dist)
 		{
 			final_dist = vertical_dist;
-			if (cos(ray_angle) > 0)
-				color = COLOR_WALL_EAST;
-			else
-				color = COLOR_WALL_WEST;
+			hit_y = game->player.image->instances->y + final_dist * sin(ray_angle);
+			hit_ratio = hit_y - floor(hit_y / game->tile_size) * game->tile_size;
 		}
 		else
 		{
 			final_dist = horizontal_dist;
-			if (sin(ray_angle) > 0)
-				color = COLOR_WALL_SOUTH;
-			else
-				color = COLOR_WALL_NORTH;
+			hit_x = game->player.image->instances->x + final_dist * cos(ray_angle);
+			hit_ratio = hit_x - floor(hit_x / game->tile_size) * game->tile_size;
 		}
-		hit_x = game->player.image->instances->x + final_dist * cos(ray_angle);
-		hit_y = game->player.image->instances->y + final_dist * sin(ray_angle);
-		if (game->map.tab[(int)hit_y / game->tile_size][(int)hit_x / game->tile_size] == 'D')
-			color = COLOR_DOOR;
-		draw_slice(game, final_dist, i, ray_angle, color);
+		hit_ratio = hit_ratio / game->tile_size;
+		draw_slice(game, final_dist, i, ray_angle, hit_ratio);
 	}
 }
 
