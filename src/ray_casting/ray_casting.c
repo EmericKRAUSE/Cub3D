@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:48:38 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/20 14:37:08 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/20 19:29:19 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,21 +136,17 @@ void draw_slice(t_game *game, float dist, int i, float ray_angle, float hit_rati
 	float corrected_dist = dist * cos(ray_angle - game->player.angle);
 
 	int column_height = (WIN_HEIGHT / (corrected_dist / 100));
-	int	max_column_height = WIN_HEIGHT;
-
-	if (column_height > max_column_height)
-		column_height = max_column_height;
 
 	int start_y = (WIN_HEIGHT / 2) - (column_height / 2);
 	int end_y = (WIN_HEIGHT / 2) + (column_height / 2);
 
-	printf("%f\n", hit_ratio);
 	for (int y = start_y; y < end_y; y++)
 	{
 		int texture_y = ((y - start_y) * game->textures.orientation[SOUTH]->height) / column_height;
-		mlx_put_pixel(game->world, i, y, get_color_pixel(game->textures.orientation[SOUTH], hit_ratio * game->textures.orientation[SOUTH]->width, texture_y));
+		int	texture_x = hit_ratio * game->textures.orientation[SOUTH]->width;
+		if (y >= 0 && y < WIN_HEIGHT)
+			mlx_put_pixel(game->world, i, y, get_color_pixel(game->textures.orientation[SOUTH], texture_x, texture_y));
 	}
-	(void)hit_ratio;
 }
 
 // Draw a point at every intersection
