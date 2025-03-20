@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:48:38 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/20 19:29:19 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/20 19:43:56 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ uint32_t get_color_pixel(mlx_texture_t *texture, int x, int y)
 	return(r * 16777216 + g * 65536 + b * 256 + a);
 }
 
-void draw_slice(t_game *game, float dist, int i, float ray_angle, float hit_ratio)
+void draw_slice(t_game *game, float dist, int i, float ray_angle, float hit_ratio, mlx_texture_t *texture)
 {	
 	float corrected_dist = dist * cos(ray_angle - game->player.angle);
 
@@ -142,22 +142,23 @@ void draw_slice(t_game *game, float dist, int i, float ray_angle, float hit_rati
 
 	for (int y = start_y; y < end_y; y++)
 	{
-		int texture_y = ((y - start_y) * game->textures.orientation[SOUTH]->height) / column_height;
-		int	texture_x = hit_ratio * game->textures.orientation[SOUTH]->width;
+		int texture_y = ((y - start_y) * texture->height) / column_height;
+		int texture_x = hit_ratio * texture->width;
 		if (y >= 0 && y < WIN_HEIGHT)
-			mlx_put_pixel(game->world, i, y, get_color_pixel(game->textures.orientation[SOUTH], texture_x, texture_y));
+			mlx_put_pixel(game->world, i, y, get_color_pixel(texture, texture_x, texture_y));
 	}
 }
 
 // Draw a point at every intersection
 static void	cast_ray(t_game *game, float ray_angle, int i)
 {
-	float		vertical_dist;
-	float		horizontal_dist;
-	float		final_dist;
-	float		hit_x;
-	float		hit_y;
-	float		hit_ratio;
+	float			vertical_dist;
+	float			horizontal_dist;
+	float			final_dist;
+	float			hit_x;
+	float			hit_y;
+	float			hit_ratio;
+	mlx_texture_t	*final_texture;
 
 	vertical_dist = find_vertical_inter(game, ray_angle);
 	horizontal_dist = find_horizontal_inter(game, ray_angle);
@@ -169,15 +170,23 @@ static void	cast_ray(t_game *game, float ray_angle, int i)
 			final_dist = vertical_dist;
 			hit_y = game->player.image->instances->y + final_dist * sin(ray_angle);
 			hit_ratio = hit_y - floor(hit_y / game->tile_size) * game->tile_size;
+			if (cos(ray_angle) > 0)
+				final_texture = game->textures.orientation[WEST];
+			else
+				final_texture = game->textures.orientation[EAST];
 		}
 		else
 		{
 			final_dist = horizontal_dist;
 			hit_x = game->player.image->instances->x + final_dist * cos(ray_angle);
 			hit_ratio = hit_x - floor(hit_x / game->tile_size) * game->tile_size;
+			if (sin(ray_angle) > 0)
+				final_texture = game->textures.orientation[NORTH];
+			else
+				final_texture = game->textures.orientation[SOUTH];
 		}
 		hit_ratio = hit_ratio / game->tile_size;
-		draw_slice(game, final_dist, i, ray_angle, hit_ratio);
+		draw_slice(game, final_dist, i, ray_angle, hit_ratio, final_texture);
 	}
 }
 
