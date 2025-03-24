@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/19 14:43:11 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/24 16:50:08 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,11 @@ void	on_cursor_move(double xpos, double ypos, void *param);
 float	find_horizontal_inter(t_game *game, float angle);
 float	find_vertical_inter(t_game *game, float angle);
 mlx_texture_t	texture_line(mlx_texture_t *texture, float hit_ratio);
+
+// ####################
+// draw_assets
+void draw_gun(t_game *game);
+void draw_launcher(t_game *game);
 
 // ####################
 // utils
