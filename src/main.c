@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/24 16:49:51 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/24 21:16:06 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	init_game(t_game *game)
 	game->textures.floor = init_color(UNSET_COLOR, UNSET_COLOR, UNSET_COLOR);
 	game->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Cub3D", false);
 	game->tile_size = WIN_WIDTH / 42;
-	game->ray = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
 	game->player.image = mlx_new_image(game->mlx, 1, 1);
 	game->player.angle = 0;
 	game->player.rotation_speed = 0.04;

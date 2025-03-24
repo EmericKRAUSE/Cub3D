@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:48:38 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/20 19:43:56 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/24 21:25:16 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static int	is_out_of_map(t_game *game, float pos_x, float pos_y)
 	pos_in_grid_y = pos_y / game->tile_size;
 	if (pos_x <= 0 || pos_y <= 0)
 		return (1);
-	return ((pos_in_grid_x < 0 || pos_in_grid_x >= map_width || pos_in_grid_y < 0 || pos_in_grid_y >= map_height));
+	return ((pos_in_grid_x < 0 || pos_in_grid_x >= map_width
+			|| pos_in_grid_y < 0 || pos_in_grid_y >= map_height));
 }
 
 // Return true if the position given in px is located in a wall
@@ -41,13 +42,13 @@ static int	is_wall_hit(t_game *game, float pos_x, float pos_y)
 	return (map[map_y][map_x] == '1' || map[map_y][map_x] == 'D');
 }
 
-float find_vertical_inter(t_game *game, float angle)
+float	find_vertical_inter(t_game *game, float angle)
 {
-	int tile_size = game->tile_size;
-	int player_x = game->player.image->instances->x;
-	int player_y = game->player.image->instances->y;
-	float next_x, next_y;
-	float step_x, step_y;
+	int		tile_size = game->tile_size;
+	int		player_x = game->player.image->instances->x;
+	int		player_y = game->player.image->instances->y;
+	float	next_x, next_y;
+	float	step_x, step_y;
 
 	if (cos(angle) > 0) // Regarde a droite
 	{
@@ -66,11 +67,6 @@ float find_vertical_inter(t_game *game, float angle)
 	{
 		if (is_out_of_map(game, next_x, next_y) || is_wall_hit(game, next_x, next_y))
 			break ;
-			
-		// for (int j = 0; j < 4; j++)
-		// 	for (int k = 0; k < 4; k++)
-		// 		mlx_put_pixel(game->ray, next_x + k, next_y + j, COLOR_RAY);
-
 		next_x += step_x;
 		next_y += step_y;
 	}
@@ -79,11 +75,11 @@ float find_vertical_inter(t_game *game, float angle)
 
 float find_horizontal_inter(t_game *game, float angle)
 {
-	int tile_size = game->tile_size;
-	int player_x = game->player.image->instances->x;
-	int player_y = game->player.image->instances->y;
-	float next_x, next_y;
-	float step_x, step_y;
+	int		tile_size = game->tile_size;
+	int		player_x = game->player.image->instances->x;
+	int		player_y = game->player.image->instances->y;
+	float	next_x, next_y;
+	float	step_x, step_y;
 
 	if (sin(angle) > 0) // Regarde vers le bas
 	{
@@ -102,51 +98,10 @@ float find_horizontal_inter(t_game *game, float angle)
 	{
 		if (is_out_of_map(game, next_x, next_y) || is_wall_hit(game, next_x, next_y))
 			break;
-
-		// for (int j = 0; j < 4; j++)
-		// 	for (int k = 0; k < 4; k++)
-		// 		mlx_put_pixel(game->ray, next_x + k, next_y + j, COLOR_RAY);
-				
 		next_x += step_x;
 		next_y += step_y;
 	}
 	return sqrt(pow(next_x - player_x, 2) + pow(next_y - player_y, 2));
-}
-
-uint32_t get_color_pixel(mlx_texture_t *texture, int x, int y)
-{
-	int		index;
-	uint8_t r, g, b, a;
-
-	if (x < 0 || x >= (int)texture->width || y < 0 || y >= (int)texture->height)
-		return (0xFF000000);
-
-	index = (y * texture->width + x) * texture->bytes_per_pixel;
-
-	r = texture->pixels[index];
-	g = texture->pixels[index + 1];
-	b = texture->pixels[index + 2];
-	a = texture->pixels[index + 3];
-
-	return(r * 16777216 + g * 65536 + b * 256 + a);
-}
-
-void draw_slice(t_game *game, float dist, int i, float ray_angle, float hit_ratio, mlx_texture_t *texture)
-{	
-	float corrected_dist = dist * cos(ray_angle - game->player.angle);
-
-	int column_height = (WIN_HEIGHT / (corrected_dist / 100));
-
-	int start_y = (WIN_HEIGHT / 2) - (column_height / 2);
-	int end_y = (WIN_HEIGHT / 2) + (column_height / 2);
-
-	for (int y = start_y; y < end_y; y++)
-	{
-		int texture_y = ((y - start_y) * texture->height) / column_height;
-		int texture_x = hit_ratio * texture->width;
-		if (y >= 0 && y < WIN_HEIGHT)
-			mlx_put_pixel(game->world, i, y, get_color_pixel(texture, texture_x, texture_y));
-	}
 }
 
 // Draw a point at every intersection
@@ -154,11 +109,9 @@ static void	cast_ray(t_game *game, float ray_angle, int i)
 {
 	float			vertical_dist;
 	float			horizontal_dist;
-	float			final_dist;
 	float			hit_x;
 	float			hit_y;
-	float			hit_ratio;
-	mlx_texture_t	*final_texture;
+	t_slice			slice;
 
 	vertical_dist = find_vertical_inter(game, ray_angle);
 	horizontal_dist = find_horizontal_inter(game, ray_angle);
@@ -167,26 +120,26 @@ static void	cast_ray(t_game *game, float ray_angle, int i)
 	{
 		if (vertical_dist < horizontal_dist)
 		{
-			final_dist = vertical_dist;
-			hit_y = game->player.image->instances->y + final_dist * sin(ray_angle);
-			hit_ratio = hit_y - floor(hit_y / game->tile_size) * game->tile_size;
+			slice.distance = vertical_dist;
+			hit_y = game->player.image->instances->y + slice.distance * sin(ray_angle);
+			slice.hit_ratio = hit_y - floor(hit_y / game->tile_size) * game->tile_size;
 			if (cos(ray_angle) > 0)
-				final_texture = game->textures.orientation[WEST];
+				slice.texture = game->textures.orientation[WEST];
 			else
-				final_texture = game->textures.orientation[EAST];
+				slice.texture = game->textures.orientation[EAST];
 		}
 		else
 		{
-			final_dist = horizontal_dist;
-			hit_x = game->player.image->instances->x + final_dist * cos(ray_angle);
-			hit_ratio = hit_x - floor(hit_x / game->tile_size) * game->tile_size;
+			slice.distance = horizontal_dist;
+			hit_x = game->player.image->instances->x + slice.distance * cos(ray_angle);
+			slice.hit_ratio = hit_x - floor(hit_x / game->tile_size) * game->tile_size;
 			if (sin(ray_angle) > 0)
-				final_texture = game->textures.orientation[NORTH];
+				slice.texture = game->textures.orientation[NORTH];
 			else
-				final_texture = game->textures.orientation[SOUTH];
+				slice.texture = game->textures.orientation[SOUTH];
 		}
-		hit_ratio = hit_ratio / game->tile_size;
-		draw_slice(game, final_dist, i, ray_angle, hit_ratio, final_texture);
+		slice.hit_ratio = slice.hit_ratio / game->tile_size;
+		draw_slice(game, i, ray_angle, slice);
 	}
 }
 
@@ -202,19 +155,12 @@ void	ray_casting(t_game *game)
 	i = 0;
 	fov_rad	= FOV * (M_PI / 180);
 	start_angle = game->player.angle - fov_rad / 2;
-	step_angle = fov_rad / WIN_WIDTH;
-	if (game->ray)
-		mlx_delete_image(game->mlx, game->ray);
-	game->ray = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
-	if (!game->ray)
-		return ;
-		
+	step_angle = fov_rad / WIN_WIDTH;		
 	if (game->world)
 		mlx_delete_image(game->mlx, game->world);
 	game->world = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
 	if (!game->world)
 		return ;
-
 	while (i < WIN_WIDTH)
 	{
 		ray_angle = start_angle + i * step_angle;
@@ -225,9 +171,7 @@ void	ray_casting(t_game *game)
 		cast_ray(game, ray_angle, i);
 		i++;
 	}
-	if (DISPLAY_MODE == RENDER_2D)
-		mlx_image_to_window(game->mlx, game->ray, 0, 0);
-	else if (DISPLAY_MODE == RENDER_3D)
+	if (DISPLAY_MODE == RENDER_3D)
 	{
 		mlx_image_to_window(game->mlx, game->world, 0, 0);
 		game->world->instances->z = 1;

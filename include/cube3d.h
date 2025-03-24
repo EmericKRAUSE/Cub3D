@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/24 16:50:08 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/24 21:27:12 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,13 @@ typedef struct s_images
 	mlx_image_t		*ceiling;
 }					t_images;
 
+typedef struct s_slice
+{
+	mlx_texture_t	*texture;
+	float			hit_ratio;
+	float			distance;
+}					t_slice;
+
 typedef struct s_game
 {
 	mlx_t		*mlx;
@@ -152,7 +159,6 @@ typedef struct s_game
 	int			time;
 	int			launcher_frame;
 	int			is_shooting;
-	mlx_image_t	*ray;
 	mlx_image_t	*wall;
 	mlx_image_t *door;
 	mlx_image_t	*background;
@@ -181,6 +187,7 @@ void	on_cursor_move(double xpos, double ypos, void *param);
 float	find_horizontal_inter(t_game *game, float angle);
 float	find_vertical_inter(t_game *game, float angle);
 mlx_texture_t	texture_line(mlx_texture_t *texture, float hit_ratio);
+void	draw_slice(t_game *game, int i, float ray_angle, t_slice slice);
 
 // ####################
 // draw_assets
