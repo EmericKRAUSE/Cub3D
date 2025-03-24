@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/19 14:56:04 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/18 17:11:25 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 // Macros
 
 // General
-# define WIN_WIDTH 2560
+# define WIN_WIDTH	2560
 # define WIN_HEIGHT 1440
 # define FOV 60
 # define SENSIVITY 2.00
@@ -33,7 +33,6 @@
 // Crosshair
 # define CROSSHAIR_SIZE 31
 # define CROSSHAIR_THICKNESS 3
-# define DEEPEST_DEPTH 10
 
 // Display mode
 # define RENDER_3D 1
@@ -53,6 +52,7 @@
 # define COLOR_CROSSHAIR HEX_YELLOW
 # define COLOR_RAY HEX_YELLOW
 # define COLOR_WALL HEX_GREEN
+# define COLOR_DOOR	HEX_WHITE
 # define COLOR_WALL_NORTH HEX_GREEN
 # define COLOR_WALL_SOUTH HEX_GREEN
 # define COLOR_WALL_EAST HEX_DARK_GREEN
@@ -87,10 +87,10 @@
 # define BLANK_CHAR "\t\n "
 # define CHAR_BLANK_MAP '0'
 
-# define MAP_CHARS "01NSEW \n"
+# define MAP_CHARS "01DNSEW \n"
 # define TEXTURES_BALISE "NO /SO /EA /WE "
 # define PLAYER_CHARS "NSEW"
-# define FLOODFILL_CHARS "NSEW0"
+# define FLOODFILL_CHARS "NSEW0D"
 # define FLOODFILL_VISITED 'V'
 
 # ifndef BUFFER_SIZE
@@ -154,6 +154,7 @@ typedef struct s_game
 	int			is_shooting;
 	mlx_image_t	*ray;
 	mlx_image_t	*wall;
+	mlx_image_t *door;
 	mlx_image_t	*background;
 	mlx_image_t	*world;
 	mlx_image_t	*crosshair;
@@ -179,6 +180,7 @@ void	free_map(t_map *map);
 void	on_cursor_move(double xpos, double ypos, void *param);
 float	find_horizontal_inter(t_game *game, float angle);
 float	find_vertical_inter(t_game *game, float angle);
+mlx_texture_t	texture_line(mlx_texture_t *texture, float hit_ratio);
 
 // ####################
 // utils

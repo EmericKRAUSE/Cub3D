@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 14:44:56 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/17 13:37:36 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/18 22:04:09 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,10 @@ void	movements(void *param)
 		map_y = (new_y + collision_margin) / game->tile_size;
 	else
 		map_y = (new_y - collision_margin) / game->tile_size;
-	
-	if (game->map.tab[game->player.image->instances->y / game->tile_size][(int)map_x] != '1')
+
+	if (game->map.tab[game->player.image->instances->y / game->tile_size][(int)map_x] != '1' && game->map.tab[game->player.image->instances->y / game->tile_size][(int)map_x] != 'D')
 		game->player.image->instances->x = round(new_x);
-	if (game->map.tab[(int)map_y][game->player.image->instances->x / game->tile_size] != '1')
+	if (game->map.tab[(int)map_y][game->player.image->instances->x / game->tile_size] != '1' && game->map.tab[(int)map_y][game->player.image->instances->x / game->tile_size] != 'D')
 		game->player.image->instances->y = round(new_y);
 
 	// if (game->map.tab[(int)map_y][(int)map_x] != '1')
