@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/24 21:27:12 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/26 14:22:07 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,12 @@ typedef struct s_point
 	int				x;
 	int				y;
 }					t_point;
+
+typedef struct s_fpoint
+{
+	float			x;
+	float			y;
+}					t_fpoint;
 
 typedef struct s_rgb
 {

@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:48:38 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/24 21:25:16 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/26 14:43:06 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,66 +42,86 @@ static int	is_wall_hit(t_game *game, float pos_x, float pos_y)
 	return (map[map_y][map_x] == '1' || map[map_y][map_x] == 'D');
 }
 
-float	find_vertical_inter(t_game *game, float angle)
+void	set_v_values(t_game *game, float angle, float *next_x, float *step_x)
 {
-	int		tile_size = game->tile_size;
-	int		player_x = game->player.image->instances->x;
-	int		player_y = game->player.image->instances->y;
-	float	next_x, next_y;
-	float	step_x, step_y;
+	int	tile_size;
+	int	player_x;
 
-	if (cos(angle) > 0) // Regarde a droite
+	tile_size = game->tile_size;
+	player_x = game->player.image->instances->x;
+	if (cos(angle) > 0)
 	{
-		next_x = floor(player_x / tile_size) * tile_size + tile_size;
-		step_x = tile_size;
+		*next_x = floor(player_x / tile_size) * tile_size + tile_size;
+		*step_x = tile_size;
 	}
-	else // Regarde a gauche
+	else
 	{
-		next_x = floor(player_x / tile_size) * tile_size - 0.001;
-		step_x= -tile_size;
+		*next_x = floor(player_x / tile_size) * tile_size - 0.001;
+		*step_x = -tile_size;
 	}
-	next_y = player_y + (next_x - player_x) * tan(angle);
-	step_y = step_x * tan(angle);
-
-	while (1)
-	{
-		if (is_out_of_map(game, next_x, next_y) || is_wall_hit(game, next_x, next_y))
-			break ;
-		next_x += step_x;
-		next_y += step_y;
-	}
-	return sqrt(pow(next_x - player_x, 2) + pow(next_y - player_y, 2));
 }
 
-float find_horizontal_inter(t_game *game, float angle)
+float	find_vertical_inter(t_game *game, float angle)
 {
-	int		tile_size = game->tile_size;
-	int		player_x = game->player.image->instances->x;
-	int		player_y = game->player.image->instances->y;
-	float	next_x, next_y;
-	float	step_x, step_y;
+	t_point		player;
+	t_fpoint	step;
+	t_fpoint	next;
 
-	if (sin(angle) > 0) // Regarde vers le bas
-	{
-		next_y = floor(player_y / tile_size) * tile_size + tile_size;
-		step_y = tile_size;
-	}
-	else // Regarde vers le haut
-	{
-		next_y = floor(player_y / tile_size) * tile_size - 0.001;
-		step_y = -tile_size;
-	}
-	next_x = player_x + (next_y - player_y) / tan(angle);
-	step_x = step_y / tan(angle);
-
+	set_v_values(game, angle, &next.x, &step.x);
+	player.x = game->player.image->instances->x;
+	player.y = game->player.image->instances->y;
+	next.y = player.y + (next.x - player.x) * tan(angle);
+	step.y = step.x * tan(angle);
 	while (1)
 	{
-		if (is_out_of_map(game, next_x, next_y) || is_wall_hit(game, next_x, next_y))
-			break;
-		next_x += step_x;
-		next_y += step_y;
+		if (is_out_of_map(game, next.x, next.y)
+			|| is_wall_hit(game, next.x, next.y))
+			break ;
+		next.x += step.x;
+		next.y += step.y;
 	}
-	return sqrt(pow(next_x - player_x, 2) + pow(next_y - player_y, 2));
+	return (sqrt(pow(next.x - player.x, 2) + pow(next.y - player.y, 2)));
+}
+
+void	set_h_values(t_game *game, float angle, float *next_y, float *step_y)
+{
+	int	tile_size;
+	int	player_y;
+
+	tile_size = game->tile_size;
+	player_y = game->player.image->instances->y;
+	if (sin(angle) > 0)
+	{
+		*next_y = floor(player_y / tile_size) * tile_size + tile_size;
+		*step_y = tile_size;
+	}
+	else
+	{
+		*next_y = floor(player_y / tile_size) * tile_size - 0.001;
+		*step_y = -tile_size;
+	}
+}
+
+float	find_horizontal_inter(t_game *game, float angle)
+{
+	t_point		player;
+	t_fpoint	next;
+	t_fpoint	step;
+
+	set_h_values(game, angle, &next.y, &step.y);
+	player.x = game->player.image->instances->x;
+	player.y = game->player.image->instances->y;
+	next.x = player.x + (next.y - player.y) / tan(angle);
+	step.x = step.y / tan(angle);
+	while (1)
+	{
+		if (is_out_of_map(game, next.x, next.y)
+			|| is_wall_hit(game, next.x, next.y))
+			break ;
+		next.x += step.x;
+		next.y += step.y;
+	}
+	return (sqrt(pow(next.x - player.x, 2) + pow(next.y - player.y, 2)));
 }
 
 // Draw a point at every intersection
@@ -115,7 +135,6 @@ static void	cast_ray(t_game *game, float ray_angle, int i)
 
 	vertical_dist = find_vertical_inter(game, ray_angle);
 	horizontal_dist = find_horizontal_inter(game, ray_angle);
-
 	if (DISPLAY_MODE == RENDER_3D)
 	{
 		if (vertical_dist < horizontal_dist)
@@ -153,9 +172,9 @@ void	ray_casting(t_game *game)
 	float	ray_angle;
 
 	i = 0;
-	fov_rad	= FOV * (M_PI / 180);
+	fov_rad = FOV * (M_PI / 180);
 	start_angle = game->player.angle - fov_rad / 2;
-	step_angle = fov_rad / WIN_WIDTH;		
+	step_angle = fov_rad / WIN_WIDTH;
 	if (game->world)
 		mlx_delete_image(game->mlx, game->world);
 	game->world = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
