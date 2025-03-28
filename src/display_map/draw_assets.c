@@ -6,29 +6,11 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 16:34:56 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/24 21:39:46 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/28 17:27:33 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube3d.h>
-
-// Draw a gun on the middle bottom of the screen
-void	draw_gun(t_game *game)
-{
-	mlx_texture_t	*gun_texture;
-
-	gun_texture = mlx_load_png("gun.png");
-	if (!gun_texture)
-		return ;
-	game->gun = mlx_texture_to_image(game->mlx, gun_texture);
-	if (!game->gun)
-		return ;
-	mlx_delete_texture(gun_texture);
-	mlx_image_to_window(game->mlx, game->gun,
-		WIN_WIDTH / 2 - (game->gun->width / 2),
-		WIN_HEIGHT - game->gun->height);
-	game->gun->instances->z = 3;
-}
 
 void	draw_launcher(t_game *game)
 {

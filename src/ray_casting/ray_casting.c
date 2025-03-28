@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:48:38 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/28 16:16:03 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/28 17:34:17 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 
 static int	is_door(t_game *game, t_fpoint hit)
 {
-	t_point map;
+	t_point	map;
 
 	map.x = hit.x / game->tile_size;
 	map.y = hit.y / game->tile_size;
 	return (game->map.tab[map.y][map.x] == 'D');
 }
 
-static void	set_vertical_slice(t_game *game, t_slice *slice, float vertical_dist, float	ray_angle)
+static void	set_vertical_slice(t_game *game, t_slice *slice,
+	float vertical_dist, float ray_angle)
 {
-	t_fpoint hit;
+	t_fpoint	hit;
 
 	slice->distance = vertical_dist;
 	hit.y = game->player.image->instances->y + slice->distance * sin(ray_angle);
@@ -37,9 +38,10 @@ static void	set_vertical_slice(t_game *game, t_slice *slice, float vertical_dist
 		slice->texture = game->textures.orientation[EAST];
 }
 
-static void	set_horizontal_slice(t_game *game, t_slice *slice, float horizontal_dist, float ray_angle)
+static void	set_horizontal_slice(t_game *game, t_slice *slice,
+	float horizontal_dist, float ray_angle)
 {
-	t_fpoint hit;
+	t_fpoint	hit;
 
 	slice->distance = horizontal_dist;
 	hit.y = game->player.image->instances->y + slice->distance * sin(ray_angle);
@@ -86,18 +88,12 @@ void	ray_casting(t_game *game)
 	fov_rad = FOV * (M_PI / 180);
 	start_angle = game->player.angle - fov_rad / 2;
 	step_angle = fov_rad / WIN_WIDTH;
-	if (game->world)
-		mlx_delete_image(game->mlx, game->world);
-	game->world = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
-	if (!game->world)
+	if (!prepare_world_image(game))
 		return ;
 	while (i < WIN_WIDTH)
 	{
 		ray_angle = start_angle + i * step_angle;
-		if (ray_angle > 2 * M_PI)
-			ray_angle -= 2 * M_PI;
-		else if (ray_angle < 0)
-			ray_angle += 2 * M_PI;
+		normalize_angle(&ray_angle);
 		cast_ray(game, ray_angle, i);
 		i++;
 	}
