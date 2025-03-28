@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/24 21:16:06 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/28 16:28:28 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ int	main(int argc, char **argv)
 		return (1);
 	game = ft_calloc(sizeof(t_game), 1);
 	init_game(game);
+	game->textures.door = mlx_load_png("textures/door.png");
 	if (!game)
 	{
 		return (ERR_MALLOC);

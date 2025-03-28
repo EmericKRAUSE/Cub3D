@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/26 14:22:07 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/28 16:06:39 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,9 +139,10 @@ typedef struct s_textures
 {
 	char			*f_names[4];
 	mlx_texture_t	*orientation[4];
+	mlx_texture_t	*door;
 	t_rgb			floor;
 	t_rgb			ceiling;
-} t_textures;
+} 					t_textures;
 
 typedef struct s_images
 {

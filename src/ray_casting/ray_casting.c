@@ -6,122 +6,51 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:48:38 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/26 14:43:06 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/28 16:16:03 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube3d.h>
 
-static int	is_out_of_map(t_game *game, float pos_x, float pos_y)
+static int	is_door(t_game *game, t_fpoint hit)
 {
-	int	map_width;
-	int	map_height;
-	int	pos_in_grid_x;
-	int	pos_in_grid_y;
+	t_point map;
 
-	map_width = game->map.width;
-	map_height = game->map.height;
-	pos_in_grid_x = pos_x / game->tile_size;
-	pos_in_grid_y = pos_y / game->tile_size;
-	if (pos_x <= 0 || pos_y <= 0)
-		return (1);
-	return ((pos_in_grid_x < 0 || pos_in_grid_x >= map_width
-			|| pos_in_grid_y < 0 || pos_in_grid_y >= map_height));
+	map.x = hit.x / game->tile_size;
+	map.y = hit.y / game->tile_size;
+	return (game->map.tab[map.y][map.x] == 'D');
 }
 
-// Return true if the position given in px is located in a wall
-static int	is_wall_hit(t_game *game, float pos_x, float pos_y)
+static void	set_vertical_slice(t_game *game, t_slice *slice, float vertical_dist, float	ray_angle)
 {
-	char	**map;
-	int		map_x;
-	int		map_y;
+	t_fpoint hit;
 
-	map = game->map.tab;
-	map_x = pos_x / game->tile_size;
-	map_y = pos_y / game->tile_size;
-	return (map[map_y][map_x] == '1' || map[map_y][map_x] == 'D');
-}
-
-void	set_v_values(t_game *game, float angle, float *next_x, float *step_x)
-{
-	int	tile_size;
-	int	player_x;
-
-	tile_size = game->tile_size;
-	player_x = game->player.image->instances->x;
-	if (cos(angle) > 0)
-	{
-		*next_x = floor(player_x / tile_size) * tile_size + tile_size;
-		*step_x = tile_size;
-	}
+	slice->distance = vertical_dist;
+	hit.y = game->player.image->instances->y + slice->distance * sin(ray_angle);
+	hit.x = game->player.image->instances->x + slice->distance * cos(ray_angle);
+	slice->hit_ratio = hit.y - floor(hit.y / game->tile_size) * game->tile_size;
+	if (is_door(game, hit))
+		slice->texture = game->textures.door;
+	else if (cos(ray_angle) > 0)
+		slice->texture = game->textures.orientation[WEST];
 	else
-	{
-		*next_x = floor(player_x / tile_size) * tile_size - 0.001;
-		*step_x = -tile_size;
-	}
+		slice->texture = game->textures.orientation[EAST];
 }
 
-float	find_vertical_inter(t_game *game, float angle)
+static void	set_horizontal_slice(t_game *game, t_slice *slice, float horizontal_dist, float ray_angle)
 {
-	t_point		player;
-	t_fpoint	step;
-	t_fpoint	next;
+	t_fpoint hit;
 
-	set_v_values(game, angle, &next.x, &step.x);
-	player.x = game->player.image->instances->x;
-	player.y = game->player.image->instances->y;
-	next.y = player.y + (next.x - player.x) * tan(angle);
-	step.y = step.x * tan(angle);
-	while (1)
-	{
-		if (is_out_of_map(game, next.x, next.y)
-			|| is_wall_hit(game, next.x, next.y))
-			break ;
-		next.x += step.x;
-		next.y += step.y;
-	}
-	return (sqrt(pow(next.x - player.x, 2) + pow(next.y - player.y, 2)));
-}
-
-void	set_h_values(t_game *game, float angle, float *next_y, float *step_y)
-{
-	int	tile_size;
-	int	player_y;
-
-	tile_size = game->tile_size;
-	player_y = game->player.image->instances->y;
-	if (sin(angle) > 0)
-	{
-		*next_y = floor(player_y / tile_size) * tile_size + tile_size;
-		*step_y = tile_size;
-	}
+	slice->distance = horizontal_dist;
+	hit.y = game->player.image->instances->y + slice->distance * sin(ray_angle);
+	hit.x = game->player.image->instances->x + slice->distance * cos(ray_angle);
+	slice->hit_ratio = hit.x - floor(hit.x / game->tile_size) * game->tile_size;
+	if (is_door(game, hit))
+		slice->texture = game->textures.door;
+	else if (sin(ray_angle) > 0)
+		slice->texture = game->textures.orientation[NORTH];
 	else
-	{
-		*next_y = floor(player_y / tile_size) * tile_size - 0.001;
-		*step_y = -tile_size;
-	}
-}
-
-float	find_horizontal_inter(t_game *game, float angle)
-{
-	t_point		player;
-	t_fpoint	next;
-	t_fpoint	step;
-
-	set_h_values(game, angle, &next.y, &step.y);
-	player.x = game->player.image->instances->x;
-	player.y = game->player.image->instances->y;
-	next.x = player.x + (next.y - player.y) / tan(angle);
-	step.x = step.y / tan(angle);
-	while (1)
-	{
-		if (is_out_of_map(game, next.x, next.y)
-			|| is_wall_hit(game, next.x, next.y))
-			break ;
-		next.x += step.x;
-		next.y += step.y;
-	}
-	return (sqrt(pow(next.x - player.x, 2) + pow(next.y - player.y, 2)));
+		slice->texture = game->textures.orientation[SOUTH];
 }
 
 // Draw a point at every intersection
@@ -129,8 +58,6 @@ static void	cast_ray(t_game *game, float ray_angle, int i)
 {
 	float			vertical_dist;
 	float			horizontal_dist;
-	float			hit_x;
-	float			hit_y;
 	t_slice			slice;
 
 	vertical_dist = find_vertical_inter(game, ray_angle);
@@ -138,25 +65,9 @@ static void	cast_ray(t_game *game, float ray_angle, int i)
 	if (DISPLAY_MODE == RENDER_3D)
 	{
 		if (vertical_dist < horizontal_dist)
-		{
-			slice.distance = vertical_dist;
-			hit_y = game->player.image->instances->y + slice.distance * sin(ray_angle);
-			slice.hit_ratio = hit_y - floor(hit_y / game->tile_size) * game->tile_size;
-			if (cos(ray_angle) > 0)
-				slice.texture = game->textures.orientation[WEST];
-			else
-				slice.texture = game->textures.orientation[EAST];
-		}
+			set_vertical_slice(game, &slice, vertical_dist, ray_angle);
 		else
-		{
-			slice.distance = horizontal_dist;
-			hit_x = game->player.image->instances->x + slice.distance * cos(ray_angle);
-			slice.hit_ratio = hit_x - floor(hit_x / game->tile_size) * game->tile_size;
-			if (sin(ray_angle) > 0)
-				slice.texture = game->textures.orientation[NORTH];
-			else
-				slice.texture = game->textures.orientation[SOUTH];
-		}
+			set_horizontal_slice(game, &slice, horizontal_dist, ray_angle);
 		slice.hit_ratio = slice.hit_ratio / game->tile_size;
 		draw_slice(game, i, ray_angle, slice);
 	}

@@ -6,12 +6,13 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 21:09:50 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/24 21:36:59 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/27 16:45:14 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube3d.h>
 
+// Get 4 pixels and return them into a uint32_t
 uint32_t	get_color_pixel(mlx_texture_t *texture, int x, int y)
 {
 	int		index;
@@ -30,25 +31,25 @@ uint32_t	get_color_pixel(mlx_texture_t *texture, int x, int y)
 	return (r * 16777216 + g * 65536 + b * 256 + a);
 }
 
+// Draw a column of pixels
 void	draw_slice(t_game *game, int i, float ray_angle, t_slice slice)
 {
 	int		column_height;
 	int		start_y;
-	int		texture_x;
-	int		texture_y;
+	t_point	texture;
 	int		y;
 
 	column_height = (WIN_HEIGHT / (slice.distance
 				* cos(ray_angle - game->player.angle) / 100));
 	start_y = (WIN_HEIGHT / 2) - (column_height / 2);
-	texture_x = slice.hit_ratio * slice.texture->width;
+	texture.x = slice.hit_ratio * slice.texture->width;
 	y = start_y;
 	while (y < WIN_HEIGHT / 2 + column_height / 2)
 	{
-		texture_y = ((y - start_y) * slice.texture->height) / column_height;
+		texture.y = ((y - start_y) * slice.texture->height) / column_height;
 		if (y >= 0 && y < WIN_HEIGHT)
 			mlx_put_pixel(game->world, i, y,
-				get_color_pixel(slice.texture, texture_x, texture_y));
+				get_color_pixel(slice.texture, texture.x, texture.y));
 		y++;
 	}
 }
