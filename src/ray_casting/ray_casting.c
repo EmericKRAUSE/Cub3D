@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:48:38 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/28 17:34:17 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/29 15:29:14 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ static void	set_vertical_slice(t_game *game, t_slice *slice,
 	slice->distance = vertical_dist;
 	hit.y = game->player.image->instances->y + slice->distance * sin(ray_angle);
 	hit.x = game->player.image->instances->x + slice->distance * cos(ray_angle);
+	if (cos(ray_angle) < 0)
+		hit.x -= 0.001;
+	else
+		hit.x += 0.001;
 	slice->hit_ratio = hit.y - floor(hit.y / game->tile_size) * game->tile_size;
 	if (is_door(game, hit))
 		slice->texture = game->textures.door;
@@ -46,6 +50,10 @@ static void	set_horizontal_slice(t_game *game, t_slice *slice,
 	slice->distance = horizontal_dist;
 	hit.y = game->player.image->instances->y + slice->distance * sin(ray_angle);
 	hit.x = game->player.image->instances->x + slice->distance * cos(ray_angle);
+	if (sin(ray_angle) < 0)
+		hit.y -= 0.001;
+	else
+		hit.y += 0.001;
 	slice->hit_ratio = hit.x - floor(hit.x / game->tile_size) * game->tile_size;
 	if (is_door(game, hit))
 		slice->texture = game->textures.door;
