@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/29 16:57:07 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/29 21:06:18 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@
 # define PLAYER_CHARS "NSEW"
 # define FLOODFILL_CHARS "NSEW0"
 # define FLOODFILL_VISITED 'V'
+# define WALL_CHAR '1'
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4
@@ -222,6 +223,7 @@ char				**dup_tab(char **tab);
 
 // ####################
 // parsing
+void            	surround_map(char ***map_addr, char c_surround);
 int					parse_args(int argc, char **argv, t_game *game);
 char				*get_next_line(int fd);
 int					import_cub_file(t_game *game);

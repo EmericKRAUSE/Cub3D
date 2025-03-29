@@ -13,10 +13,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90963887-31d1-4ae4-bece-84ecff793343" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/surround_map.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maps/debug/debug.cub" beforeDir="false" afterPath="$PROJECT_DIR$/maps/debug/debug.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/cube3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/cube3d.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/libft/src/ft_append_tab.c" beforeDir="false" afterPath="$PROJECT_DIR$/lib/libft/src/ft_append_tab.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/get_next_line.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/get_next_line_utils.c" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray_casting/ray_casting.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray_casting/ray_casting.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ray_casting/draw_slice.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray_casting/draw_slice.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +76,7 @@
       <workItem from="1741957091019" duration="8946000" />
       <workItem from="1742300871235" duration="1269000" />
       <workItem from="1742320142543" duration="2247000" />
+      <workItem from="1743271870972" duration="7269000" />
     </task>
     <servers />
   </component>
