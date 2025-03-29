@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/29 16:25:14 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/29 16:57:07 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,12 +194,17 @@ float	find_horizontal_inter(t_game *game, float angle);
 float	find_vertical_inter(t_game *game, float angle);
 mlx_texture_t	texture_line(mlx_texture_t *texture, float hit_ratio);
 void	draw_slice(t_game *game, int i, float ray_angle, t_slice slice);
-void	on_space_press(mlx_key_data_t keydata, void *param);
 
 // ####################
 // draw_assets
 void draw_gun(t_game *game);
 void draw_launcher(t_game *game);
+
+// ####################
+// door
+void	on_space_press(mlx_key_data_t keydata, void *param);
+float	d_find_vertical_inter(t_game *game, float angle);
+float	d_find_horizontal_inter(t_game *game, float angle);
 
 // ####################
 // ray_casting_utils
