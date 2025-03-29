@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/29 16:03:23 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/29 16:25:00 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,7 @@ int	main(int argc, char **argv)
 	mlx_loop_hook(game->mlx, &hook_time, game);
 	mlx_cursor_hook(game->mlx, on_cursor_move, game);
 	mlx_mouse_hook(game->mlx, mouse_event, game);
+	mlx_key_hook(game->mlx, on_space_press, game);
 	mlx_loop(game->mlx);
 	clean_exit(game, NULL, 0);
 }

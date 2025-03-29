@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/28 17:35:06 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/03/29 16:25:14 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@
 # define BLANK_CHAR "\t\n "
 # define CHAR_BLANK_MAP '0'
 
-# define MAP_CHARS "01DNSEW \n"
+# define MAP_CHARS "01DdNSEW \n"
 # define TEXTURES_BALISE "NO /SO /EA /WE "
 # define PLAYER_CHARS "NSEW"
 # define FLOODFILL_CHARS "NSEW0"
@@ -194,6 +194,7 @@ float	find_horizontal_inter(t_game *game, float angle);
 float	find_vertical_inter(t_game *game, float angle);
 mlx_texture_t	texture_line(mlx_texture_t *texture, float hit_ratio);
 void	draw_slice(t_game *game, int i, float ray_angle, t_slice slice);
+void	on_space_press(mlx_key_data_t keydata, void *param);
 
 // ####################
 // draw_assets
