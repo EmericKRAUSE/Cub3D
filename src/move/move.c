@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 14:44:56 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/28 17:37:41 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/01 15:57:26 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,33 +59,39 @@ void	rotate_player(t_game *game)
 	}
 }
 
-float	get_map_pos(float new_pos, float old_pos, float margin, int tile_size)
+int is_wall(t_game *game, float x, float y)
 {
-	if (new_pos > old_pos)
-		return ((new_pos + margin) / tile_size);
-	else
-		return ((new_pos - margin) / tile_size);
+	int map_x = (int)(x / game->tile_size);
+	int map_y = (int)(y / game->tile_size);
+
+	// Vérifie si on sort des limites de la map
+	if (map_x < 0 || map_y < 0 || map_y >= game->map.height || map_x >= game->map.width)
+		return (1); // Hors des limites = mur
+	return (game->map.tab[map_y][map_x] == '1' || game->map.tab[map_y][map_x] == 'D');
+}
+
+int is_colliding(t_game *game, float new_x, float new_y)
+{
+	float hit_box = 10;
+
+	if (is_wall(game, new_x - hit_box, new_y - hit_box) ||
+		is_wall(game, new_x + hit_box, new_y - hit_box) ||
+		is_wall(game, new_x - hit_box, new_y + hit_box) ||
+		is_wall(game, new_x + hit_box, new_y + hit_box))
+		return (1);
+	return (0);
 }
 
 // Apply the movement depending on the collision detection using a margin
-void	apply_movement_with_collision(t_game *game, float new_x, float new_y)
+void apply_movement_with_collision(t_game *game, float new_x, float new_y)
 {
-	int		player_x;
-	int		player_y;
-	float	margin;
-	float	map_x;
-	float	map_y;
+	int can_move_x = !is_colliding(game, new_x, game->player.image->instances->y);
+	int can_move_y = !is_colliding(game, game->player.image->instances->x, new_y);
 
-	player_x = game->player.image->instances->x;
-	player_y = game->player.image->instances->y;
-	margin = game->tile_size * 0.1;
-	map_x = get_map_pos(new_x, player_x, margin, game->tile_size);
-	map_y = get_map_pos(new_y, player_y, margin, game->tile_size);
-	if (game->map.tab[player_y / game->tile_size][(int)map_x] != '1'
-		&& game->map.tab[player_y / game->tile_size][(int)map_x] != 'D')
+	// Appliquer uniquement si la direction est libre
+	if (can_move_x)
 		game->player.image->instances->x = round(new_x);
-	if (game->map.tab[(int)map_y][player_x / game->tile_size] != '1'
-		&& game->map.tab[(int)map_y][player_x / game->tile_size] != 'D')
+	if (can_move_y)
 		game->player.image->instances->y = round(new_y);
 }
 

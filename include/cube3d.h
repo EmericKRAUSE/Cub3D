@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/29 16:57:07 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/01 15:59:36 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,9 +166,8 @@ typedef struct s_game
 	int			time;
 	int			launcher_frame;
 	int			is_shooting;
-	mlx_image_t	*wall;
-	mlx_image_t *door;
-	mlx_image_t	*background;
+	mlx_image_t	*minimap;
+	mlx_image_t	*ray;
 	mlx_image_t	*world;
 	mlx_image_t	*crosshair;
 	mlx_image_t *rocket_launcher[7];

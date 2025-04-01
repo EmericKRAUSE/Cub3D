@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/29 16:25:00 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/01 16:10:36 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,8 @@ void	init_game(t_game *game)
 	game->player.image = mlx_new_image(game->mlx, 1, 1);
 	game->player.angle = 0;
 	game->player.rotation_speed = 0.04;
-	game->wall = mlx_new_image(game->mlx, game->tile_size, game->tile_size);
-	game->door = mlx_new_image(game->mlx, game->tile_size, game->tile_size);
-	game->background = mlx_new_image(game->mlx, game->tile_size,
-			game->tile_size);
+	game->minimap = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
+	game->ray = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
 	game->player.move_dist = game->tile_size / 8;
 }
 
@@ -156,8 +154,8 @@ int	main(int argc, char **argv)
 	pt_player = get_player_position(game->map.tab);
 	game->player.start_x = pt_player.x;
 	game->player.start_y = pt_player.y;
-
 	set_tile_size(game);
+
 		
 	mlx_set_mouse_pos(game->mlx, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	mlx_set_cursor_mode(game->mlx, MLX_MOUSE_HIDDEN);

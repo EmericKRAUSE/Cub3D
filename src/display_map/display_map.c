@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 15:19:25 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/24 16:32:07 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/01 15:55:18 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ static void	set_point(t_point *point, int x, int y)
 }
 
 // Draw a square of size TILE_SIZE by TILE_SIZE
-static void	draw_square(t_game *game, mlx_image_t *img,
-	uint32_t color, t_point *point)
+static void	draw_square(t_game *game, uint32_t color, t_point *point)
 {
 	int	x;
 	int	y;
@@ -31,12 +30,11 @@ static void	draw_square(t_game *game, mlx_image_t *img,
 		x = 1;
 		while (x < game->tile_size)
 		{
-			mlx_put_pixel(img, x, y, color);
+			mlx_put_pixel(game->minimap,  point->x + x, point->y + y, color);
 			x++;
 		}
 		y++;
 	}
-	mlx_image_to_window(game->mlx, img, point->x, point->y);
 }
 
 // Draw a tile using the draw_square function depending on the character
@@ -46,11 +44,11 @@ void	draw_tile(t_game *game, char tile, int x, int y)
 
 	set_point(&point, x * game->tile_size, y * game->tile_size);
 	if (tile == '1')
-		draw_square(game, game->wall, COLOR_WALL, &point);
+		draw_square(game, COLOR_WALL, &point);
 	else if (tile == 'D')
-		draw_square(game, game->door, COLOR_DOOR, &point);
+		draw_square(game, COLOR_DOOR, &point);
 	else
-		draw_square(game, game->background, COLOR_BACKGROUND, &point);
+		draw_square(game, COLOR_BACKGROUND, &point);
 }
 
 // Display the map
@@ -70,7 +68,8 @@ void	display_map(t_game *game)
 		}
 		y++;
 	}
+	mlx_image_to_window(game->mlx, game->minimap, 0, 0);
 	mlx_image_to_window(game->mlx, game->player.image,
-		game->player.start_x * game->tile_size,
-		game->player.start_y * game->tile_size);
+		game->player.start_x * game->tile_size + game->tile_size / 2,
+		game->player.start_y * game->tile_size + game->tile_size / 2);
 }
