@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/01 16:10:36 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/01 19:41:54 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,19 @@ t_rgb	init_color(int r, int g, int b)
 
 void	init_game(t_game *game)
 {
-	game->textures.ceiling = init_color(UNSET_COLOR, UNSET_COLOR, UNSET_COLOR);
-	game->textures.floor = init_color(UNSET_COLOR, UNSET_COLOR, UNSET_COLOR);
 	game->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Cub3D", false);
+	if (DISPLAY_MODE == RENDER_2D)
+		game->minimap_scale = 1;
+	else if (DISPLAY_MODE == RENDER_3D)
+		game->minimap_scale = 0.2;
 	game->tile_size = WIN_WIDTH / 42;
-	game->player.image = mlx_new_image(game->mlx, 1, 1);
+	game->scaled_tile_size = game->tile_size * game->minimap_scale; 
+	game->minimap = mlx_new_image(game->mlx, WIN_WIDTH * game->minimap_scale, WIN_HEIGHT * game->minimap_scale);
+	game->player.image = mlx_new_image(game->mlx, game->scaled_tile_size, game->scaled_tile_size);
 	game->player.angle = 0;
 	game->player.rotation_speed = 0.04;
-	game->minimap = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
+	game->textures.ceiling = init_color(UNSET_COLOR, UNSET_COLOR, UNSET_COLOR);
+	game->textures.floor = init_color(UNSET_COLOR, UNSET_COLOR, UNSET_COLOR);
 	game->ray = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
 	game->player.move_dist = game->tile_size / 8;
 }
@@ -104,8 +109,8 @@ void	shoot(t_game *game)
 	else
 		final_dist = horizontal_dist;
 
-	hit_x = game->player.image->instances->x + final_dist * cos(game->player.angle);
-	hit_y = game->player.image->instances->y + final_dist * sin(game->player.angle);
+	hit_x = game->player.x + final_dist * cos(game->player.angle);
+	hit_y = game->player.y + final_dist * sin(game->player.angle);
 
 	if (game->map.tab[(int)hit_y / game->tile_size][(int)hit_x / game->tile_size] == 'D')
 		game->map.tab[(int)hit_y / game->tile_size][(int)hit_x / game->tile_size] = '0';
@@ -152,15 +157,14 @@ int	main(int argc, char **argv)
 	}
 	parse_args(argc, argv, game);
 	pt_player = get_player_position(game->map.tab);
-	game->player.start_x = pt_player.x;
-	game->player.start_y = pt_player.y;
+	game->player.x = pt_player.x * game->tile_size + game->tile_size / 2;
+	game->player.y = pt_player.y * game->tile_size + game->tile_size / 2;
 	set_tile_size(game);
 
-		
 	mlx_set_mouse_pos(game->mlx, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	mlx_set_cursor_mode(game->mlx, MLX_MOUSE_HIDDEN);
 	if (DISPLAY_MODE == RENDER_2D)
-		display_map(game);
+		display_minimap(game);
 	else if (DISPLAY_MODE == RENDER_3D)
 		display_3d_map(game);
     print_game(game);

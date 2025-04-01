@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 16:55:50 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/29 17:05:50 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/01 19:40:23 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	open_and_close_door(t_game *game, float final_dist)
 	t_point	map_hit;
 	t_point	player;
 
-	player.x = game->player.image->instances->x;
-	player.y = game->player.image->instances->y;
+	player.x = game->player.x;
+	player.y = game->player.y;
 	map_hit.x = (player.x + final_dist * cos(game->player.angle))
 		/ game->tile_size;
 	map_hit.y = (player.y + final_dist * sin(game->player.angle))

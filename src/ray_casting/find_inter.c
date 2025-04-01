@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 16:22:49 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/01 16:02:28 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/01 19:41:37 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	set_vertical_values(t_game *game, float angle,
 	int	player_x;
 
 	tile_size = game->tile_size;
-	player_x = game->player.image->instances->x;
+	player_x = game->player.x;
 	if (cos(angle) > 0)
 	{
 		*next_x = floor(player_x / tile_size) * tile_size + tile_size;
@@ -63,7 +63,7 @@ static void	set_horizontal_values(t_game *game, float angle,
 	int	player_y;
 
 	tile_size = game->tile_size;
-	player_y = game->player.image->instances->y;
+	player_y = game->player.y;
 	if (sin(angle) > 0)
 	{
 		*next_y = floor(player_y / tile_size) * tile_size + tile_size;
@@ -85,8 +85,8 @@ float	find_vertical_inter(t_game *game, float angle)
 	t_fpoint	next;
 
 	set_vertical_values(game, angle, &next.x, &step.x);
-	player.x = game->player.image->instances->x;
-	player.y = game->player.image->instances->y;
+	player.x = game->player.x;
+	player.y = game->player.y;
 	next.y = player.y + (next.x - player.x) * tan(angle);
 	step.y = step.x * tan(angle);
 	while (1)
@@ -108,8 +108,8 @@ float	find_horizontal_inter(t_game *game, float angle)
 	t_fpoint	step;
 
 	set_horizontal_values(game, angle, &next.y, &step.y);
-	player.x = game->player.image->instances->x;
-	player.y = game->player.image->instances->y;
+	player.x = game->player.x;
+	player.y = game->player.y;
 	next.x = player.x + (next.y - player.y) / tan(angle);
 	step.x = step.y / tan(angle);
 	while (1)

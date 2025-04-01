@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 14:44:56 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/01 15:57:26 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/01 20:14:36 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,16 @@ int is_colliding(t_game *game, float new_x, float new_y)
 // Apply the movement depending on the collision detection using a margin
 void apply_movement_with_collision(t_game *game, float new_x, float new_y)
 {
-	int can_move_x = !is_colliding(game, new_x, game->player.image->instances->y);
-	int can_move_y = !is_colliding(game, game->player.image->instances->x, new_y);
+	int can_move_x = !is_colliding(game, new_x, game->player.y);
+	int can_move_y = !is_colliding(game, game->player.x, new_y);
 
 	// Appliquer uniquement si la direction est libre
 	if (can_move_x)
-		game->player.image->instances->x = round(new_x);
+		game->player.x = round(new_x);
 	if (can_move_y)
-		game->player.image->instances->y = round(new_y);
+		game->player.y = round(new_y);
+	game->player.image->instances->x = game->player.x * game->minimap_scale - game->scaled_tile_size / 2;
+	game->player.image->instances->y = game->player.y * game->minimap_scale - game->scaled_tile_size / 2;
 }
 
 // Hook for the movement and rotation of the player
@@ -103,8 +105,8 @@ void	movements(void *param)
 	double	new_y;
 
 	game = param;
-	new_x = game->player.image->instances->x;
-	new_y = game->player.image->instances->y;
+	new_x = game->player.x;
+	new_y = game->player.y;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
 		clean_exit(game, NULL, 0);
 	rotate_player(game);

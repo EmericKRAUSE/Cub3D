@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:14:15 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/31 12:55:18 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/01 20:13:18 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,7 @@ void	draw_ceiling_and_floor(t_game *game)
 void	display_3d_map(t_game *game)
 {
 	draw_ceiling_and_floor(game);
+	display_minimap(game);
 	draw_launcher(game);
 	draw_crosshair(game);
-	mlx_image_to_window(game->mlx, game->player.image,
-		game->player.start_x * game->tile_size,
-		game->player.start_y * game->tile_size);
 }

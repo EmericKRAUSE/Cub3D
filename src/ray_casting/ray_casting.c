@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:48:38 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/01 16:04:54 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/01 19:41:06 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static void	set_vertical_slice(t_game *game, t_slice *slice,
 	t_fpoint	hit;
 
 	slice->distance = vertical_dist;
-	hit.y = game->player.image->instances->y + slice->distance * sin(ray_angle);
-	hit.x = game->player.image->instances->x + slice->distance * cos(ray_angle);
+	hit.y = game->player.y + slice->distance * sin(ray_angle);
+	hit.x = game->player.x + slice->distance * cos(ray_angle);
 	if (cos(ray_angle) < 0)
 		hit.x -= 0.001;
 	else
@@ -48,8 +48,8 @@ static void	set_horizontal_slice(t_game *game, t_slice *slice,
 	t_fpoint	hit;
 
 	slice->distance = horizontal_dist;
-	hit.y = game->player.image->instances->y + slice->distance * sin(ray_angle);
-	hit.x = game->player.image->instances->x + slice->distance * cos(ray_angle);
+	hit.y = game->player.y + slice->distance * sin(ray_angle);
+	hit.x = game->player.x + slice->distance * cos(ray_angle);
 	if (sin(ray_angle) < 0)
 		hit.y -= 0.001;
 	else

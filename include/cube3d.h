@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/04/01 15:59:36 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/01 19:34:21 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,8 @@ typedef struct s_rgb
 typedef struct s_player
 {
 	mlx_image_t		*image;
-	int				start_x;
-	int				start_y;
+	int				x;
+	int				y;
 	int				move_dist;
 	float			angle;
 	float			rotation_speed;
@@ -166,6 +166,7 @@ typedef struct s_game
 	int			time;
 	int			launcher_frame;
 	int			is_shooting;
+	float		minimap_scale;
 	mlx_image_t	*minimap;
 	mlx_image_t	*ray;
 	mlx_image_t	*world;
@@ -173,12 +174,13 @@ typedef struct s_game
 	mlx_image_t *rocket_launcher[7];
 	t_textures	textures;
 	int			tile_size;
+	int			scaled_tile_size;
 	int			fd;
 }	t_game;
 
 // ####################
 // Prototypes
-void	display_map(t_game *game);
+void	display_minimap(t_game *game);
 void	display_3d_map(t_game *game);
 void	display_world(void *param);
 void	init_game(t_game *game);
