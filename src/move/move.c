@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 14:44:56 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/01 20:14:36 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/02 16:58:17 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,10 @@ void apply_movement_with_collision(t_game *game, float new_x, float new_y)
 		game->player.x = round(new_x);
 	if (can_move_y)
 		game->player.y = round(new_y);
-	game->player.image->instances->x = game->player.x * game->minimap_scale - game->scaled_tile_size / 2;
-	game->player.image->instances->y = game->player.y * game->minimap_scale - game->scaled_tile_size / 2;
+	game->player.image->instances->x = game->player.x * game->minimap_scale;
+	game->player.image->instances->y = game->player.y * game->minimap_scale;
+	//printf("real_pos:  %d\t%d\nimage_pos: %d\t%d\n", game->player.x, game->player.y, game->player.image->instances->x, game->player.image->instances->y);
+	// printf("real_tile_size: %d\nscaled_tile_size%d\n", game->tile_size, game->scaled_tile_size);
 }
 
 // Hook for the movement and rotation of the player

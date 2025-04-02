@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/01 19:41:54 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/02 17:16:17 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	init_game(t_game *game)
 	else if (DISPLAY_MODE == RENDER_3D)
 		game->minimap_scale = 0.2;
 	game->tile_size = WIN_WIDTH / 42;
-	game->scaled_tile_size = game->tile_size * game->minimap_scale; 
+	game->scaled_tile_size = game->tile_size * game->minimap_scale;
 	game->minimap = mlx_new_image(game->mlx, WIN_WIDTH * game->minimap_scale, WIN_HEIGHT * game->minimap_scale);
 	game->player.image = mlx_new_image(game->mlx, game->scaled_tile_size, game->scaled_tile_size);
 	game->player.angle = 0;
@@ -133,14 +133,6 @@ void	mouse_event(mouse_key_t button, action_t action, modifier_key_t mods, void 
 	(void)mods;
 }
 
-void	set_tile_size(t_game *game)
-{
-	if (WIN_WIDTH / game->map.width < WIN_HEIGHT / game->map.height)
-		game->tile_size = WIN_WIDTH / game->map.width;
-	else
-		game->tile_size = WIN_HEIGHT / game->map.height;
-}
-
 int	main(int argc, char **argv)
 {
 	t_game	*game;
@@ -159,21 +151,22 @@ int	main(int argc, char **argv)
 	pt_player = get_player_position(game->map.tab);
 	game->player.x = pt_player.x * game->tile_size + game->tile_size / 2;
 	game->player.y = pt_player.y * game->tile_size + game->tile_size / 2;
-	set_tile_size(game);
-
+	
 	mlx_set_mouse_pos(game->mlx, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	mlx_set_cursor_mode(game->mlx, MLX_MOUSE_HIDDEN);
 	if (DISPLAY_MODE == RENDER_2D)
 		display_minimap(game);
 	else if (DISPLAY_MODE == RENDER_3D)
+	{
 		display_3d_map(game);
-    print_game(game);
+		mlx_loop_hook(game->mlx, &hook_time, game);
+		mlx_key_hook(game->mlx, on_space_press, game);
+		mlx_mouse_hook(game->mlx, mouse_event, game);
+		mlx_cursor_hook(game->mlx, on_cursor_move, game);
+	}
+	//print_game(game);
 	mlx_loop_hook(game->mlx, &movements, game);
 	mlx_loop_hook(game->mlx, &update_ray, game);
-	mlx_loop_hook(game->mlx, &hook_time, game);
-	mlx_cursor_hook(game->mlx, on_cursor_move, game);
-	mlx_mouse_hook(game->mlx, mouse_event, game);
-	mlx_key_hook(game->mlx, on_space_press, game);
 	mlx_loop(game->mlx);
 	clean_exit(game, NULL, 0);
 }

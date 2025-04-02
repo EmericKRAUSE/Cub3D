@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 15:19:25 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/01 20:14:11 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/02 16:14:20 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,6 @@ void	display_minimap(t_game *game)
 	mlx_image_to_window(game->mlx, game->minimap, 0, 0);
 	draw_player(game, COLOR_PLAYER);
 	mlx_image_to_window(game->mlx, game->player.image,
-						game->player.x * game->minimap_scale - game->scaled_tile_size / 2,
-						game->player.y * game->minimap_scale - game->scaled_tile_size / 2);
+						game->player.x * game->minimap_scale,
+						game->player.y * game->minimap_scale);
 }
