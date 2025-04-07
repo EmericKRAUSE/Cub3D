@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/04/02 17:16:28 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/07 15:47:32 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,27 +40,24 @@
 # define DISPLAY_MODE RENDER_3D
 
 // Color management
-# define HEX_BLACK 0x000000FF
-# define HEX_WHITE 0xFFFFFFFF
-# define HEX_YELLOW 0xFFFF00FF
-# define HEX_BLUE 0x77B5FEFF
-# define HEX_BROWN 0x5C4033DF
-# define HEX_GREEN 0x008000FF
+# define HEX_BLACK		0x000000FF
+# define HEX_WHITE		0xFFFFFFFF
+# define HEX_RED		0xFF0000FF
+# define HEX_GREY		0x808080FF
+# define HEX_YELLOW		0xFFFF00FF
+# define HEX_BLUE		0x77B5FEFF
+# define HEX_BROWN		0x5C4033FF
+# define HEX_GREEN		0x008000FF
 # define HEX_DARK_GREEN 0x0A5C0AFF
 
-# define COLOR_PLAYER HEX_WHITE
-# define COLOR_CROSSHAIR HEX_YELLOW
-# define COLOR_RAY HEX_YELLOW
-# define COLOR_WALL HEX_GREEN
-# define COLOR_DOOR	HEX_WHITE
-# define COLOR_WALL_NORTH HEX_GREEN
-# define COLOR_WALL_SOUTH HEX_GREEN
-# define COLOR_WALL_EAST HEX_DARK_GREEN
-# define COLOR_WALL_WEST HEX_DARK_GREEN
-# define COLOR_BACKGROUND HEX_BLACK
-# define COLOR_CEILING HEX_BLUE
-# define COLOR_FLOOR HEX_BROWN
-# define UNSET_COLOR -1
+# define COLOR_PLAYER		HEX_RED
+# define COLOR_CROSSHAIR	HEX_YELLOW
+# define COLOR_WALL			HEX_GREY
+# define COLOR_DOOR			HEX_YELLOW
+# define COLOR_BACKGROUND	HEX_BLACK
+# define COLOR_CEILING		HEX_BLUE
+# define COLOR_FLOOR		HEX_BROWN
+# define UNSET_COLOR		-1
 
 # define NORTH 0
 # define SOUTH 1
@@ -87,7 +84,7 @@
 # define BLANK_CHAR "\t\n "
 # define CHAR_BLANK_MAP '0'
 
-# define MAP_CHARS "01DdNSEW \n"
+# define MAP_CHARS "01DNSEW \n"
 # define TEXTURES_BALISE "NO /SO /EA /WE "
 # define PLAYER_CHARS "NSEW"
 # define FLOODFILL_CHARS "NSEW0"
@@ -211,6 +208,11 @@ float	d_find_horizontal_inter(t_game *game, float angle);
 // ray_casting_utils
 int prepare_world_image(t_game *game);
 void normalize_angle(float *angle);
+
+// ####################
+// move_utils
+int	is_wall(t_game *game, float x, float y);
+int	is_colliding(t_game *game, float new_x, float new_y);
 
 // ####################
 // utils

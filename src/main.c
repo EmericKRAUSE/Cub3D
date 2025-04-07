@@ -6,31 +6,11 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/02 17:16:17 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/07 15:46:19 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube3d.h>
-
-void	draw_square(t_game game, mlx_image_t *img, uint32_t color,
-		int x_position, int y_position)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < game.tile_size)
-	{
-		x = 0;
-		while (x < game.tile_size)
-		{
-			mlx_put_pixel(img, x, y, color);
-			x++;
-		}
-		y++;
-	}
-	mlx_image_to_window(game.mlx, img, x_position, y_position);
-}
 
 t_rgb	init_color(int r, int g, int b)
 {
@@ -73,16 +53,14 @@ void	update_launcher(t_game *game)
 void	hook_time(void *param)
 {
 	t_game *game;
-	game = (t_game *)param;
 	
+	game = (t_game *)param;
 	if (!game->is_shooting)
 		return;
-
 	game->time++;
-	if (game->time == INT_MAX)
-		game->time = 0;
 	if (game->time % 3 == 0)
 	{
+		game->time = 0;
 		game->launcher_frame++;
 		if (game->launcher_frame > 6)
 		{
@@ -91,29 +69,6 @@ void	hook_time(void *param)
 		}
 		update_launcher(game);
 	}
-}
-
-void	shoot(t_game *game)
-{
-	float vertical_dist;
-	float horizontal_dist;
-	float final_dist;
-	float hit_x;
-	float hit_y;
-
-	horizontal_dist = find_horizontal_inter(game, game->player.angle);
-	vertical_dist = find_vertical_inter(game, game->player.angle);
-
-	if (vertical_dist < horizontal_dist)
-		final_dist = vertical_dist;
-	else
-		final_dist = horizontal_dist;
-
-	hit_x = game->player.x + final_dist * cos(game->player.angle);
-	hit_y = game->player.y + final_dist * sin(game->player.angle);
-
-	if (game->map.tab[(int)hit_y / game->tile_size][(int)hit_x / game->tile_size] == 'D')
-		game->map.tab[(int)hit_y / game->tile_size][(int)hit_x / game->tile_size] = '0';
 }
 	
 void	mouse_event(mouse_key_t button, action_t action, modifier_key_t mods, void *param)
@@ -124,12 +79,8 @@ void	mouse_event(mouse_key_t button, action_t action, modifier_key_t mods, void 
 	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS)
 	{
 		if (!game->is_shooting)
-		{
 			game->is_shooting = true;
-			shoot(game);
-		}
 	}
-	(void)game;
 	(void)mods;
 }
 
@@ -164,7 +115,6 @@ int	main(int argc, char **argv)
 		mlx_mouse_hook(game->mlx, mouse_event, game);
 		mlx_cursor_hook(game->mlx, on_cursor_move, game);
 	}
-	//print_game(game);
 	mlx_loop_hook(game->mlx, &movements, game);
 	mlx_loop_hook(game->mlx, &update_ray, game);
 	mlx_loop(game->mlx);
