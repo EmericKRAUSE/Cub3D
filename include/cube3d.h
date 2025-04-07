@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/04/07 17:25:53 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/07 17:35:13 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,12 +141,6 @@ typedef struct s_textures
 	t_rgb			ceiling;
 } 					t_textures;
 
-typedef struct s_images
-{
-	mlx_image_t		*floor;
-	mlx_image_t		*ceiling;
-}					t_images;
-
 typedef struct s_slice
 {
 	mlx_texture_t	*texture;
@@ -158,12 +152,12 @@ typedef struct s_game
 {
 	mlx_t		*mlx;
 	t_map		map;
-	t_images	images;
 	t_player	player;
 	int			time;
 	int			launcher_frame;
 	int			is_shooting;
 	float		minimap_scale;
+	mlx_image_t	*floor_and_ceiling;
 	mlx_image_t	*minimap;
 	mlx_image_t	*ray;
 	mlx_image_t	*world;

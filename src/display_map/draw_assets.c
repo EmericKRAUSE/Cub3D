@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 16:34:56 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/28 17:27:33 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/07 17:43:54 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	draw_launcher(t_game *game)
 			WIN_WIDTH / 2 - (game->rocket_launcher[i]->width / 2),
 			WIN_HEIGHT - game->rocket_launcher[i]->height);
 		game->rocket_launcher[i]->instances->enabled = false;
-		game->rocket_launcher[i]->instances->z = 3;
+		game->rocket_launcher[i]->instances->z = 4;
 	}
 	game->rocket_launcher[0]->instances->enabled = true;
 }

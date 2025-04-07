@@ -6,31 +6,11 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:14:15 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/01 20:13:18 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/07 17:45:42 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube3d.h>
-
-// Draw a rectangle of size x: WIN_WIDTH y: WIN_HEIGHT / 2
-void	draw_rectangle(mlx_image_t *img, uint32_t color)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	y = 0;
-	while (y < WIN_HEIGHT / 2)
-	{
-		x = 0;
-		while (x < WIN_WIDTH)
-		{
-			mlx_put_pixel(img, x, y, color);
-			x++;
-		}
-		y++;
-	}
-}
 
 // Draw a crosshair based on CROSSHAIR_SIZE and CROSSHAIR_THICKNESS
 void	draw_crosshair(t_game *game)
@@ -58,29 +38,47 @@ void	draw_crosshair(t_game *game)
 	mlx_image_to_window(game->mlx, game->crosshair,
 		WIN_WIDTH / 2 - game->crosshair->width / 2,
 		WIN_HEIGHT / 2 - game->crosshair->height / 2);
-	game->crosshair->instances->z = 4;
+	game->crosshair->instances->z = 5;
 }
 
-// Draw the ceiling and floor using draw_rectanlge function
+void	draw_floor_and_ceiling(mlx_image_t *img)
+{
+	int			x;
+	int			y;
+	uint32_t	color;
+
+	x = 0;
+	y = 0;
+	while (y < WIN_HEIGHT)
+	{
+		x = 0;
+		while (x < WIN_WIDTH)
+		{
+			if (y < WIN_HEIGHT / 2)
+				color = COLOR_CEILING;
+			else
+				color = COLOR_FLOOR;
+			mlx_put_pixel(img, x, y, color);
+			x++;
+		}
+		y++;
+	}
+}
+
 void	draw_ceiling_and_floor(t_game *game)
 {
-	game->images.ceiling = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT / 2);
-	game->images.floor = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT / 2);
-	if (!game->images.ceiling || !game->images.floor)
+	game->floor_and_ceiling = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
+	if (!game->floor_and_ceiling)
 		return ;
-	draw_rectangle(game->images.ceiling, COLOR_CEILING);
-	draw_rectangle(game->images.floor, COLOR_FLOOR);
-	mlx_image_to_window(game->mlx, game->images.ceiling, 0, 0);
-	mlx_image_to_window(game->mlx, game->images.floor, 0, WIN_HEIGHT / 2);
-	game->images.ceiling->instances->z = 0;
-	game->images.floor->instances->z = 0;
+	draw_floor_and_ceiling(game->floor_and_ceiling);
+	mlx_image_to_window(game->mlx, game->floor_and_ceiling, 0, 0);
+	game->floor_and_ceiling->instances->z = 0;
 }
 
 // Draw everything needed for the 3D
 void	display_3d_map(t_game *game)
 {
 	draw_ceiling_and_floor(game);
-	display_minimap(game);
 	draw_launcher(game);
 	draw_crosshair(game);
 }

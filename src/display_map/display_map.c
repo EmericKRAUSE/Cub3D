@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 15:19:25 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/07 15:38:14 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/07 17:44:29 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,11 @@ void	display_minimap(t_game *game)
 		}
 		y++;
 	}
-	mlx_image_to_window(game->mlx, game->minimap, 0, 0);
 	draw_player(game, COLOR_PLAYER);
+	mlx_image_to_window(game->mlx, game->minimap, 0, 0);
 	mlx_image_to_window(game->mlx, game->player.image,
 		game->player.x * game->minimap_scale,
 		game->player.y * game->minimap_scale);
+	game->minimap->instances->z = 2;
+	game->player.image->instances->z = 3;
 }
