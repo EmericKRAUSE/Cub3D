@@ -6,14 +6,14 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:14:15 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/07 17:45:42 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/07 18:01:46 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube3d.h>
 
 // Draw a crosshair based on CROSSHAIR_SIZE and CROSSHAIR_THICKNESS
-void	draw_crosshair(t_game *game)
+static void	draw_crosshair(t_game *game)
 {
 	int	x;
 	int	y;
@@ -41,7 +41,7 @@ void	draw_crosshair(t_game *game)
 	game->crosshair->instances->z = 5;
 }
 
-void	draw_floor_and_ceiling(mlx_image_t *img)
+static void	draw_floor_and_ceiling(t_game *game, mlx_image_t *img)
 {
 	int			x;
 	int			y;
@@ -55,9 +55,9 @@ void	draw_floor_and_ceiling(mlx_image_t *img)
 		while (x < WIN_WIDTH)
 		{
 			if (y < WIN_HEIGHT / 2)
-				color = COLOR_CEILING;
+				color = rgb_to_uint32(game->textures.ceiling);
 			else
-				color = COLOR_FLOOR;
+				color = rgb_to_uint32(game->textures.floor);
 			mlx_put_pixel(img, x, y, color);
 			x++;
 		}
@@ -65,12 +65,12 @@ void	draw_floor_and_ceiling(mlx_image_t *img)
 	}
 }
 
-void	draw_ceiling_and_floor(t_game *game)
+static void	draw_ceiling_and_floor(t_game *game)
 {
 	game->floor_and_ceiling = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
 	if (!game->floor_and_ceiling)
 		return ;
-	draw_floor_and_ceiling(game->floor_and_ceiling);
+	draw_floor_and_ceiling(game, game->floor_and_ceiling);
 	mlx_image_to_window(game->mlx, game->floor_and_ceiling, 0, 0);
 	game->floor_and_ceiling->instances->z = 0;
 }

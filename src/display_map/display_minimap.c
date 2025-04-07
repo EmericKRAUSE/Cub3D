@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_map.c                                      :+:      :+:    :+:   */
+/*   display_minimap.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 15:19:25 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/07 17:44:29 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/07 18:02:51 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	draw_tile(t_game *game, char tile, int x, int y)
 	else if (tile == 'D')
 		draw_square(game, COLOR_DOOR, &tile_pos);
 	else
-		draw_square(game, COLOR_FLOOR, &tile_pos);
+		draw_square(game, rgb_to_uint32(game->textures.floor), &tile_pos);
 }
 
 void	draw_background(t_game *game)

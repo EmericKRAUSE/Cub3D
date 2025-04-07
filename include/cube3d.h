@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/04/07 17:35:13 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/07 18:01:09 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,8 @@ void	on_cursor_move(double xpos, double ypos, void *param);
 float	find_horizontal_inter(t_game *game, float angle);
 float	find_vertical_inter(t_game *game, float angle);
 mlx_texture_t	texture_line(mlx_texture_t *texture, float hit_ratio);
-void	draw_slice(t_game *game, int i, float ray_angle, t_slice slice);
+void		draw_slice(t_game *game, int i, float ray_angle, t_slice slice);
+uint32_t	rgb_to_uint32(t_rgb color);
 
 // ####################
 // init
