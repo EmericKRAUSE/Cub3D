@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/04/07 18:01:09 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/07 18:07:41 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@
 # define COLOR_WALL			HEX_GREY
 # define COLOR_DOOR			HEX_YELLOW
 # define COLOR_BACKGROUND	HEX_BLACK
-# define COLOR_CEILING		HEX_BLUE
-# define COLOR_FLOOR		HEX_BROWN
 # define UNSET_COLOR		-1
 
 # define NORTH 0
@@ -157,17 +155,16 @@ typedef struct s_game
 	int			launcher_frame;
 	int			is_shooting;
 	float		minimap_scale;
+	int			tile_size;
+	int			scaled_tile_size;
+	int			fd;
 	mlx_image_t	*floor_and_ceiling;
 	mlx_image_t	*minimap;
-	mlx_image_t	*ray;
 	mlx_image_t	*world;
 	mlx_image_t	*crosshair;
 	mlx_image_t *rocket_launcher[7];
 	t_textures	textures;
-	int			tile_size;
-	int			scaled_tile_size;
-	int			fd;
-}	t_game;
+}				t_game;
 
 // ####################
 // Prototypes

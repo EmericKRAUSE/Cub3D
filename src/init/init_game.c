@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:10:00 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/07 17:27:39 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/07 18:06:37 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,5 @@ void	init_game(t_game *game)
 	game->textures.ceiling = init_color(UNSET_COLOR, UNSET_COLOR, UNSET_COLOR);
 	game->textures.floor = init_color(UNSET_COLOR, UNSET_COLOR, UNSET_COLOR);
 	game->textures.door = mlx_load_png("textures/door.png");
-	game->ray = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
 	game->player.move_dist = game->tile_size / 8;
 }
