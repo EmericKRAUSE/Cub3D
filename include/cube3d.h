@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/04/07 15:47:32 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/07 17:25:53 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,7 +180,6 @@ typedef struct s_game
 void	display_minimap(t_game *game);
 void	display_3d_map(t_game *game);
 void	display_world(void *param);
-void	init_game(t_game *game);
 void	movements(void *param);
 int		map_parser(t_map *map, char *filename);
 void	ray_casting(t_game *game);
@@ -192,6 +191,12 @@ float	find_horizontal_inter(t_game *game, float angle);
 float	find_vertical_inter(t_game *game, float angle);
 mlx_texture_t	texture_line(mlx_texture_t *texture, float hit_ratio);
 void	draw_slice(t_game *game, int i, float ray_angle, t_slice slice);
+
+// ####################
+// init
+void	init_game(t_game *game);
+void	init_player_pos(t_game *game);
+void	init_mouse(t_game *game);
 
 // ####################
 // draw_assets
