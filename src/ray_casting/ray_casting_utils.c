@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_ray.c                                       :+:      :+:    :+:   */
+/*   ray_casting_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/21 15:18:14 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/01 16:03:43 by ekrause          ###   ########.fr       */
+/*   Created: 2025/03/28 17:34:18 by ekrause           #+#    #+#             */
+/*   Updated: 2025/04/01 16:02:53 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube3d.h>
 
-void	update_ray(void *param)
+int	prepare_world_image(t_game *game)
 {
-	t_game	*game;
+	if (game->world)
+		mlx_delete_image(game->mlx, game->world);
+	game->world = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
+	if (!game->world)
+		return (-1);
+	return (1);
+}
 
-	game = param;
-	ray_casting(game);
+void	normalize_angle(float *angle)
+{
+	if (*angle > 2 * M_PI)
+		*angle -= 2 * M_PI;
+	else if (*angle < 0)
+		*angle += 2 * M_PI;
 }

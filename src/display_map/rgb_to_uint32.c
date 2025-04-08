@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_ray.c                                       :+:      :+:    :+:   */
+/*   rgb_to_uint32.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/21 15:18:14 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/01 16:03:43 by ekrause          ###   ########.fr       */
+/*   Created: 2025/04/07 17:59:58 by ekrause           #+#    #+#             */
+/*   Updated: 2025/04/07 18:03:44 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube3d.h>
 
-void	update_ray(void *param)
+uint32_t	rgb_to_uint32(t_rgb color)
 {
-	t_game	*game;
-
-	game = param;
-	ray_casting(game);
+	return (color.r * 16777216 + color.g * 65536 + color.b * 256 + 255);
 }
