@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/08 14:06:35 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/08 16:34:35 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,7 @@ int	main(int argc, char **argv)
 	parse_args(argc, argv, game);
 	if (!game)
 		return (ERR_MALLOC);
-	init_player_pos(game);
-	init_mouse(game);
+	init_game_after(game);
 	display_minimap(game);
 	if (DISPLAY_MODE == RENDER_3D)
 	{

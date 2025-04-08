@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 21:09:50 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/01 16:05:00 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/08 16:59:46 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,15 @@ uint32_t	get_color_pixel(mlx_texture_t *texture, int x, int y)
 // Draw a column of pixels
 void	draw_slice(t_game *game, int i, float ray_angle, t_slice slice)
 {
-	int		column_height;
-	int		start_y;
-	t_point	texture;
-	int		y;
+	int			column_height;
+	int			start_y;
+	t_point		texture;
+	int			y;
+	float		dist_proj_plane;
 
-	column_height = (WIN_HEIGHT / (slice.distance
-				* cos(ray_angle - game->player.angle) / 100));
+	dist_proj_plane = (WIN_WIDTH / 2) / tan((FOV * M_PI / 180) / 2);
+	column_height = (game->tile_size / slice.distance
+			* cos(ray_angle - game->player.angle)) * dist_proj_plane;
 	start_y = (WIN_HEIGHT / 2) - (column_height / 2);
 	texture.x = slice.hit_ratio * slice.texture->width;
 	y = start_y;

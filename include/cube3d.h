@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/04/08 13:51:29 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/08 16:53:44 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,8 +187,7 @@ uint32_t		rgb_to_uint32(t_rgb color);
 // ####################
 // init
 void			init_game(t_game *game);
-void			init_player_pos(t_game *game);
-void			init_mouse(t_game *game);
+void			init_game_after(t_game *game);
 
 // ####################
 // draw_assets
