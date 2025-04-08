@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/28 16:05:12 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/08 20:18:39 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,22 @@ int	is_cub_file(char *filename)
 	return (FALSE);
 }
 
+int setmap(t_game *game, t_map *map_s)
+{
+    char **map;
+
+    map = map_s->tab;
+    map_s->height = tab_len(map);
+    map_s->width = ft_strlen(map[0]);
+    if (map_s->height <= 0 || map_s->width <= 0 || map_s->height > map_s->width)
+        clean_exit(game, "[setmap] too weird for me", ERR_INVALID_MAP);
+    if (map_s->height > WIN_HEIGHT || map_s->width > WIN_WIDTH)
+        clean_exit(game, "[setmap] too big for me", ERR_INVALID_MAP);
+    if (map_s->height > HEIGH_MAX || map_s->width > WIDTH_MAX)
+        clean_exit(game, "[setmap] too big for me", ERR_INVALID_MAP);
+    return (TRUE);
+}
+
 int	import_cub_file(t_game *game)
 {
 	char	*line;
@@ -73,7 +89,6 @@ int	import_cub_file(t_game *game)
 	{
 		clean_exit(game, "[import_cub_file] param missing", ERR_MAP);
 	}
-	game->map.height = tab_len(game->map.tab);
-	game->map.width = ft_strlen(game->map.tab[0]);
+    setmap(game, &game->map);
 	return (TRUE);
 }

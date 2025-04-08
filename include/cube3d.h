@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/04/08 17:08:41 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/08 20:21:19 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 // Macros
 
 // General
+# define HEIGH_MAX				40
+# define WIDTH_MAX				50
 # define WIN_WIDTH				1920
 # define WIN_HEIGHT				1080
 # define FOV					60
