@@ -6,14 +6,30 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/07 17:40:09 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/08 14:06:35 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube3d.h>
 
+int	is_launcher_initialised(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < 7)
+	{
+		if (!game->rocket_launcher[i])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 void	update_launcher(t_game *game)
 {
+	if (!is_launcher_initialised(game))
+		return ;
 	if (game->launcher_frame == 0)
 		game->rocket_launcher[6]->instances->enabled = false;
 	else
