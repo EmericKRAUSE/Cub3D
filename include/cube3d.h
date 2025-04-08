@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/04/08 16:53:44 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/08 17:08:41 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 // Macros
 
 // General
-# define WIN_WIDTH				2560
-# define WIN_HEIGHT				1440
+# define WIN_WIDTH				1920
+# define WIN_HEIGHT				1080
 # define FOV					60
 # define SENSIVITY				2.00
 

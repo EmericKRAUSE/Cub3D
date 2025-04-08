@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:24:40 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/07 15:32:30 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/08 17:08:30 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	is_colliding(t_game *game, float new_x, float new_y)
 {
 	float	hit_box;
 
-	hit_box = 10;
+	hit_box = game->tile_size * 0.2;
 	if (is_wall(game, new_x - hit_box, new_y - hit_box)
 		|| is_wall(game, new_x + hit_box, new_y - hit_box)
 		|| is_wall(game, new_x - hit_box, new_y + hit_box)
