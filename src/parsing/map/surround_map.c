@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/09 12:59:17 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/09 15:53:58 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ void	add_right_left_wall(t_game *game, char ***map, char c)
 		if (!line)
 			clean_exit(game, "Error: add wall (ft_calloc)", ERR_MALLOC);
 		line[0] = c;
-		ft_strlcpy(line + 1, (*map)[i], ft_strlen((*map)[i]));
-		line[ft_strlen((*map)[i])] = c;
+		ft_strlcpy(line + 1, (*map)[i], ft_strlen((*map)[i]) + 1);
+		line[ft_strlen(line)] = c;
 		free((*map)[i]);
 		(*map)[i] = line;
 		i++;
@@ -71,5 +71,4 @@ void	surround_map(t_game *game, char ***map, char c)
 {
 	add_top_bottom_wall(game, map, c);
 	add_right_left_wall(game, map, c);
-	print_tab(game->map.tab);
 }
