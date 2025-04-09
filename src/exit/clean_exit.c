@@ -40,7 +40,6 @@ void	clean_exit(t_game *game, char *msg, int exit_code)
 
 	if (game)
 	{
-		clean_get_next_line(game);
 		ft_free_split(&game->map.tab);
 		if (game->mlx)
 			mlx_terminate(game->mlx);

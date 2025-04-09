@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/09 12:02:16 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/09 20:59:28 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	import_cub_file(t_game *game)
 	{
 		clean_exit(game, "[import_cub_file] param missing", ERR_MAP);
 	}
-	surround_map(game, &game->map.tab, '1');
+	//surround_map(game, &game->map.tab, SURROUNDING_CHAR);
 	setmap(game, &game->map);
 	return (TRUE);
 }
