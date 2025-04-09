@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/04/09 13:50:51 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/09 17:53:29 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@
 # define PLAYER_CHARS "NSEW"
 # define FLOODFILL_CHARS "NSEW0"
 # define FLOODFILL_VISITED 'V'
+# define MIN_TILE_SIZE 15
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4
