@@ -90,5 +90,6 @@ int	import_cub_file(t_game *game)
 		clean_exit(game, "[import_cub_file] param missing", ERR_MAP);
 	}
     setmap(game, &game->map);
+	surround_map(game, &game->map.tab, 1);
 	return (TRUE);
 }

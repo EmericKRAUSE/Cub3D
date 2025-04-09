@@ -254,6 +254,7 @@ void			ft_square_map(t_game *game, char c);
 int				one_player_only(char **map);
 int				is_map_closed(char **map);
 void			delete_blank_lines(char ***map_addr);
+void surround_map(t_game *game, char ***map, char c);
 
 // ####################
 // debug
