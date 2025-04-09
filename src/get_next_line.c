@@ -6,7 +6,7 @@
 /*   By: ekrause <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:28:13 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/17 21:06:46 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/09 13:08:05 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	read_and_add(int fd, char **line, char *buff)
 {
 	int		ret;
 	char	*tmp;
+	char	*old_line;
 
 	ret = 1;
 	extract_line(buff, line);
@@ -47,7 +48,9 @@ int	read_and_add(int fd, char **line, char *buff)
 		}
 		buff[ret] = '\0';
 		extract_line(buff, &tmp);
+		old_line = *line;
 		*line = ft_strjoin(*line, tmp);
+		free(old_line);
 		free(tmp);
 	}
 	return (ret);

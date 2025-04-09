@@ -6,13 +6,13 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/08 20:18:39 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:02:16 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube3d.h>
 
-char	*free_and_get_line(char	*line, int fd)
+char	*free_and_get_line(char *line, int fd)
 {
 	free(line);
 	return (get_next_line(fd));
@@ -55,20 +55,20 @@ int	is_cub_file(char *filename)
 	return (FALSE);
 }
 
-int setmap(t_game *game, t_map *map_s)
+int	setmap(t_game *game, t_map *map_s)
 {
-    char **map;
+	char	**map;
 
-    map = map_s->tab;
-    map_s->height = tab_len(map);
-    map_s->width = ft_strlen(map[0]);
-    if (map_s->height <= 0 || map_s->width <= 0 || map_s->height > map_s->width)
-        clean_exit(game, "[setmap] too weird for me", ERR_INVALID_MAP);
-    if (map_s->height > WIN_HEIGHT || map_s->width > WIN_WIDTH)
-        clean_exit(game, "[setmap] too big for me", ERR_INVALID_MAP);
-    if (map_s->height > HEIGH_MAX || map_s->width > WIDTH_MAX)
-        clean_exit(game, "[setmap] too big for me", ERR_INVALID_MAP);
-    return (TRUE);
+	map = map_s->tab;
+	map_s->height = tab_len(map);
+	map_s->width = ft_strlen(map[0]);
+	if (map_s->height <= 0 || map_s->width <= 0 || map_s->height > map_s->width)
+		clean_exit(game, "[setmap] too weird for me", ERR_INVALID_MAP);
+	if (map_s->height > WIN_HEIGHT || map_s->width > WIN_WIDTH)
+		clean_exit(game, "[setmap] too big for me", ERR_INVALID_MAP);
+	if (map_s->height > HEIGH_MAX || map_s->width > WIDTH_MAX)
+		clean_exit(game, "[setmap] too big for me", ERR_INVALID_MAP);
+	return (TRUE);
 }
 
 int	import_cub_file(t_game *game)
@@ -89,7 +89,7 @@ int	import_cub_file(t_game *game)
 	{
 		clean_exit(game, "[import_cub_file] param missing", ERR_MAP);
 	}
-    setmap(game, &game->map);
-	surround_map(game, &game->map.tab, 1);
+	surround_map(game, &game->map.tab, '1');
+	setmap(game, &game->map);
 	return (TRUE);
 }
