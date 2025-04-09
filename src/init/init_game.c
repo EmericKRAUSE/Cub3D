@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:10:00 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/08 17:00:05 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/09 18:25:37 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	init_player_pos(t_game *game)
 
 void	init_game_after(t_game *game)
 {
-	game->tile_size = WIN_WIDTH / game->map.width;
+	game->tile_size = fmin(WIN_WIDTH / game->map.width, WIN_HEIGHT / game->map.height);
 	game->scaled_tile_size = game->tile_size * game->minimap_scale;
 	game->player.image = mlx_new_image(game->mlx, game->scaled_tile_size,
 			game->scaled_tile_size);
