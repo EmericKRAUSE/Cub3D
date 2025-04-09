@@ -33,8 +33,8 @@ void	update_launcher(t_game *game)
 	if (game->launcher_frame == 0)
 		game->rocket_launcher[6]->instances->enabled = false;
 	else
-		game->rocket_launcher[game->launcher_frame - 1]->instances->enabled
-			= false;
+		game->rocket_launcher[game->launcher_frame
+			- 1]->instances->enabled = false;
 	game->rocket_launcher[game->launcher_frame]->instances->enabled = true;
 }
 
@@ -60,7 +60,7 @@ void	hook_time(void *param)
 }
 
 void	mouse_event(mouse_key_t button, action_t action, modifier_key_t mods,
-	void *param)
+		void *param)
 {
 	t_game	*game;
 
@@ -83,7 +83,7 @@ int	main(int argc, char **argv)
 	if (!game)
 		return (ERR_MALLOC);
 	init_game_after(game);
-    print_tab(game->map.tab);
+	print_tab(game->map.tab);
 	display_minimap(game);
 	if (DISPLAY_MODE == RENDER_3D)
 	{

@@ -62,7 +62,7 @@ int	setmap(t_game *game, t_map *map_s)
 	map = map_s->tab;
 	map_s->height = tab_len(map);
 	map_s->width = ft_strlen(map[0]);
-	if (map_s->height <= 0 || map_s->width <= 0)
+	if (map_s->height <= 0 || map_s->width <= 0 || map_s->height > map_s->width)
 		clean_exit(game, "[setmap] too weird for me", ERR_INVALID_MAP);
     if (map_s->height > map_s->width)
     {
@@ -95,8 +95,7 @@ int	import_cub_file(t_game *game)
 	{
 		clean_exit(game, "[import_cub_file] param missing", ERR_MAP);
 	}
-	surround_map(game, &game->map.tab, SURROUNDING_CHAR);
-    //surround_map(game, &game->map.tab, '0');
+	//surround_map(game, &game->map.tab, SURROUNDING_CHAR);
 	setmap(game, &game->map);
 	return (TRUE);
 }

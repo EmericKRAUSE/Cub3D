@@ -39,7 +39,7 @@ static void	init_player_pos(t_game *game)
 
 void	init_game_after(t_game *game)
 {
-	game->tile_size = WIN_WIDTH / game->map.width;
+	game->tile_size = fmin(WIN_WIDTH / game->map.width, WIN_HEIGHT / game->map.height);
 	game->scaled_tile_size = game->tile_size * game->minimap_scale;
     if (game->tile_size < WIN_WIDTH / MIN_TILE_SIZE)
     {
