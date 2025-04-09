@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/09 13:16:33 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/09 13:45:12 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	main(int argc, char **argv)
 	t_game	*game;
 
 	game = ft_calloc(sizeof(t_game), 1);
-	/init_game(game);
+	init_game(game);
 	parse_args(argc, argv, game);
 	if (!game)
 		return (ERR_MALLOC);
