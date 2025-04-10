@@ -6,11 +6,24 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/12 11:26:04 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/10 18:41:54 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube3d.h>
+
+float	set_player_angle(char c)
+{
+    if (c == 'N')
+        return (PI / 2.0);
+    else if (c == 'S')
+        return (3.0 * PI / 2.0);
+    else if (c == 'E')
+        return (0);
+    else if (c == 'W')
+        return (PI);
+    return (0);
+}
 
 t_point	get_player_position(char **map)
 {
@@ -24,7 +37,9 @@ t_point	get_player_position(char **map)
 		while (map[pos_player.y][pos_player.x])
 		{
 			if (ft_strchr("NSWE", map[pos_player.y][pos_player.x]))
-				return (pos_player);
+            {
+                return (pos_player);
+            }
 			pos_player.x++;
 		}
 		pos_player.y++;
@@ -32,12 +47,13 @@ t_point	get_player_position(char **map)
 	return (pos_player);
 }
 
-int	one_player_only(char **map)
+int	one_player_only(t_game *game, char **map)
 {
 	t_point	pos_player;
 	char	**map_copy;
 
 	pos_player = get_player_position(map);
+    game->player.angle = set_player_angle(map[pos_player.y][pos_player.x]);
 	if (map[pos_player.y] == NULL)
 	{
 		printf("[one_player_only] no player\n");

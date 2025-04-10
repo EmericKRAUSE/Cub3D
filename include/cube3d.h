@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/04/10 17:52:31 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/10 18:46:46 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@
 # define FLOODFILL_CHARS "NSEW0D"
 # define FLOODFILL_VISITED 'V'
 # define MIN_TILE_SIZE 200
+
+# define PI 3.14
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4
@@ -255,12 +257,11 @@ void				trim_map(char ***map_addr);
 void				set_width_and_lenght(t_game *game);
 void				set_width_and_lenght(t_game *game);
 void				ft_square_map(t_game *game, char c);
-int					one_player_only(char **map);
+int					one_player_only(t_game *game, char **map);
 int					is_map_closed(char **map);
 void				delete_blank_lines(char ***map_addr);
 void				surround_map(t_game *game, char ***map, char c);
-
-// ####################
+void				clean_get_next_line(t_game *game);
 // debug
 void				print_tab(char **tab);
 void				print_game(t_game *game);

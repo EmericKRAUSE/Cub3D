@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/10 15:14:53 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/10 18:14:47 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,6 @@ int	ft_error(const char *msg, int exit_code)
 	if (msg)
 		printf("%s\n", msg);
 	return (exit_code);
-}
-
-void	clean_get_next_line(t_game *game)
-{
-	char	*next_line;
-
-	if (game->fd <= 0)
-		return ;
-	next_line = get_next_line(game->fd);
-	while (next_line)
-	{
-		free(next_line);
-		next_line = get_next_line(game->fd);
-	}
-	close(game->fd);
 }
 
 void	free_textures_and_images(t_game *game)
@@ -54,6 +39,7 @@ void	clean_exit(t_game *game, char *msg, int exit_code)
 
 	if (game)
 	{
+        clean_get_next_line(game);
 		ft_free_split(&game->map.tab);
 		free_textures_and_images(game);
 		if (game->mlx)
