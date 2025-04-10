@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/09 13:10:48 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/10 15:14:53 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,20 @@ void	clean_get_next_line(t_game *game)
 	close(game->fd);
 }
 
+void	free_textures_and_images(t_game *game)
+{
+	if (game->textures.orientation[0])
+		mlx_delete_texture(game->textures.orientation[0]);
+	if (game->textures.orientation[1])
+		mlx_delete_texture(game->textures.orientation[1]);
+	if (game->textures.orientation[2])
+		mlx_delete_texture(game->textures.orientation[2]);
+	if (game->textures.orientation[3])
+		mlx_delete_texture(game->textures.orientation[3]);
+	if (game->textures.door)
+		mlx_delete_texture(game->textures.door);
+}
+
 void	clean_exit(t_game *game, char *msg, int exit_code)
 {
 	int	i;
@@ -41,6 +55,7 @@ void	clean_exit(t_game *game, char *msg, int exit_code)
 	if (game)
 	{
 		ft_free_split(&game->map.tab);
+		free_textures_and_images(game);
 		if (game->mlx)
 			mlx_terminate(game->mlx);
 		i = 0;

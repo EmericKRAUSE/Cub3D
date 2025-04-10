@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/10 12:26:36 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/10 15:20:13 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,6 @@ void	mouse_event(mouse_key_t button, action_t action, modifier_key_t mods,
 	t_game	*game;
 
 	game = (t_game *)param;
-	if (game->mouse_hook == FALSE)
-	{
-		return ;
-	}
 	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS)
 	{
 		if (!game->is_shooting)
