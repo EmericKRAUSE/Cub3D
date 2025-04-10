@@ -35,9 +35,9 @@ static void	draw_crosshair(t_game *game)
 		}
 		y++;
 	}
-	mlx_image_to_window(game->mlx, game->crosshair,
-		WIN_WIDTH / 2 - game->crosshair->width / 2,
-		WIN_HEIGHT / 2 - game->crosshair->height / 2);
+	mlx_image_to_window(game->mlx, game->crosshair, WIN_WIDTH / 2
+		- game->crosshair->width / 2, WIN_HEIGHT / 2 - game->crosshair->height
+		/ 2);
 	game->crosshair->instances->z = 5;
 }
 

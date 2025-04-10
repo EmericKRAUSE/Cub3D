@@ -40,9 +40,9 @@ void	draw_launcher(t_game *game)
 				launcher_texture[i]);
 		mlx_delete_texture(launcher_texture[i]);
 		mlx_resize_image(game->rocket_launcher[i], min_size / 2, min_size / 2);
-		mlx_image_to_window(game->mlx, game->rocket_launcher[i],
-			WIN_WIDTH / 2 - (game->rocket_launcher[i]->width / 2),
-			WIN_HEIGHT - game->rocket_launcher[i]->height);
+		mlx_image_to_window(game->mlx, game->rocket_launcher[i], WIN_WIDTH / 2
+			- (game->rocket_launcher[i]->width / 2), WIN_HEIGHT
+			- game->rocket_launcher[i]->height);
 		game->rocket_launcher[i]->instances->enabled = false;
 		game->rocket_launcher[i]->instances->z = 4;
 		i++;

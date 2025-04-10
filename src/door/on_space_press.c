@@ -31,10 +31,10 @@ void	open_and_close_door(t_game *game, float final_dist)
 
 void	on_space_press(mlx_key_data_t keydata, void *param)
 {
-	t_game		*game;
-	float		vertical_dist;
-	float		horizontal_dist;
-	float		final_dist;
+	t_game	*game;
+	float	vertical_dist;
+	float	horizontal_dist;
+	float	final_dist;
 
 	game = param;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_SPACE)

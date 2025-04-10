@@ -39,7 +39,7 @@ void	clean_exit(t_game *game, char *msg, int exit_code)
 
 	if (game)
 	{
-        clean_get_next_line(game);
+		clean_get_next_line(game);
 		ft_free_split(&game->map.tab);
 		free_textures_and_images(game);
 		if (game->mlx)

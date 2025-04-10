@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/10 18:46:17 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/10 21:57:11 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	mouse_event(mouse_key_t button, action_t action, modifier_key_t mods,
 	(void)mods;
 }
 
+//init_game before player avoid leaks due to player struc (when no player in map
 int	main(int argc, char **argv)
 {
 	t_game	*game;

@@ -40,9 +40,9 @@ void	print_game(t_game *game)
 	printf("south: %s\n", game->textures.f_names[SOUTH]);
 	printf("west: %s\n", game->textures.f_names[WEST]);
 	printf("east: %s\n", game->textures.f_names[EAST]);
-	printf("floor: %d %d %d\n", game->textures.floor.r, \
-					game->textures.floor.g, game->textures.floor.b);
-	printf("ceiling: %d %d %d\n", game->textures.ceiling.r, \
+	printf("floor: %d %d %d\n", game->textures.floor.r, game->textures.floor.g,
+		game->textures.floor.b);
+	printf("ceiling: %d %d %d\n", game->textures.ceiling.r,
 		game->textures.ceiling.g, game->textures.ceiling.b);
 	printf("size: width %d height %d\n", game->map.width, game->map.height);
 }

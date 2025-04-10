@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/10 12:06:34 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/10 21:42:31 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 char	*free_and_get_line(char *line, int fd)
 {
-	free(line);
+	if (line)
+	{
+		free(line);
+	}
 	return (get_next_line(fd));
 }
 
@@ -37,7 +40,7 @@ void	process_line(t_game *game, char **line)
 	else if (is_color(*line))
 	{
 		if (get_color(game, *line) == ERR_LOADING_TEXTURE)
-			clean_exit(game, "[get_color] something went wrong", ERR_COLOR);
+			clean_exit(game, "[get_texture] loading error", ERR_TEXTURE);
 		*line = free_and_get_line(*line, game->fd);
 	}
 	else

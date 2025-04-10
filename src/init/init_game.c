@@ -6,21 +6,11 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:10:00 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/10 12:33:47 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/10 21:31:22 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube3d.h>
-
-static t_rgb	init_color(int r, int g, int b)
-{
-	t_rgb	color;
-
-	color.r = r;
-	color.g = g;
-	color.b = b;
-	return (color);
-}
 
 static void	init_mouse(t_game *game)
 {
@@ -65,7 +55,4 @@ void	init_game(t_game *game)
 			WIN_HEIGHT * game->minimap_scale);
 	game->player.angle = 0;
 	game->player.rotation_speed = 0.04;
-	game->textures.ceiling = init_color(UNSET_COLOR, UNSET_COLOR, UNSET_COLOR);
-	game->textures.floor = init_color(UNSET_COLOR, UNSET_COLOR, UNSET_COLOR);
-	game->textures.door = mlx_load_png("textures/door.png");
 }

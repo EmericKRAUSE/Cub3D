@@ -34,8 +34,8 @@ static int	is_wall_hit(t_game *game, float pos_x, float pos_y)
 
 /* Set nex_x and step_x values for the find_vertical_inter function
 depending on the angle */
-static void	set_vertical_values(t_game *game, float angle,
-	float *next_x, float *step_x)
+static void	set_vertical_values(t_game *game, float angle, float *next_x,
+		float *step_x)
 {
 	int	tile_size;
 	int	player_x;
@@ -56,8 +56,8 @@ static void	set_vertical_values(t_game *game, float angle,
 
 /* Set nex_y and step_y values for the fond_horizontal_inter function
 depending on the angle */
-static void	set_horizontal_values(t_game *game, float angle,
-	float *next_y, float *step_y)
+static void	set_horizontal_values(t_game *game, float angle, float *next_y,
+		float *step_y)
 {
 	int	tile_size;
 	int	player_y;

@@ -34,15 +34,15 @@ uint32_t	get_color_pixel(mlx_texture_t *texture, int x, int y)
 // Draw a column of pixels
 void	draw_slice(t_game *game, int i, float ray_angle, t_slice slice)
 {
-	int			h;
-	int			start_y;
-	t_point		texture;
-	int			y;
-	float		d_plane;
+	int		h;
+	int		start_y;
+	t_point	texture;
+	int		y;
+	float	d_plane;
 
 	d_plane = (WIN_WIDTH / 2) / tan((FOV * M_PI / 180) / 2);
-	h = game->tile_size / \
-	(slice.distance * cos(ray_angle - game->player.angle)) * d_plane;
+	h = game->tile_size / (slice.distance * cos(ray_angle - game->player.angle))
+		* d_plane;
 	start_y = (WIN_HEIGHT / 2) - (h / 2);
 	texture.x = slice.hit_ratio * slice.texture->width;
 	y = start_y;
@@ -50,8 +50,8 @@ void	draw_slice(t_game *game, int i, float ray_angle, t_slice slice)
 	{
 		texture.y = ((y - start_y) * slice.texture->height) / h;
 		if (y >= 0 && y < WIN_HEIGHT)
-			mlx_put_pixel(game->world, i, y,
-				get_color_pixel(slice.texture, texture.x, texture.y));
+			mlx_put_pixel(game->world, i, y, get_color_pixel(slice.texture,
+					texture.x, texture.y));
 		y++;
 	}
 }

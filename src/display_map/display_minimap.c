@@ -101,9 +101,8 @@ void	display_minimap(t_game *game)
 	}
 	draw_player(game, COLOR_PLAYER);
 	mlx_image_to_window(game->mlx, game->minimap, 0, 0);
-	mlx_image_to_window(game->mlx, game->player.image,
-		game->player.x * game->minimap_scale,
-		game->player.y * game->minimap_scale);
+	mlx_image_to_window(game->mlx, game->player.image, game->player.x
+		* game->minimap_scale, game->player.y * game->minimap_scale);
 	game->minimap->instances->z = 2;
 	game->player.image->instances->z = 3;
 }

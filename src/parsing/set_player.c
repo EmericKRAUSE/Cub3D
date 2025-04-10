@@ -14,15 +14,15 @@
 
 float	set_player_angle(char c)
 {
-    if (c == 'N')
-        return (PI / 2.0);
-    else if (c == 'S')
-        return (3.0 * PI / 2.0);
-    else if (c == 'E')
-        return (0);
-    else if (c == 'W')
-        return (PI);
-    return (0);
+	if (c == 'N')
+		return (PI / 2.0);
+	else if (c == 'S')
+		return (3.0 * PI / 2.0);
+	else if (c == 'E')
+		return (0);
+	else if (c == 'W')
+		return (PI);
+	return (0);
 }
 
 t_point	get_player_position(char **map)
@@ -37,9 +37,9 @@ t_point	get_player_position(char **map)
 		while (map[pos_player.y][pos_player.x])
 		{
 			if (ft_strchr("NSWE", map[pos_player.y][pos_player.x]))
-            {
-                return (pos_player);
-            }
+			{
+				return (pos_player);
+			}
 			pos_player.x++;
 		}
 		pos_player.y++;
@@ -53,7 +53,7 @@ int	one_player_only(t_game *game, char **map)
 	char	**map_copy;
 
 	pos_player = get_player_position(map);
-    game->player.angle = set_player_angle(map[pos_player.y][pos_player.x]);
+	game->player.angle = set_player_angle(map[pos_player.y][pos_player.x]);
 	if (map[pos_player.y] == NULL)
 	{
 		printf("[one_player_only] no player\n");

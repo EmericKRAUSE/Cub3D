@@ -32,10 +32,9 @@ int	is_colliding(t_game *game, float new_x, float new_y)
 	float	hit_box;
 
 	hit_box = game->tile_size * 0.2;
-	if (is_wall(game, new_x - hit_box, new_y - hit_box)
-		|| is_wall(game, new_x + hit_box, new_y - hit_box)
-		|| is_wall(game, new_x - hit_box, new_y + hit_box)
-		|| is_wall(game, new_x + hit_box, new_y + hit_box))
+	if (is_wall(game, new_x - hit_box, new_y - hit_box) || is_wall(game, new_x
+			+ hit_box, new_y - hit_box) || is_wall(game, new_x - hit_box, new_y
+			+ hit_box) || is_wall(game, new_x + hit_box, new_y + hit_box))
 		return (1);
 	return (0);
 }

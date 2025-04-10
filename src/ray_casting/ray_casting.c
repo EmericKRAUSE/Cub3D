@@ -22,7 +22,7 @@ static int	is_door(t_game *game, t_fpoint hit)
 }
 
 static void	set_vertical_slice(t_game *game, t_slice *slice,
-	float vertical_dist, float ray_angle)
+		float vertical_dist, float ray_angle)
 {
 	t_fpoint	hit;
 
@@ -43,7 +43,7 @@ static void	set_vertical_slice(t_game *game, t_slice *slice,
 }
 
 static void	set_horizontal_slice(t_game *game, t_slice *slice,
-	float horizontal_dist, float ray_angle)
+		float horizontal_dist, float ray_angle)
 {
 	t_fpoint	hit;
 
@@ -66,9 +66,9 @@ static void	set_horizontal_slice(t_game *game, t_slice *slice,
 // Draw a point at every intersection
 static void	cast_ray(t_game *game, float ray_angle, int i)
 {
-	float			vertical_dist;
-	float			horizontal_dist;
-	t_slice			slice;
+	float	vertical_dist;
+	float	horizontal_dist;
+	t_slice	slice;
 
 	vertical_dist = find_vertical_inter(game, ray_angle);
 	horizontal_dist = find_horizontal_inter(game, ray_angle);
