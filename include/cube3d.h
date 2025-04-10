@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/04/10 12:24:51 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/10 17:52:31 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@
 # define SURROUNDING_CHAR '1'
 # define TEXTURES_BALISE "NO /SO /EA /WE "
 # define PLAYER_CHARS "NSEW"
-# define FLOODFILL_CHARS "NSEW0"
+# define FLOODFILL_CHARS "NSEW0D"
 # define FLOODFILL_VISITED 'V'
 # define MIN_TILE_SIZE 200
 
