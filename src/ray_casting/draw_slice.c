@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 21:09:50 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/08 17:29:06 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/10 12:10:11 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,21 @@ uint32_t	get_color_pixel(mlx_texture_t *texture, int x, int y)
 // Draw a column of pixels
 void	draw_slice(t_game *game, int i, float ray_angle, t_slice slice)
 {
-	int			column_height;
+	int			h;
 	int			start_y;
 	t_point		texture;
 	int			y;
-	float		dist_proj_plane;
+	float		d_plane;
 
-	dist_proj_plane = (WIN_WIDTH / 2) / tan((FOV * M_PI / 180) / 2);
-	column_height = game->tile_size / (slice.distance * cos(ray_angle - game->player.angle)) * dist_proj_plane;
-	start_y = (WIN_HEIGHT / 2) - (column_height / 2);
+	d_plane = (WIN_WIDTH / 2) / tan((FOV * M_PI / 180) / 2);
+	h = game->tile_size / \
+	(slice.distance * cos(ray_angle - game->player.angle)) * d_plane;
+	start_y = (WIN_HEIGHT / 2) - (h / 2);
 	texture.x = slice.hit_ratio * slice.texture->width;
 	y = start_y;
-	while (y < WIN_HEIGHT / 2 + column_height / 2)
+	while (y < WIN_HEIGHT / 2 + h / 2)
 	{
-		texture.y = ((y - start_y) * slice.texture->height) / column_height;
+		texture.y = ((y - start_y) * slice.texture->height) / h;
 		if (y >= 0 && y < WIN_HEIGHT)
 			mlx_put_pixel(game->world, i, y,
 				get_color_pixel(slice.texture, texture.x, texture.y));

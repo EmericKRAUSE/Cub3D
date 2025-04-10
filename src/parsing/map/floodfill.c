@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/18 17:10:46 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/10 12:06:50 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ int	floodfill(char **map, int y, int x)
 		return (FALSE);
 	if (ft_strchr(BLANK_CHAR, map[y][x]))
 		return (FALSE);
-	//if (map[y][x] == CHAR_BLANK_MAP)
-	//	return (FALSE);
 	if (map[y][x] == FLOODFILL_VISITED)
 		return (TRUE);
 	if (ft_strchr(FLOODFILL_CHARS, map[y][x]))
