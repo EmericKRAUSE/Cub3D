@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 17:37:54 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/28 17:37:58 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/10 12:30:09 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ void	on_cursor_move(double xpos, double ypos, void *param)
 	double	sens;
 
 	game = param;
+	if (game->mouse_hook)
+	{
+		return ;
+	}
 	sens = (SENSIVITY / 10000);
 	x_travel = xpos - WIN_WIDTH / 2;
 	game->player.angle += x_travel * sens;

@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/04/09 20:46:41 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/10 12:24:51 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,7 @@ typedef struct s_game
 	mlx_image_t		*crosshair;
 	mlx_image_t		*rocket_launcher[7];
 	t_textures		textures;
+	int				mouse_hook;
 }					t_game;
 
 // ####################

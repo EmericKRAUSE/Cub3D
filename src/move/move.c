@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 14:44:56 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/07 15:31:51 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/10 12:27:26 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	rotate_player(t_game *game)
 
 // Apply the movement depending on the collision detection using a hitbox
 static void	apply_movement_with_collision(t_game *game, float new_x,
-	float new_y)
+		float new_y)
 {
 	t_point	can_move;
 
@@ -84,6 +84,10 @@ void	movements(void *param)
 	game = param;
 	new_x = game->player.x;
 	new_y = game->player.y;
+	if (mlx_is_key_down(game->mlx, MLX_KEY_M))
+	{
+		game->mouse_hook = !game->mouse_hook;
+	}
 	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
 		clean_exit(game, NULL, 0);
 	rotate_player(game);

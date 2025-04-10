@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:10:00 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/09 17:52:17 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/10 12:33:47 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void	init_mouse(t_game *game)
 {
 	mlx_set_mouse_pos(game->mlx, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	mlx_set_cursor_mode(game->mlx, MLX_MOUSE_HIDDEN);
+	game->mouse_hook = TRUE;
 }
 
 static void	init_player_pos(t_game *game)
