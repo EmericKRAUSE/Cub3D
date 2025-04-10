@@ -26,7 +26,7 @@ static void	init_mouse(t_game *game)
 {
 	mlx_set_mouse_pos(game->mlx, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	mlx_set_cursor_mode(game->mlx, MLX_MOUSE_HIDDEN);
-	game->mouse_hook = TRUE;
+	game->mouse_hook = FALSE;
 }
 
 static void	init_player_pos(t_game *game)
