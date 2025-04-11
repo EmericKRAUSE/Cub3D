@@ -2,13 +2,14 @@
 
 NO ./textures/stonewall00.png
 SO ./textures/forest01.png
-EA ./textures/door.png
+EA ./texures/door.png
 WE ./textures/stonewall01.png
 
 C 225,30,0
-F 2,1,1
+F 2,,1
 
   111
 11101
-100N1
-1111
+1N00001  111
+11111
+1

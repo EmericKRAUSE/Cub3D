@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:14:15 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/08 13:56:52 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/11 17:22:09 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	is_blank_line(char *line)
 int	is_map(char *line)
 {
 	if (!line)
+		return (FALSE);
+	else if (*line == '\n')
 		return (FALSE);
 	else
 		while (*line)

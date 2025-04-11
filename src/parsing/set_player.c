@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/10 18:41:54 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/11 17:19:43 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int	one_player_only(t_game *game, char **map)
 	char	**map_copy;
 
 	pos_player = get_player_position(map);
-	game->player.angle = set_player_angle(map[pos_player.y][pos_player.x]);
 	if (map[pos_player.y] == NULL)
 	{
 		printf("[one_player_only] no player\n");

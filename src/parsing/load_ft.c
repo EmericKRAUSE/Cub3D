@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:14:15 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/28 16:04:10 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/11 17:34:01 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 char	*load_map(t_game *game, char *line)
 {
 	if (game->map.tab)
+	{
+		free(line);
 		clean_exit(game, "[map] Error: Multiple maps", ERR_MULTIPLE_MAPS);
+	}
 	else
 		game->map.tab = get_map(game, game->fd, &line);
 	if (!game->map.tab)
@@ -50,7 +53,8 @@ int	load_texture(t_game *game, int ind, char *line)
 	game->textures.orientation[ind] = mlx_load_png(game->textures.f_names[ind]);
 	if (!game->textures.orientation[ind])
 	{
-		printf("error: %s\n", game->textures.f_names[ind]);
+		printf("error load_texture: %s\n", game->textures.f_names[ind]);
+		free(line);
 		clean_exit(game, "Error: mlx_load_png failed, check filename",
 			ERR_LOADING_TEXTURE);
 	}
