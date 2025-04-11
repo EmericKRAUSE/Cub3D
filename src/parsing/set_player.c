@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/11 14:37:45 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/11 14:47:33 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 float	set_player_angle(char c)
 {
 	if (c == 'S')
-		return (PI / 2.0);
+		return (M_PI / 2.0);
 	else if (c == 'N')
-		return (3.0 * PI / 2.0);
+		return (3.0 * M_PI / 2.0);
 	else if (c == 'E')
 		return (0);
 	else if (c == 'W')
-		return (PI);
+		return (M_PI);
 	return (0);
 }
 

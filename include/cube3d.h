@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/04/10 18:46:46 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/11 14:48:22 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,6 @@
 # define FLOODFILL_CHARS "NSEW0D"
 # define FLOODFILL_VISITED 'V'
 # define MIN_TILE_SIZE 200
-
-# define PI 3.14
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4
