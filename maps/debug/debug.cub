@@ -6,7 +6,8 @@ EA ./textures/door.png
 WE ./textures/stonewall01.png
 
 C 225,30,0
+F 2,1,1
 
-111
-1W1
-11
+11111
+100W1
+1111

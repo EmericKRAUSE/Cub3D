@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_player.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/11 14:47:33 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/10 18:41:54 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	one_player_only(t_game *game, char **map)
 		printf("[one_player_only] no player\n");
 		return (FALSE);
 	}
+	game->player.angle = set_player_angle(map[pos_player.y][pos_player.x]);
 	map_copy = dup_tab(map);
 	set_map_point(map_copy, pos_player, '0');
 	pos_player = get_player_position(map_copy);
