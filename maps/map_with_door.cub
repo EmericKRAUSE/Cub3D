@@ -1,8 +1,7 @@
 
-
-NO ./textures/stonewall00.png
-SO ./textures/stonewall00.png
-WE ./textures/stonewall01.png
+NO ./textures/stonewall01.png
+SO ./textures/stonewall01.png
+WE ./textures/stonewall00.png
 EA ./textures/stonewall01.png
 
 F 165,42,42

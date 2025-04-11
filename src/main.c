@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/10 21:57:11 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/11 14:36:12 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int	main(int argc, char **argv)
 	game = ft_calloc(sizeof(t_game), 1);
     init_game(game);
     parse_args(argc, argv, game);
+	printf("%f\n", game->player.angle);
 	if (!game)
 		return (ERR_MALLOC);
 	init_game_after(game);

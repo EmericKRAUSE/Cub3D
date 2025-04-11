@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:10:00 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/10 21:31:22 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/11 14:34:09 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,5 @@ void	init_game(t_game *game)
 		game->minimap_scale = 0.2;
 	game->minimap = mlx_new_image(game->mlx, WIN_WIDTH * game->minimap_scale,
 			WIN_HEIGHT * game->minimap_scale);
-	game->player.angle = 0;
 	game->player.rotation_speed = 0.04;
 }
