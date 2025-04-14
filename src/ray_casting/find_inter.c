@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 16:22:49 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/01 19:41:37 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/14 23:25:48 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static int	is_wall_hit(t_game *game, float pos_x, float pos_y)
 	map_tab = game->map.tab;
 	map_width = game->map.width;
 	map_height = game->map.height;
-	map.x = pos_x / game->tile_size;
-	map.y = pos_y / game->tile_size;
+	map.x = pos_x / game->map.tile_size;
+	map.y = pos_y / game->map.tile_size;
 	if (pos_x <= 0 || pos_y <= 0)
 		return (1);
 	if (map.x < 0 || map.x >= map_width || map.y < 0 || map.y >= map_height)
@@ -40,7 +40,7 @@ static void	set_vertical_values(t_game *game, float angle, float *next_x,
 	int	tile_size;
 	int	player_x;
 
-	tile_size = game->tile_size;
+	tile_size = game->map.tile_size;
 	player_x = game->player.x;
 	if (cos(angle) > 0)
 	{
@@ -62,7 +62,7 @@ static void	set_horizontal_values(t_game *game, float angle, float *next_y,
 	int	tile_size;
 	int	player_y;
 
-	tile_size = game->tile_size;
+	tile_size = game->map.tile_size;
 	player_y = game->player.y;
 	if (sin(angle) > 0)
 	{

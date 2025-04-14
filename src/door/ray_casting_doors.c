@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 16:08:20 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/01 19:40:53 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/14 23:23:12 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static int	is_door_hit(t_game *game, float pos_x, float pos_y)
 	map_tab = game->map.tab;
 	map_width = game->map.width;
 	map_height = game->map.height;
-	map.x = pos_x / game->tile_size;
-	map.y = pos_y / game->tile_size;
+	map.x = pos_x / game->map.tile_size;
+	map.y = pos_y / game->map.tile_size;
 	if (pos_x <= 0 || pos_y <= 0)
 		return (1);
 	if (map.x < 0 || map.x >= map_width || map.y < 0 || map.y >= map_height)
@@ -41,7 +41,7 @@ static void	d_set_vertical_values(t_game *game, float angle, float *next_x,
 	int	tile_size;
 	int	player_x;
 
-	tile_size = game->tile_size;
+	tile_size = game->map.tile_size;
 	player_x = game->player.x;
 	if (cos(angle) > 0)
 	{
@@ -63,7 +63,7 @@ static void	d_set_horizontal_values(t_game *game, float angle, float *next_y,
 	int	tile_size;
 	int	player_y;
 
-	tile_size = game->tile_size;
+	tile_size = game->map.tile_size;
 	player_y = game->player.y;
 	if (sin(angle) > 0)
 	{

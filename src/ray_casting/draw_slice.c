@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 21:09:50 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/10 12:10:11 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/15 00:02:01 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	draw_slice(t_game *game, int i, float ray_angle, t_slice slice)
 	float	d_plane;
 
 	d_plane = (WIN_WIDTH / 2) / tan((FOV * M_PI / 180) / 2);
-	h = game->tile_size / (slice.distance * cos(ray_angle - game->player.angle))
-		* d_plane;
+	h = game->map.tile_size / (slice.distance
+			* cos(ray_angle - game->player.angle)) * d_plane;
 	start_y = (WIN_HEIGHT / 2) - (h / 2);
 	texture.x = slice.hit_ratio * slice.texture->width;
 	y = start_y;

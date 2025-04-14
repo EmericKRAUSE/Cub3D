@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:10:00 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/11 14:34:09 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/15 00:05:26 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,25 @@ static void	init_player_pos(t_game *game)
 	t_point	pt_player;
 
 	pt_player = get_player_position(game->map.tab);
-	game->player.x = pt_player.x * game->tile_size + game->tile_size / 2;
-	game->player.y = pt_player.y * game->tile_size + game->tile_size / 2;
+	game->player.x = pt_player.x * game->map.tile_size
+		+ game->map.tile_size / 2;
+	game->player.y = pt_player.y * game->map.tile_size
+		+ game->map.tile_size / 2;
 }
 
 void	init_game_after(t_game *game)
 {
-	game->tile_size = fmin(WIN_WIDTH / game->map.width, WIN_HEIGHT
+	game->map.tile_size = fmin(WIN_WIDTH / game->map.width, WIN_HEIGHT
 			/ game->map.height);
-	game->scaled_tile_size = game->tile_size * game->minimap_scale;
-	if (game->tile_size < WIN_WIDTH / MIN_TILE_SIZE)
-	{
-		game->scaled_tile_size = MIN_TILE_SIZE * game->minimap_scale;
-	}
-	game->player.image = mlx_new_image(game->mlx, game->scaled_tile_size,
-			game->scaled_tile_size);
-	game->player.move_dist = game->tile_size / 8;
+	game->map.minimap_tile_size = 40;
+	if (DISPLAY_MODE == RENDER_2D)
+		game->map.minimap_scale = 1;
+	else if (DISPLAY_MODE == RENDER_3D)
+		game->map.minimap_scale = (float)game->map.minimap_tile_size
+			/ (float)game->map.tile_size;
+	game->player.image = mlx_new_image(game->mlx, game->map.minimap_tile_size,
+			game->map.minimap_tile_size);
+	game->player.move_dist = game->map.tile_size / 8;
 	init_player_pos(game);
 	init_mouse(game);
 }
@@ -48,10 +51,9 @@ void	init_game(t_game *game)
 {
 	game->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Cub3D", false);
 	if (DISPLAY_MODE == RENDER_2D)
-		game->minimap_scale = 1;
+		game->map.minimap_scale = 1;
 	else if (DISPLAY_MODE == RENDER_3D)
-		game->minimap_scale = 0.2;
-	game->minimap = mlx_new_image(game->mlx, WIN_WIDTH * game->minimap_scale,
-			WIN_HEIGHT * game->minimap_scale);
+		game->map.minimap_scale = 0.5;
+	game->minimap = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
 	game->player.rotation_speed = 0.04;
 }

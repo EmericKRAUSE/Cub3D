@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:48:38 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/07 17:45:00 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/15 00:02:46 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static int	is_door(t_game *game, t_fpoint hit)
 {
 	t_point	map;
 
-	map.x = hit.x / game->tile_size;
-	map.y = hit.y / game->tile_size;
+	map.x = hit.x / game->map.tile_size;
+	map.y = hit.y / game->map.tile_size;
 	return (game->map.tab[map.y][map.x] == 'D');
 }
 
@@ -33,7 +33,8 @@ static void	set_vertical_slice(t_game *game, t_slice *slice,
 		hit.x -= 0.001;
 	else
 		hit.x += 0.001;
-	slice->hit_ratio = hit.y - floor(hit.y / game->tile_size) * game->tile_size;
+	slice->hit_ratio = hit.y - floor(hit.y / game->map.tile_size)
+		* game->map.tile_size;
 	if (is_door(game, hit))
 		slice->texture = game->textures.door;
 	else if (cos(ray_angle) > 0)
@@ -54,7 +55,8 @@ static void	set_horizontal_slice(t_game *game, t_slice *slice,
 		hit.y -= 0.001;
 	else
 		hit.y += 0.001;
-	slice->hit_ratio = hit.x - floor(hit.x / game->tile_size) * game->tile_size;
+	slice->hit_ratio = hit.x - floor(hit.x / game->map.tile_size)
+		* game->map.tile_size;
 	if (is_door(game, hit))
 		slice->texture = game->textures.door;
 	else if (sin(ray_angle) > 0)
@@ -78,7 +80,7 @@ static void	cast_ray(t_game *game, float ray_angle, int i)
 			set_vertical_slice(game, &slice, vertical_dist, ray_angle);
 		else
 			set_horizontal_slice(game, &slice, horizontal_dist, ray_angle);
-		slice.hit_ratio = slice.hit_ratio / game->tile_size;
+		slice.hit_ratio = slice.hit_ratio / game->map.tile_size;
 		draw_slice(game, i, ray_angle, slice);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:24:40 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/08 17:08:30 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/14 23:25:20 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	is_wall(t_game *game, float x, float y)
 {
 	t_point	map;
 
-	map.x = (int)(x / game->tile_size);
-	map.y = (int)(y / game->tile_size);
+	map.x = (int)(x / game->map.tile_size);
+	map.y = (int)(y / game->map.tile_size);
 	if (map.x < 0 || map.y < 0 || map.y >= game->map.height
 		|| map.x >= game->map.width)
 		return (1);
@@ -31,7 +31,7 @@ int	is_colliding(t_game *game, float new_x, float new_y)
 {
 	float	hit_box;
 
-	hit_box = game->tile_size * 0.2;
+	hit_box = game->map.tile_size * 0.2;
 	if (is_wall(game, new_x - hit_box, new_y - hit_box) || is_wall(game, new_x
 			+ hit_box, new_y - hit_box) || is_wall(game, new_x - hit_box, new_y
 			+ hit_box) || is_wall(game, new_x + hit_box, new_y + hit_box))

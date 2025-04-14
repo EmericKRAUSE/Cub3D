@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 16:55:50 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/01 19:40:23 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/14 23:22:27 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	open_and_close_door(t_game *game, float final_dist)
 	player.x = game->player.x;
 	player.y = game->player.y;
 	map_hit.x = (player.x + final_dist * cos(game->player.angle))
-		/ game->tile_size;
+		/ game->map.tile_size;
 	map_hit.y = (player.y + final_dist * sin(game->player.angle))
-		/ game->tile_size;
+		/ game->map.tile_size;
 	if (game->map.tab[map_hit.y][map_hit.x] == 'D')
 		game->map.tab[map_hit.y][map_hit.x] = 'd';
 	else if (game->map.tab[map_hit.y][map_hit.x] == 'd')

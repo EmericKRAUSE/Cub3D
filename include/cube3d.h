@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/04/14 19:09:31 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/14 23:51:03 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 // General
 # define HEIGH_MAX 40
-# define WIDTH_MAX 50
+# define WIDTH_MAX 80
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
 # define FOV 60
@@ -90,7 +90,6 @@
 # define PLAYER_CHARS "NSEW"
 # define FLOODFILL_CHARS "NSEW0D"
 # define FLOODFILL_VISITED 'V'
-# define MIN_TILE_SIZE 200
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4
@@ -132,6 +131,9 @@ typedef struct s_map
 	char			**tab;
 	int				width;
 	int				height;
+	int				tile_size;
+	int				minimap_tile_size;
+	float			minimap_scale;
 }					t_map;
 
 typedef struct s_textures
@@ -158,9 +160,6 @@ typedef struct s_game
 	int				time;
 	int				launcher_frame;
 	int				is_shooting;
-	float			minimap_scale;
-	int				tile_size;
-	int				scaled_tile_size;
 	int				fd;
 	mlx_image_t		*floor_and_ceiling;
 	mlx_image_t		*minimap;

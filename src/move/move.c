@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 14:44:56 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/10 12:27:26 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/14 23:21:56 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ static void	apply_movement_with_collision(t_game *game, float new_x,
 		game->player.x = round(new_x);
 	if (can_move.y)
 		game->player.y = round(new_y);
-	game->player.image->instances->x = game->player.x * game->minimap_scale;
-	game->player.image->instances->y = game->player.y * game->minimap_scale;
+	game->player.image->instances->x = game->player.x * game->map.minimap_scale;
+	game->player.image->instances->y = game->player.y * game->map.minimap_scale;
 }
 
 // Hook for the movement and rotation of the player
