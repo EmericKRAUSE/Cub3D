@@ -56,9 +56,9 @@ make_libs:
 	done
 
 check_mlx:
-	@if [ ! -d "$(LIBMLX)" ]; then \
+	if [ ! -d "$(LIBMLX)" ]; then \
 		echo "MLX42 not found, cloning..."; \
-		./clone_mlx.sh || (echo "clone_mlx.sh failed" && exit 1); \
+		git clone https://github.com/codam-coding-college/MLX42.git ; \
 	fi
 
 # Nettoyage des fichiers objets
