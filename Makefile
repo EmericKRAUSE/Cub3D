@@ -44,7 +44,9 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(INCLUDES) $(LDFLAGS) $(OBJ) -o $(NAME) $(LDLIBS) $(LFLAGS)
 
 # Règle pour construire la minilibx séparément
-libmlx:
+libmlx: check_mlx
+	@cmake $(LIBMLX) -B $(LIBMLX_BUILD) && make -C $(LIBMLX_BUILD)
+
 	@cmake $(LIBMLX) -B $(LIBMLX_BUILD) && make -C $(LIBMLX_BUILD)
 
 # Règle pour construire les bibliothèques (libft uniquement)
@@ -52,6 +54,12 @@ make_libs:
 	for lib in $(LIB_NAMES); do \
 		$(MAKE) -C $(LIB_DIR)/$$lib; \
 	done
+
+check_mlx:
+	@if [ ! -d "$(LIBMLX)" ]; then \
+		echo "MLX42 not found, cloning..."; \
+		./clone_mlx.sh || (echo "clone_mlx.sh failed" && exit 1); \
+	fi
 
 # Nettoyage des fichiers objets
 clean:
