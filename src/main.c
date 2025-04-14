@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/11 17:37:14 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/14 16:17:32 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int	main(int argc, char **argv)
 
 	game = ft_calloc(sizeof(t_game), 1);
 	parse_args(argc, argv, game);
+    print_tab(game->map.tab);
 	init_game(game);
 	if (!game)
 		return (ERR_MALLOC);

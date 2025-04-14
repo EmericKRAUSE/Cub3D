@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:14:15 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/11 17:34:01 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/14 16:23:42 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ char	*load_map(t_game *game, char *line)
 		clean_exit(game, "[map] Error: Map not available", ERR_MULTIPLE_MAPS);
 	set_width_and_lenght(game);
 	ft_square_map(game, CHAR_BLANK_MAP);
+    surround_map(game, &game->map.tab, SURROUNDING_CHAR);
 	return (line);
 }
 

@@ -14,11 +14,13 @@ LIBMLX_BUILD = $(LIBMLX)/build
 LIBMLX_FLAGS = -L$(LIBMLX_BUILD) -lmlx42 -ldl -lglfw -pthread -lm
 
 # Compilateur et options
-CC      =   gcc
-CFLAGS  =   -Wall -Wextra -Werror -I include -O3 -Ofast
-LFLAGS  =   $(LIBMLX_FLAGS)
-LDFLAGS = $(addprefix -L$(LIB_DIR)/lib,$(LIBRARIES))
-LDLIBS  = $(addprefix -l,$(LIBRARIES))
+CC      	=   gcc
+CFLAGS  	=   -Wall -Wextra -Werror -I include -O3 -Ofast
+DEBUG_FLAGS	= -g3
+LFLAGS  	=   $(LIBMLX_FLAGS)
+LDFLAGS 	= $(addprefix -L$(LIB_DIR)/lib,$(LIBRARIES))
+LDLIBS  	= $(addprefix -l,$(LIBRARIES))
+
 
 
 SRC = src/get_next_line.c src/get_next_line_utils.c src/debug/print_tab.c src/main.c \
@@ -33,23 +35,29 @@ SRC = src/get_next_line.c src/get_next_line_utils.c src/debug/print_tab.c src/ma
 
 #SRC = $(shell find src -type f -name "*.c")
 
-# Fichiers objets
 OBJ     =   $(SRC:.c=.o)
 
-# Cible par défaut
+DEBUG_OBJ = $(SRC:.c=.debug.o)
+
 all: libmlx make_libs $(NAME)
 
-# Règle pour créer l'exécutable
+%.debug.o: %.c
+	$(CC) $(DEBUG_FLAGS) -I include -c $< -o $@
+
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(INCLUDES) $(LDFLAGS) $(OBJ) -o $(NAME) $(LDLIBS) $(LFLAGS)
 
-# Règle pour construire la minilibx séparément
+debug: libmlx make_libs $(DEBUG_OBJ)
+	$(CC) $(DEBUG_FLAGS) $(INCLUDES) $(LDFLAGS) $(DEBUG_OBJ) -o $(NAME) $(LDLIBS) $(LFLAGS)
+	lldb $(NAME)
+	rm $(DEBUG_OBJ)
+	rm $(NAME)
+
 libmlx: check_mlx
 	@cmake $(LIBMLX) -B $(LIBMLX_BUILD) && make -C $(LIBMLX_BUILD)
 
 	@cmake $(LIBMLX) -B $(LIBMLX_BUILD) && make -C $(LIBMLX_BUILD)
 
-# Règle pour construire les bibliothèques (libft uniquement)
 make_libs:
 	for lib in $(LIB_NAMES); do \
 		$(MAKE) -C $(LIB_DIR)/$$lib; \
@@ -61,21 +69,18 @@ check_mlx:
 		git clone https://github.com/codam-coding-college/MLX42.git ; \
 	fi
 
-# Nettoyage des fichiers objets
 clean:
 	for lib in $(LIB_NAMES); do \
 		$(MAKE) -C $(LIB_DIR)/$$lib clean; \
 	done
 	rm -rf $(OBJ)
 
-# Nettoyage complet, y compris l'exécutable
 fclean: clean
 	for lib in $(LIB_NAMES); do \
 		$(MAKE) -C $(LIB_DIR)/$$lib fclean; \
 	done
 	rm -f $(NAME)
 
-# Recompiler tout
 re: fclean all
 
 .PHONY: all clean fclean re make_libs libmlx
