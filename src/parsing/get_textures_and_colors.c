@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/10 13:53:44 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/15 15:14:06 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,15 @@ int	get_texture(t_game *game, char *line)
 
 	ind = get_texture_ind_from_balise(line);
 	if (ind == BALISE_ERROR)
-		clean_exit(game, "Error: Invalid texture balise", ERR_LOADING_TEXTURE);
+		clean_exit(game, "Error: Invalid texture balise", ERR_LOADING_TEXTURE,
+			line);
 	return (load_texture(game, ind, line));
 }
 
 t_rgb	*get_rgb(t_game *game, char *line, t_rgb *rgb)
 {
 	if (rgb->b != UNSET_COLOR)
-		clean_exit(game, "Error: Duplicated color", ERR_LOADING_TEXTURE);
+		clean_exit(game, "Error: Duplicated color", ERR_LOADING_TEXTURE, line);
 	rgb->r = ft_atoi(line);
 	line = ft_get_next_wd(line, ',');
 	rgb->g = ft_atoi(line);

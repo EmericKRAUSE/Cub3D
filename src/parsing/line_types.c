@@ -44,7 +44,7 @@ int	is_texture(t_game *game, char *line)
 
 	texture_balise = ft_split(TEXTURES_BALISE, '/');
 	if (!texture_balise)
-		clean_exit(game, "Error: malloc failed", ERR_MALLOC);
+		clean_exit(game, "Error: malloc failed", ERR_MALLOC, line);
 	i = 0;
 	found = FALSE;
 	if (!line)

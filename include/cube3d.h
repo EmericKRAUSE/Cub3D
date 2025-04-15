@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:13:14 by nidionis          #+#    #+#             */
-/*   Updated: 2025/04/14 23:51:03 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/15 15:33:29 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,7 +216,7 @@ int					is_colliding(t_game *game, float new_x, float new_y);
 
 // ####################
 // utils
-void				clean_exit(t_game *game, char *msg, int exit_code);
+void				clean_exit(t_game *game, char *msg, int e, char *line);
 int					ft_error(const char *message, int value);
 
 // ####################

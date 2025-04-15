@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/10 18:14:47 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/15 15:17:47 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	free_textures_and_images(t_game *game)
 		mlx_delete_texture(game->textures.door);
 }
 
-void	clean_exit(t_game *game, char *msg, int exit_code)
+void	clean_exit(t_game *game, char *msg, int exit_code, char *line)
 {
 	int	i;
 
@@ -52,6 +52,10 @@ void	clean_exit(t_game *game, char *msg, int exit_code)
 			i++;
 		}
 		free(game);
+	}
+	if (line)
+	{
+		free(line);
 	}
 	exit(ft_error(msg, exit_code));
 }

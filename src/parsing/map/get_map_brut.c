@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_parser_fixed.c                                 :+:      :+:    :+:   */
+/*   get_map_brut.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/03/10 21:32:16 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/15 15:25:11 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ char	**get_map(t_game *game, int fd, char **line_addr)
 	map = NULL;
 	line = *line_addr;
 	if (!is_map(line))
-		clean_exit(game, "[get_map] map invalid", ERR_INVALID_MAP);
+		clean_exit(game, "[get_map] map invalid", ERR_INVALID_MAP, line);
 	map = append_tab(map, line);
 	if (map == NULL)
-		clean_exit(game, "Error: malloc failed", ERR_MALLOC);
+		clean_exit(game, "Error: malloc failed", ERR_MALLOC, line);
 	line = get_next_line(fd);
 	while (line && is_map(line))
 	{
 		map = append_tab(map, line);
 		if (map == NULL)
-			clean_exit(game, "Error: malloc failed", ERR_MALLOC);
+			clean_exit(game, "Error: malloc failed", ERR_MALLOC, line);
 		line = get_next_line(fd);
 	}
 	if (line && !is_map(line))

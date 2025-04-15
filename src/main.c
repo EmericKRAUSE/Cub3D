@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/14 16:17:32 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/15 15:29:58 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,5 @@ int	main(int argc, char **argv)
 	mlx_loop_hook(game->mlx, &movements, game);
 	mlx_loop_hook(game->mlx, &update_ray, game);
 	mlx_loop(game->mlx);
-	clean_exit(game, NULL, 0);
+	clean_exit(game, NULL, 0, NULL);
 }

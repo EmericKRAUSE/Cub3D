@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/14 19:12:10 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/15 15:24:33 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	ft_square_map(t_game *game, char c)
 	i = 0;
 	new_map = square_malloc(game->map.width, game->map.height);
 	if (!new_map)
-		clean_exit(game, "Error: malloc failed (ft_square_map)", ERR_MALLOC);
+		clean_exit(game, "malloc failed", ERR_MALLOC, NULL);
 	while (i < game->map.height)
 	{
 		j = 0;

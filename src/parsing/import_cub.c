@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/10 21:42:31 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/15 15:20:09 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ void	process_line(t_game *game, char **line)
 	else if (is_texture(game, *line))
 	{
 		if (get_texture(game, *line) == ERR_LOADING_TEXTURE)
-			clean_exit(game, "[get_texture] loading error", ERR_TEXTURE);
+			clean_exit(game, "[get_texture] loading error", ERR_TEXTURE, *line);
 		*line = free_and_get_line(*line, game->fd);
 	}
 	else if (is_color(*line))
 	{
 		if (get_color(game, *line) == ERR_LOADING_TEXTURE)
-			clean_exit(game, "[get_texture] loading error", ERR_TEXTURE);
+			clean_exit(game, "[get_texture] loading error", ERR_TEXTURE, *line);
 		*line = free_and_get_line(*line, game->fd);
 	}
 	else
@@ -66,17 +66,17 @@ int	setmap(t_game *game, t_map *map_s)
 	map_s->height = tab_len(map);
 	map_s->width = ft_strlen(map[0]);
 	if (map_s->height <= 0 || map_s->width <= 0 || map_s->height > map_s->width)
-		clean_exit(game, "[setmap] too weird for me", ERR_INVALID_MAP);
+		clean_exit(game, "[setmap] too weird for me", ERR_INVALID_MAP, NULL);
 	if (map_s->height > map_s->width)
 	{
 		printf("width = %i, height = %i\n", map_s->width, map_s->height);
 		print_tab(map_s->tab);
-		clean_exit(game, "[setmap] width < height", ERR_INVALID_MAP);
+		clean_exit(game, "[setmap] width < height", ERR_INVALID_MAP, NULL);
 	}
 	if (map_s->height > WIN_HEIGHT || map_s->width > WIN_WIDTH)
-		clean_exit(game, "[setmap] too big for me", ERR_INVALID_MAP);
+		clean_exit(game, "[setmap] too big for me", ERR_INVALID_MAP, NULL);
 	if (map_s->height > HEIGH_MAX || map_s->width > WIDTH_MAX)
-		clean_exit(game, "[setmap] too big for me", ERR_INVALID_MAP);
+		clean_exit(game, "[setmap] too big for me", ERR_INVALID_MAP, NULL);
 	return (TRUE);
 }
 
@@ -94,11 +94,11 @@ int	import_cub_file(t_game *game)
 	}
 	if (!is_map_available(game))
 	{
-		clean_exit(game, "[import_cub_file] map not available", ERR_MAP);
+		clean_exit(game, "[import_cub_file] map not available", ERR_MAP, line);
 	}
 	if (param_missing(game))
 	{
-		clean_exit(game, "[import_cub_file] param missing", ERR_MAP);
+		clean_exit(game, "[import_cub_file] param missing", ERR_MAP, line);
 	}
 	setmap(game, &game->map);
 	return (TRUE);

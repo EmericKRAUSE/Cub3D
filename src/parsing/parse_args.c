@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/15 14:32:24 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/15 15:24:04 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	open_file(t_game *game, char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd <= 0)
-		clean_exit(game, "Error: cannot open file", ERR_OPENFILE);
+		clean_exit(game, "Error: cannot open file", ERR_OPENFILE, NULL);
 	return (fd);
 }
 
@@ -51,15 +51,15 @@ void	intit_game_parsing(t_game *game)
 	game->textures.door = mlx_load_png("textures/door.png");
 	if (!game->textures.door)
 		clean_exit(game, "Error: mlx_load_png failed, check filename",
-			ERR_LOADING_TEXTURE);
+			ERR_LOADING_TEXTURE, NULL);
 }
 
 int	parse_args(int argc, char **argv, t_game *game)
 {
 	if (argc != 2)
-		clean_exit(game, "Error: Argument must be 1", ERR_NBARGS);
+		clean_exit(game, "Error: Argument must be 1", ERR_NBARGS, NULL);
 	if (!is_cub_file(argv[1]))
-		clean_exit(game, "Error: File must be .cub", ERR_CUBEXT);
+		clean_exit(game, "Error: File must be .cub", ERR_CUBEXT, NULL);
 	game->fd = open_file(game, argv[1]);
 	intit_game_parsing(game);
 	import_cub_file(game);

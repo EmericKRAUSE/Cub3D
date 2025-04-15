@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 14:44:56 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/15 14:29:29 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/15 15:18:13 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	movements(void *param)
 		game->mouse_hook = !game->mouse_hook;
 	}
 	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
-		clean_exit(game, NULL, 0);
+		clean_exit(game, NULL, 0, NULL);
 	rotate_player(game);
 	move_player(game, &new_x, &new_y);
 	apply_movement_with_collision(game, new_x, new_y);
