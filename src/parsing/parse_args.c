@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_nico_fixed.c                               :+:      :+:    :+:   */
+/*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:23:47 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/10 21:32:16 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/15 14:32:24 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ void	intit_game_parsing(t_game *game)
 	game->textures.ceiling = init_color(UNSET_COLOR, UNSET_COLOR, UNSET_COLOR);
 	game->textures.floor = init_color(UNSET_COLOR, UNSET_COLOR, UNSET_COLOR);
 	game->textures.door = mlx_load_png("textures/door.png");
+	if (!game->textures.door)
+		clean_exit(game, "Error: mlx_load_png failed, check filename",
+			ERR_LOADING_TEXTURE);
 }
 
 int	parse_args(int argc, char **argv, t_game *game)

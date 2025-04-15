@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:10:00 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/15 00:05:26 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/15 14:36:07 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	init_game_after(t_game *game)
 {
 	game->map.tile_size = fmin(WIN_WIDTH / game->map.width, WIN_HEIGHT
 			/ game->map.height);
-	game->map.minimap_tile_size = 40;
+	game->map.minimap_tile_size = game->map.tile_size * 0.4;
 	if (DISPLAY_MODE == RENDER_2D)
 		game->map.minimap_scale = 1;
 	else if (DISPLAY_MODE == RENDER_3D)

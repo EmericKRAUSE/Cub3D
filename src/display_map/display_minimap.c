@@ -6,7 +6,7 @@
 /*   By: ekrause <emeric.yukii@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 15:19:25 by ekrause           #+#    #+#             */
-/*   Updated: 2025/04/15 00:02:57 by ekrause          ###   ########.fr       */
+/*   Updated: 2025/04/15 14:33:01 by ekrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,25 +86,26 @@ void	draw_background(t_game *game)
 
 void	display_minimap(t_game *game)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
+	float	scale;
+	t_point	sc_player;
 
-	y = 0;
+	scale = game->map.minimap_scale;
+	sc_player.x = game->player.x * scale - game->player.image->width / 2;
+	sc_player.y = game->player.y * scale - game->player.image->height / 2;
+	y = -1;
 	draw_background(game);
-	while (game->map.tab[y])
+	while (game->map.tab[++y])
 	{
-		x = 0;
-		while (game->map.tab[y][x])
-		{
+		x = -1;
+		while (game->map.tab[y][++x])
 			draw_tile(game, game->map.tab[y][x], x, y);
-			x++;
-		}
-		y++;
 	}
 	draw_player(game, COLOR_PLAYER);
 	mlx_image_to_window(game->mlx, game->minimap, 0, 0);
-	mlx_image_to_window(game->mlx, game->player.image, game->player.x
-		* game->map.minimap_scale, game->player.y * game->map.minimap_scale);
+	mlx_image_to_window(game->mlx, game->player.image,
+		sc_player.x, sc_player.y);
 	game->minimap->instances->z = 2;
 	game->player.image->instances->z = 3;
 }
